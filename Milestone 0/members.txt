@@ -9,14 +9,17 @@ Member 1: Abdullah Bin Asad
 Member 2: Chandana Sathish	
 - researched crime related datasets
 - came with several datasets and potential use cases (neighborhood crime statistics, avoiding high crime areas at night)
+- worked on the report for milestone 0
 
 Member 3: Lukman Mohamed	
 - researched several astronomical and marine datasets 
 - presented potential use cases for the datasets (tracking shipwrecks over time, debris in space)
+- worked on the report for milestone 0
 
 Member 4: Vikram Subramanian	
 - researched datasets for related to court cases and paper citations
 - presented use cases for both types of datasets (looking up past decisions, quickly finding citations)
+- worked on the report for milestone 0
 
 Member 5: Dhvani Patel
 - setup team meetings and coordinated group efforts to reach a conclusion
