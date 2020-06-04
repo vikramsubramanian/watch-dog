@@ -1,0 +1,17 @@
+{
+  "name": "hello-crimes",
+  "version": "1.0.0",
+  "description": "Hello World application for milestone 0",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dhvani Patel",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1"
+  }
+}
