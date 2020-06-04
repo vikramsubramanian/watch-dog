@@ -1,0 +1,1 @@
+{"version":3,"sources":["App.css"],"names":[],"mappings":"AAAA,WACE,YAAa,CACb,qBACF,CACA,WACE,eACF,CAEA,WACE,eACF","file":"main.65dd2724.chunk.css","sourcesContent":[".container {\n  display: flex;\n  flex-direction: column;\n}\n.configBar {\n  margin-top: 20px;\n}\n\n.dataTable {\n  margin-top: 10px;\n}\n"]}

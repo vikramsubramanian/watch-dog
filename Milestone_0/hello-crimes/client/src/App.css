@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+.configBar {
+  margin-top: 20px;
+}
+
+.dataTable {
+  margin-top: 10px;
+}
