@@ -1,0 +1,230 @@
+neighbourhoodID,hoodID,neighbourhood,division
+300000,132,Malvern ,D42
+300001,76,Bay Street Corridor ,D52
+300002,1,West Humber-Clairville ,D23
+300003,47,Don Valley Village ,D33
+300004,90,Junction Area ,D11
+300005,136,West Hill ,D43
+300007,110,Keelesdale-Eglinton West ,D12
+300008,35,Westminster-Branson ,D32
+300010,120,Clairlea-Birchmount ,D41
+300011,31,Yorkdale-Glen Park ,D32
+300013,128,Agincourt South-Malvern West ,D42
+300014,77,Waterfront Communities-The Island ,D51
+300015,74,North St.James Town ,D51
+300016,86,Roncesvalles ,D11
+300018,93,Dovercourt-Wallace Emerson-Junction ,D14
+300019,27,York University Heights ,D32
+300020,108,Briar Hill-Belgravia ,D13
+300021,14,Islington-City Centre West ,D22
+300022,118,Tam O'Shanter-Sullivan ,D42
+300023,24,Black Creek ,D31
+300024,78,Kensington-Chinatown ,D14
+300025,79,University ,D14
+300026,39,Bedford Park-Nortown ,D32
+300028,27,York University Heights ,D31
+300031,77,Waterfront Communities-The Island ,D52
+300032,119,Wexford/Maryvale ,D41
+300033,98,Rosedale-Moore Park ,D53
+300042,95,Annex ,D53
+300045,137,Woburn ,D43
+300047,25,Glenfield-Jane Heights ,D31
+300048,79,University ,D52
+300050,50,Newtonbrook East ,D32
+300051,72,Regent Park ,D51
+300052,69,Blake-Jones ,D55
+300053,78,Kensington-Chinatown ,D52
+300054,62,East End-Danforth ,D55
+300056,75,Church-Yonge Corridor ,D51
+300057,80,Palmerston-Little Italy ,D14
+300058,103,Lawrence Park South ,D53
+300059,26,Downsview-Roding-CFB ,D31
+300060,45,Parkwoods-Donalda ,D33
+300062,7,Willowridge-Martingrove-Richview ,D23
+300063,139,Scarborough Village ,D43
+300064,124,Kennedy Park ,D41
+300067,28,Rustic ,D12
+300068,100,Yonge-Eglinton ,D53
+300069,56,Leaside-Bennington ,D53
+300070,46,Pleasant View ,D33
+300071,55,Thorncliffe Park ,D53
+300072,122,Birchcliffe-Cliffside ,D41
+300074,61,Taylor-Massey ,D54
+300076,126,Dorset Park ,D41
+300078,73,Moss Park ,D51
+300080,112,Beechborough-Greenbrook ,D12
+300081,97,Yonge-St.Clair ,D53
+300083,16,Stonegate-Queensway ,D22
+300085,127,Bendale ,D43
+300088,44,Flemingdon Park ,D54
+300089,6,Kingsview Village-The Westway ,D23
+300098,95,Annex ,D14
+300100,68,North Riverdale ,D55
+300102,30,Brookhaven-Amesbury ,D12
+300103,65,Greenwood-Coxwell ,D55
+300106,9,Edenbridge-Humber Valley ,D22
+300107,121,Oakridge ,D41
+300108,134,Highland Creek ,D43
+300110,113,Weston ,D12
+300113,11,Eringate-Centennial-West Deane ,D22
+300116,104,Mount Pleasant West ,D53
+300117,109,Caledonia-Fairbank ,D13
+300123,41,Bridle Path-Sunnybrook-York Mills ,D53
+300124,129,Agincourt North ,D42
+300125,138,Eglinton East ,D43
+300126,36,Newtonbrook West ,D32
+300135,131,Rouge ,D42
+300136,18,New Toronto ,D22
+300140,2,Mount Olive-Silverstone-Jamestown ,D23
+300144,52,Bayview Village ,D33
+300148,70,South Riverdale ,D55
+300161,84,Little Portugal ,D14
+300162,13,Etobicoke West Mall ,D22
+300163,117,L'Amoreaux ,D42
+300164,111,Rockcliffe-Smythe ,D12
+300170,93,Dovercourt-Wallace Emerson-Junction ,D11
+300171,31,Yorkdale-Glen Park ,D13
+300173,53,Henry Farm ,D33
+300174,10,Princess-Rosethorn ,D22
+300176,57,Broadview North ,D54
+300196,116,Steeles ,D42
+300198,81,Trinity-Bellwoods ,D14
+300201,19,Long Branch ,D22
+300204,91,Weston-Pellam Park ,D11
+300205,40,St.Andrew-Windfields ,D33
+300206,32,Englemount-Lawrence ,D32
+300208,77,Waterfront Communities-The Island ,D14
+300215,12,Markland Wood ,D22
+300216,41,Bridle Path-Sunnybrook-York Mills ,D32
+300218,33,Clanton Park ,D32
+300224,92,Corso Italia-Davenport ,D13
+300228,96,Casa Loma ,D53
+300234,54,O'Connor-Parkview ,D54
+300243,140,Guildwood ,D43
+300248,85,South Parkdale ,D14
+300249,135,Morningside ,D43
+300253,101,Forest Hill South ,D13
+300254,89,Runnymede-Bloor West Village ,D11
+300266,96,Casa Loma ,D13
+300273,34,Bathurst Manor ,D32
+300274,127,Bendale ,D41
+300276,123,Cliffcrest ,D41
+300286,42,Banbury-Don Mills ,D33
+300292,138,Eglinton East ,D41
+300298,84,Little Portugal ,D11
+300307,90,Junction Area ,D12
+300308,63,The Beaches ,D55
+300313,82,Niagara ,D14
+300319,43,Victoria Village ,D54
+300322,62,East End-Danforth ,D54
+300339,58,Old East York ,D54
+300348,10,Princess-Rosethorn ,D23
+300355,43,Victoria Village ,D33
+300361,51,Willowdale East ,D32
+300362,83,Dufferin Grove ,D14
+300366,26,Downsview-Roding-CFB ,D32
+300375,38,Lansing-Westgate ,D32
+300389,133,Centennial Scarborough ,D43
+300397,5,Elms-Old Rexdale ,D23
+300408,87,High Park-Swansea ,D11
+300417,21,Humber Summit ,D31
+300420,66,Danforth ,D54
+300426,15,Kingsway South ,D22
+300453,125,Ionview ,D41
+300464,64,Woodbine Corridor ,D55
+300472,102,Forest Hill North ,D53
+300473,17,Mimico ,D22
+300491,48,Hillcrest Village ,D33
+300532,37,Willowdale West ,D32
+300543,76,Bay Street Corridor ,D51
+300546,105,Lawrence Park North ,D32
+300547,111,Rockcliffe-Smythe ,D11
+300567,22,Humbermede ,D31
+300579,67,Playter Estates-Danforth ,D54
+300582,60,Woodbine-Lumsden ,D54
+300599,102,Forest Hill North ,D13
+300610,114,Lambton Baby Point ,D11
+300611,130,Milliken ,D42
+300619,3,Thistletown-Beaumond Heights ,D23
+300629,107,Oakwood Village ,D13
+300641,29,Maple Leaf ,D12
+300648,88,High Park North ,D11
+300659,20,Alderwood ,D22
+300675,79,University ,D53
+300681,91,Weston-Pellam Park ,D12
+300709,39,Bedford Park-Nortown ,D53
+300727,71,Cabbagetown-South St.James Town ,D51
+300760,94,Wychwood ,D13
+300767,115,Mount Dennis ,D12
+300770,85,South Parkdale ,D11
+300800,101,Forest Hill South ,D53
+300811,40,St.Andrew-Windfields ,D32
+300815,61,Taylor-Massey ,D55
+300823,76,Bay Street Corridor ,D53
+300837,59,Danforth East York ,D54
+300860,131,Rouge ,D43
+300917,61,Taylor-Massey ,D41
+300968,8,Humber Heights-Westmount ,D23
+300979,50,Newtonbrook East ,D33
+301051,4,Rexdale-Kipling ,D23
+301087,93,Dovercourt-Wallace Emerson-Junction ,D13
+301205,48,Hillcrest Village ,D42
+301218,23,Pelmo Park-Humberlea ,D12
+301239,83,Dufferin Grove ,D11
+301302,106,Humewood-Cedarvale ,D13
+301337,99,Mount Pleasant East ,D53
+301550,123,Cliffcrest ,D43
+301825,41,Bridle Path-Sunnybrook-York Mills ,D33
+301886,43,Victoria Village ,D41
+301895,75,Church-Yonge Corridor ,D52
+302218,65,Greenwood-Coxwell ,D54
+302253,23,Pelmo Park-Humberlea ,D31
+302396,124,Kennedy Park ,D43
+302498,32,Englemount-Lawrence ,D13
+302538,49,Bayview Woods-Steeles ,D33
+302902,64,Woodbine Corridor ,D54
+302933,70,South Riverdale ,D51
+303425,51,Willowdale East ,D33
+304086,77,Waterfront Communities-The Island ,D22
+304565,69,Blake-Jones ,D54
+304683,9,Edenbridge-Humber Valley ,D23
+305390,98,Rosedale-Moore Park ,D51
+305526,68,North Riverdale ,D54
+305607,53,Henry Farm ,D42
+305928,45,Parkwoods-Donalda ,D41
+308037,87,High Park-Swansea ,D43
+308267,11,Eringate-Centennial-West Deane ,D23
+309433,54,O'Connor-Parkview ,D41
+312052,46,Pleasant View ,D42
+315514,52,Bayview Village ,D32
+316070,95,Annex ,D52
+316585,62,East End-Danforth ,D41
+317203,74,North St.James Town ,D53
+320534,124,Kennedy Park ,D54
+324234,82,Niagara ,D32
+326833,106,Humewood-Cedarvale ,D53
+328577,75,Church-Yonge Corridor ,D53
+333019,77,Waterfront Communities-The Island ,D12
+335412,76,Bay Street Corridor ,D14
+340272,81,Trinity-Bellwoods ,D43
+343509,103,Lawrence Park South ,D32
+347389,32,Englemount-Lawrence ,D53
+347606,119,Wexford/Maryvale ,D42
+353192,69,Blake-Jones ,D22
+355836,77,Waterfront Communities-The Island ,D11
+360085,17,Mimico ,D14
+360969,91,Weston-Pellam Park ,D13
+366671,6,Kingsview Village-The Westway ,D13
+370915,77,Waterfront Communities-The Island ,D55
+371828,63,The Beaches ,D41
+374055,133,Centennial Scarborough ,D42
+386701,17,Mimico ,D11
+390044,110,Keelesdale-Eglinton West ,D51
+392522,113,Weston ,D51
+402442,120,Clairlea-Birchmount ,D43
+402783,22,Humbermede ,D22
+404110,109,Caledonia-Fairbank ,D12
+405320,3,Thistletown-Beaumond Heights ,D31
+416423,44,Flemingdon Park ,D33
+421705,75,Church-Yonge Corridor ,D12
+427148,32,Englemount-Lawrence ,D42
