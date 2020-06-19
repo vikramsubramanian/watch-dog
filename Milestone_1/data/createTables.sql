@@ -1,5 +1,5 @@
 -- connect to CS348;
-create TABLE Time (
+create TABLE IncidentTime (
   time_id INT NOT NULL PRIMARY KEY,
   hour INT NOT NULL,
   day INT NOT NULL,
@@ -37,8 +37,8 @@ create TABLE CrimeEvent (
   lat FLOAT NOT NULL,
   long FLOAT NOT NULL,
   premise_type VARCHAR(50),
-  FOREIGN KEY(occurrence_time_id) REFERENCES Time(time_id),
-  FOREIGN KEY(reported_time_id) REFERENCES Time(time_id),
+  FOREIGN KEY(occurrence_time_id) REFERENCES IncidentTime(time_id),
+  FOREIGN KEY(reported_time_id) REFERENCES IncidentTime(time_id),
   FOREIGN KEY(crime_id) REFERENCES RegularCrime(crime_id),
   FOREIGN KEY(bike_theft_id) REFERENCES BikeTheft(bike_theft_id),
   FOREIGN KEY(hood_id) REFERENCES Neighbourhood(hood_id)
@@ -67,7 +67,7 @@ create TABLE TrafficEvent(
   hood_id INT NOT NULL,
   lat FLOAT NOT NULL,
   long FLOAT NOT NULL,
-  FOREIGN KEY(occurrence_time_id) REFERENCES Time(time_id),
+  FOREIGN KEY(occurrence_time_id) REFERENCES IncidentTime(time_id),
   FOREIGN KEY(road_condition_id) REFERENCES RoadCondition(road_condition_id),
   FOREIGN KEY(hood_id) REFERENCES Neighbourhood(hood_id)
 );

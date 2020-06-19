@@ -1,4 +1,4 @@
-DROP TABLE Time;
+DROP TABLE IncidentTime;
 DROP TABLE Neighbourhood;
 DROP TABLE RegularCrime;
 DROP TABLE BikeTheft;
