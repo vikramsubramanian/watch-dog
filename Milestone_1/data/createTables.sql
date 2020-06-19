@@ -7,10 +7,15 @@ create TABLE IncidentTime (
   year INT,
   day_of_week INT
 );
+create TABLE PoliceDivision (
+  division INT NOT NULL PRIMARY KEY,
+  address VARCHAR(50)
+);
 create TABLE Neighbourhood (
   hood_id INT NOT NULL PRIMARY KEY,
   name VARCHAR(50),
-  division INT
+  division INT,
+  FOREIGN KEY(division) REFERENCES PoliceDivision(division)
 );
 create TABLE RegularCrime(
   crime_id INT NOT NULL PRIMARY KEY,
