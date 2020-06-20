@@ -17,11 +17,6 @@ create TABLE Neighbourhood (
   division INT,
   FOREIGN KEY(division) REFERENCES PoliceDivision(division)
 );
-create TABLE RegularCrime(
-  crime_id INT NOT NULL PRIMARY KEY,
-  offence VARCHAR(10),
-  MCI VARCHAR(10)
-);
 create TABLE BikeTheft(
   bike_theft_id INT NOT NULL PRIMARY KEY,
   colour VARCHAR(15),
@@ -32,12 +27,18 @@ create TABLE BikeTheft(
   status VARCHAR(15),
   cost FLOAT
 );
+create TABLE RegularCrime(
+  crime_id INT NOT NULL PRIMARY KEY,
+  bike_theft_id INT,
+  offence VARCHAR(10),
+  MCI VARCHAR(10),
+  FOREIGN KEY(bike_theft_id) REFERENCES BikeTheft(bike_theft_id);
+);
 create TABLE CrimeEvent (
   event_id INT NOT NULL PRIMARY KEY,
   occurrence_time_id INT,
   reported_time_id INT,
   crime_id INT,
-  bike_theft_id INT,
   hood_id INT,
   lat FLOAT,
   long FLOAT,
@@ -45,7 +46,6 @@ create TABLE CrimeEvent (
   FOREIGN KEY(occurrence_time_id) REFERENCES IncidentTime(time_id),
   FOREIGN KEY(reported_time_id) REFERENCES IncidentTime(time_id),
   FOREIGN KEY(crime_id) REFERENCES RegularCrime(crime_id),
-  FOREIGN KEY(bike_theft_id) REFERENCES BikeTheft(bike_theft_id),
   FOREIGN KEY(hood_id) REFERENCES Neighbourhood(hood_id)
 );
 create TABLE InvolvedPerson(
