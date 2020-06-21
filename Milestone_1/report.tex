@@ -1,0 +1,26 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage[left=1.00in, right=1.00in, top=1.00in, bottom=1.00in]{geometry}
+\title{CS348 Project Milestone 1}
+\author{Abdullah Bin Assad\and Chandana Sathish \and Lukman Mohamed \and Vikram Subramanian \and Dhvani Patel}
+\begin{document}
+\maketitle
+
+\section*{Application description}
+\subsection*{Application User}
+We are creating an interactive web app for people interested in exploring crime data in the Greater Toronto Area. People who wish to assess how safe a neighbourhood is before investing in a new property or novice drivers trying to avoid accident-prone roads or just people curious about crime rates around them can greatly benefit from our application.
+\subsection*{Interaction with the app}
+A user would simply search for a query (as seen on the demo application) using the dropdown on certain words in the question to tailor the search to their needs. For example, “I want to explore bicycle theft crimes over the past 6 months citywide on a bar chart” can be one of the many queries a user selects. Alternatively, a user can also pick from a list of predefined queries (not in the demo yet) if they are unsure about where to start. Once the user clicks “OK”, they are redirected to a page that displays the requested query and allows them to change the representation of the data as well as further refine their search with more options.
+\subsection*{Key features}
+\subsection*{Data}
+The tables we get from the Toronto Police Open Data is a little difficult to work with. Therefore, we create a data parser (in code.zip) to convert it to .csv files that fulfil our requirements. IncidentTime.csv and PoliceDivision.csv are complete versions of sample data that can be found in code.zip.
+\subsection*{System support}
+Our interface will consist of an interactive web-app. We will be using GCP to host our database and run a MySQL instance. This setup is ideal and efficient for building a web app such as ours. GCP and MySQL are modern, scalable, efficient and flexible. We will be using Node.js with an Express.js server as our back-end to interact with the database. For the front-end, we will be using the React library. Thus, our web application code mostly consists of JavaScript. Members of our group have experience with Node.js and React which gives us an excellent basis for our project.
+
+\section*{Design database schema}
+\subsection*{List of assumptions}
+\subsection*{E/R diagram}
+\subsection*{Relational data model}
+
+\end{document}
