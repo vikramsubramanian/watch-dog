@@ -2,6 +2,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage{hyperref}
 \usepackage[left=1.00in, right=1.00in, top=1.00in, bottom=1.00in]{geometry}
+\usepackage{graphicx}
+\graphicspath{ {./} }
 \title{CS348 Project Milestone 1}
 \author{Abdullah Bin Assad\and Chandana Sathish \and Lukman Mohamed \and Vikram Subramanian \and Dhvani Patel}
 \begin{document}
@@ -20,16 +22,16 @@ A user would simply search for a query (as seen on the demo application) using t
 \item bar chart, line chart, and pie chart
 \item map, heat map
 \end{itemize}
-\item Report a crime
+\item Create predefined complex queries in the form of question and answer
+\begin{itemize}
+    \item Example - Where should I park by bike in this neighbourhood, where should I drive as a new driver, is there a correlation between education/demographic and crime?
+\end{itemize}
 \item Provide users with information on closest police division or which neighborhood they are situated in based on the address they provide us with
+\item Report a crime
 \item Interactive “How well do you know your city” feature
 \begin{itemize}
     \item Let the user guess certain values from a query they select, then show them the actual results and tell them how close they were
     \item Store user guess average and tell them how they compare against other users who tried guessing the same value
-\end{itemize}
-\item Create predefined complex queries in the form of question and answer
-\begin{itemize}
-    \item Example - Where should I park by bike in this neighbourhood, where should I drive as a new driver, is there a correlation between education/demographic and crime?
 \end{itemize}
 \end{enumerate}
 \subsection*{Data}
@@ -39,7 +41,87 @@ Our interface will consist of an interactive web-app. We will be using Azure to 
 
 \section*{Design database schema}
 \subsection*{List of assumptions}
+\begin{itemize}
+    \item
+\end{itemize}
 \subsection*{E/R diagram}
-\subsection*{Relational data model}
-
+\includegraphics[scale=0.25]{ER Diagram.png}
+\subsection*{Relational Data Model}
+\begin{itemize}
+    \item IncidentTime
+    \begin{itemize}
+        \item \underline{time\_id}
+        \item hour
+        \item day
+        \item month
+        \item year 
+        \item day\_of\_week
+    \end{itemize}
+    \item PoliceDivision
+        \begin{itemize}
+        \item \underline{division}
+        \item address
+    \end{itemize}
+    \item Neighbourhood
+        \begin{itemize}
+        \item \underline{hood\_id}
+        \item name
+        \item division (Foreign Key Referencing PoliceDivision(division))
+    \end{itemize}
+    \item BikeTheft
+        \begin{itemize}
+        \item \underline{bike\_theft\_id}
+        \item colour
+        \item make
+        \item model
+        \item speed
+        \item bike\_type
+        \item cost
+    \end{itemize}
+    \item RegularCrime
+        \begin{itemize}
+        \item \underline{crime\_id}
+        \item bike\_theft\_id (Foreign Key Referencing BikeTheft(bike\_theft\_id))
+        \item offence
+        \item MCI
+    \end{itemize}
+    \item CrimeEvent
+        \begin{itemize}
+        \item \underline{event\_id}
+        \item occurrence\_time\_id (Foreign Key Referencing IncidentTime(time\_id))
+        \item reported\_time\_id (Foreign Key Referencing IncidentTime(time\_id))
+        \item crime\_id (Foreign Key Referencing RegularCrime(crime\_id))
+        \item hood\_id (Foreign Key Referencing Neighbourhood(hood\_id))
+        \item latitude
+        \item longitude
+        \item premise\_type
+    \end{itemize}
+    \item InvolvedPerson
+    \begin{itemize}
+        \item \underline{accident\_id} (Foreign Key Referencing TrafficEvent(accident\_id))
+        \item \underline{person\_id}
+        \item involvement\_type,
+        \item age
+        \item injury
+        \item vehicle\_type
+        \item action\_taken
+    \end{itemize}
+    \item RoadCondition
+    \begin{itemize}
+        \item \underline{road\_condition\_id}
+        \item classification
+        \item traffic\_control\_type
+        \item visibility
+        \item surface\_condition
+    \end{itemize}
+    \item TrafficEvent
+    \begin{itemize}
+        \item \underline{accident\_id}
+        \item occurrence\_time\_id (Foreign Key Referencing IncidentTime(time\_id))
+        \item road\_condition\_id (Foreign Key Referencing RoadCondition(road\_condition\_id))
+        \item hood\_id (Foreign Key Referencing Neighbourhood(hood\_id))
+        \item latitude
+        \item longitude
+    \end{itemize}
+\end{itemize}
 \end{document}
