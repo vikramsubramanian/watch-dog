@@ -80,6 +80,10 @@ function App () {
     setDateType (data.text);
   }
 
+  function selectCrime (event, data) {
+    console.log ('Selecting data...');
+  }
+
   return (
     <div className="container">
       <Menu fixed="top" text className="selectHeader">
@@ -157,7 +161,13 @@ function App () {
             citywide on a bar chart
           </Menu.Item>
           <Menu.Item className="selectButton">
-            <Button icon labelPosition="right" primary size="mini">
+            <Button
+              icon
+              labelPosition="right"
+              primary
+              size="mini"
+              onClick={selectCrime}
+            >
               <Icon name="arrow down" />
               OK
             </Button>
