@@ -32,16 +32,15 @@ create TABLE BikeTheft(
 
 create TABLE RegularCrime(
   crime_id INT NOT NULL PRIMARY KEY,
-  bike_theft_id INT,
   offence VARCHAR(10),
   MCI VARCHAR(10),
-  FOREIGN KEY(bike_theft_id) REFERENCES BikeTheft(bike_theft_id)
 );
 
 create TABLE CrimeEvent (
   event_id INT NOT NULL PRIMARY KEY,
   occurrence_time_id INT,
   reported_time_id INT,
+  bike_theft_id INT,
   crime_id INT,
   hood_id INT,
   latitude FLOAT,
@@ -51,6 +50,7 @@ create TABLE CrimeEvent (
   FOREIGN KEY(reported_time_id) REFERENCES IncidentTime(time_id),
   FOREIGN KEY(crime_id) REFERENCES RegularCrime(crime_id),
   FOREIGN KEY(hood_id) REFERENCES Neighbourhood(hood_id)
+  FOREIGN KEY(bike_theft_id) REFERENCES BikeTheft(bike_theft_id)
 );
 
 create TABLE InvolvedPerson(
