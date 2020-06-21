@@ -1,5 +1,12 @@
 import React, {useState} from 'react';
-import {Header, Container, Menu, Dropdown} from 'semantic-ui-react';
+import {
+  Header,
+  Container,
+  Menu,
+  Dropdown,
+  Button,
+  Icon,
+} from 'semantic-ui-react';
 
 import './App.css';
 
@@ -59,6 +66,12 @@ function App () {
           </Menu.Item>
           <Menu.Item className="selectText">
             citywide on a bar chart
+          </Menu.Item>
+          <Menu.Item className="selectButton">
+            <Button icon labelPosition="right" primary size="mini">
+              <Icon name="arrow down" />
+              OK
+            </Button>
           </Menu.Item>
         </Container>
       </Menu>

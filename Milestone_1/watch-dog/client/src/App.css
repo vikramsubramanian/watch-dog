@@ -19,3 +19,7 @@
 .selectText {
   user-select: auto !important;
 }
+
+.selectButton {
+  font-size: initial !important;
+}
