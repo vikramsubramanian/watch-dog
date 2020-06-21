@@ -29,3 +29,5 @@ INSERT INTO IncidentTime (time_id, hour, day, month, year, day_of_week) values (
 -- INSERT INTO InvolvedPerson;
 -- INSERT INTO RoadCondition;
 -- INSERT INTO TrafficEvent;
+
+

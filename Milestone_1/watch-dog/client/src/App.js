@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Line } from 'react-chartjs-2';
+import React, {useState, useEffect} from 'react';
+import {Line} from 'react-chartjs-2';
 import {
   Header,
   Container,
@@ -47,14 +47,10 @@ const crimeIndicatorOptions = [
     label: 'theft over',
     value: 'theft over',
   },
-  {
-    label: 'bicycle thefts',
-    value: 'bicycle thefts',
-  },
 ];
 
-const dateTypeOptions = ['years', 'months', 'weeks', 'days'];
-const dateNumOptions = new Map();
+const dateTypeOptions = ['years', 'months'];
+const dateNumOptions = new Map ();
 dateNumOptions['year'] = [2014, 2015, 2016, 2017, 2018, 2019, 2020];
 dateNumOptions['month'] = [
   'Jan',
@@ -70,55 +66,53 @@ dateNumOptions['month'] = [
   'Nov',
   'Dec',
 ];
-dateNumOptions['week'] = [1, 2, 3, 4, 5, 6];
-dateNumOptions['day'] = [1, 2, 7, 30, 60, 180, 365];
+// dateNumOptions['week'] = [1, 2, 3, 4, 5, 6];
+// dateNumOptions['day'] = [1, 2, 7, 30, 60, 180, 365];
 
-function strEqual(str1, str2) {
-  return str1.localeCompare(str2) == 0;
+function strEqual (str1, str2) {
+  return str1.localeCompare (str2) == 0;
 }
 
-function App() {
-  const [crimeIndicator, setCrimeIndicator] = useState('all');
+function App () {
+  const [crimeIndicator, setCrimeIndicator] = useState ('all');
   // const [crimeType, setCrimeType] = useState ('');
-  const [dateNum, setDateNum] = useState(2019);
-  const [dateType, setDateType] = useState('year');
-  const [chartData, setChartData] = useState({});
+  const [dateNum, setDateNum] = useState (2019);
+  const [dateType, setDateType] = useState ('year');
+  const [chartData, setChartData] = useState ({});
 
   const chart = () => {
-    setChartData({
+    setChartData ({
       labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
       datasets: [
         {
           label: 'Number of crimes reported',
           data: [32, 45, 12, 76, 60],
-          backgroundColor: [
-            'rgba(75, 192, 192, 0.6)'
-          ],
-          borderWidth: 4
-        }
-      ]
-    })
+          backgroundColor: ['rgba(75, 192, 192, 0.6)'],
+          borderWidth: 4,
+        },
+      ],
+    });
+  };
+
+  function changeCrimeIndicator (event, data) {
+    setCrimeIndicator (data.text);
   }
 
-  function changeCrimeIndicator(event, data) {
-    setCrimeIndicator(data.text);
+  function changeDateNum (event, data) {
+    setDateNum (data.text);
+  }
+  function changeDateType (event, data) {
+    setDateType (data.text);
+    setDateNum (dateNumOptions[data.text][0]);
   }
 
-  function changeDateNum(event, data) {
-    setDateNum(data.text);
-  }
-  function changeDateType(event, data) {
-    setDateType(data.text);
-    setDateNum(dateNumOptions[data.text][0]);
+  function selectCrime (event, data) {
+    console.log ('Selecting data...');
   }
 
-  function selectCrime(event, data) {
-    console.log('Selecting data...');
-  }
-
-  useEffect(() => {
-    chart()
-  }, [])
+  useEffect (() => {
+    chart ();
+  }, []);
 
   return (
     <div className="container">
@@ -127,7 +121,7 @@ function App() {
           <Menu.Item className="selectText">
             I want to explore
           </Menu.Item>
-          <Menu.Item style={{ padding: 0 }}>
+          <Menu.Item style={{padding: 0}}>
             <Dropdown
               inline
               icon={null}
@@ -135,12 +129,12 @@ function App() {
               className="selectDropdowns"
             >
               <Dropdown.Menu className="selectDropdownItem">
-                {crimeIndicatorOptions.map(option => {
+                {crimeIndicatorOptions.map (option => {
                   return (
                     <Dropdown.Item
                       key={option.value}
                       text={option.label}
-                      active={strEqual(crimeIndicator, option.value)}
+                      active={strEqual (crimeIndicator, option.value)}
                       onClick={changeCrimeIndicator}
                     />
                   );
@@ -151,7 +145,7 @@ function App() {
           <Menu.Item className="selectText">
             crimes that happened in
           </Menu.Item>
-          <Menu.Item style={{ paddingRight: '0.5em', paddingLeft: 0 }}>
+          <Menu.Item style={{paddingRight: '0.5em', paddingLeft: 0}}>
             <Dropdown
               inline
               icon={null}
@@ -159,7 +153,7 @@ function App() {
               className="selectDropdowns"
             >
               <Dropdown.Menu className="selectDropdownItem">
-                {dateNumOptions[dateType].map(option => {
+                {dateNumOptions[dateType].map (option => {
                   return (
                     <Dropdown.Item
                       key={option}
@@ -172,7 +166,7 @@ function App() {
               </Dropdown.Menu>
             </Dropdown>
           </Menu.Item>
-          <Menu.Item style={{ padding: 0 }}>
+          <Menu.Item style={{padding: 0}}>
             <Dropdown
               inline
               icon={null}
@@ -180,12 +174,12 @@ function App() {
               className="selectDropdowns"
             >
               <Dropdown.Menu className="selectDropdownItem">
-                {dateTypeOptions.map(option => {
+                {dateTypeOptions.map (option => {
                   return (
                     <Dropdown.Item
                       key={option}
                       text={option}
-                      active={strEqual(dateType, option)}
+                      active={strEqual (dateType, option)}
                       onClick={changeDateType}
                     />
                   );
@@ -210,34 +204,37 @@ function App() {
           </Menu.Item>
         </Container>
       </Menu>
-      <Container style={{ marginTop: '3em' }} />
+      <Container style={{marginTop: '3em'}} />
       <Container>
         <div>
-          < Line data={chartData} options={{
-            responsive: true,
-            title: { text: 'Crime scale', display: true },
-            scales: {
-              yAxes: [
-                {
-                  ticks: {
-                    autoskip: true,
-                    maxTicksLimits: 10,
-                    beginAtZero: true
+          <Line
+            data={chartData}
+            options={{
+              responsive: true,
+              title: {text: 'Crime scale', display: true},
+              scales: {
+                yAxes: [
+                  {
+                    ticks: {
+                      autoskip: true,
+                      maxTicksLimits: 10,
+                      beginAtZero: true,
+                    },
+                    gridLines: {
+                      display: false,
+                    },
                   },
-                  gridLines: {
-                    display: false
-                  }
-                }
-              ],
-              xAxes: [
-                {
-                  gridLines: {
-                    display: false
-                  }
-                }
-              ]
-            }
-          }} />
+                ],
+                xAxes: [
+                  {
+                    gridLines: {
+                      display: false,
+                    },
+                  },
+                ],
+              },
+            }}
+          />
         </div>
       </Container>
     </div>
