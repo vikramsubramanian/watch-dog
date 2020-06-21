@@ -35,7 +35,7 @@ create TABLE RegularCrime(
   bike_theft_id INT,
   offence VARCHAR(10),
   MCI VARCHAR(10),
-  FOREIGN KEY(bike_theft_id) REFERENCES BikeTheft(bike_theft_id);
+  FOREIGN KEY(bike_theft_id) REFERENCES BikeTheft(bike_theft_id)
 );
 
 create TABLE CrimeEvent (
@@ -62,6 +62,7 @@ create TABLE InvolvedPerson(
   injury VARCHAR(50),
   vehicle_type VARCHAR(10),
   action_taken VARCHAR(50)
+  FOREIGN KEY(accident_id) REFERENCES TrafficEvent(accident_id),
 );
 
 create TABLE RoadCondition(
