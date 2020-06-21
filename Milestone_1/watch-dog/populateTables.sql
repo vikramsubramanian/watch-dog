@@ -24,10 +24,10 @@ INSERT INTO BikeTheft (bike_theft_id, colour, make, model, speed, bike_type, sta
 INSERT INTO CrimeEvent (event_id, occurrence_time_id, reported_time_id, crime_id, hood_id, latitude, longitude, premise_type) values (1,754856,754856,100000,300011,-79.4501038,43.7187347,"House");
 INSERT INTO CrimeEvent (event_id, occurrence_time_id, reported_time_id, crime_id, hood_id, latitude, longitude, premise_type) values (2,600008,600008,100009,300033,-79.3867874,43.6702271, "Other");
 INSERT INTO CrimeEvent (event_id, occurrence_time_id, reported_time_id, crime_id, hood_id, latitude, longitude, premise_type) values (3,600008,600008,157000,300071,-79.3436279,43.7074776, "Commercial");
-INSERT INTO CrimeEvent (event_id, occurrence_time_id, reported_time_id, crime_id, hood_id, latitude, longitude, premise_type) values (3,600008,600008,157000,300071,-79.3436279,43.7074776, "Commercial");
-INSERT INTO CrimeEvent (event_id, occurrence_time_id, reported_time_id, bike_theft_id, hood_id, latitude, longitude, premise_type) values (3,600008,600008,100001,300071,-79.3436279,43.7074776, "Other");
+INSERT INTO CrimeEvent (event_id, occurrence_time_id, reported_time_id, crime_id, hood_id, latitude, longitude, premise_type) values (4,600008,600008,157000,300071,-79.3436279,43.7074776, "Commercial");
+INSERT INTO CrimeEvent (event_id, occurrence_time_id, reported_time_id, bike_theft_id, hood_id, latitude, longitude, premise_type) values (5,600008,600008,100001,300071,-79.3436279,43.7074776, "Other");
 
--- Insert sampple road conditions
+-- Insert sample road conditions
 INSERT INTO RoadCondition (road_condition_id, classification, traffic_control_type, visibility, surface_condition) values (800001,"Local","Traffic Signal", "Clear", "dry");
 INSERT INTO RoadCondition (road_condition_id, classification, traffic_control_type, visibility, surface_condition) values (800002,"Laneway","Stop sign", "Rain", "wet");
 INSERT INTO RoadCondition (road_condition_id, classification, traffic_control_type, visibility, surface_condition) values (800003,"Major Arterial","Snow", "loose snow");
