@@ -16,6 +16,10 @@ const crimeTypeOptions = [
     label: 'crimes',
     value: 'crimes',
   },
+  {
+    label: 'traffic incidents',
+    value: 'traffic incidents',
+  },
 ];
 
 const crimeIndicatorOptions = [
@@ -49,7 +53,7 @@ const crimeIndicatorOptions = [
   },
 ];
 
-const dateTypeOptions = ['years', 'months'];
+const dateTypeOptions = ['year', 'month'];
 const dateNumOptions = new Map ();
 dateNumOptions['year'] = [2014, 2015, 2016, 2017, 2018, 2019, 2020];
 dateNumOptions['month'] = [
@@ -75,7 +79,7 @@ function strEqual (str1, str2) {
 
 function App () {
   const [crimeIndicator, setCrimeIndicator] = useState ('all');
-  // const [crimeType, setCrimeType] = useState ('');
+  const [crimeType, setCrimeType] = useState ('crimes');
   const [dateNum, setDateNum] = useState (2019);
   const [dateType, setDateType] = useState ('year');
   const [chartData, setChartData] = useState ({});
@@ -94,6 +98,10 @@ function App () {
     });
   };
 
+  function changeCrimeType (event, data) {
+    setCrimeType (data.text);
+  }
+
   function changeCrimeIndicator (event, data) {
     setCrimeIndicator (data.text);
   }
@@ -108,6 +116,14 @@ function App () {
 
   function selectCrime (event, data) {
     console.log ('Selecting data...');
+    var path = '/crime-events?';
+    path += '&dateType=' + dateType + '&dateNum=' + dateNum;
+    if (!strEqual (crimeIndicator, 'all')) {
+      path += '&MCI=' + crimeIndicator;
+    }
+    fetch (path).then (response => response.json ()).then (data => {
+      console.log (data);
+    });
   }
 
   useEffect (() => {
@@ -188,7 +204,7 @@ function App () {
             </Dropdown>
           </Menu.Item>
           <Menu.Item className="selectText">
-            citywide on a bar chart
+            citywide on a line chart
           </Menu.Item>
           <Menu.Item className="selectButton">
             <Button

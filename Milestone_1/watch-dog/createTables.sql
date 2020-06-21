@@ -33,7 +33,7 @@ create TABLE BikeTheft(
 create TABLE RegularCrime(
   crime_id INT NOT NULL PRIMARY KEY,
   offence VARCHAR(10),
-  MCI VARCHAR(10),
+  MCI VARCHAR(10)
 );
 
 create TABLE CrimeEvent (
@@ -49,20 +49,8 @@ create TABLE CrimeEvent (
   FOREIGN KEY(occurrence_time_id) REFERENCES IncidentTime(time_id),
   FOREIGN KEY(reported_time_id) REFERENCES IncidentTime(time_id),
   FOREIGN KEY(crime_id) REFERENCES RegularCrime(crime_id),
-  FOREIGN KEY(hood_id) REFERENCES Neighbourhood(hood_id)
+  FOREIGN KEY(hood_id) REFERENCES Neighbourhood(hood_id),
   FOREIGN KEY(bike_theft_id) REFERENCES BikeTheft(bike_theft_id)
-);
-
-create TABLE InvolvedPerson(
-  accident_id INT NOT NULL,
-  person_id INT NOT NULL,
-  PRIMARY KEY(accident_id, person_id),
-  involvement_type VARCHAR(50),
-  age INT,
-  injury VARCHAR(50),
-  vehicle_type VARCHAR(10),
-  action_taken VARCHAR(50)
-  FOREIGN KEY(accident_id) REFERENCES TrafficEvent(accident_id),
 );
 
 create TABLE RoadCondition(
@@ -83,4 +71,16 @@ create TABLE TrafficEvent(
   FOREIGN KEY(occurrence_time_id) REFERENCES IncidentTime(time_id),
   FOREIGN KEY(road_condition_id) REFERENCES RoadCondition(road_condition_id),
   FOREIGN KEY(hood_id) REFERENCES Neighbourhood(hood_id)
+);
+
+create TABLE InvolvedPerson(
+  accident_id INT NOT NULL,
+  person_id INT NOT NULL,
+  PRIMARY KEY(accident_id, person_id),
+  involvement_type VARCHAR(50),
+  age INT,
+  injury VARCHAR(50),
+  vehicle_type VARCHAR(10),
+  action_taken VARCHAR(50),
+  FOREIGN KEY(accident_id) REFERENCES TrafficEvent(accident_id)
 );

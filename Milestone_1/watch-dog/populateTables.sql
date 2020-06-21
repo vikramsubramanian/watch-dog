@@ -17,8 +17,9 @@ INSERT INTO RegularCrime (crime_id, offence, MCI) values (100000,"Assault","Assa
 INSERT INTO RegularCrime (crime_id, offence, MCI) values (100009,"Robbery - Mugging","Robbery");
 INSERT INTO RegularCrime (crime_id, offence, MCI) values (157000,"Theft Of Motor Vehicle","Auto Theft");
 
+
 -- Insert sample bike theft events
-INSERT INTO BikeTheft (bike_theft_id, colour, make, model, speed, bike_type, status, cost) values (100001,"ONG","SUPERCYCLE", 10, "mt", "STOLEN", 1600);
+INSERT INTO BikeTheft (bike_theft_id, colour, make, model, speed, bike_type, status, cost) values (100001,"ONG","SUPERCYCLE", "10", "5", "mt", "STOLEN", 1600);
 
 -- Create sample crime events
 INSERT INTO CrimeEvent (event_id, occurrence_time_id, reported_time_id, crime_id, hood_id, latitude, longitude, premise_type) values (1,754856,754856,100000,300011,-79.4501038,43.7187347,"House");
@@ -30,12 +31,12 @@ INSERT INTO CrimeEvent (event_id, occurrence_time_id, reported_time_id, bike_the
 -- Insert sample road conditions
 INSERT INTO RoadCondition (road_condition_id, classification, traffic_control_type, visibility, surface_condition) values (800001,"Local","Traffic Signal", "Clear", "dry");
 INSERT INTO RoadCondition (road_condition_id, classification, traffic_control_type, visibility, surface_condition) values (800002,"Laneway","Stop sign", "Rain", "wet");
-INSERT INTO RoadCondition (road_condition_id, classification, traffic_control_type, visibility, surface_condition) values (800003,"Major Arterial","Snow", "loose snow");
+INSERT INTO RoadCondition (road_condition_id, classification, traffic_control_type, visibility, surface_condition) values (800003,"Major Arterial","Traffic Signal", "Snow", "loose snow");
 
 -- Create sample traffic events
-INSERT INTO TrafficEvent (accident_id, occurrence_time_id, road_condition_id, hood_id, lat, long) values (700001, 754856, 800001, 300011, -79.4501038, 43.7187347);
-INSERT INTO TrafficEvent (accident_id, occurrence_time_id, road_condition_id, hood_id, lat, long) values (700002, 754856, 800002, 300011, -79.3645859, 43.7035179);
-INSERT INTO TrafficEvent (accident_id, occurrence_time_id, road_condition_id, hood_id, lat, long) values (700003, 754856, 800003, 300011, -79.4501048, 43.7187377);
+INSERT INTO TrafficEvent (accident_id, occurrence_time_id, road_condition_id, hood_id, latitude, longitude) values (700001, 754856, 800001, 300011, -79.4501038, 43.7187347);
+INSERT INTO TrafficEvent (accident_id, occurrence_time_id, road_condition_id, hood_id, latitude, longitude) values (700002, 754856, 800002, 300011, -79.3645859, 43.7035179);
+INSERT INTO TrafficEvent (accident_id, occurrence_time_id, road_condition_id, hood_id, latitude, longitude) values (700003, 754856, 800003, 300011, -79.4501048, 43.7187377);
 
 -- Insert sample involved person
 INSERT INTO InvolvedPerson (accident_id, person_id, involvement_type, age, injury, vehicle_type, action_taken) values (700001, 500001,"Cyclist", 21, "minimal", "car", "none");
