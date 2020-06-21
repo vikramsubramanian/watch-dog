@@ -4,11 +4,6 @@
 -- INSERT INTO RegularCrime;
 -- INSERT INTO CrimeEvent;
 
--- INSERT INTO BikeTheft;
--- INSERT INTO InvolvedPerson;
--- INSERT INTO RoadCondition;
--- INSERT INTO TrafficEvent;
-
 INSERT INTO PoliceDivision (division, address) values (11, "2054 Davenport Rd");
 INSERT INTO PoliceDivision (division, address) values (12, "200 Trethewey Dr");
 INSERT INTO PoliceDivision (division, address) values (31, "40 Norfinch Dr");
@@ -28,3 +23,9 @@ INSERT INTO Neighbourhood (hood_id, name, division) values (300011,"Yorkdale-Gle
 INSERT INTO IncidentTime (time_id, hour, day, month, year, day_of_week) values (754856,22,5,9,2019,1);
 
 
+-- Please populate these Vikram
+
+-- INSERT INTO BikeTheft;
+-- INSERT INTO InvolvedPerson;
+-- INSERT INTO RoadCondition;
+-- INSERT INTO TrafficEvent;
