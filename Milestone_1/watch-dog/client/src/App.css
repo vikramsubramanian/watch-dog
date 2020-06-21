@@ -15,3 +15,7 @@
 .selectDropdownItem {
   font-size: 0.7em !important;
 }
+
+.selectText {
+  user-select: auto !important;
+}
