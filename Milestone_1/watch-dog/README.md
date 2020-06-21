@@ -1,6 +1,6 @@
 # WatchDog Application
 
-Live:
+Live: https://watch-dog.azurewebsites.net/
 
 ## Tech Stack
 
