@@ -1,24 +1,30 @@
 import React, {useState} from 'react';
-import {Header, Container, Menu} from 'semantic-ui-react';
+import {Header, Container, Menu, Dropdown} from 'semantic-ui-react';
 
 import './App.css';
 
 function App () {
   return (
-    <div>
-      <Menu fixed="top" inverted>
+    <div className="container">
+      <Menu fixed="top" text className="selectHeader">
         <Container>
-          <Menu.Item as="a" header>
-            Project Name
+          <Menu.Item>
+            I want to explore
           </Menu.Item>
-          <Menu.Item as="a">Home</Menu.Item>
+          <Menu.Item style={{padding: 0}}>
+            <Dropdown inline icon={null} text="all" className="selectDropdowns">
+              <Dropdown.Menu className="selectDropdownItem">
+                <Dropdown.Item text="assaults" />
+                <Dropdown.Item text="robberies" />
+              </Dropdown.Menu>
+            </Dropdown>
+          </Menu.Item>
+          <Menu.Item>
+            crimes over the past 3 years citywide on a heat map
+          </Menu.Item>
         </Container>
       </Menu>
-      <Container style={{marginTop: '3em'}}>
-        <Header as="h1s">
-          WatchDog
-        </Header>
-      </Container>
+      <Container style={{marginTop: '3em'}} />
     </div>
   );
 }
