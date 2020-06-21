@@ -7,6 +7,7 @@ create TABLE IncidentTime (
   day_of_week INT
 );
 
+
 create TABLE PoliceDivision (
   division INT NOT NULL PRIMARY KEY,
   address VARCHAR(50)
@@ -32,7 +33,7 @@ create TABLE BikeTheft(
 
 create TABLE RegularCrime(
   crime_id INT NOT NULL PRIMARY KEY,
-  offence VARCHAR(10),
+  offence VARCHAR(50),
   MCI VARCHAR(10)
 );
 
@@ -55,8 +56,8 @@ create TABLE CrimeEvent (
 
 create TABLE RoadCondition(
   road_condition_id INT NOT NULL PRIMARY KEY,
-  classification VARCHAR(10),
-  traffic_control_type VARCHAR(10),
+  classification VARCHAR(50),
+  traffic_control_type VARCHAR(50),
   visibility VARCHAR(10),
   surface_condition VARCHAR(10)
 );

@@ -35,8 +35,8 @@ INSERT INTO RoadCondition (road_condition_id, classification, traffic_control_ty
 
 -- Create sample traffic events
 INSERT INTO TrafficEvent (accident_id, occurrence_time_id, road_condition_id, hood_id, latitude, longitude) values (700001, 754856, 800001, 300011, -79.4501038, 43.7187347);
-INSERT INTO TrafficEvent (accident_id, occurrence_time_id, road_condition_id, hood_id, latitude, longitude) values (700002, 754856, 800002, 300011, -79.3645859, 43.7035179);
-INSERT INTO TrafficEvent (accident_id, occurrence_time_id, road_condition_id, hood_id, latitude, longitude) values (700003, 754856, 800003, 300011, -79.4501048, 43.7187377);
+INSERT INTO TrafficEvent (accident_id, occurrence_time_id, road_condition_id, hood_id, latitude, longitude) values (700002, 754856, 800002, 300033, -79.3645859, 43.7035179);
+INSERT INTO TrafficEvent (accident_id, occurrence_time_id, road_condition_id, hood_id, latitude, longitude) values (700003, 754856, 800003, 300071, -79.4501048, 43.7187377);
 
 -- Insert sample involved person
 INSERT INTO InvolvedPerson (accident_id, person_id, involvement_type, age, injury, vehicle_type, action_taken) values (700001, 500001,"Cyclist", 21, "minimal", "car", "none");
