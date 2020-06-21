@@ -52,12 +52,25 @@ const crimeIndicatorOptions = [
   },
 ];
 
-const dateTypeOptions = ['years', 'months', 'weeks', 'days'];
+const dateTypeOptions = ['year', 'month', 'week', 'day'];
 const dateNumOptions = new Map ();
-dateNumOptions['years'] = [1, 2, 3, 4, 5, 6, 7, 8];
-dateNumOptions['months'] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
-dateNumOptions['weeks'] = [1, 2, 3, 4, 5, 6];
-dateNumOptions['days'] = [1, 2, 7, 30, 60, 180, 365];
+dateNumOptions['year'] = [2014, 2015, 2016, 2017, 2018, 2019, 2020];
+dateNumOptions['month'] = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec',
+];
+dateNumOptions['week'] = [1, 2, 3, 4, 5, 6];
+dateNumOptions['day'] = [1, 2, 7, 30, 60, 180, 365];
 
 function strEqual (str1, str2) {
   return str1.localeCompare (str2) == 0;
@@ -66,8 +79,8 @@ function strEqual (str1, str2) {
 function App () {
   const [crimeIndicator, setCrimeIndicator] = useState ('all');
   // const [crimeType, setCrimeType] = useState ('');
-  const [dateNum, setDateNum] = useState (2);
-  const [dateType, setDateType] = useState ('years');
+  const [dateNum, setDateNum] = useState (2019);
+  const [dateType, setDateType] = useState ('year');
 
   function changeCrimeIndicator (event, data) {
     setCrimeIndicator (data.text);
@@ -78,6 +91,7 @@ function App () {
   }
   function changeDateType (event, data) {
     setDateType (data.text);
+    setDateNum (dateNumOptions[data.text][0]);
   }
 
   function selectCrime (event, data) {
@@ -113,7 +127,7 @@ function App () {
             </Dropdown>
           </Menu.Item>
           <Menu.Item className="selectText">
-            crimes over the past
+            crimes that happened in
           </Menu.Item>
           <Menu.Item style={{paddingRight: '0.5em', paddingLeft: 0}}>
             <Dropdown
@@ -140,7 +154,7 @@ function App () {
             <Dropdown
               inline
               icon={null}
-              text={dateType}
+              text={'(' + dateType + ')'}
               className="selectDropdowns"
             >
               <Dropdown.Menu className="selectDropdownItem">
