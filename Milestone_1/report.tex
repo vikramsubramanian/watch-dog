@@ -11,12 +11,31 @@
 \subsection*{Application User}
 We are creating an interactive web app for people interested in exploring crime data in the Greater Toronto Area. People who wish to assess how safe a neighbourhood is before investing in a new property or novice drivers trying to avoid accident-prone roads or just people curious about crime rates around them can greatly benefit from our application.
 \subsection*{Interaction with the app}
-A user would simply search for a query (as seen on the demo application) using the dropdown on certain words in the question to tailor the search to their needs. For example, “I want to explore bicycle theft crimes over the past 6 months citywide on a bar chart” can be one of the many queries a user selects. Alternatively, a user can also pick from a list of predefined queries (not in the demo yet) if they are unsure about where to start. Once the user clicks “OK”, they are redirected to a page that displays the requested query and allows them to change the representation of the data as well as further refine their search with more options.
+A user would simply search for a query (as seen on the demo application) using the drop-down on certain words in the question to tailor the search to their needs. For example, “I want to explore bicycle theft crimes over the past 6 months citywide on a bar chart” can be one of the many queries a user selects. Alternatively, a user can also pick from a list of predefined queries (not in the demo yet) if they are unsure about where to start. Once the user clicks “OK”, they are redirected to a page that displays the requested query and allows them to change the representation/visualization of the data as well as further refine their search with more options to group or filter by.
 \subsection*{Key features}
+\begin{enumerate}
+\item Filter crime/traffic events (starter question with drop-down for filtering different columns as seen in demo) and show results on a table
+\item Display crime data
+\begin{itemize}
+\item bar chart, line chart, and pie chart
+\item map, heat map
+\end{itemize}
+\item Report a crime
+\item Provide users with information on closest police division or which neighborhood they are situated in based on the address they provide us with
+\item Interactive “How well do you know your city” feature
+\begin{itemize}
+    \item Let the user guess certain values from a query they select, then show them the actual results and tell them how close they were
+    \item Store user guess average and tell them how they compare against other users who tried guessing the same value
+\end{itemize}
+\item Create predefined complex queries in the form of question and answer
+\begin{itemize}
+    \item Example - Where should I park by bike in this neighbourhood, where should I drive as a new driver, is there a correlation between education/demographic and crime?
+\end{itemize}
+\end{enumerate}
 \subsection*{Data}
-The tables we get from the Toronto Police Open Data is a little difficult to work with. Therefore, we create a data parser (in code.zip) to convert it to .csv files that fulfil our requirements. IncidentTime.csv and PoliceDivision.csv are complete versions of sample data that can be found in code.zip.
+The tables we get from the Toronto Police Open Data is a little difficult to work with. Therefore, we create a data parser (in code.zip) to convert it to .csv files that fulfill our requirements. Sample data is part of the code.zip as csv files (ex. tableNeighbourhood.csv, tableEvent.csv).
 \subsection*{System support}
-Our interface will consist of an interactive web-app. We will be using GCP to host our database and run a MySQL instance. This setup is ideal and efficient for building a web app such as ours. GCP and MySQL are modern, scalable, efficient and flexible. We will be using Node.js with an Express.js server as our back-end to interact with the database. For the front-end, we will be using the React library. Thus, our web application code mostly consists of JavaScript. Members of our group have experience with Node.js and React which gives us an excellent basis for our project.
+Our interface will consist of an interactive web-app. We will be using Azure to host our database and run a MySQL instance. This setup is ideal and efficient for building a web app such as ours. Azure and MySQL are modern, scalable, efficient and flexible. We will be using Node.js with an Express.js server as our back-end to interact with the database. For the front-end, we will be using the React library. Thus, our web application code mostly consists of JavaScript. Members of our group have experience with Node.js and React which gives us an excellent basis for our project.
 
 \section*{Design database schema}
 \subsection*{List of assumptions}
