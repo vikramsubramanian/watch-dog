@@ -32,7 +32,7 @@ create TABLE RegularCrime(
   bike_theft_id INT,
   offence VARCHAR(10),
   MCI VARCHAR(10),
-  FOREIGN KEY(bike_theft_id) REFERENCES BikeTheft(bike_theft_id);
+  FOREIGN KEY(bike_theft_id) REFERENCES BikeTheft(bike_theft_id)
 );
 create TABLE CrimeEvent (
   event_id INT NOT NULL PRIMARY KEY,
