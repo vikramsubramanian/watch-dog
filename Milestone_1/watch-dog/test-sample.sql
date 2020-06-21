@@ -46,5 +46,5 @@ JOIN IncidentTime as OccuredTime ON TrafficEvent.occurrence_time_id = OccuredTim
 -- Add new neighbourhood
 INSERT INTO Neighbourhood (hood_id, name, division) values (300019,"York University Heights", 12);
 
--- Add new crime event
+-- -- Add new crime event
 INSERT INTO CrimeEvent (event_id, occurrence_time_id, reported_time_id, crime_id, hood_id, latitude, longitude, premise_type) values (6,754856,754856,100000,300071,-78.4501038,44.7187347,"House");
