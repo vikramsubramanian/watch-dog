@@ -13,7 +13,7 @@
 \subsection*{Application User}
 We are creating an interactive web app for people interested in exploring crime data in the Greater Toronto Area. People who wish to assess how safe a neighbourhood is before investing in a new property or novice drivers trying to avoid accident-prone roads or just people curious about crime rates around them can greatly benefit from our application.
 \subsection*{Interaction with the app}
-A user would simply search for a query (as seen on the demo application) using the drop-down on certain words in the question to tailor the search to their needs. For example, “I want to explore bicycle theft crimes over the past 6 months citywide on a bar chart” can be one of the many queries a user selects. Alternatively, a user can also pick from a list of predefined queries (not in the demo yet) if they are unsure about where to start. Once the user clicks “OK”, they are redirected to a page that displays the requested query and allows them to change the representation/visualization of the data as well as further refine their search with more options to group or filter by.
+A user would simply search for a query (as seen on the demo application) using the drop-down on certain words in the question to tailor the search to their needs. For example, “I want to explore bicycle theft crimes in 2019 (year) citywide on a bar chart” can be one of the many queries a user selects. Alternatively, a user can also pick from a list of predefined queries (not in the demo yet) if they are unsure about where to start. Once the user clicks “OK”, the page updates to display the requested query and allows them to change the representation/visualization of the data as well as further refine their search with more options.
 \subsection*{Key features}
 \begin{enumerate}
 \item Filter crime/traffic events (starter question with drop-down for filtering different columns as seen in demo) and show results on a table
@@ -35,7 +35,7 @@ A user would simply search for a query (as seen on the demo application) using t
 \end{itemize}
 \end{enumerate}
 \subsection*{Data}
-The tables we get from the Toronto Police Open Data is a little difficult to work with. Therefore, we create a data parser (in code.zip) to convert it to .csv files that fulfill our requirements. Sample data is part of the code.zip as csv files (ex. tableNeighbourhood.csv, tableEvent.csv).
+The tables we get from the Toronto Police Open Data (https://data.torontopolice.on.ca/pages/open-data) are a little difficult to work with. Therefore, we create a data parser (in code.zip) to convert it to .csv files that fulfill our requirements. Sample data can be found in the code.zip as csv files (ex. tableNeighbourhood.csv, tableEvent.csv).
 \subsection*{System support}
 Our interface will consist of an interactive web-app. We will be using Azure to host our database and run a MySQL instance. This setup is ideal and efficient for building a web app such as ours. Azure and MySQL are modern, scalable, efficient and flexible. We will be using Node.js with an Express.js server as our back-end to interact with the database. For the front-end, we will be using the React library. Thus, our web application code mostly consists of JavaScript. Members of our group have experience with Node.js and React which gives us an excellent basis for our project.
 
