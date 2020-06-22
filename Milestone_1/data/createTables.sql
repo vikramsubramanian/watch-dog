@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS IncidentTime;
+
 create TABLE IncidentTime
 (
   time_id INT NOT NULL PRIMARY KEY,
@@ -7,11 +9,17 @@ create TABLE IncidentTime
   year INT CHECK (year >= 2014 AND year <= YEAR(CURDATE())),
   day_of_week INT CHECK(day_of_week IS NULL OR day_of_week >= 1 AND day_of_week <= 7)
 );
+
+DROP TABLE IF EXISTS PoliceDivision;
+
 create TABLE PoliceDivision
 (
   division INT NOT NULL PRIMARY KEY,
   address VARCHAR(50)
 );
+
+DROP TABLE IF EXISTS Neighbourhood;
+
 create TABLE Neighbourhood
 (
   hood_id INT NOT NULL PRIMARY KEY,
@@ -19,6 +27,9 @@ create TABLE Neighbourhood
   division INT,
   FOREIGN KEY(division) REFERENCES PoliceDivision(division)
 );
+
+DROP TABLE IF EXISTS BikeTheft;
+
 create TABLE BikeTheft
 (
   bike_theft_id INT NOT NULL PRIMARY KEY,
@@ -30,12 +41,19 @@ create TABLE BikeTheft
   status VARCHAR(15),
   cost FLOAT CHECK (cost >= 0)
 );
+
+DROP TABLE IF EXISTS RegularCrime;
+
+
 create TABLE RegularCrime
 (
   crime_id INT NOT NULL PRIMARY KEY,
   offence VARCHAR(50),
   MCI VARCHAR(10)
 );
+
+DROP TABLE IF EXISTS CrimeEvent;
+
 create TABLE CrimeEvent
 (
   event_id INT NOT NULL PRIMARY KEY,
@@ -53,6 +71,9 @@ create TABLE CrimeEvent
   FOREIGN KEY(hood_id) REFERENCES Neighbourhood(hood_id),
   FOREIGN KEY(bike_theft_id) REFERENCES BikeTheft(bike_theft_id)
 );
+
+DROP TABLE IF EXISTS RoadCondition;
+
 create TABLE RoadCondition
 (
   road_condition_id INT NOT NULL PRIMARY KEY,
@@ -61,6 +82,9 @@ create TABLE RoadCondition
   visibility VARCHAR(10),
   surface_condition VARCHAR(10)
 );
+
+DROP TABLE IF EXISTS TrafficEvent;
+
 create TABLE TrafficEvent
 (
   accident_id INT NOT NULL PRIMARY KEY,
@@ -73,6 +97,9 @@ create TABLE TrafficEvent
   FOREIGN KEY(road_condition_id) REFERENCES RoadCondition(road_condition_id),
   FOREIGN KEY(hood_id) REFERENCES Neighbourhood(hood_id)
 );
+
+DROP TABLE IF EXISTS InvolvedPerson;
+
 create TABLE InvolvedPerson
 (
   accident_id INT NOT NULL,
