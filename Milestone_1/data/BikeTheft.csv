@@ -1,0 +1,2 @@
+bike_theft_id, colour, make, model, speed, bike_type, status, cost
+100001,ONG,SUPERCYCLE,10,5,mt,STOLEN,1600

@@ -1,0 +1,4 @@
+accident_id, person_id, involvement_type, age, injury, vehicle_type, action_taken
+700001,500001,Cyclist,21,minimal,car,none
+700002,500002,Driver,34,major,car,none
+700003,500003,Vehicle Owner,55,none,car,none
