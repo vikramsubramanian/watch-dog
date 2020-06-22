@@ -1,9 +1,0 @@
-DROP TABLE IncidentTime;
-DROP TABLE PoliceDivision;
-DROP TABLE Neighbourhood;
-DROP TABLE BikeTheft;
-DROP TABLE RegularCrime;
-DROP TABLE CrimeEvent;
-DROP TABLE InvolvedPerson;
-DROP TABLE RoadCondition;
-DROP TABLE TrafficEvent;
