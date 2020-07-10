@@ -5,11 +5,13 @@
 
 .selectHeader {
   font-size: 1.8em !important;
+  background-color: #2b4888 !important;
+  margin-top: 0em !important;
 }
 
 .selectDropdowns {
-  color: #5bc0de !important;
-  border-bottom: 1px dashed #5bc0de;
+  color: #51b9f6 !important;
+  border-bottom: 1px dashed #51b9f6;
 }
 
 .selectDropdownItem {
@@ -22,4 +24,11 @@
 
 .selectButton {
   font-size: initial !important;
+}
+
+.appHeader {
+  font-size: 25px;
+  padding-top: 13px;
+  border-bottom: 5px solid #c9c9c9;
+  border-top: 11px solid #2b4888;
 }

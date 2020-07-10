@@ -1,27 +1,48 @@
 import React, {useState, useEffect} from 'react';
-import {Line} from 'react-chartjs-2';
-import {
-  Header,
-  Container,
-  Menu,
-  Dropdown,
-  Button,
-  Icon,
-} from 'semantic-ui-react';
+import {Container, Menu, Dropdown, Button, Icon} from 'semantic-ui-react';
 
 import {
-  crimeTypeOptions,
   crimeIndicatorOptions,
   dateTypeOptions,
   dateNumOptions,
 } from './constants';
 import {strEqual} from './utility';
 
+export const useScrollHandler = () => {
+  // setting initial value to true
+  const [scroll, setScroll] = useState (1);
+
+  // running on mount
+  useEffect (
+    () => {
+      const onScroll = () => {
+        const scrollCheck = window.scrollY < 72;
+        if (scrollCheck !== scroll) {
+          setScroll (scrollCheck);
+        }
+      };
+
+      // setting the event handler from web API
+      document.addEventListener ('scroll', onScroll);
+
+      // cleaning up from the web API
+      return () => {
+        document.removeEventListener ('scroll', onScroll);
+      };
+    },
+    [scroll, setScroll]
+  );
+
+  return scroll;
+};
+
 function Question (props) {
   const [crimeIndicator, setCrimeIndicator] = useState ('all');
   const [crimeType, setCrimeType] = useState ('crimes');
   const [dateNum, setDateNum] = useState (dateNumOptions['year'][5]);
   const [dateType, setDateType] = useState ('year');
+
+  const scroll = useScrollHandler ();
 
   function changeCrimeType (event, data) {
     setCrimeType (data.text);
@@ -42,7 +63,7 @@ function Question (props) {
   }
 
   return (
-    <Menu fixed="top" text className="selectHeader">
+    <Menu fixed={scroll ? false : 'top'} text className="selectHeader">
       <Container>
         <Menu.Item className="selectText">
           I want to explore
