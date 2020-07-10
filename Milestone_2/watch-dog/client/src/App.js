@@ -1,6 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import {Line} from 'react-chartjs-2';
-import {Header, Container, Card, Button} from 'semantic-ui-react';
+import {
+  Header,
+  Container,
+  Card,
+  Button,
+  Segment,
+  Grid,
+} from 'semantic-ui-react';
 
 import './App.css';
 
@@ -81,86 +88,75 @@ function App () {
       </div>
       <Question selectCrime={selectCrime} />
       <Container style={{marginTop: '3em'}}>
-        <Card.Group centered>
-          <Card>
-            <Card.Content>
-              <Card.Header>Card Title</Card.Header>
-              <Card.Meta>Subtitle</Card.Meta>
-              <Card.Description>
-                <div>
-                  <Line
-                    data={chartData}
-                    options={{
-                      responsive: true,
-                      title: {text: '', display: true},
-                      scales: {
-                        yAxes: [
-                          {
-                            ticks: {
-                              autoskip: true,
-                              maxTicksLimits: 10,
-                              beginAtZero: true,
-                            },
-                            gridLines: {
-                              display: false,
-                            },
+        <Grid columns="equal">
+          <Grid.Row columns="equal">
+            <Grid.Column>
+              <Segment>
+                <Line
+                  data={chartData}
+                  options={{
+                    responsive: true,
+                    title: {text: '', display: true},
+                    scales: {
+                      yAxes: [
+                        {
+                          ticks: {
+                            autoskip: true,
+                            maxTicksLimits: 10,
+                            beginAtZero: true,
                           },
-                        ],
-                        xAxes: [
-                          {
-                            gridLines: {
-                              display: false,
-                            },
+                          gridLines: {
+                            display: false,
                           },
-                        ],
-                      },
-                    }}
-                  />
-                </div>
-              </Card.Description>
-            </Card.Content>
-            <Card.Content extra>
-              <div className="ui two buttons">
-                <Button basic color="green">
-                  About
-                </Button>
-                <Button basic color="red">
-                  Close Card
-                </Button>
-              </div>
-            </Card.Content>
-          </Card>
-        </Card.Group>
-        <div>
-          <Line
-            data={chartData}
-            options={{
-              responsive: true,
-              title: {text: '', display: true},
-              scales: {
-                yAxes: [
-                  {
-                    ticks: {
-                      autoskip: true,
-                      maxTicksLimits: 10,
-                      beginAtZero: true,
+                        },
+                      ],
+                      xAxes: [
+                        {
+                          gridLines: {
+                            display: false,
+                          },
+                        },
+                      ],
                     },
-                    gridLines: {
-                      display: false,
+                  }}
+                />
+              </Segment>
+            </Grid.Column>
+            <Grid.Column>
+              <Segment>
+                <Line
+                  data={chartData}
+                  options={{
+                    responsive: true,
+                    title: {text: '', display: true},
+                    scales: {
+                      yAxes: [
+                        {
+                          ticks: {
+                            autoskip: true,
+                            maxTicksLimits: 10,
+                            beginAtZero: true,
+                          },
+                          gridLines: {
+                            display: false,
+                          },
+                        },
+                      ],
+                      xAxes: [
+                        {
+                          gridLines: {
+                            display: false,
+                          },
+                        },
+                      ],
                     },
-                  },
-                ],
-                xAxes: [
-                  {
-                    gridLines: {
-                      display: false,
-                    },
-                  },
-                ],
-              },
-            }}
-          />
-        </div>
+                  }}
+                />
+              </Segment>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+
       </Container>
     </div>
   );
