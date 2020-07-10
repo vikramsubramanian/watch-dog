@@ -12,6 +12,7 @@ import {
 import './App.css';
 import {strEqual} from './utility';
 import {dateNumOptions} from './constants';
+import DogIcon from './dog_icon.svg';
 
 import Question from './Question';
 
@@ -78,8 +79,10 @@ function App () {
     <div className="container">
       <div className="appHeader">
         <Header>
-          <Icon name="plug" />
-          <Header.Content>WatchDog - Crime Data Application</Header.Content>
+          <img src={DogIcon} alt="WachDog Icon" />
+          <Header.Content>
+            WatchDog - Crime Data Application
+          </Header.Content>
         </Header>
       </div>
       <Question selectCrime={selectCrime} />
