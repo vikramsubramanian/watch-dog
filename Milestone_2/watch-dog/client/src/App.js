@@ -15,11 +15,10 @@ import {dateNumOptions} from './constants';
 
 import Question from './Question';
 
-const dateType = 'year';
-
 function App () {
   const [crimeData, setCrimeData] = useState ([]);
   const [chartData, setChartData] = useState ({});
+  const [dateType, setDateType] = useState ('year');
 
   const createLineChart = () => {
     var labels = [];
@@ -51,6 +50,19 @@ function App () {
     });
   };
 
+  function selectCrime (crimeIndicator, dateType, dateNum) {
+    var path = '/crime-events?';
+    path += '&dateType=' + dateType + '&dateNum=' + dateNum.value;
+    if (!strEqual (crimeIndicator, 'all')) {
+      path += '&MCI=' + crimeIndicator;
+    }
+    fetch (path).then (response => response.json ()).then (data => {
+      console.log (data);
+      setDateType (dateType);
+      setCrimeData (data);
+    });
+  }
+
   useEffect (
     () => {
       createLineChart ();
@@ -64,7 +76,7 @@ function App () {
 
   return (
     <div className="container">
-      <Question />
+      <Question selectCrime={selectCrime} />
       <Container style={{marginTop: '3em'}} />
       <Container>
         <div>

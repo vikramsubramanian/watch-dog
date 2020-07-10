@@ -41,18 +41,6 @@ function Question (props) {
     setDateNum (dateNumOptions[data.text][0]);
   }
 
-  function selectCrime (event, data) {
-    var path = '/crime-events?';
-    path += '&dateType=' + dateType + '&dateNum=' + dateNum.value;
-    if (!strEqual (crimeIndicator, 'all')) {
-      path += '&MCI=' + crimeIndicator;
-    }
-    fetch (path).then (response => response.json ()).then (data => {
-      console.log (data);
-      //   setCrimeData (data);
-    });
-  }
-
   return (
     <Menu fixed="top" text className="selectHeader">
       <Container>
@@ -135,7 +123,8 @@ function Question (props) {
             labelPosition="right"
             primary
             size="mini"
-            onClick={selectCrime}
+            onClick={() =>
+              props.selectCrime (crimeIndicator, dateType, dateNum)}
           >
             <Icon name="arrow down" />
             OK
