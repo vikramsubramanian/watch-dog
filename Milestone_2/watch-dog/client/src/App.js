@@ -79,7 +79,7 @@ function App () {
       <div className="appHeader">
         <Header>
           <Icon name="plug" />
-          <Header.Content>WatchDog</Header.Content>
+          <Header.Content>WatchDog - Crime Data Application</Header.Content>
         </Header>
       </div>
       <Question selectCrime={selectCrime} />
