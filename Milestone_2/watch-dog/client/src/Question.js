@@ -62,6 +62,8 @@ function Question (props) {
     setDateNum (dateNumOptions[data.text][0]);
   }
 
+  // TODO: Make question resize
+
   return (
     <Menu fixed={scroll ? false : 'top'} text className="selectHeader">
       <Menu.Item className="selectText" style={{marginLeft: '15px'}}>
