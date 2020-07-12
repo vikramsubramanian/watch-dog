@@ -19,6 +19,7 @@ import DogIcon from './dog_icon.svg';
 import Question from './Question';
 import TableCard from './TableCard';
 import LineChart from './LineChart';
+import BarChart from './BarChart';
 import TextCard from './TextCard';
 import SummaryCard from './SummaryCard';
 
@@ -73,6 +74,11 @@ function App () {
             src: <SummaryCard crimeData={data} dateType={dateType} />,
             group: 2,
             width: 4,
+          },
+          {
+            src: <BarChart crimeData={data} dateType={dateType} />,
+            group: 2,
+            width: null,
           },
         ]);
       })
