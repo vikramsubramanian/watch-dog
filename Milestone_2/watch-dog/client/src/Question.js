@@ -16,7 +16,6 @@ export const useScrollHandler = () => {
   useEffect (
     () => {
       const onScroll = () => {
-        console.log (window.scrollY);
         var scrollCheck = window.scrollY < 72;
         if (scrollCheck !== scroll) {
           if (scroll && !scrollCheck) {

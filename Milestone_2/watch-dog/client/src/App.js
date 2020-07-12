@@ -34,7 +34,7 @@ function App () {
       setDateType (dateType);
       setCrimeData (data);
       setCards ([
-        <TableCard />,
+        <TableCard crimeData={data} dateType={dateType} />,
         <LineChart crimeData={data} dateType={dateType} />,
       ]);
     });
@@ -62,7 +62,7 @@ function App () {
             {cards.map ((card, ind) => {
               return (
                 <Grid.Column>
-                  <Segment>
+                  <Segment className="cardSegment">
                     {card}
                   </Segment>
                 </Grid.Column>
