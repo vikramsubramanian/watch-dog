@@ -23,7 +23,7 @@ import BarChart from './BarChart';
 import TextCard from './TextCard';
 import SummaryCard from './SummaryCard';
 
-import {FINE_PRINT} from './constants';
+import {FINE_PRINT, ABOUT_DESC} from './constants';
 
 function App () {
   const [crimeData, setCrimeData] = useState ([]);
@@ -66,7 +66,13 @@ function App () {
             width: null,
           },
           {
-            src: <TextCard data={FINE_PRINT} />,
+            src: (
+              <TextCard
+                header="The fine print:"
+                height={'300px'}
+                body={FINE_PRINT}
+              />
+            ),
             group: 1,
             width: 4,
           },
@@ -79,6 +85,11 @@ function App () {
             src: <BarChart crimeData={data} dateType={dateType} />,
             group: 2,
             width: null,
+          },
+          {
+            src: <TextCard header="About" body={ABOUT_DESC} />,
+            group: 2,
+            width: 3,
           },
         ]);
       })

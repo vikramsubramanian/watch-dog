@@ -3,10 +3,10 @@ import React, {useState, useEffect} from 'react';
 
 function TextCard (props) {
   return (
-    <div className="textCard">
-      <h3>The fine print:</h3>
+    <div className="textCard" style={{height: props.height}}>
+      <h3>{props.header}</h3>
       <p>
-        {props.data}
+        {props.body}
       </p>
     </div>
   );

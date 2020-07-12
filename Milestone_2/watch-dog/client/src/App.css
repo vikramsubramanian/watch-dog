@@ -38,6 +38,5 @@
 }
 
 .textCard {
-  height: 400px;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
