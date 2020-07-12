@@ -38,3 +38,8 @@
 .cardSegment {
   overflow-x: scroll;
 }
+
+.textCard {
+  height: 400px;
+  overflow-y: scroll;
+}

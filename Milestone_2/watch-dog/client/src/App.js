@@ -40,14 +40,17 @@ function App () {
         {
           src: <TableCard crimeData={data} dateType={dateType} />,
           group: 0,
+          width: null,
         },
         {
           src: <LineChart crimeData={data} dateType={dateType} />,
           group: 1,
+          width: null,
         },
         {
           src: <TextCard data={FINE_PRINT} />,
           group: 1,
+          width: 4,
         },
       ]);
     });
@@ -78,7 +81,7 @@ function App () {
                   .filter (card => card.group === gnum)
                   .map ((card, ind) => {
                     return (
-                      <Grid.Column>
+                      <Grid.Column width={card.width}>
                         <Segment className="cardSegment">
                           {card.src}
                         </Segment>
