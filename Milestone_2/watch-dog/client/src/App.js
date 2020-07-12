@@ -34,7 +34,6 @@ function App () {
       setDateType (dateType);
       setCrimeData (data);
       setCards ([
-        ...cards,
         <TableCard />,
         <LineChart crimeData={data} dateType={dateType} />,
       ]);
@@ -72,6 +71,7 @@ function App () {
           </Grid.Row>
         </Grid>
       </Container>
+
     </div>
   );
 }

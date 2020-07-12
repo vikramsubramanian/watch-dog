@@ -16,8 +16,14 @@ export const useScrollHandler = () => {
   useEffect (
     () => {
       const onScroll = () => {
-        const scrollCheck = window.scrollY < 72;
+        console.log (window.scrollY);
+        var scrollCheck = window.scrollY < 72;
         if (scrollCheck !== scroll) {
+          if (scroll && !scrollCheck) {
+            if (document.documentElement.scrollHeight < 800) {
+              scrollCheck = true;
+            }
+          }
           setScroll (scrollCheck);
         }
       };
