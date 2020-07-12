@@ -1,5 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, {useState, useEffect} from 'react';
-import {Line} from 'react-chartjs-2';
 import {
   Header,
   Container,
@@ -12,45 +12,16 @@ import {
 import './App.css';
 
 import {strEqual} from './utility';
-import {dateNumOptions} from './constants';
 
 import DogIcon from './dog_icon.svg';
 import Question from './Question';
+import TableCard from './TableCard';
+import LineChart from './LineChart';
 
 function App () {
   const [crimeData, setCrimeData] = useState ([]);
-  const [chartData, setChartData] = useState ({});
   const [dateType, setDateType] = useState ('year');
-
-  const createLineChart = () => {
-    var labels = [];
-    var data = [];
-    if (strEqual (dateType, 'year')) {
-      for (var i = 1; i <= 12; i++) {
-        var monthCount = crimeData.filter (crime => crime.OccuredMonth == i)
-          .length;
-        labels.push (dateNumOptions['month'][i - 1].label);
-        data.push (monthCount);
-      }
-    } else if (strEqual (dateType, 'month')) {
-      for (var i = 1; i <= 31; i++) {
-        var dayCount = crimeData.filter (crime => crime.OccuredDay == i).length;
-        labels.push (i);
-        data.push (dayCount);
-      }
-    }
-    setChartData ({
-      labels: labels,
-      datasets: [
-        {
-          label: 'Number of crimes reported',
-          data: data,
-          backgroundColor: ['rgba(75, 192, 192, 0.6)'],
-          borderWidth: 4,
-        },
-      ],
-    });
-  };
+  const [cards, setCards] = useState ([]);
 
   function selectCrime (crimeIndicator, dateType, dateNum) {
     var path = '/crime-events?';
@@ -62,20 +33,19 @@ function App () {
       console.log (data);
       setDateType (dateType);
       setCrimeData (data);
+      setCards ([
+        ...cards,
+        <TableCard />,
+        <LineChart crimeData={data} dateType={dateType} />,
+      ]);
     });
   }
 
-  useEffect (
-    () => {
-      createLineChart ();
-    },
-    [crimeData]
-  );
-
   useEffect (() => {
-    // chart ();
+    // chart ()
   }, []);
 
+  console.log (cards);
   return (
     <div className="container">
       <div className="appHeader">
@@ -90,73 +60,17 @@ function App () {
       <Container style={{marginTop: '3em'}}>
         <Grid columns="equal">
           <Grid.Row columns="equal">
-            <Grid.Column>
-              <Segment>
-                <Line
-                  data={chartData}
-                  options={{
-                    responsive: true,
-                    title: {text: '', display: true},
-                    scales: {
-                      yAxes: [
-                        {
-                          ticks: {
-                            autoskip: true,
-                            maxTicksLimits: 10,
-                            beginAtZero: true,
-                          },
-                          gridLines: {
-                            display: false,
-                          },
-                        },
-                      ],
-                      xAxes: [
-                        {
-                          gridLines: {
-                            display: false,
-                          },
-                        },
-                      ],
-                    },
-                  }}
-                />
-              </Segment>
-            </Grid.Column>
-            <Grid.Column>
-              <Segment>
-                <Line
-                  data={chartData}
-                  options={{
-                    responsive: true,
-                    title: {text: '', display: true},
-                    scales: {
-                      yAxes: [
-                        {
-                          ticks: {
-                            autoskip: true,
-                            maxTicksLimits: 10,
-                            beginAtZero: true,
-                          },
-                          gridLines: {
-                            display: false,
-                          },
-                        },
-                      ],
-                      xAxes: [
-                        {
-                          gridLines: {
-                            display: false,
-                          },
-                        },
-                      ],
-                    },
-                  }}
-                />
-              </Segment>
-            </Grid.Column>
+            {cards.map ((card, ind) => {
+              return (
+                <Grid.Column>
+                  <Segment>
+                    {card}
+                  </Segment>
+                </Grid.Column>
+              );
+            })}
           </Grid.Row>
         </Grid>
-
       </Container>
     </div>
   );
