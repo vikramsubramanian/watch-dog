@@ -20,6 +20,7 @@ import Question from './Question';
 import TableCard from './TableCard';
 import LineChart from './LineChart';
 import BarChart from './BarChart';
+import DoughnutChart from './DoughnutChart';
 import TextCard from './TextCard';
 import SummaryCard from './SummaryCard';
 
@@ -87,8 +88,13 @@ function App () {
             width: null,
           },
           {
+            src: <DoughnutChart crimeData={data} dateType={dateType} />,
+            group: 3,
+            width: null,
+          },
+          {
             src: <TextCard header="About" body={ABOUT_DESC} />,
-            group: 2,
+            group: 3,
             width: 3,
           },
         ]);
@@ -128,7 +134,7 @@ function App () {
       <Question selectCrime={selectCrime} />
       <Container style={{marginTop: '3em'}}>
         <Grid columns="equal">
-          {[0, 1, 2].map (gnum => {
+          {[0, 1, 2, 3].map (gnum => {
             return (
               <Grid.Row columns="equal">
                 {cards
