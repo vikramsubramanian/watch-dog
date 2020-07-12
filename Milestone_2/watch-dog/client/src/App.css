@@ -16,6 +16,8 @@
 
 .selectDropdownItem {
   font-size: 0.7em !important;
+  overflow-y: scroll;
+  height: 300px;
 }
 
 .selectText {
