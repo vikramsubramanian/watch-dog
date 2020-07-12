@@ -81,7 +81,10 @@ function Question (props) {
           text={crimeIndicator}
           className="selectDropdowns"
         >
-          <Dropdown.Menu className="selectDropdownItem">
+          <Dropdown.Menu
+            className="selectDropdownItem"
+            style={{height: '300px', 'overflow-y': 'scroll'}}
+          >
             {crimeIndicatorOptions.map (option => {
               return (
                 <Dropdown.Item
@@ -105,7 +108,10 @@ function Question (props) {
           text={dateNum.label}
           className="selectDropdowns"
         >
-          <Dropdown.Menu className="selectDropdownItem">
+          <Dropdown.Menu
+            className="selectDropdownItem"
+            style={{height: '300px', 'overflow-y': 'scroll'}}
+          >
             {dateNumOptions[dateType].map (option => {
               return (
                 <Dropdown.Item
