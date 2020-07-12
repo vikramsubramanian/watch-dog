@@ -1,0 +1,96 @@
+,timeID,traffic_control_type,visibility,surface_condition
+0,100000,No Control,Snow,Wet
+1,100004,No Control,Clear,Loose Snow
+2,100010,No Control,Clear,Dry
+3,100013,Pedestrian Crossover,Clear,Dry
+4,100015,Traffic Signal,Clear,Wet
+5,100018,Traffic Signal,Clear,Dry
+6,100036,Stop Sign,Clear,Dry
+7,100058,No Control,Rain,Wet
+8,100089,Traffic Signal,Rain,Wet
+9,100101,No Control,Clear,Wet
+10,100113,No Control,Snow,Packed Snow
+11,100115,Traffic Signal,Snow,Loose Snow
+12,100119,No Control,Clear,Other
+13,100160,Traffic Controller,Clear,Dry
+14,100166,No Control,Snow,Loose Snow
+15,100171,No Control,Clear,Ice
+16,100184,Traffic Signal,Clear,Loose Snow
+17,100227,Yield Sign,Clear,Dry
+18,100233,Stop Sign,Rain,Wet
+19,100296,Stop Sign,Clear,Other
+20,100394,Stop Sign,Clear,Wet
+21,100614,Pedestrian Crossover,Strong wind,Ice
+22,100627,Traffic Signal,Other,Dry
+23,100678,Pedestrian Crossover,Clear,Wet
+24,100680,Traffic Signal,Drifting Snow,Wet
+25,100690,Traffic Signal,Snow,Wet
+26,100728,No Control,Rain,Slush
+27,100745,No Control,Freezing Rain,Slush
+28,100790,No Control,Snow,Slush
+29,100814,Pedestrian Crossover,Rain,Wet
+30,100981,Stop Sign,Clear,Slush
+31,101025,Stop Sign,Clear,Packed Snow
+32,101230,School Guard,Clear,Dry
+33,101533,Traffic Controller,Clear,Other
+34,101535,Stop Sign,Snow,Ice
+35,101751,Police Control,Clear,Dry
+36,102009,Traffic Signal,Snow,Slush
+37,102023,Pedestrian Crossover,Clear,Other
+38,102063,No Control,"Fog, Mist, Smoke, Dust",Dry
+39,102133,No Control,Freezing Rain,Ice
+40,102451,Traffic Signal,Clear,Other
+41,102489,Stop Sign,Other,Wet
+42,102500,Traffic Controller,Clear,Wet
+43,102553,Traffic Signal,Clear,Slush
+44,102617,Yield Sign,Rain,Wet
+45,102629,Traffic Signal,Freezing Rain,Wet
+46,102631,,Other,Other
+47,102665,No Control,Snow,Ice
+48,102688,No Control,Drifting Snow,Ice
+49,102866,Pedestrian Crossover,Other,Other
+50,102901,Streetcar (Stop for),Clear,Dry
+51,103093,Pedestrian Crossover,Snow,Wet
+52,103636,Traffic Signal,"Fog, Mist, Smoke, Dust",Dry
+53,103758,Traffic Signal,Snow,Packed Snow
+54,104577,No Control,"Fog, Mist, Smoke, Dust",Wet
+55,104622,Stop Sign,Snow,Loose Snow
+56,104673,Traffic Signal,Other,Other
+57,104693,Traffic Signal,"Fog, Mist, Smoke, Dust",Wet
+58,104712,Stop Sign,Freezing Rain,Wet
+59,105183,Traffic Signal,Rain,Dry
+60,105207,Stop Sign,Other,Other
+61,105750,Traffic Signal,Snow,Ice
+62,105766,Stop Sign,Snow,Slush
+63,105784,No Control,Clear,Slush
+64,106326,Traffic Signal,Freezing Rain,Slush
+65,106347,Stop Sign,Drifting Snow,Wet
+66,106353,Traffic Signal,Rain,Packed Snow
+67,106554,Streetcar (Stop for),Rain,Wet
+68,106558,Traffic Controller,Rain,Wet
+69,106656,Traffic Signal,Rain,Slush
+70,106799,No Control,Other,Other
+71,107069,No Control,Clear,Loose Sand or Gravel
+72,107132,Traffic Signal,,
+73,107334,No Control,,
+74,107631,No Control,Drifting Snow,Wet
+75,107784,Stop Sign,Other,
+76,107800,PXO - No Ped,Clear,Dry
+77,107823,No Control,Rain,Ice
+78,100013,No Control,Other,Wet
+79,102298,Stop Sign,Strong wind,Wet
+80,102349,Stop Sign,Snow,Packed Snow
+81,103770,Traffic Gate,Clear,Dry
+82,103837,No Control,Snow,Other
+83,104759,Traffic Signal,Freezing Rain,Ice
+84,106693,No Control,Snow,Dry
+85,109039,No Control,Other,Dry
+86,111161,Traffic Signal,Strong wind,Slush
+87,111440,No Control,Freezing Rain,Wet
+88,112004,Yield Sign,Clear,Wet
+89,112106,Pedestrian Crossover,Snow,Loose Snow
+90,112205,No Control,Clear,
+91,113834,No Control,Drifting Snow,Loose Snow
+92,113913,No Control,Rain,Dry
+93,103453,No Control,Drifting Snow,Dry
+94,106386,No Control,,Other
