@@ -47,8 +47,6 @@ function LineChart (props) {
     [props.crimeData]
   );
 
-  console.log ('props');
-  console.log (props);
   return (
     <Line
       data={chartData}

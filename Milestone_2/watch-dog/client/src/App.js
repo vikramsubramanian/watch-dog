@@ -17,6 +17,9 @@ import DogIcon from './dog_icon.svg';
 import Question from './Question';
 import TableCard from './TableCard';
 import LineChart from './LineChart';
+import TextCard from './TextCard';
+
+import {FINE_PRINT} from './constants';
 
 function App () {
   const [crimeData, setCrimeData] = useState ([]);
@@ -34,8 +37,18 @@ function App () {
       setDateType (dateType);
       setCrimeData (data);
       setCards ([
-        <TableCard crimeData={data} dateType={dateType} />,
-        <LineChart crimeData={data} dateType={dateType} />,
+        {
+          src: <TableCard crimeData={data} dateType={dateType} />,
+          group: 0,
+        },
+        {
+          src: <LineChart crimeData={data} dateType={dateType} />,
+          group: 1,
+        },
+        {
+          src: <TextCard data={FINE_PRINT} />,
+          group: 1,
+        },
       ]);
     });
   }
@@ -58,17 +71,23 @@ function App () {
       <Question selectCrime={selectCrime} />
       <Container style={{marginTop: '3em'}}>
         <Grid columns="equal">
-          <Grid.Row columns="equal">
-            {cards.map ((card, ind) => {
-              return (
-                <Grid.Column>
-                  <Segment className="cardSegment">
-                    {card}
-                  </Segment>
-                </Grid.Column>
-              );
-            })}
-          </Grid.Row>
+          {[0, 1].map (gnum => {
+            return (
+              <Grid.Row columns="equal">
+                {cards
+                  .filter (card => card.group === gnum)
+                  .map ((card, ind) => {
+                    return (
+                      <Grid.Column>
+                        <Segment className="cardSegment">
+                          {card.src}
+                        </Segment>
+                      </Grid.Column>
+                    );
+                  })}
+              </Grid.Row>
+            );
+          })}
         </Grid>
       </Container>
 

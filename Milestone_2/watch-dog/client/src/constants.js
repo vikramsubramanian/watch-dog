@@ -121,9 +121,18 @@ dateNumOptions['month'] = [
 // dateNumOptions['week'] = [1, 2, 3, 4, 5, 6];
 // dateNumOptions['day'] = [1, 2, 7, 30, 60, 180, 365];
 
+const FINE_PRINT = `The statistics, graphs and maps are based upon preliminary information that was supplied to the Toronto Police Service by the reporting parties and may not have been verified. The preliminary crime classifications may be changed at a later date based upon additional investigation and there is always the possibility of mechanical or human error.
+
+The Toronto Police Service makes no warranty, representation or guarantee as to the content, sequence, accuracy, timeliness or completeness of any of the data provided herein. The user of the following pages should not rely on the data provided herein for comparison purposes over time, or for any reason. The Toronto Police Service explicitly disclaims any representations and warranties, including, without limitation, the implied warranties of merchantability and fitness for a particular purpose.
+
+The Toronto Police Service shall assume no liability for any errors, omissions, or inaccuracies in the information provided, regardless of how caused. The Toronto Police Service will not be responsible for the use of, or the results obtained from the use of this information. The Toronto Police Service shall assume no liability for any decisions made or actions taken or not taken by the user of the website in reliance upon any information or data furnished hereunder.
+
+Due to both stacked incidents (those located at the same address) and incidents which may not have been geocoded, the number of incidents identified in tables and reports may not be fully reflected in the map. All data visualizations on maps should be considered approximate and attempts to derive specific addresses are strictly prohibited.`;
+
 export {
   crimeTypeOptions,
   crimeIndicatorOptions,
   dateTypeOptions,
   dateNumOptions,
+  FINE_PRINT,
 };
