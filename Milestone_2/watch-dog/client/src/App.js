@@ -20,6 +20,7 @@ import Question from './Question';
 import TableCard from './TableCard';
 import LineChart from './LineChart';
 import TextCard from './TextCard';
+import SummaryCard from './SummaryCard';
 
 import {FINE_PRINT} from './constants';
 
@@ -68,6 +69,11 @@ function App () {
             group: 1,
             width: 4,
           },
+          {
+            src: <SummaryCard crimeData={data} dateType={dateType} />,
+            group: 2,
+            width: 4,
+          },
         ]);
       })
       .catch (error => {
@@ -105,7 +111,7 @@ function App () {
       <Question selectCrime={selectCrime} />
       <Container style={{marginTop: '3em'}}>
         <Grid columns="equal">
-          {[0, 1].map (gnum => {
+          {[0, 1, 2].map (gnum => {
             return (
               <Grid.Row columns="equal">
                 {cards
