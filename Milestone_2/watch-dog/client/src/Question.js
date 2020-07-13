@@ -19,7 +19,7 @@ export const useScrollHandler = () => {
         var scrollCheck = window.scrollY < 72;
         if (scrollCheck !== scroll) {
           if (scroll && !scrollCheck) {
-            if (document.documentElement.scrollHeight < 800) {
+            if (document.documentElement.scrollHeight < 1000) {
               scrollCheck = true;
             }
           }
@@ -70,7 +70,7 @@ function Question (props) {
   // TODO: Make question resize
 
   return (
-    <Menu fixed={scroll ? false : 'top'} text className="selectHeader">
+    <Menu fixed={scroll ? false : false} text className="selectHeader">
       <Menu.Item className="selectText" style={{marginLeft: '15px'}}>
         I want to explore
       </Menu.Item>

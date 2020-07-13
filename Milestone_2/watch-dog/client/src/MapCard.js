@@ -17,7 +17,7 @@ function MapCard (props) {
       const initializeMap = ({setMap, mapContainer}) => {
         const map = new mapboxgl.Map ({
           container: mapContainer.current,
-          style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
+          style: 'mapbox://styles/mapbox/streets-v11?optimize=true', // stylesheet location
           center: [lat, lng],
           zoom: zoom,
         });
@@ -40,7 +40,7 @@ function MapCard (props) {
   );
 
   return (
-    <div>
+    <div style={{height: '300px'}}>
       <div
         {...viewport}
         ref={el => (mapContainer.current = el)}
