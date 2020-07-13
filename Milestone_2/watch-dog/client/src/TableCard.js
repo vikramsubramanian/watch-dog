@@ -1,18 +1,42 @@
 import React, {useState, useEffect} from 'react';
 import {Table} from 'semantic-ui-react';
 import {Label, Button, Accordion, Icon} from 'semantic-ui-react';
+import {AgGridReact} from 'ag-grid-react';
+
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
 import './TableCard.css';
 
+const columnDefs = [
+  {headerName: 'Make', field: 'make'},
+  {headerName: 'Model', field: 'model'},
+  {headerName: 'Price', field: 'price'},
+];
+const rowData = [
+  {make: 'Toyota', model: 'Celica', price: 35000},
+  {make: 'Ford', model: 'Mondeo', price: 32000},
+  {make: 'Porsche', model: 'Boxter', price: 72000},
+];
+
 function TableCard (props) {
-  const [columns, setColumns] = useState ([]);
+  const [columnDefs, setColumnsDefs] = useState ([]);
   const [activeIndex, setActiveIndex] = useState (-1);
 
   useEffect (
     () => {
       if (props.crimeData.length > 0) {
         var keys = Object.keys (props.crimeData[0]);
-        setColumns (keys);
+        var newCols = [];
+        keys.forEach (key => {
+          newCols.push ({
+            headerName: key,
+            field: key,
+            sortable: true,
+            filter: true,
+          });
+        });
+        setColumnsDefs (newCols);
       }
     },
     [props.crimeData]
@@ -43,27 +67,19 @@ function TableCard (props) {
           </div>
         </Accordion.Title>
         <Accordion.Content active={activeIndex === 0}>
-          <Table striped>
-            <Table.Header>
-              <Table.Row>
-                {columns.map ((col, ind) => {
-                  return <Table.HeaderCell key={ind}>{col}</Table.HeaderCell>;
-                })}
-              </Table.Row>
-            </Table.Header>
-
-            <Table.Body>
-              {props.crimeData.map ((crime, ind) => {
-                return (
-                  <Table.Row key={ind}>
-                    {columns.map (col => {
-                      return <Table.Cell>{crime[col]}</Table.Cell>;
-                    })}
-                  </Table.Row>
-                );
-              })}
-            </Table.Body>
-          </Table>
+          <div style={{maxHeight: '400px'}}>
+            <div
+              className="ag-theme-alpine"
+              style={{height: '100%', width: '100%'}}
+            >
+              <AgGridReact
+                columnDefs={columnDefs}
+                pagination={true}
+                rowData={props.crimeData}
+                domLayout={'autoHeight'}
+              />
+            </div>
+          </div>
         </Accordion.Content>
       </Accordion>
     </div>
