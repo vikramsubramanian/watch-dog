@@ -27,6 +27,10 @@ function MapCard (props) {
           map.resize ();
         });
 
+        var marker = new mapboxgl.Marker ()
+          .setLngLat ([-79.387015, 43.651070])
+          .addTo (map);
+
         map.addControl (new mapboxgl.NavigationControl ());
 
         map.on ('move', () => {
