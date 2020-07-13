@@ -4,9 +4,9 @@ import mapboxgl from 'mapbox-gl';
 import './MapCard.css';
 
 function MapCard (props) {
-  const [lng, setLng] = useState (40.72);
-  const [lat, setLat] = useState (-73.9773608);
-  const [zoom, setZoom] = useState (11);
+  const [lng, setLng] = useState (43.651070);
+  const [lat, setLat] = useState (-79.387015);
+  const [zoom, setZoom] = useState (10);
   const [map, setMap] = useState (null);
   const [viewport, setViewport] = useState ({});
   const mapContainer = useRef (null);
@@ -26,6 +26,8 @@ function MapCard (props) {
           setMap (map);
           map.resize ();
         });
+
+        map.addControl (new mapboxgl.NavigationControl ());
 
         map.on ('move', () => {
           setLng (map.getCenter ().lng.toFixed (4));

@@ -66,7 +66,7 @@ function App () {
           {
             src: <MapCard header="About" body={ABOUT_DESC} />,
             group: 1,
-            width: null,
+            width: 6,
           },
           {
             src: <LineChart crimeData={data} dateType={dateType} />,
