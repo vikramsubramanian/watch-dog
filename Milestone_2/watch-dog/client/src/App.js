@@ -64,6 +64,11 @@ function App () {
             width: null,
           },
           {
+            src: <SummaryCard crimeData={data} dateType={dateType} />,
+            group: 1,
+            width: 6,
+          },
+          {
             src: <MapCard header="About" body={ABOUT_DESC} />,
             group: 1,
             width: 6,
@@ -82,11 +87,6 @@ function App () {
               />
             ),
             group: 2,
-            width: 4,
-          },
-          {
-            src: <SummaryCard crimeData={data} dateType={dateType} />,
-            group: 3,
             width: 4,
           },
           {
