@@ -24,6 +24,8 @@ import DoughnutChart from './DoughnutChart';
 import TextCard from './TextCard';
 import SummaryCard from './SummaryCard';
 
+import MapCard from './MapCard';
+
 import {FINE_PRINT, ABOUT_DESC} from './constants';
 
 function App () {
@@ -62,8 +64,13 @@ function App () {
             width: null,
           },
           {
-            src: <LineChart crimeData={data} dateType={dateType} />,
+            src: <MapCard header="About" body={ABOUT_DESC} />,
             group: 1,
+            width: null,
+          },
+          {
+            src: <LineChart crimeData={data} dateType={dateType} />,
+            group: 2,
             width: null,
           },
           {
@@ -74,27 +81,27 @@ function App () {
                 body={FINE_PRINT}
               />
             ),
-            group: 1,
+            group: 2,
             width: 4,
           },
           {
             src: <SummaryCard crimeData={data} dateType={dateType} />,
-            group: 2,
+            group: 3,
             width: 4,
           },
           {
             src: <BarChart crimeData={data} dateType={dateType} />,
-            group: 2,
+            group: 3,
             width: null,
           },
           {
             src: <DoughnutChart crimeData={data} dateType={dateType} />,
-            group: 3,
+            group: 4,
             width: null,
           },
           {
             src: <TextCard header="About" body={ABOUT_DESC} />,
-            group: 3,
+            group: 4,
             width: 3,
           },
         ]);
@@ -134,7 +141,7 @@ function App () {
       <Question selectCrime={selectCrime} />
       <Container style={{marginTop: '3em'}}>
         <Grid columns="equal">
-          {[0, 1, 2, 3].map (gnum => {
+          {[0, 1, 2, 3, 4].map (gnum => {
             return (
               <Grid.Row columns="equal">
                 {cards
