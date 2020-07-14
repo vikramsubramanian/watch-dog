@@ -41,6 +41,10 @@ function MapCard (props) {
           style: 'mapbox://styles/mapbox/streets-v11?optimize=true', // stylesheet location
           center: [lat, lng],
           zoom: zoom,
+          minzoom: 3,
+          maxzoom: 12,
+          tolerance: 10.5,
+          buffer: 500,
         });
 
         map.on ('load', () => {

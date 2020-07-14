@@ -1,5 +1,12 @@
 import React, {useState, useEffect} from 'react';
-import {Container, Menu, Dropdown, Button, Icon} from 'semantic-ui-react';
+import {
+  Container,
+  Menu,
+  Dropdown,
+  Button,
+  Icon,
+  Visibility,
+} from 'semantic-ui-react';
 
 import {
   crimeIndicatorOptions,
@@ -8,46 +15,13 @@ import {
 } from './constants';
 import {strEqual} from './utility';
 
-export const useScrollHandler = () => {
-  // setting initial value to true
-  const [scroll, setScroll] = useState (1);
-
-  // running on mount
-  useEffect (
-    () => {
-      const onScroll = () => {
-        var scrollCheck = window.scrollY < 72;
-        if (scrollCheck !== scroll) {
-          if (scroll && !scrollCheck) {
-            if (document.documentElement.scrollHeight < 1000) {
-              scrollCheck = true;
-            }
-          }
-          setScroll (scrollCheck);
-        }
-      };
-
-      // setting the event handler from web API
-      document.addEventListener ('scroll', onScroll);
-
-      // cleaning up from the web API
-      return () => {
-        document.removeEventListener ('scroll', onScroll);
-      };
-    },
-    [scroll, setScroll]
-  );
-
-  return scroll;
-};
-
 function Question (props) {
   const [crimeIndicator, setCrimeIndicator] = useState ('all');
   const [crimeType, setCrimeType] = useState ('crimes');
   const [dateNum, setDateNum] = useState (dateNumOptions['year'][5]);
   const [dateType, setDateType] = useState ('year');
 
-  const scroll = useScrollHandler ();
+  const [stickTopMenu, setStickTopMenu] = useState (false);
 
   function changeCrimeType (event, data) {
     setCrimeType (data.text);
@@ -70,99 +44,110 @@ function Question (props) {
   // TODO: Make question resize
 
   return (
-    <Menu fixed={scroll ? false : false} text className="selectHeader">
-      <Menu.Item className="selectText" style={{marginLeft: '15px'}}>
-        I want to explore
-      </Menu.Item>
-      <Menu.Item style={{padding: 0}}>
-        <Dropdown
-          inline
-          icon={null}
-          text={crimeIndicator}
-          className="selectDropdowns"
-        >
-          <Dropdown.Menu
-            className="selectDropdownItem"
-            style={{height: '300px', 'overflow-y': 'scroll'}}
+    <Visibility
+      onBottomPassed={() => setStickTopMenu (true)}
+      onBottomVisible={() => setStickTopMenu (false)}
+      once={false}
+    >
+      <Menu
+        fixed={stickTopMenu ? 'top' : undefined}
+        text
+        className="selectHeader"
+      >
+        <Menu.Item className="selectText" style={{marginLeft: '15px'}}>
+          I want to explore
+        </Menu.Item>
+        <Menu.Item style={{padding: 0}}>
+          <Dropdown
+            inline
+            icon={null}
+            text={crimeIndicator}
+            className="selectDropdowns"
           >
-            {crimeIndicatorOptions.map (option => {
-              return (
-                <Dropdown.Item
-                  key={option.value}
-                  text={option.label}
-                  active={strEqual (crimeIndicator, option.value)}
-                  onClick={changeCrimeIndicator}
-                />
-              );
-            })}
-          </Dropdown.Menu>
-        </Dropdown>
-      </Menu.Item>
-      <Menu.Item className="selectText">
-        crimes that happened in
-      </Menu.Item>
-      <Menu.Item style={{paddingRight: '0.5em', paddingLeft: 0}}>
-        <Dropdown
-          inline
-          icon={null}
-          text={dateNum.label}
-          className="selectDropdowns"
-        >
-          <Dropdown.Menu
-            className="selectDropdownItem"
-            style={{height: '300px', 'overflow-y': 'scroll'}}
+            <Dropdown.Menu
+              className="selectDropdownItem"
+              style={{height: '300px', 'overflow-y': 'scroll'}}
+            >
+              {crimeIndicatorOptions.map (option => {
+                return (
+                  <Dropdown.Item
+                    key={option.value}
+                    text={option.label}
+                    active={strEqual (crimeIndicator, option.value)}
+                    onClick={changeCrimeIndicator}
+                  />
+                );
+              })}
+            </Dropdown.Menu>
+          </Dropdown>
+        </Menu.Item>
+        <Menu.Item className="selectText">
+          crimes that happened in
+        </Menu.Item>
+        <Menu.Item style={{paddingRight: '0.5em', paddingLeft: 0}}>
+          <Dropdown
+            inline
+            icon={null}
+            text={dateNum.label}
+            className="selectDropdowns"
           >
-            {dateNumOptions[dateType].map (option => {
-              return (
-                <Dropdown.Item
-                  key={option.value}
-                  text={option.label}
-                  value={option.value}
-                  active={dateNum.value == option.value}
-                  onClick={changeDateNum}
-                />
-              );
-            })}
-          </Dropdown.Menu>
-        </Dropdown>
-      </Menu.Item>
-      <Menu.Item style={{padding: 0}}>
-        <Dropdown
-          inline
-          icon={null}
-          text={'(' + dateType + ')'}
-          className="selectDropdowns"
-        >
-          <Dropdown.Menu className="selectDropdownItem">
-            {dateTypeOptions.map (option => {
-              return (
-                <Dropdown.Item
-                  key={option}
-                  text={option}
-                  active={strEqual (dateType, option)}
-                  onClick={changeDateType}
-                />
-              );
-            })}
-          </Dropdown.Menu>
-        </Dropdown>
-      </Menu.Item>
-      <Menu.Item className="selectText">
-        citywide
-      </Menu.Item>
-      <Menu.Item className="selectButton">
-        <Button
-          icon
-          labelPosition="right"
-          primary
-          size="mini"
-          onClick={() => props.fetchCrimes (crimeIndicator, dateType, dateNum)}
-        >
-          <Icon name="arrow down" />
-          OK
-        </Button>
-      </Menu.Item>
-    </Menu>
+            <Dropdown.Menu
+              className="selectDropdownItem"
+              style={{height: '300px', 'overflow-y': 'scroll'}}
+            >
+              {dateNumOptions[dateType].map (option => {
+                return (
+                  <Dropdown.Item
+                    key={option.value}
+                    text={option.label}
+                    value={option.value}
+                    active={dateNum.value == option.value}
+                    onClick={changeDateNum}
+                  />
+                );
+              })}
+            </Dropdown.Menu>
+          </Dropdown>
+        </Menu.Item>
+        <Menu.Item style={{padding: 0}}>
+          <Dropdown
+            inline
+            icon={null}
+            text={'(' + dateType + ')'}
+            className="selectDropdowns"
+          >
+            <Dropdown.Menu className="selectDropdownItem">
+              {dateTypeOptions.map (option => {
+                return (
+                  <Dropdown.Item
+                    key={option}
+                    text={option}
+                    active={strEqual (dateType, option)}
+                    onClick={changeDateType}
+                  />
+                );
+              })}
+            </Dropdown.Menu>
+          </Dropdown>
+        </Menu.Item>
+        <Menu.Item className="selectText">
+          citywide
+        </Menu.Item>
+        <Menu.Item className="selectButton">
+          <Button
+            icon
+            labelPosition="right"
+            primary
+            size="mini"
+            onClick={() =>
+              props.fetchCrimes (crimeIndicator, dateType, dateNum)}
+          >
+            <Icon name="arrow down" />
+            OK
+          </Button>
+        </Menu.Item>
+      </Menu>
+    </Visibility>
   );
 }
 

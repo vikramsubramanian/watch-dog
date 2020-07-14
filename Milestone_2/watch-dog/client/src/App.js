@@ -85,6 +85,12 @@ function App () {
         });
 
         allCards.push ({
+          src: <LineChart crimeData={tableData} dateType={dateType} />,
+          group: 2,
+          width: null,
+        });
+
+        allCards.push ({
           src: (
             <TextCard
               header="The fine print:"
