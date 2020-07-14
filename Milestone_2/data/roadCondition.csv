@@ -1,0 +1,190 @@
+road_condition_id,classification,traffic_control_type,visibility,surface_condition
+100000,Minor Arterial,No Control,Snow,Wet
+100004,Major Arterial,No Control,Clear,Loose Snow
+100010,Major Arterial,No Control,Clear,Dry
+100013,Minor Arterial,Pedestrian Crossover,Clear,Dry
+100015,Major Arterial,Traffic Signal,Clear,Wet
+100018,Major Arterial,Traffic Signal,Clear,Dry
+100034,Major Arterial,Pedestrian Crossover,Clear,Dry
+100036,Collector,Stop Sign,Clear,Dry
+100038,Minor Arterial,Stop Sign,Clear,Dry
+100058,Minor Arterial,No Control,Rain,Wet
+100071,Major Arterial,No Control,Rain,Wet
+100079,Major Arterial,Stop Sign,Clear,Dry
+100089,Major Arterial,Traffic Signal,Rain,Wet
+100092,Minor Arterial,No Control,Clear,Dry
+100101,Major Arterial,No Control,Clear,Wet
+100104,Minor Arterial,Traffic Signal,Clear,Dry
+100113,Minor Arterial,No Control,Snow,Packed Snow
+100115,Major Arterial,Traffic Signal,Snow,Loose Snow
+100119,Major Arterial,No Control,Clear,Other
+100135,Collector,No Control,Clear,Dry
+100146,,No Control,Clear,Dry
+100152,Minor Arterial,Traffic Signal,Snow,Loose Snow
+100156,Major Arterial,No Control,Snow,Packed Snow
+100160,Major Arterial,Traffic Controller,Clear,Dry
+100166,Major Arterial,No Control,Snow,Loose Snow
+100171,Minor Arterial,No Control,Clear,Ice
+100184,Major Arterial,Traffic Signal,Clear,Loose Snow
+100227,Major Arterial,Yield Sign,Clear,Dry
+100233,Major Arterial,Stop Sign,Rain,Wet
+100296,Minor Arterial,Stop Sign,Clear,Other
+100306,Local,No Control,Clear,Dry
+100355,Collector,No Control,Clear,Wet
+100365,Minor Arterial,Traffic Signal,Rain,Wet
+100367,Local,Stop Sign,Clear,Dry
+100370,,No Control,Rain,Wet
+100394,Minor Arterial,Stop Sign,Clear,Wet
+100533,Collector,No Control,Rain,Wet
+100599,Major Arterial,No Control,Snow,Wet
+100614,Major Arterial,Pedestrian Crossover,Strong wind,Ice
+100627,Minor Arterial,Traffic Signal,Other,Dry
+100672,Minor Arterial,No Control,Clear,Wet
+100675,Minor Arterial,Stop Sign,Rain,Wet
+100678,Major Arterial,Pedestrian Crossover,Clear,Wet
+100680,Major Arterial,Traffic Signal,Drifting Snow,Wet
+100690,Major Arterial,Traffic Signal,Snow,Wet
+100728,Major Arterial,No Control,Rain,Slush
+100745,Collector,No Control,Freezing Rain,Slush
+100747,Collector,Stop Sign,Clear,Wet
+100761,Collector,Pedestrian Crossover,Clear,Dry
+100790,Major Arterial,No Control,Snow,Slush
+100814,Minor Arterial,Pedestrian Crossover,Rain,Wet
+100967,Minor Arterial,Traffic Signal,Snow,Wet
+100981,Minor Arterial,Stop Sign,Clear,Slush
+101019,Minor Arterial,No Control,Snow,Loose Snow
+101025,Major Arterial,Stop Sign,Clear,Packed Snow
+101217,Local,Stop Sign,Rain,Wet
+101230,Major Arterial,School Guard,Clear,Dry
+101252,Local,No Control,Rain,Wet
+101262,,No Control,Clear,Wet
+101305,Minor Arterial,Traffic Signal,Clear,Wet
+101322,Local,Stop Sign,Clear,Wet
+101409,Collector,Traffic Signal,Clear,Dry
+101411,Minor Arterial,Pedestrian Crossover,Clear,Wet
+101427,Collector,Pedestrian Crossover,Rain,Wet
+101533,Major Arterial,Traffic Controller,Clear,Other
+101535,Local,Stop Sign,Snow,Ice
+101595,Collector,Traffic Signal,Rain,Wet
+101607,Major Arterial,Stop Sign,Clear,Wet
+101751,Major Arterial,Police Control,Clear,Dry
+101822,Local,No Control,Clear,Wet
+101932,Major Arterial,Traffic Signal,Other,Dry
+101963,Major Arterial,No Control,Freezing Rain,Slush
+101970,Local,No Control,Clear,Ice
+101985,Collector,Pedestrian Crossover,Clear,Wet
+102009,Major Arterial,Traffic Signal,Snow,Slush
+102023,Minor Arterial,Pedestrian Crossover,Clear,Other
+102030,Local,Yield Sign,Clear,Dry
+102063,Major Arterial,No Control,"Fog, Mist, Smoke, Dust",Dry
+102131,Other,No Control,Clear,Dry
+102133,Major Arterial,No Control,Freezing Rain,Ice
+102267,Collector,Traffic Signal,Clear,Wet
+102441,,No Control,Snow,Loose Snow
+102451,Major Arterial,Traffic Signal,Clear,Other
+102489,Collector,Stop Sign,Other,Wet
+102500,Major Arterial,Traffic Controller,Clear,Wet
+102553,Major Arterial,Traffic Signal,Clear,Slush
+102617,Major Arterial,Yield Sign,Rain,Wet
+102629,Major Arterial,Traffic Signal,Freezing Rain,Wet
+102631,Major Arterial,,Other,Other
+102665,Major Arterial,No Control,Snow,Ice
+102688,Major Arterial,No Control,Drifting Snow,Ice
+102701,Collector,No Control,Snow,Wet
+102866,Minor Arterial,Pedestrian Crossover,Other,Other
+102901,Major Arterial,Streetcar (Stop for),Clear,Dry
+103083,Minor Arterial,Traffic Signal,Clear,Loose Snow
+103089,Collector,No Control,Snow,Slush
+103093,Collector,Pedestrian Crossover,Snow,Wet
+103523,Collector,Stop Sign,Rain,Wet
+103552,Other,No Control,Snow,Loose Snow
+103636,Major Arterial,Traffic Signal,"Fog, Mist, Smoke, Dust",Dry
+103758,Major Arterial,Traffic Signal,Snow,Packed Snow
+103767,Minor Arterial,No Control,Snow,Slush
+104454,Minor Arterial,Traffic Signal,Clear,Other
+104577,Major Arterial,No Control,"Fog, Mist, Smoke, Dust",Wet
+104622,Major Arterial,Stop Sign,Snow,Loose Snow
+104673,Major Arterial,Traffic Signal,Other,Other
+104693,Major Arterial,Traffic Signal,"Fog, Mist, Smoke, Dust",Wet
+104712,Collector,Stop Sign,Freezing Rain,Wet
+104776,Local,Traffic Signal,Clear,Dry
+105183,Major Arterial,Traffic Signal,Rain,Dry
+105207,Minor Arterial,Stop Sign,Other,Other
+105283,Major Arterial,Pedestrian Crossover,Snow,Wet
+105750,Major Arterial,Traffic Signal,Snow,Ice
+105766,Major Arterial,Stop Sign,Snow,Slush
+105784,Major Arterial,No Control,Clear,Slush
+105792,Major Arterial,No Control,Clear,Ice
+105860,Local,Stop Sign,Other,Other
+106103,Pending,No Control,Clear,Dry
+106326,Major Arterial,Traffic Signal,Freezing Rain,Slush
+106347,Collector,Stop Sign,Drifting Snow,Wet
+106353,Major Arterial,Traffic Signal,Rain,Packed Snow
+106554,Major Arterial,Streetcar (Stop for),Rain,Wet
+106558,Minor Arterial,Traffic Controller,Rain,Wet
+106656,Major Arterial,Traffic Signal,Rain,Slush
+106799,Major Arterial,No Control,Other,Other
+107069,Major Arterial,No Control,Clear,Loose Sand or Gravel
+107074,Major Arterial,Pedestrian Crossover,Rain,Wet
+107132,Major Arterial,Traffic Signal,,
+107203,Laneway,No Control,Clear,Dry
+107267,Major Arterial,Traffic Controller,Rain,Wet
+107284,Expressway,No Control,Clear,Dry
+107334,Major Arterial,No Control,,
+107374,Minor Arterial,No Control,,
+107409,Expressway,Traffic Signal,Clear,Dry
+107440,Minor Arterial,Traffic Signal,Other,Other
+107592,Other,No Control,Clear,Wet
+107631,Major Arterial,No Control,Drifting Snow,Wet
+107748,Expressway,No Control,Clear,Wet
+107784,Major Arterial,Stop Sign,Other,
+107800,Major Arterial,PXO - No Ped,Clear,Dry
+107823,Minor Arterial,No Control,Rain,Ice
+108228,Major Arterial Ramp,No Control,Clear,Dry
+100201,Collector,No Control,"Fog, Mist, Smoke, Dust",Wet
+100381,Local,No Control,Snow,Wet
+100614,,Yield Sign,Clear,Dry
+100013,Major Arterial,No Control,Other,Wet
+101141,Collector,No Control,Clear,Slush
+101182,Minor Arterial,No Control,Snow,Ice
+101258,,,Other,Other
+102060,Collector,No Control,"Fog, Mist, Smoke, Dust",Dry
+102263,Minor Arterial,No Control,Clear,Other
+102298,Major Arterial,Stop Sign,Strong wind,Wet
+102349,Major Arterial,Stop Sign,Snow,Packed Snow
+103770,Collector,Traffic Gate,Clear,Dry
+103837,Minor Arterial,No Control,Snow,Other
+103864,Major Arterial,Stop Sign,Clear,Slush
+104759,Major Arterial,Traffic Signal,Freezing Rain,Ice
+105169,Local,Traffic Gate,Clear,Dry
+105372,Pending,No Control,Snow,Packed Snow
+105535,Minor Arterial,No Control,Other,Wet
+106693,Major Arterial,No Control,Snow,Dry
+106706,Collector,No Control,Snow,Other
+107699,Collector,No Control,Snow,Packed Snow
+107743,,No Control,Clear,Other
+108256,Minor Arterial,,Other,Other
+108759,Expressway,Traffic Signal,Rain,Wet
+109039,Major Arterial,No Control,Other,Dry
+109370,Collector,No Control,Clear,Loose Sand or Gravel
+109446,Minor Arterial,Traffic Controller,Clear,Dry
+109740,Minor Arterial,No Control,Clear,Loose Sand or Gravel
+110218,Local,No Control,Snow,Packed Snow
+111161,Major Arterial,Traffic Signal,Strong wind,Slush
+111440,Major Arterial,No Control,Freezing Rain,Wet
+111821,Local,No Control,Clear,Loose Snow
+112004,Major Arterial,Yield Sign,Clear,Wet
+112106,Minor Arterial,Pedestrian Crossover,Snow,Loose Snow
+112205,Minor Arterial,No Control,Clear,
+112350,Collector,No Control,Other,Other
+112628,Local,No Control,Snow,Loose Snow
+112783,Local,No Control,Clear,Other
+112900,Collector,No Control,Freezing Rain,Wet
+113291,Minor Arterial,No Control,Freezing Rain,Ice
+113753,Other,No Control,Rain,Wet
+113834,Minor Arterial,No Control,Drifting Snow,Loose Snow
+113913,Major Arterial,No Control,Rain,Dry
+113953,Collector,Stop Sign,Snow,Slush
+104617,Minor Arterial,No Control,Other,Other
+103453,Major Arterial,No Control,Drifting Snow,Dry
+106386,Major Arterial,No Control,,Other
