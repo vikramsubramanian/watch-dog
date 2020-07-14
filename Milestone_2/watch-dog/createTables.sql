@@ -19,20 +19,12 @@ create TABLE Neighbourhood
 (
   hood_id INT NOT NULL PRIMARY KEY,
   name VARCHAR(50),
+  employement_rate INT,
+  high_school INT,
+  university INT,
+  technical_degree INT,
   division INT,
   FOREIGN KEY(division) REFERENCES PoliceDivision(division)
-);
-
-create TABLE BikeTheft
-(
-  bike_theft_id INT NOT NULL PRIMARY KEY,
-  colour VARCHAR(15),
-  make VARCHAR(15),
-  model VARCHAR(15),
-  speed VARCHAR(15),
-  bike_type VARCHAR(15),
-  status VARCHAR(15),
-  cost FLOAT CHECK (cost >= 0)
 );
 
 create TABLE RegularCrime
@@ -47,7 +39,6 @@ create TABLE CrimeEvent
   event_id INT NOT NULL PRIMARY KEY,
   occurrence_time_id INT,
   reported_time_id INT,
-  bike_theft_id INT,
   crime_id INT,
   hood_id INT,
   latitude FLOAT CHECK (latitude >= -90.0 AND latitude <= 90.0),
@@ -56,8 +47,20 @@ create TABLE CrimeEvent
   FOREIGN KEY(occurrence_time_id) REFERENCES IncidentTime(time_id),
   FOREIGN KEY(reported_time_id) REFERENCES IncidentTime(time_id),
   FOREIGN KEY(crime_id) REFERENCES RegularCrime(crime_id),
-  FOREIGN KEY(hood_id) REFERENCES Neighbourhood(hood_id),
-  FOREIGN KEY(bike_theft_id) REFERENCES BikeTheft(bike_theft_id)
+  FOREIGN KEY(hood_id) REFERENCES Neighbourhood(hood_id)
+);
+
+create TABLE BikeTheft
+(
+  event_id INT NOT NULL PRIMARY KEY,
+  colour VARCHAR(15),
+  make VARCHAR(15),
+  model VARCHAR(15),
+  speed VARCHAR(15),
+  bike_type VARCHAR(15),
+  status VARCHAR(15),
+  cost FLOAT CHECK (cost >= 0),
+  FOREIGN KEY(event_id) REFERENCES CrimeEvent(event_id)
 );
 
 create TABLE RoadCondition
