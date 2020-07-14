@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Line } from 'react-chartjs-2';
+import React, {useState, useEffect} from 'react';
+import {Line} from 'react-chartjs-2';
 import {
   Header,
   Container,
@@ -15,6 +15,10 @@ const crimeTypeOptions = [
   {
     label: 'crimes',
     value: 'crimes',
+  },
+  {
+    label: 'traffic incidents',
+    value: 'traffic incidents',
   },
 ];
 
@@ -47,78 +51,171 @@ const crimeIndicatorOptions = [
     label: 'theft over',
     value: 'theft over',
   },
+];
+
+const dateTypeOptions = ['year', 'month'];
+const dateNumOptions = new Map ();
+dateNumOptions['year'] = [
   {
-    label: 'bicycle thefts',
-    value: 'bicycle thefts',
+    value: 2014,
+    label: '2014',
+  },
+  {
+    value: 2015,
+    label: '2015',
+  },
+  {
+    value: 2016,
+    label: '2016',
+  },
+  {
+    value: 2017,
+    label: '2017',
+  },
+  {
+    value: 2018,
+    label: '2018',
+  },
+  {
+    value: 2019,
+    label: '2019',
   },
 ];
-
-const dateTypeOptions = ['years', 'months', 'weeks', 'days'];
-const dateNumOptions = new Map();
-dateNumOptions['year'] = [2014, 2015, 2016, 2017, 2018, 2019, 2020];
 dateNumOptions['month'] = [
-  'Jan',
-  'Feb',
-  'Mar',
-  'Apr',
-  'May',
-  'Jun',
-  'Jul',
-  'Aug',
-  'Sep',
-  'Oct',
-  'Nov',
-  'Dec',
+  {
+    value: 1,
+    label: 'Jan',
+  },
+  {
+    value: 2,
+    label: 'Feb',
+  },
+  {
+    value: 3,
+    label: 'Mar',
+  },
+  {
+    value: 4,
+    label: 'Apr',
+  },
+  {
+    value: 5,
+    label: 'May',
+  },
+  {
+    value: 6,
+    label: 'Jun',
+  },
+  {
+    value: 7,
+    label: 'Jul',
+  },
+  {
+    value: 8,
+    label: 'Aug',
+  },
+  {
+    value: 9,
+    label: 'Sep',
+  },
+  {
+    value: 10,
+    label: 'Oct',
+  },
+  {
+    value: 11,
+    label: 'Nov',
+  },
+  {
+    value: 12,
+    label: 'Dec',
+  },
 ];
-dateNumOptions['week'] = [1, 2, 3, 4, 5, 6];
-dateNumOptions['day'] = [1, 2, 7, 30, 60, 180, 365];
+// dateNumOptions['week'] = [1, 2, 3, 4, 5, 6];
+// dateNumOptions['day'] = [1, 2, 7, 30, 60, 180, 365];
 
-function strEqual(str1, str2) {
-  return str1.localeCompare(str2) == 0;
+function strEqual (str1, str2) {
+  return str1.localeCompare (str2) == 0;
 }
 
-function App() {
-  const [crimeIndicator, setCrimeIndicator] = useState('all');
-  // const [crimeType, setCrimeType] = useState ('');
-  const [dateNum, setDateNum] = useState(2019);
-  const [dateType, setDateType] = useState('year');
-  const [chartData, setChartData] = useState({});
+function App () {
+  const [crimeIndicator, setCrimeIndicator] = useState ('all');
+  const [crimeType, setCrimeType] = useState ('crimes');
+  const [dateNum, setDateNum] = useState (dateNumOptions['year'][5]);
+  const [dateType, setDateType] = useState ('year');
+  const [crimeData, setCrimeData] = useState ([]);
+  const [chartData, setChartData] = useState ({});
 
-  const chart = () => {
-    setChartData({
-      labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+  const createLineChart = () => {
+    var labels = [];
+    var data = [];
+    if (strEqual (dateType, 'year')) {
+      for (var i = 1; i <= 12; i++) {
+        var monthCount = crimeData.filter (crime => crime.OccuredMonth == i)
+          .length;
+        labels.push (dateNumOptions['month'][i - 1].label);
+        data.push (monthCount);
+      }
+    } else if (strEqual (dateType, 'month')) {
+      for (var i = 1; i <= 31; i++) {
+        var dayCount = crimeData.filter (crime => crime.OccuredDay == i).length;
+        labels.push (i);
+        data.push (dayCount);
+      }
+    }
+    setChartData ({
+      labels: labels,
       datasets: [
         {
           label: 'Number of crimes reported',
-          data: [32, 45, 12, 76, 60],
-          backgroundColor: [
-            'rgba(75, 192, 192, 0.6)'
-          ],
-          borderWidth: 4
-        }
-      ]
-    })
+          data: data,
+          backgroundColor: ['rgba(75, 192, 192, 0.6)'],
+          borderWidth: 4,
+        },
+      ],
+    });
+  };
+
+  function changeCrimeType (event, data) {
+    setCrimeType (data.text);
   }
 
-  function changeCrimeIndicator(event, data) {
-    setCrimeIndicator(data.text);
+  function changeCrimeIndicator (event, data) {
+    setCrimeIndicator (data.text);
   }
 
-  function changeDateNum(event, data) {
-    setDateNum(data.text);
+  function changeDateNum (event, data) {
+    setDateNum (
+      dateNumOptions[dateType].find (option => option.value == data.value)
+    );
   }
-  function changeDateType(event, data) {
-    setDateType(data.text);
-    setDateNum(dateNumOptions[data.text][0]);
-  }
-
-  function selectCrime(event, data) {
-    console.log('Selecting data...');
+  function changeDateType (event, data) {
+    setDateType (data.text);
+    setDateNum (dateNumOptions[data.text][0]);
   }
 
-  useEffect(() => {
-    chart()
-  }, [])
+  function selectCrime (event, data) {
+    var path = '/crime-events?';
+    path += '&dateType=' + dateType + '&dateNum=' + dateNum.value;
+    if (!strEqual (crimeIndicator, 'all')) {
+      path += '&MCI=' + crimeIndicator;
+    }
+    fetch (path).then (response => response.json ()).then (data => {
+      console.log (data);
+      setCrimeData (data);
+    });
+  }
+
+  useEffect (
+    () => {
+      createLineChart ();
+    },
+    [crimeData]
+  );
+
+  useEffect (() => {
+    // chart ();
+  }, []);
 
   return (
     <div className="container">
@@ -127,7 +224,7 @@ function App() {
           <Menu.Item className="selectText">
             I want to explore
           </Menu.Item>
-          <Menu.Item style={{ padding: 0 }}>
+          <Menu.Item style={{padding: 0}}>
             <Dropdown
               inline
               icon={null}
@@ -135,12 +232,12 @@ function App() {
               className="selectDropdowns"
             >
               <Dropdown.Menu className="selectDropdownItem">
-                {crimeIndicatorOptions.map(option => {
+                {crimeIndicatorOptions.map (option => {
                   return (
                     <Dropdown.Item
                       key={option.value}
                       text={option.label}
-                      active={strEqual(crimeIndicator, option.value)}
+                      active={strEqual (crimeIndicator, option.value)}
                       onClick={changeCrimeIndicator}
                     />
                   );
@@ -151,20 +248,21 @@ function App() {
           <Menu.Item className="selectText">
             crimes that happened in
           </Menu.Item>
-          <Menu.Item style={{ paddingRight: '0.5em', paddingLeft: 0 }}>
+          <Menu.Item style={{paddingRight: '0.5em', paddingLeft: 0}}>
             <Dropdown
               inline
               icon={null}
-              text={dateNum}
+              text={dateNum.label}
               className="selectDropdowns"
             >
               <Dropdown.Menu className="selectDropdownItem">
-                {dateNumOptions[dateType].map(option => {
+                {dateNumOptions[dateType].map (option => {
                   return (
                     <Dropdown.Item
-                      key={option}
-                      text={option}
-                      active={dateNum == option}
+                      key={option.value}
+                      text={option.label}
+                      value={option.value}
+                      active={dateNum.value == option.value}
                       onClick={changeDateNum}
                     />
                   );
@@ -172,7 +270,7 @@ function App() {
               </Dropdown.Menu>
             </Dropdown>
           </Menu.Item>
-          <Menu.Item style={{ padding: 0 }}>
+          <Menu.Item style={{padding: 0}}>
             <Dropdown
               inline
               icon={null}
@@ -180,12 +278,12 @@ function App() {
               className="selectDropdowns"
             >
               <Dropdown.Menu className="selectDropdownItem">
-                {dateTypeOptions.map(option => {
+                {dateTypeOptions.map (option => {
                   return (
                     <Dropdown.Item
                       key={option}
                       text={option}
-                      active={strEqual(dateType, option)}
+                      active={strEqual (dateType, option)}
                       onClick={changeDateType}
                     />
                   );
@@ -194,7 +292,7 @@ function App() {
             </Dropdown>
           </Menu.Item>
           <Menu.Item className="selectText">
-            citywide on a bar chart
+            citywide on a line chart
           </Menu.Item>
           <Menu.Item className="selectButton">
             <Button
@@ -210,34 +308,37 @@ function App() {
           </Menu.Item>
         </Container>
       </Menu>
-      <Container style={{ marginTop: '3em' }} />
+      <Container style={{marginTop: '3em'}} />
       <Container>
         <div>
-          < Line data={chartData} options={{
-            responsive: true,
-            title: { text: 'Crime scale', display: true },
-            scales: {
-              yAxes: [
-                {
-                  ticks: {
-                    autoskip: true,
-                    maxTicksLimits: 10,
-                    beginAtZero: true
+          <Line
+            data={chartData}
+            options={{
+              responsive: true,
+              title: {text: '', display: true},
+              scales: {
+                yAxes: [
+                  {
+                    ticks: {
+                      autoskip: true,
+                      maxTicksLimits: 10,
+                      beginAtZero: true,
+                    },
+                    gridLines: {
+                      display: false,
+                    },
                   },
-                  gridLines: {
-                    display: false
-                  }
-                }
-              ],
-              xAxes: [
-                {
-                  gridLines: {
-                    display: false
-                  }
-                }
-              ]
-            }
-          }} />
+                ],
+                xAxes: [
+                  {
+                    gridLines: {
+                      display: false,
+                    },
+                  },
+                ],
+              },
+            }}
+          />
         </div>
       </Container>
     </div>

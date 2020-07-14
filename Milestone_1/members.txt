@@ -1,0 +1,42 @@
+Group 1:
+Member List (5 members):
+
+Member 1: Abdullah Bin Asad
+- Investigated and researched traffic related crimes.
+- Curated traffic related crimes data from our data source and designed the DB schema.
+- Curated bike thefts and homicide related data from our data source.
+- Created our schema & ER diagram.
+- Wrote CREATE and DROP table SQL queries.
+- Did some data exploration.
+- Wrote the constraint checks for the schemas.
+- Wrote the assumptions made by our project in the database.
+
+Member 2: Chandana Sathish
+- Helped develop our front end.
+- Explored different chart libraries.
+- Helped come up with unique features.
+- Composed our report for Milestone 1.
+- Wrote SQL queries.
+
+Member 3: Lukman Mohamed
+- Researched several additional data sets that could be added to our current schema.
+- Developed and ran scripts to convert raw traffic data into the desired format.
+- Linted and cleaned source data for traffic-related crimes.
+- Created our schema & ER diagram.
+- Wrote CREATE and DROP table SQL queries.
+
+
+Member 4: Vikram Subramanian
+- Investigated and researched major crimes data.
+- Curated crimes data from our data source.
+- Developed and ran scripts to convert major crime data into the desired format.
+- Linted and cleaned data.
+- Create first draft of schema and CREATE table query.
+
+Member 5: Dhvani Patel
+- setup team meetings and coordinated group efforts to reach a conclusion.
+- researched dataset related to crime and Traffic-crime.
+- Built frontend app.
+- Reviewed Merge Requests.
+- Wrote SQL queries.
+- Create first draft of schema and CREATE table SQL query.

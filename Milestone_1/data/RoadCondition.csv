@@ -1,0 +1,4 @@
+﻿road_condition_id, classification, traffic_control_type, visibility, surface_condition
+800001,Local,Traffic Signal,Clear,dry
+800002,Laneway,Stop sign,Rain,wet
+800003,Major Arterial,Traffic Signal,Snow,loose snow
