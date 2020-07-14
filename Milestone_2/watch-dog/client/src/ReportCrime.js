@@ -13,11 +13,29 @@ const premiseTypeOptions = [
 
 function ReportCrime () {
   const [modalOpen, setModalOpen] = useState (false);
-  const [startDate, setStartDate] = useState (new Date ().setMinutes (0));
+  const [occurenceDate, setOccurenceDate] = useState (
+    new Date ().setMinutes (0)
+  );
+  const [reportedDate, setReportedDate] = useState (new Date ().setMinutes (0));
+  const [crimeIndicator, setCrimeIndicator] = useState (null);
+  const [hood, setHood] = useState (null);
+  const [premiseType, setPremiseType] = useState ('');
+  const [lat, setLat] = useState ('');
+  const [long, setLong] = useState ('');
+  const [offence, setOffence] = useState (null);
+
   const [crimeOptions, setCrimeOptions] = useState ([]);
   const [hoodOptions, setHoodOptions] = useState ([]);
-  const [crimeIndicator, setCrimeIndicator] = useState (null);
   const [offenceOptions, setOffenceOptions] = useState (new Map ());
+
+  function addCrime () {
+    console.log (lat);
+    console.log (long);
+    console.log (hood);
+    console.log (offence);
+    console.log (premiseType);
+    console.log (crimeIndicator);
+  }
 
   useEffect (() => {
     var allHoods = [];
@@ -56,6 +74,8 @@ function ReportCrime () {
             key: crime['offence'],
             text: crime['offence'],
             value: crime['offence'],
+            db_key: crime['crime_id'],
+            indicator: crime['MCI'],
           };
           if (offence[crime['MCI']]) {
             offence[crime['MCI']].push (offenceOption);
@@ -85,7 +105,7 @@ function ReportCrime () {
                   label="Major Crime Indicator"
                   options={crimeOptions}
                   placeholder="Major Crime Indicator"
-                  onChange={(e, data) => setCrimeIndicator (data)}
+                  onChange={(e, {value}) => setCrimeIndicator (value)}
                 />
                 <Form.Select
                   fluid
@@ -93,16 +113,17 @@ function ReportCrime () {
                   options={
                     offenceOptions &&
                       crimeIndicator &&
-                      offenceOptions[crimeIndicator.value]
+                      offenceOptions[crimeIndicator]
                   }
                   placeholder="Offence"
+                  onChange={(e, {value}) => setOffence (value)}
                 />
               </Form.Group>
               <Form.Group inline>
                 <label>Occurence Date and Time</label>
                 <DatePicker
-                  selected={startDate}
-                  onChange={date => setStartDate (date)}
+                  selected={occurenceDate}
+                  onChange={date => setOccurenceDate (date)}
                   showTimeSelect
                   timeIntervals={60}
                   timeFormat="HH:mm"
@@ -112,8 +133,8 @@ function ReportCrime () {
               <Form.Group inline>
                 <label>Reported Date and Time</label>
                 <DatePicker
-                  selected={startDate}
-                  onChange={date => setStartDate (date)}
+                  selected={reportedDate}
+                  onChange={date => setReportedDate (date)}
                   showTimeSelect
                   timeIntervals={60}
                   timeFormat="HH:mm"
@@ -126,16 +147,28 @@ function ReportCrime () {
                   label="Neighbourhood"
                   options={hoodOptions}
                   placeholder="Neighbourhood"
+                  onChange={(e, {value}) => setHood (value)}
                 />
               </Form.Group>
               <Form.Group widths="equal">
-                <Form.Input fluid label="Latitude" placeholder="Latitude" />
-                <Form.Input fluid label="Longitude" placeholder="Longitude" />
+                <Form.Input
+                  fluid
+                  label="Latitude"
+                  placeholder="Latitude"
+                  onChange={(e, {value}) => setLat (value)}
+                />
+                <Form.Input
+                  fluid
+                  label="Longitude"
+                  placeholder="Longitude"
+                  onChange={(e, {value}) => setLong (value)}
+                />
                 <Form.Select
                   fluid
                   label="Premise Type"
                   options={premiseTypeOptions}
                   placeholder="Premise Type"
+                  onChange={(e, {value}) => setPremiseType (value)}
                 />
               </Form.Group>
 
@@ -144,7 +177,7 @@ function ReportCrime () {
           </Modal.Description>
         </Modal.Content>
         <Modal.Actions>
-          <Button primary>
+          <Button primary onClick={addCrime}>
             Proceed <Icon name="chevron right" />
           </Button>
         </Modal.Actions>
