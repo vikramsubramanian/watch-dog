@@ -3,6 +3,7 @@ import React, {useState, useEffect, useRef} from 'react';
 import {Button, Header, Icon, Modal, Form} from 'semantic-ui-react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import {strEqual} from './utility';
 
 const premiseTypeOptions = [
   {key: 'h', text: 'House', value: 'House'},
@@ -13,7 +14,10 @@ const premiseTypeOptions = [
 function ReportCrime () {
   const [modalOpen, setModalOpen] = useState (false);
   const [startDate, setStartDate] = useState (new Date ().setMinutes (0));
+  const [crimeOptions, setCrimeOptions] = useState ([]);
   const [hoodOptions, setHoodOptions] = useState ([]);
+  const [crimeIndicator, setCrimeIndicator] = useState (null);
+  const [offenceOptions, setOffenceOptions] = useState (new Map ());
 
   useEffect (() => {
     var allHoods = [];
@@ -33,6 +37,38 @@ function ReportCrime () {
       .catch (err => {
         console.log (err);
       });
+
+    var allCrimeTypes = [];
+    var offence = new Map ();
+    fetch ('/regular-crimes')
+      .then (response => response.json ())
+      .then (res => {
+        console.log (res);
+        res.forEach (crime => {
+          if (!allCrimeTypes.find (ct => strEqual (ct.value, crime['MCI']))) {
+            allCrimeTypes.push ({
+              key: crime['crime_id'],
+              text: crime['MCI'],
+              value: crime['MCI'],
+            });
+          }
+          var offenceOption = {
+            key: crime['offence'],
+            text: crime['offence'],
+            value: crime['offence'],
+          };
+          if (offence[crime['MCI']]) {
+            offence[crime['MCI']].push (offenceOption);
+          } else {
+            offence[crime['MCI']] = [offenceOption];
+          }
+        });
+        setCrimeOptions (allCrimeTypes);
+        setOffenceOptions (offence);
+      })
+      .catch (err => {
+        console.log (err);
+      });
   }, []);
 
   return (
@@ -43,6 +79,25 @@ function ReportCrime () {
 
           <Modal.Description>
             <Form>
+              <Form.Group widths="equal">
+                <Form.Select
+                  fluid
+                  label="Major Crime Indicator"
+                  options={crimeOptions}
+                  placeholder="Major Crime Indicator"
+                  onChange={(e, data) => setCrimeIndicator (data)}
+                />
+                <Form.Select
+                  fluid
+                  label="Offence"
+                  options={
+                    offenceOptions &&
+                      crimeIndicator &&
+                      offenceOptions[crimeIndicator.value]
+                  }
+                  placeholder="Offence"
+                />
+              </Form.Group>
               <Form.Group inline>
                 <label>Occurence Date and Time</label>
                 <DatePicker
