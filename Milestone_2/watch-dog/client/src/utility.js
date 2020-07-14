@@ -1,5 +1,40 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, {useState, useEffect} from 'react';
+
+import {toast} from 'react-semantic-toasts';
+
 function strEqual (str1, str2) {
-  return str1.localeCompare (str2) == 0;
+  return str1.localeCompare (str2) === 0;
 }
 
-export {strEqual};
+function successToast () {
+  toast (
+    {
+      title: 'Success',
+      description: <p>Fetched data!</p>,
+      type: 'success',
+      time: 2500,
+      animation: 'fade left',
+    },
+    () => console.log ('toast closed'),
+    () => console.log ('toast clicked'),
+    () => console.log ('toast dismissed')
+  );
+}
+
+function errorToast () {
+  toast (
+    {
+      title: 'Error: DB',
+      description: <p>Could not connect to DB.</p>,
+      type: 'error',
+      time: 2500,
+      animation: 'fade left',
+    },
+    () => console.log ('toast closed'),
+    () => console.log ('toast clicked'),
+    () => console.log ('toast dismissed')
+  );
+}
+
+export {strEqual, successToast, errorToast};

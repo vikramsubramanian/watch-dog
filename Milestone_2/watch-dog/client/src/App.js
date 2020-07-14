@@ -13,7 +13,7 @@ import 'react-semantic-toasts/styles/react-semantic-alert.css';
 
 import './App.css';
 
-import {strEqual} from './utility';
+import {strEqual, successToast, errorToast} from './utility';
 
 import DogIcon from './dog_icon.svg';
 import Question from './Question';
@@ -33,93 +33,50 @@ function App () {
   const [dateType, setDateType] = useState ('year');
   const [cards, setCards] = useState ([]);
 
-  function selectCrime (crimeIndicator, dateType, dateNum) {
-    var path = '/crime-events?';
-    path += '&dateType=' + dateType + '&dateNum=' + dateNum.value;
+  function fetchCrimes (crimeIndicator, dateType, dateNum) {
+    setDateType (dateType);
+    var summaryPath = '/crime-events/summary?';
+    var tablePath = '/crime-events/table?';
+    var plusPart = '&dateType=' + dateType + '&dateNum=' + dateNum.value;
     if (!strEqual (crimeIndicator, 'all')) {
-      path += '&MCI=' + crimeIndicator;
+      plusPart += '&MCI=' + crimeIndicator;
     }
-    fetch (path)
-      .then (response => response.json ())
-      .then (data => {
-        toast (
-          {
-            title: 'Success',
-            description: <p>Fetched data!</p>,
-            type: 'success',
-            time: 2500,
-            animation: 'fade left',
-          },
-          () => console.log ('toast closed'),
-          () => console.log ('toast clicked'),
-          () => console.log ('toast dismissed')
-        );
-        console.log (data);
-        setDateType (dateType);
-        setCrimeData (data);
-        setCards ([
-          {
-            src: <TableCard crimeData={data} dateType={dateType} />,
-            group: 0,
-            width: null,
-          },
-          {
-            src: <SummaryCard crimeData={data} dateType={dateType} />,
-            group: 1,
-            width: 6,
-          },
-          {
-            src: <MapCard header="About" body={ABOUT_DESC} />,
-            group: 1,
-            width: 6,
-          },
-          {
-            src: <LineChart crimeData={data} dateType={dateType} />,
-            group: 2,
-            width: null,
-          },
-          {
-            src: (
-              <TextCard
-                header="The fine print:"
-                height={'300px'}
-                body={FINE_PRINT}
-              />
-            ),
-            group: 2,
-            width: 4,
-          },
-          {
-            src: <BarChart crimeData={data} dateType={dateType} />,
-            group: 3,
-            width: null,
-          },
-          {
-            src: <DoughnutChart crimeData={data} dateType={dateType} />,
-            group: 4,
-            width: null,
-          },
-          {
-            src: <TextCard header="About" body={ABOUT_DESC} />,
-            group: 4,
-            width: 3,
-          },
-        ]);
+    summaryPath += plusPart;
+    tablePath += plusPart;
+
+    Promise.all ([
+      fetch (tablePath).then (response => response.json ()),
+      fetch (summaryPath).then (response => response.json ()),
+    ])
+      .then (allResponses => {
+        // console.log (allResponses);
+        const tableData = allResponses[0];
+        const summaryData = allResponses[1];
+        successToast ();
+        var allCards = [];
+
+        allCards.push ({
+          src: <TableCard data={tableData || []} />,
+          group: 0,
+          width: null,
+        });
+
+        allCards.push ({
+          src: (
+            <SummaryCard
+              data={summaryData || []}
+              crimeIndicator={crimeIndicator}
+            />
+          ),
+          group: 1,
+          width: 6,
+        });
+
+        setCards (allCards);
       })
-      .catch (error => {
-        console.error ('Error:', error);
-        toast (
-          {
-            title: 'Error: DB',
-            description: <p>Could not connect to DB.</p>,
-            type: 'error',
-            time: 2500,
-            animation: 'fade left',
-          },
-          () => console.log ('toast closed'),
-          () => console.log ('toast clicked'),
-          () => console.log ('toast dismissed')
-        );
+      .catch (err => {
+        console.log (err);
+        errorToast ();
       });
   }
 
@@ -138,7 +95,7 @@ function App () {
           </Header.Content>
         </Header>
       </div>
-      <Question selectCrime={selectCrime} />
+      <Question fetchCrimes={fetchCrimes} />
       <Container style={{marginTop: '3em'}}>
         <Grid columns="equal">
           {[0, 1, 2, 3, 4].map (gnum => {

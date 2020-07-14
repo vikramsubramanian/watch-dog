@@ -6,6 +6,19 @@ import {crimeIndicatorOptions} from './constants';
 import {strEqual} from './utility';
 
 function SummaryCard (props) {
+  const [totalCrimes, setTotalCrimes] = useState (0);
+
+  useEffect (
+    () => {
+      var total = 0;
+      props.data.forEach (eve => {
+        total += eve.total;
+      });
+      setTotalCrimes (total);
+    },
+    [props.data]
+  );
+
   return (
     <div className="summaryCard">
       <h1>Totals</h1>
@@ -13,18 +26,29 @@ function SummaryCard (props) {
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell>Total Crime</Table.HeaderCell>
-            <Table.HeaderCell>0</Table.HeaderCell>
+            <Table.HeaderCell>{totalCrimes}</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
 
         <Table.Body>
           {crimeIndicatorOptions
-            .filter (opt => !strEqual (opt.value, 'all'))
+            .filter (opt => {
+              if (strEqual (props.crimeIndicator, 'all')) {
+                return !strEqual (opt.value, 'all');
+              } else {
+                return strEqual (opt.value, props.crimeIndicator);
+              }
+            })
             .map ((opt, ind) => {
+              const MCI = props.data.find (eve =>
+                strEqual (eve.MCI.toLowerCase (), opt.label)
+              );
               return (
                 <Table.Row>
                   <Table.Cell key={ind}>{opt.label}</Table.Cell>
-                  <Table.Cell>0</Table.Cell>
+                  <Table.Cell>
+                    {MCI ? MCI['total'] : 0}
+                  </Table.Cell>
                 </Table.Row>
               );
             })}

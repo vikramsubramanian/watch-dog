@@ -14,8 +14,8 @@ function TableCard (props) {
 
   useEffect (
     () => {
-      if (props.crimeData.length > 0) {
-        var keys = Object.keys (props.crimeData[0]);
+      if (props.data.length > 0) {
+        var keys = Object.keys (props.data[0]);
         var newCols = [];
         keys.forEach (key => {
           newCols.push ({
@@ -28,7 +28,7 @@ function TableCard (props) {
         setColumnsDefs (newCols);
       }
     },
-    [props.crimeData]
+    [props.data]
   );
 
   function handleClick (e, titleProps) {
@@ -50,7 +50,7 @@ function TableCard (props) {
             <Icon name="dropdown" />
             <h2 className="wrapperHeader">See a detailed table of these</h2>
             <Label color={'blue'} className="wrapperTotal">
-              {props.crimeData.length}
+              {props.data.length}
             </Label>
             <h2 className="wrapperHeader">incidents</h2>
           </div>
@@ -64,7 +64,7 @@ function TableCard (props) {
               <AgGridReact
                 columnDefs={columnDefs}
                 pagination={true}
-                rowData={props.crimeData}
+                rowData={props.data}
                 domLayout={'autoHeight'}
               />
             </div>

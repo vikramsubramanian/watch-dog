@@ -156,7 +156,7 @@ function Question (props) {
           labelPosition="right"
           primary
           size="mini"
-          onClick={() => props.selectCrime (crimeIndicator, dateType, dateNum)}
+          onClick={() => props.fetchCrimes (crimeIndicator, dateType, dateNum)}
         >
           <Icon name="arrow down" />
           OK
