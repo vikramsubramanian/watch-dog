@@ -100,3 +100,7 @@ create TABLE InvolvedPerson
   action_taken VARCHAR(50),
   FOREIGN KEY(accident_id) REFERENCES TrafficEvent(accident_id)
 );
+
+CREATE INDEX YearMonth ON IncidentTime(year, month);
+
+CREATE INDEX InvolvedPersonAge ON InvolvedPerson(age);
