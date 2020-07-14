@@ -4,7 +4,7 @@
 \usepackage[left=1.00in, right=1.00in, top=1.00in, bottom=1.00in]{geometry}
 \usepackage{graphicx}
 \graphicspath{ {./} }
-\title{CS348 Project Milestone 1}
+\title{CS348 Project Milestone 2}
 \author{Abdullah Bin Assad\and Chandana Sathish \and Lukman Mohamed \and Vikram Subramanian \and Dhvani Patel}
 \begin{document}
 \maketitle
@@ -35,7 +35,12 @@ A user would simply search for a query (as seen on the demo application) using t
 \end{itemize}
 \end{enumerate}
 \subsection*{Data}
-The tables we get from the Toronto Police Open Data ( \url{https://data.torontopolice.on.ca/pages/open-data}) are a little difficult to work with. Therefore, we create a data parser (in code.zip) to convert it to .csv files that fulfill our requirements. Sample data is part of the code.zip as csv files (ex. Neighbourhood.csv, CrimeEvent.csv).
+The tables we get from the Toronto Police Open Data:
+\begin{itemize}
+    \item \url{https://data.torontopolice.on.ca/pages/open-data}
+    \item \url{https://open.toronto.ca/dataset/neighbourhood-profiles/}
+\end{itemize}
+The tables themselves are a little difficult to work with. Therefore, we create a data parser (in code.zip) to convert it to .csv files that fulfill our requirements. Sample data is part of the code.zip as csv files (ex. Neighbourhood.csv, CrimeEvent.csv).
 \subsection*{System support}
 Our interface will consist of an interactive web-app. We will be using Azure to host our database and run a MySQL instance. This setup is ideal and efficient for building a web app such as ours. Azure and MySQL are modern, scalable, efficient and flexible. We will be using Node.js with an Express.js server as our back-end to interact with the database. For the front-end, we will be using the React library. Thus, our web application code mostly consists of JavaScript. Members of our group have experience with Node.js and React which gives us an excellent basis for our project.
 
@@ -51,85 +56,114 @@ Our interface will consist of an interactive web-app. We will be using Azure to 
     \item the status of stolen bikes is updated as best as possible (most bikes are never recovered)
 \end{itemize}
 \subsection*{E/R diagram}
-\includegraphics[scale=0.25]{ER Diagram.png}
+\includegraphics[scale=0.3]{ER Diagram.png}
 Note: Check the standalone image of the ER diagram if this one is too small.
 \subsection*{Relational Data Model}
 \begin{itemize}
     \item IncidentTime
     \begin{itemize}
-        \item \underline{time\_id}
-        \item hour
-        \item day
-        \item month
-        \item year 
-        \item day\_of\_week
+        \item \underline{time\_id} : INT
+        \item hour : INT
+        \item day : INT
+        \item month : INT
+        \item year : INT
+        \item day\_of\_week : INT
     \end{itemize}
     \item PoliceDivision
         \begin{itemize}
-        \item \underline{division}
-        \item address
+        \item \underline{division} : ??
+        \item address : VARCHAR(40)
+        \item area : FLOAT
+        \item shapeLeng : FLOAT
+        \item shapeArea : FLOAT
     \end{itemize}
     \item Neighbourhood
         \begin{itemize}
         \item \underline{hood\_id}
-        \item name
-        \item division (Foreign Key Referencing PoliceDivision(division))
+        \item name : VARCHAR(50)
+        \item employment\_rate : FLOAT
+        \item high\_school : FLOAT
+        \item university : FLOAT
+        \item technical\_degree : FLOAT
+        \item division : ??? (Foreign Key Referencing PoliceDivision(division))
     \end{itemize}
     \item BikeTheft
         \begin{itemize}
-        \item \underline{bike\_theft\_id}
-        \item colour
-        \item make
-        \item model
-        \item speed
-        \item bike\_type
-        \item status
-        \item cost
+        \item \underline{event\_id} : INT (Foreign Key Referencing CrimeEvent(event\_id))
+        \item colour: VARCHAR(15)
+        \item make : VARCHAR(15)
+        \item model : VARCHAR(15)
+        \item speed : VARCHAR(15)
+        \item bike\_type : VARCHAR(15)
+        \item status : VARCHAR(15)
+        \item cost : VARCHAR(15)
     \end{itemize}
     \item RegularCrime
         \begin{itemize}
-        \item \underline{crime\_id}
-        \item offence
-        \item MCI
+        \item \underline{crime\_id} : INT
+        \item offence : VARCHAR(50)
+        \item MCI : VARCHAR(10)
     \end{itemize}
     \item CrimeEvent
         \begin{itemize}
-        \item \underline{event\_id}
-        \item occurrence\_time\_id (Foreign Key Referencing IncidentTime(time\_id))
-        \item reported\_time\_id (Foreign Key Referencing IncidentTime(time\_id))
-        \item crime\_id (Foreign Key Referencing RegularCrime(crime\_id))
-        \item bike\_theft\_id (Foreign Key Referencing BikeTheft(bike\_theft\_id))
-        \item hood\_id (Foreign Key Referencing Neighbourhood(hood\_id))
-        \item latitude
-        \item longitude
-        \item premise\_type
+        \item \underline{event\_id} : INT
+        \item occurrence\_time\_id : INT (Foreign Key Referencing IncidentTime(time\_id))
+        \item reported\_time\_id : INT (Foreign Key Referencing IncidentTime(time\_id))
+        \item crime\_id : INT (Foreign Key Referencing RegularCrime(crime\_id))
+        \item hood\_id : INT (Foreign Key Referencing Neighbourhood(hood\_id))
+        \item latitude : FLOAT
+        \item longitude : FLOAT
+        \item premise\_type : VARCHAR(50)
     \end{itemize}
     \item InvolvedPerson
     \begin{itemize}
-        \item \underline{accident\_id} (Foreign Key Referencing TrafficEvent(accident\_id))
-        \item \underline{person\_id}
-        \item involvement\_type,
-        \item age
-        \item injury
-        \item vehicle\_type
-        \item action\_taken
+        \item \underline{accident\_id} : INT (Foreign Key Referencing TrafficEvent(accident\_id))
+        \item \underline{person\_id} : INT
+        \item involvement\_type : VARCHAR(50)
+        \item age : ???
+        \item injury : VARCHAR(50)
+        \item vehicle\_type : VARCHAR(10)
+        \item action\_taken : VARCHAR(50)
     \end{itemize}
     \item RoadCondition
     \begin{itemize}
-        \item \underline{road\_condition\_id}
-        \item classification
-        \item traffic\_control\_type
-        \item visibility
-        \item surface\_condition
+        \item \underline{road\_condition\_id} : INT
+        \item classification : VARCHAR(50)
+        \item traffic\_control\_type : VARCHAR(50)
+        \item visibility : VARCHAR(10)
+        \item surface\_condition : VARCHAR(10)
     \end{itemize}
     \item TrafficEvent
     \begin{itemize}
-        \item \underline{accident\_id}
-        \item occurrence\_time\_id (Foreign Key Referencing IncidentTime(time\_id))
-        \item road\_condition\_id (Foreign Key Referencing RoadCondition(road\_condition\_id))
-        \item hood\_id (Foreign Key Referencing Neighbourhood(hood\_id))
-        \item latitude
-        \item longitude
+        \item \underline{accident\_id} : INT
+        \item occurrence\_time\_id : INT (Foreign Key Referencing IncidentTime(time\_id))
+        \item road\_condition\_id : INT (Foreign Key Referencing RoadCondition(road\_condition\_id))
+        \item hood\_id : INT (Foreign Key Referencing Neighbourhood(hood\_id))
+        \item latitude : FLOAT
+        \item longitude : FLOAT
+    \end{itemize}
+\end{itemize}
+\subsection*{Changes/Improvements Since Milestone 1}
+\begin{itemize}
+    \item Created Indices to speed up queries based on incident time and the age of the person involved in accidents:
+    \begin{itemize}
+        \item CREATE INDEX YearMonth ON IncidentTime(year, month)
+        \item CREATE INDEX InvolvedPersonAge ON InvolvedPerson(age)
+    \end{itemize}
+    \item Added demographics data for each neighbourhood from Toronto Census:
+    \begin{itemize}
+        \item Employment rate %
+        \item Highest Education Levels:
+        \begin{itemize}
+            \item High School %
+            \item University %
+            \item Technical Degree / Trades %
+        \end{itemize}
+    \end{itemize}
+    \item Converted BikeThefts table into a Specialization of CrimeEvent table
+    \begin{itemize}
+        \item addresses the problem of superfluous joins when trying to access only bike thefts
+        \item fixes issues with insert/delete anomalies
     \end{itemize}
 \end{itemize}
 \end{document}

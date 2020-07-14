@@ -1,0 +1,18 @@
+Group 1:
+Member List (5 members):
+
+Member 1: Abdullah Bin Asad
+- cleaned up and combined demographics data (census) with the neighbourhoods table
+- cleaned up the neighbourhoods table (issues with police division)
+- wrote the SQL queries for the application / testing script of the app
+- worked on the report (Data types, changes since M1 and member contributions)
+- created indices for certain fields to speed up certain queries
+
+Member 2: Chandana Sathish
+
+Member 3: Lukman Mohamed
+
+Member 4: Vikram Subramanian
+
+Member 5: Dhvani Patel
+
