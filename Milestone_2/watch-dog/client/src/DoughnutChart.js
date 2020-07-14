@@ -6,28 +6,63 @@ import {crimeIndicatorOptions} from './constants';
 import {strEqual} from './utility';
 
 function DoughnutChart (props) {
-  const labels = crimeIndicatorOptions.map (opt => {
-    return opt.label;
-  });
+  const [chartData, setChartData] = useState ({});
 
-  const [chartData, setChartData] = useState ({
-    labels: labels,
-    datasets: [
-      {
-        data: [300, 50, 100, 200, 230, 50, 90, 20],
-        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
-        hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
-      },
-    ],
-  });
+  const createDoughnutChart = () => {
+    var allData = [];
+    var labels = [];
+    crimeIndicatorOptions
+      .filter (opt => {
+        if (strEqual (props.crimeIndicator, 'all')) {
+          return !strEqual (opt.value, 'all');
+        } else {
+          return strEqual (opt.value, props.crimeIndicator);
+        }
+      })
+      .forEach (opt => {
+        var MCI = props.data.find (eve =>
+          strEqual (eve.MCI.toLowerCase (), opt.label)
+        );
+        if (MCI) {
+          allData.push (MCI.total);
+        } else {
+          allData.push (0);
+        }
+        labels.push (opt.label);
+      });
+    // console.log (props.data);
 
-  const createBarChart = () => {};
+    setChartData ({
+      labels: labels,
+      datasets: [
+        {
+          data: allData,
+          backgroundColor: [
+            '#FF6384',
+            '#36A2EB',
+            '#FFCE56',
+            '#4BC0C0',
+            '#EC932F',
+            '#71B37C',
+          ],
+          hoverBackgroundColor: [
+            '#FF6384',
+            '#36A2EB',
+            '#FFCE56',
+            '#4BC0C0',
+            '#EC932F',
+            '#71B37C',
+          ],
+        },
+      ],
+    });
+  };
 
   useEffect (
     () => {
-      createBarChart ();
+      createDoughnutChart ();
     },
-    [props.crimeData]
+    [props.data]
   );
 
   return <Doughnut data={chartData} />;

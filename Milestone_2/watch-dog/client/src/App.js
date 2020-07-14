@@ -84,6 +84,48 @@ function App () {
           width: 6,
         });
 
+        allCards.push ({
+          src: (
+            <TextCard
+              header="The fine print:"
+              height={'300px'}
+              body={FINE_PRINT}
+            />
+          ),
+          group: 2,
+          width: 4,
+        });
+
+        allCards.push ({
+          src: (
+            <BarChart
+              data={summaryData || []}
+              crimeIndicator={crimeIndicator}
+              title={dateNum.label}
+            />
+          ),
+          group: 3,
+          width: null,
+        });
+
+        allCards.push ({
+          src: (
+            <DoughnutChart
+              data={summaryData || []}
+              crimeIndicator={crimeIndicator}
+              title={dateNum.label}
+            />
+          ),
+          group: 3,
+          width: null,
+        });
+
+        allCards.push ({
+          src: <TextCard header="About" body={ABOUT_DESC} />,
+          group: 3,
+          width: 3,
+        });
+
         setCards (allCards);
       })
       .catch (err => {
