@@ -25,6 +25,7 @@ import TextCard from './TextCard';
 import SummaryCard from './SummaryCard';
 
 import MapCard from './MapCard';
+import ReportCrime from './ReportCrime';
 
 import {FINE_PRINT, ABOUT_DESC} from './constants';
 
@@ -175,11 +176,7 @@ function App () {
             );
           })}
         </Grid>
-        <div className="reportCrime">
-          <Button secondary>
-            Report Crime
-          </Button>
-        </div>
+        <ReportCrime />
       </Container>
       <SemanticToastContainer />
     </div>
