@@ -35,23 +35,29 @@ function App () {
 
   function fetchCrimes (crimeIndicator, dateType, dateNum) {
     setDateType (dateType);
-    var summaryPath = '/crime-events/summary?';
     var tablePath = '/crime-events/table?';
+    var summaryPath = '/crime-events/summary?';
+    var mapPath = '/crime-events/map?';
+
     var plusPart = '&dateType=' + dateType + '&dateNum=' + dateNum.value;
     if (!strEqual (crimeIndicator, 'all')) {
       plusPart += '&MCI=' + crimeIndicator;
     }
     summaryPath += plusPart;
     tablePath += plusPart;
+    mapPath += plusPart;
 
     Promise.all ([
       fetch (tablePath).then (response => response.json ()),
       fetch (summaryPath).then (response => response.json ()),
+      fetch (mapPath).then (response => response.json ()),
     ])
       .then (allResponses => {
         // console.log (allResponses);
         const tableData = allResponses[0];
         const summaryData = allResponses[1];
+        const mapData = allResponses[2];
+
         successToast ();
         var allCards = [];
 
@@ -68,6 +74,12 @@ function App () {
               crimeIndicator={crimeIndicator}
             />
           ),
+          group: 1,
+          width: 6,
+        });
+
+        allCards.push ({
+          src: <MapCard markers={mapData} />,
           group: 1,
           width: 6,
         });

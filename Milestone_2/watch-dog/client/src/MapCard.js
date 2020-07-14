@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, {useState, useEffect, useRef} from 'react';
 import mapboxgl from 'mapbox-gl';
 
@@ -9,7 +10,27 @@ function MapCard (props) {
   const [zoom, setZoom] = useState (10);
   const [map, setMap] = useState (null);
   const [viewport, setViewport] = useState ({});
+  const [markers, setMarkers] = useState ([]);
   const mapContainer = useRef (null);
+
+  useEffect (
+    () => {
+      if (map) {
+        markers.forEach (marker => {
+          marker.remove ();
+        });
+        var newMarkers = [];
+        props.markers.forEach (marker => {
+          var newMarker = new mapboxgl.Marker ()
+            .setLngLat ([marker['latitude'], marker['longitude']])
+            .addTo (map);
+          newMarkers.push (newMarker);
+        });
+        setMarkers (newMarkers);
+      }
+    },
+    [map, props.markers]
+  );
 
   useEffect (
     () => {
@@ -26,10 +47,6 @@ function MapCard (props) {
           setMap (map);
           map.resize ();
         });
-
-        var marker = new mapboxgl.Marker ()
-          .setLngLat ([-79.387015, 43.651070])
-          .addTo (map);
 
         map.addControl (new mapboxgl.NavigationControl ());
 
