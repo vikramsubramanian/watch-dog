@@ -1,4 +1,4 @@
-accident_id,time_id,road_condition_id,hood_id,latitude,longitude
+accident_id,occurrence_time_id,road_condition_id,hood_id,latitude,longitude
 910787,100000,100000,83,43.650445,-79.43979
 1338700,104627,100000,120,43.711943,-79.270191
 7000452997,188992,100000,31,43.722506,-79.469394
