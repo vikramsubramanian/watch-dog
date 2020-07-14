@@ -26,7 +26,7 @@ create TABLE Neighbourhood
   high_school FLOAT CHECK(high_school >= 0),
   university FLOAT CHECK(university >= 0),
   technical_degree FLOAT CHECK(technical_degree >= 0),
-  division FLOAT,
+  division INT,
   FOREIGN KEY(division) REFERENCES PoliceDivision(division)
 );
 
