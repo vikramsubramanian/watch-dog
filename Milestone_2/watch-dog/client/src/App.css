@@ -40,3 +40,22 @@
 .textCard {
   overflow-y: auto;
 }
+
+.reportCrime {
+  position: fixed;
+  bottom: 20px;
+  right: 25px;
+  animation: 1.5s ease-in-out 0s infinite normal none running back-to-docs;
+}
+
+@keyframes back-to-docs {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(0.35em);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}

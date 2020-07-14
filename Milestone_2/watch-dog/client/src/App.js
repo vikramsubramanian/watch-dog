@@ -1,12 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {
   Header,
   Container,
-  Card,
   Button,
   Segment,
   Grid,
+  Transition,
 } from 'semantic-ui-react';
 import {SemanticToastContainer, toast} from 'react-semantic-toasts';
 import 'react-semantic-toasts/styles/react-semantic-alert.css';
@@ -29,7 +29,6 @@ import MapCard from './MapCard';
 import {FINE_PRINT, ABOUT_DESC} from './constants';
 
 function App () {
-  const [crimeData, setCrimeData] = useState ([]);
   const [dateType, setDateType] = useState ('year');
   const [cards, setCards] = useState ([]);
 
@@ -176,6 +175,11 @@ function App () {
             );
           })}
         </Grid>
+        <div className="reportCrime">
+          <Button secondary>
+            Report Crime
+          </Button>
+        </div>
       </Container>
       <SemanticToastContainer />
     </div>
