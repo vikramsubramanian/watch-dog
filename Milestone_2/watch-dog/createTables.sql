@@ -12,18 +12,21 @@ create TABLE IncidentTime
 create TABLE PoliceDivision
 (
   division INT NOT NULL PRIMARY KEY,
-  address VARCHAR(50)
+  address VARCHAR(50),
+  area FLOAT CHECK(area >= 0),
+  shapeLeng FLOAT CHECK(shapeLeng >= 0),
+  shapeArea FLOAT CHECK(shapeArea >= 0)
 );
 
 create TABLE Neighbourhood
 (
   hood_id INT NOT NULL PRIMARY KEY,
   name VARCHAR(50),
-  employement_rate INT,
-  high_school INT,
-  university INT,
-  technical_degree INT,
-  division INT,
+  employement_rate FLOAT CHECK(employement_rate >= 0),
+  high_school FLOAT CHECK(high_school >= 0),
+  university FLOAT CHECK(university >= 0),
+  technical_degree FLOAT CHECK(technical_degree >= 0),
+  division FLOAT,
   FOREIGN KEY(division) REFERENCES PoliceDivision(division)
 );
 
