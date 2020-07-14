@@ -1,4 +1,4 @@
-time_id,hour,day,month,year,dayofweek
+time_id,hour,day,month,year,day_of_week
 100000,1,24,3,2014,2
 100001,16,27,9,2014,7
 100002,6,24,3,2014,2
