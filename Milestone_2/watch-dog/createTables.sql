@@ -1,6 +1,6 @@
 create TABLE IncidentTime
 (
-  time_id INT NOT NULL PRIMARY KEY,
+  time_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   hour INT CHECK (hour >= 0 AND hour <= 12),
   day INT CHECK (day >= 1 AND day <= 31),
   month INT CHECK(month >= 1 AND month <= 12),
@@ -39,7 +39,7 @@ create TABLE RegularCrime
 
 create TABLE CrimeEvent
 (
-  event_id INT NOT NULL PRIMARY KEY,
+  event_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   occurrence_time_id INT,
   reported_time_id INT,
   crime_id INT,
@@ -77,7 +77,7 @@ create TABLE RoadCondition
 
 create TABLE TrafficEvent
 (
-  accident_id INT NOT NULL PRIMARY KEY,
+  accident_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   occurrence_time_id INT,
   road_condition_id INT,
   hood_id INT,
