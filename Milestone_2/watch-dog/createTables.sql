@@ -34,7 +34,7 @@ create TABLE RegularCrime
 (
   crime_id INT NOT NULL PRIMARY KEY,
   offence VARCHAR(50),
-  MCI VARCHAR(10)
+  MCI VARCHAR(50)
 );
 
 create TABLE CrimeEvent
@@ -71,8 +71,8 @@ create TABLE RoadCondition
   road_condition_id INT NOT NULL PRIMARY KEY,
   classification VARCHAR(50),
   traffic_control_type VARCHAR(50),
-  visibility VARCHAR(10),
-  surface_condition VARCHAR(10)
+  visibility VARCHAR(50),
+  surface_condition VARCHAR(50)
 );
 
 create TABLE TrafficEvent
@@ -96,7 +96,7 @@ create TABLE InvolvedPerson
   involvement_type VARCHAR(50),
   age INT,
   injury VARCHAR(50),
-  vehicle_type VARCHAR(10),
+  vehicle_type VARCHAR(50),
   action_taken VARCHAR(50),
   FOREIGN KEY(accident_id) REFERENCES TrafficEvent(accident_id)
 );

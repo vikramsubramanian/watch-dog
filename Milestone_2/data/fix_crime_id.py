@@ -22,7 +22,6 @@ with open('RegularCrime.csv') as crime_file:
                 print(f'Column names are {", ".join(row)}')
                 new_crime_id += 1
             else:
-                new_crime_id += 1
                 # print(row)
 
                 # Fix Crime ID
@@ -34,6 +33,8 @@ with open('RegularCrime.csv') as crime_file:
                 events_match = [a for a in fixed_events if a[7] == old_crime_id]
                 for event in events_match:
                     event[7] = new_crime_id
+
+                new_crime_id += 1
 
 
 with open('RegularCrime_new.csv', mode='w') as csv_file:

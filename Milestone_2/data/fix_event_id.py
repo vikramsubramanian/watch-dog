@@ -22,7 +22,6 @@ with open('CrimeEvents_new.csv') as crime_file:
                 print(f'Column names are {", ".join(row)}')
                 new_crime_id += 1
             else:
-                new_crime_id += 1
                 # print(row)
 
                 # Fix Crime ID
@@ -35,6 +34,8 @@ with open('CrimeEvents_new.csv') as crime_file:
                 for bike in bikes_match:
                     bike[0] = new_crime_id
                 print("At iter: " + str(new_crime_id))
+
+                new_crime_id += 1
 
 with open('CrimeEvents_new_new.csv', mode='w') as csv_file:
     crime_writer = csv.writer(csv_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
