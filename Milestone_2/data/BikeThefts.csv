@@ -1,4 +1,4 @@
-bike_theft_id,Bike_Make,Bike_Model,Bike_Type,Bike_Colour,Bike_Speed,Cost_of_Bike,Status
+event_id,make,model,bike_type,colour,speed,cost,status
 800000,SUPERCYCLE,,MT,ONG,10,,STOLEN
 800001,IRON HORSE,,MT,BLU,24,500,STOLEN
 800002,ROCKY MOUNTAIN,TRAILHEAD,MT,BLK,1,,RECOVERED
