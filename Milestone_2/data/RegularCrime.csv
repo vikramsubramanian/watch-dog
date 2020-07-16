@@ -1,0 +1,50 @@
+crime_id,offence,MCI
+1,Assault,Assault
+2,B&E,Break and Enter
+3,Robbery - Business,Robbery
+4,Assault With Weapon,Assault
+5,Theft Over,Theft Over
+6,Robbery - Mugging,Robbery
+7,Theft Over - Shoplifting,Theft Over
+8,B&E W'Intent,Break and Enter
+9,Aggravated Assault,Assault
+10,Assault Bodily Harm,Assault
+11,Assault - Resist/ Prevent Seiz,Assault
+12,Robbery - Other,Robbery
+13,Robbery With Weapon,Robbery
+14,Assault Peace Officer,Assault
+15,Robbery - Home Invasion,Robbery
+16,Unlawfully In Dwelling-House,Break and Enter
+17,Robbery - Swarming,Robbery
+18,Robbery - Purse Snatch,Robbery
+19,Pointing A Firearm,Assault
+20,Theft From Motor Vehicle Over,Theft Over
+21,Discharge Firearm - Recklessly,Assault
+22,Robbery - Financial Institute,Robbery
+23,Robbery - Taxi,Robbery
+24,Use Firearm / Immit Commit Off,Assault
+25,Administering Noxious Thing,Assault
+26,Discharge Firearm With Intent,Assault
+27,Robbery - Delivery Person,Robbery
+28,Assault - Force/Thrt/Impede,Assault
+29,B&E Out,Break and Enter
+30,Theft From Mail / Bag / Key,Theft Over
+31,Crim Negligence Bodily Harm,Assault
+32,Assault Peace Officer Wpn/Cbh,Assault
+33,Robbery - Vehicle Jacking,Robbery
+34,Robbery - Armoured Car,Robbery
+35,Air Gun Or Pistol: Bodily Harm,Assault
+36,Theft Over - Distraction,Theft Over
+37,Theft - Misapprop Funds Over,Theft Over
+38,Robbery - Atm,Robbery
+39,Disarming Peace/Public Officer,Assault
+40,Aggravated Aslt Peace Officer,Assault
+41,Unlawfully Causing Bodily Harm,Assault
+42,Aggravated Assault Avails Pros,Assault
+43,Theft Of Utilities Over,Theft Over
+44,B&E - To Steal Firearm,Break and Enter
+45,Theft Of Motor Vehicle,Auto Theft
+46,Theft Over - Bicycle,Theft Over
+47,Set/Place Trap/Intend Death/Bh,Assault
+48,Traps Likely Cause Bodily Harm,Assault
+49,B&E - M/Veh To Steal Firearm,Break and Enter
