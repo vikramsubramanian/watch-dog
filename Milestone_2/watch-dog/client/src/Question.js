@@ -6,6 +6,8 @@ import {
   Button,
   Icon,
   Visibility,
+  Dimmer,
+  Loader,
 } from 'semantic-ui-react';
 
 import {
@@ -138,6 +140,8 @@ function Question (props) {
             icon
             labelPosition="right"
             primary
+            loading={props.loading}
+            disabled={props.loading}
             size="mini"
             onClick={() =>
               props.fetchCrimes (crimeIndicator, dateType, dateNum)}

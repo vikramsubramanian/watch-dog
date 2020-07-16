@@ -32,9 +32,11 @@ import {FINE_PRINT, ABOUT_DESC} from './constants';
 function App () {
   const [dateType, setDateType] = useState ('year');
   const [cards, setCards] = useState ([]);
+  const [loadingData, setLoadingData] = useState (false);
 
   function fetchCrimes (crimeIndicator, dateType, dateNum) {
     setDateType (dateType);
+    setLoadingData (true);
     var tablePath = '/crime-events/table?';
     var summaryPath = '/crime-events/summary?';
     var mapPath = '/crime-events/map?';
@@ -133,10 +135,12 @@ function App () {
         });
 
         setCards (allCards);
+        setLoadingData (false);
       })
       .catch (err => {
         console.log (err);
         errorToast ();
+        setLoadingData (false);
       });
   }
 
@@ -155,7 +159,7 @@ function App () {
           </Header.Content>
         </Header>
       </div>
-      <Question fetchCrimes={fetchCrimes} />
+      <Question fetchCrimes={fetchCrimes} loading={loadingData} />
       <Container style={{marginTop: '3em'}}>
         <Grid columns="equal">
           {[0, 1, 2, 3, 4].map (gnum => {

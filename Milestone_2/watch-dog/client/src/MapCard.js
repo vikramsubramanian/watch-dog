@@ -24,7 +24,27 @@ function MapCard (props) {
           var newMarker = new mapboxgl.Marker ()
             .setLngLat ([marker['latitude'], marker['longitude']])
             .addTo (map);
-          newMarkers.push (newMarker);
+
+          map.addSource ('points', {
+            type: 'geojson',
+            data: {
+              type: 'FeatureCollection',
+              features: [
+                {
+                  // feature for Mapbox DC
+                  type: 'Feature',
+                  geometry: {
+                    type: 'Point',
+                    coordinates: [marker['latitude'], marker['longitude']],
+                  },
+                  properties: {
+                    title: 'Mapbox DC',
+                  },
+                },
+              ],
+            },
+          });
+          // newMarkers.push (newMarker);
         });
         setMarkers (newMarkers);
       }

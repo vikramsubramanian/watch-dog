@@ -59,12 +59,13 @@ function TableCard (props) {
           <div style={{maxHeight: '400px'}}>
             <div
               className="ag-theme-alpine"
-              style={{height: '100%', width: '100%'}}
+              style={{width: '100%', marginBottom: '15px'}}
             >
               <AgGridReact
                 columnDefs={columnDefs}
                 pagination={true}
                 rowData={props.data}
+                paginationPageSize={10}
                 domLayout={'autoHeight'}
               />
             </div>
