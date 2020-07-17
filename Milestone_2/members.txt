@@ -9,6 +9,15 @@ Member 1: Abdullah Bin Asad
 - created indices for certain fields to speed up certain queries
 
 Member 2: Chandana Sathish
+- worked on the report (updated system support and feature details)
+- worked on the application
+  - report a crime button and modal
+  - line chart
+  - summary card
+  - overloaded table to be paginated and added filtering
+  - testing Google Maps API and realizing limit and performance issues
+    - switched over to Mapbox
+  - tested Heatmap library
 
 Member 3: Lukman Mohamed
 - Extracted data from the police databases on bike thefts, traffic incidents and other/regular crimes
@@ -20,4 +29,15 @@ Member 3: Lukman Mohamed
 Member 4: Vikram Subramanian
 
 Member 5: Dhvani Patel
+- loaded the production CSVs into SQL by writing SQL code
+  - cleaned up a few corrupt rows in the process
+- worked on the application
+  - bar char
+  - doughnut chart
+  - summary and info cards
+  - fixed header as you scroll
+- worked on backend app.js and added the new paths
+- deployed the app and made sure it was working
+- prepared code.zip
+
 
