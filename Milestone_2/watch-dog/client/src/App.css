@@ -1,0 +1,61 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.selectHeader {
+  font-size: 2.2em !important;
+  background-color: #2b4888 !important;
+  margin-top: 0em !important;
+}
+
+.selectDropdowns {
+  color: #51b9f6 !important;
+  border-bottom: 1px dashed #51b9f6;
+}
+
+.selectDropdownItem {
+  font-size: 0.7em !important;
+}
+
+.selectText {
+  user-select: auto !important;
+}
+
+.selectButton {
+  font-size: initial !important;
+}
+
+.appHeader {
+  font-size: 16px;
+  padding-top: 10px;
+  border-bottom: 5px solid #c9c9c9;
+  border-top: 11px solid #2b4888;
+}
+
+.cardSegment {
+  overflow-x: scroll;
+}
+
+.textCard {
+  overflow-y: auto;
+}
+
+.reportCrime {
+  position: fixed;
+  bottom: 20px;
+  right: 25px;
+  animation: 1.5s ease-in-out 0s infinite normal none running back-to-docs;
+}
+
+@keyframes back-to-docs {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(0.35em);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
