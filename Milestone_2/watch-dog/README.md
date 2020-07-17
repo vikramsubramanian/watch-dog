@@ -58,7 +58,7 @@ Note: we have implemented the Map, but we had to switch from Google Maps to Mapb
 ## Creating and loading the production database:
 
 - The production dataset has already been generated and the corresponding .csv files can be found in the `data/` folder.
-- To regenerate the data, you may use various versions (as needed) of the Jupyter Notebooks and Python scripts which are located in the `data/scripts` folder. THe scripts can be run on the raw data which can be found under the `data/source_data` folder.
+- To regenerate the data, you may use various versions (as needed) of the Jupyter Notebooks and Python scripts which are located in the `data/scripts` folder. The scripts can be run on the raw data which can be found under the `data/source_data` folder and more instructions can be found in the notebooks.
 - To load the production data, do the following (assuming you have already created the tables):
   - Connect to the SQL Server:
     - `mysql --host watchdog348.mysql.database.azure.com --user warrior@watchdog348 -p`
