@@ -1,0 +1,46 @@
+Group 1:
+Member List (5 members):
+
+Member 1: Abdullah Bin Asad
+- cleaned up and combined demographics data (census) with the neighbourhoods table
+- cleaned up the neighbourhoods table (issues with police division)
+- wrote the SQL queries for the application / testing script of the app
+- worked on the report (Data types, changes since M1 and member contributions)
+- created indices for certain fields to speed up certain queries
+
+Member 2: Chandana Sathish
+- worked on the report (updated system support and feature details)
+- worked on the application
+  - report a crime button and model
+  - line chart
+  - summary card
+  - overloaded table to be paginated and added filtering
+  - testing Google Maps API and realizing limit and performance issues
+    - switched over to Mapbox
+  - tested Heatmap library
+
+Member 3: Lukman Mohamed
+- Extracted data from the police databases on bike thefts, traffic incidents and other/regular crimes
+- Reworked the data vigorously to create the IncidentTime, RoadCondition, TrafficEvent and InvolvedPerson tables
+- Reworks included converting the various methods used to store time data (single date, day-month-year separately, etc.) into a single format and converting all time values to indexed integers
+- Updated the schema based on various issues encountered while extracting the data
+- Updated the data extraction/handling scripts to account for changes in the schema as well as issues in the source databases (there were a lot!)
+
+Member 4: Vikram Subramanian
+- Extracted data from the police databases on bike thefts, traffic incidents and other/regular crimes
+- Reworked the data vigorously to create the CrimeEvents, Neighbourhood, police division, bikeThefts and regularcrimes tables
+- Updated the data extraction/handling scripts to account for changes in the schema as well as issues in the source databases (there were a lot!)
+- Retrieved census data
+- Ran tests to ensure data integrity
+
+Member 5: Dhvani Patel
+- loaded the production CSVs into SQL by writing SQL code
+  - cleaned up a few corrupt rows in the process
+- worked on the application
+  - bar char
+  - doughnut chart
+  - summary and info cards
+  - fixed header as you scroll
+- worked on backend app.js and added the new paths
+- deployed the app and made sure it was working
+- prepared code.zip
