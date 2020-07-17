@@ -32,6 +32,7 @@ Member 4: Vikram Subramanian
 - Updated the data extraction/handling scripts to account for changes in the schema as well as issues in the source databases (there were a lot!)
 - Retrieved census data
 - Ran tests to ensure data integrity
+
 Member 5: Dhvani Patel
 - loaded the production CSVs into SQL by writing SQL code
   - cleaned up a few corrupt rows in the process
@@ -43,5 +44,3 @@ Member 5: Dhvani Patel
 - worked on backend app.js and added the new paths
 - deployed the app and made sure it was working
 - prepared code.zip
-
-
