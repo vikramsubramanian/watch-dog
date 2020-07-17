@@ -47,7 +47,7 @@ Note: we have implemented the Map, but we had to switch from Google Maps to Mapb
   - Front end: `client/src/MapCard.js`
   - Back end: `api/app.js`
 
-## Creating and loading the sample database:\
+## Creating and loading the sample database:
 
 - Connect to the SQL Server:
   - `mysql --host watchdog348.mysql.database.azure.com --user warrior@watchdog348 -p`
