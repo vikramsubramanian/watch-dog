@@ -11,7 +11,7 @@ Member 1: Abdullah Bin Asad
 Member 2: Chandana Sathish
 - worked on the report (updated system support and feature details)
 - worked on the application
-  - report a crime button and modal
+  - report a crime button and model
   - line chart
   - summary card
   - overloaded table to be paginated and added filtering
@@ -21,13 +21,17 @@ Member 2: Chandana Sathish
 
 Member 3: Lukman Mohamed
 - Extracted data from the police databases on bike thefts, traffic incidents and other/regular crimes
-- Reworked the data vigouruously to create the IncidentTime, RoadCondition, TrafficEvent and InvolvedPerson
-- Reworks included converting the various methods used to store time data (single date, day-month-year seperatly, etc.) into a single format and converting all time values to indexed integers
+- Reworked the data vigorously to create the IncidentTime, RoadCondition, TrafficEvent and InvolvedPerson tables
+- Reworks included converting the various methods used to store time data (single date, day-month-year separately, etc.) into a single format and converting all time values to indexed integers
 - Updated the schema based on various issues encountered while extracting the data
 - Updated the data extraction/handling scripts to account for changes in the schema as well as issues in the source databases (there were a lot!)
 
 Member 4: Vikram Subramanian
-
+- Extracted data from the police databases on bike thefts, traffic incidents and other/regular crimes
+- Reworked the data vigorously to create the CrimeEvents, Neighbourhood, police division, bikeThefts and regularcrimes tables
+- Updated the data extraction/handling scripts to account for changes in the schema as well as issues in the source databases (there were a lot!)
+- Retrieved census data
+- Ran tests to ensure data integrity
 Member 5: Dhvani Patel
 - loaded the production CSVs into SQL by writing SQL code
   - cleaned up a few corrupt rows in the process
