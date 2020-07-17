@@ -50,7 +50,7 @@ function MapCard (props) {
         map.on ('load', () => {
           // map.resize ();
           var layers = map.getStyle ().layers;
-          console.log (layers);
+          // console.log (layers);
           var firstSymbolId;
           for (var i = 0; i < layers.length; i++) {
             if (layers[i].type === 'symbol') {

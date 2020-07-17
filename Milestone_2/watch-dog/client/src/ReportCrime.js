@@ -32,7 +32,7 @@ function ReportCrime () {
   const [offenceOptions, setOffenceOptions] = useState (new Map ());
 
   function addCrime () {
-    console.log ('adding crime');
+    // console.log ('adding crime');
 
     var data = {
       o_date: {
@@ -67,7 +67,7 @@ function ReportCrime () {
     })
       .then (response => response.json ())
       .then (res => {
-        console.log (res);
+        // console.log (res);
         successToast ('Succesfully added to db');
         setModalOpen (false);
       })
@@ -82,7 +82,7 @@ function ReportCrime () {
     fetch ('/neighbourhoods')
       .then (response => response.json ())
       .then (res => {
-        console.log (res);
+        // console.log (res);
         res.forEach (hood => {
           allHoods.push ({
             key: hood['hood_id'],
@@ -102,7 +102,7 @@ function ReportCrime () {
     fetch ('/regular-crimes')
       .then (response => response.json ())
       .then (res => {
-        console.log (res);
+        // console.log (res);
         res.forEach (crime => {
           if (!allCrimeTypes.find (ct => strEqual (ct.value, crime['MCI']))) {
             allCrimeTypes.push ({

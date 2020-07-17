@@ -30,7 +30,7 @@ function BarChart (props) {
         }
         labels.push (opt.label);
       });
-    console.log (props.data);
+    // console.log (props.data);
 
     setChartData ({
       labels: labels,
