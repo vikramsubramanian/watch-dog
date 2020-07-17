@@ -17,9 +17,15 @@ A user would simply search for a query (as seen on the demo application) using t
 \subsection*{Key features}
 \begin{enumerate}
 \item Filter crime/traffic events (starter question with drop-down for filtering different columns as seen in demo) and show results on a table
+\begin{itemize}
+    \item Filter by crime indicator
+    \item Filter by year/month
+    \item Filter by neighbourhood
+\end{itemize}
 \item Display crime data
 \begin{itemize}
 \item bar chart, line chart, and pie chart
+\item summary/total count
 \item map, heat map
 \end{itemize}
 \item Create predefined complex queries in the form of question and answer
@@ -38,11 +44,14 @@ A user would simply search for a query (as seen on the demo application) using t
 The tables we get from the Toronto Police Open Data:
 \begin{itemize}
     \item \url{https://data.torontopolice.on.ca/pages/open-data}
-    \item \url{https://open.toronto.ca/dataset/neighbourhood-profiles/}
 \end{itemize}
-The tables themselves are a little difficult to work with. Therefore, we create a data parser (in code.zip) to convert it to .csv files that fulfill our requirements. Sample data is part of the code.zip as csv files (ex. Neighbourhood.csv, CrimeEvent.csv).
+We get a few additional columns of the census from the Toronto City Open Data:
+\begin{itemize}
+ \item \url{https://open.toronto.ca/dataset/neighbourhood-profiles/}
+\end{itemize}
+The tables themselves are a little difficult to work with. Therefore, we create a data parser (in code.zip) to convert it to .csv files that fulfill our requirements. Sample data and production data are part of the code.zip as csv files (ex. Neighbourhood.csv, CrimeEvent.csv).
 \subsection*{System support}
-Our interface will consist of an interactive web-app. We will be using Azure to host our database and run a MySQL instance. This setup is ideal and efficient for building a web app such as ours. Azure and MySQL are modern, scalable, efficient and flexible. We will be using Node.js with an Express.js server as our back-end to interact with the database. For the front-end, we will be using the React library. Thus, our web application code mostly consists of JavaScript. Members of our group have experience with Node.js and React which gives us an excellent basis for our project.
+Our interface will consist of an interactive web-app. We will be using Azure to host our database and run a MySQL instance. This setup is ideal and efficient for building a web app such as ours. Azure and MySQL are modern, scalable, efficient and flexible. We will be using Node.js with an Express.js server as our back-end to interact with the database. For the front-end, we will be using the React library. For the UI components we will be using the Semantic UI React component library. Additionally, for maps we will be using the Mapbox API. Thus, our web application code mostly consists of JavaScript. Members of our group have experience with Node.js and React which gives us an excellent basis for our project. 
 
 \section*{Design database schema}
 \subsection*{List of assumptions}
@@ -71,38 +80,38 @@ Note: Check the standalone image of the ER diagram if this one is too small.
     \end{itemize}
     \item PoliceDivision
         \begin{itemize}
-        \item \underline{division} : ??
-        \item address : VARCHAR(40)
-        \item area : FLOAT
-        \item shapeLeng : FLOAT
-        \item shapeArea : FLOAT
+        \item \underline{division} : INT
+        \item address : VARCHAR(50)
+        \item area : DECIMAL(12, 9)
+        \item shapeLeng : DECIMAL(12, 6) 
+        \item shapeArea : DECIMAL(11, 3)
     \end{itemize}
     \item Neighbourhood
         \begin{itemize}
         \item \underline{hood\_id}
         \item name : VARCHAR(50)
-        \item employment\_rate : FLOAT
-        \item high\_school : FLOAT
-        \item university : FLOAT
-        \item technical\_degree : FLOAT
-        \item division : ??? (Foreign Key Referencing PoliceDivision(division))
+        \item employment\_rate : DECIMAL(4, 2)
+        \item high\_school : DECIMAL(4, 2)
+        \item university : DECIMAL(4, 2)
+        \item technical\_degree : DECIMAL(4, 2)
+        \item division : INT (Foreign Key Referencing PoliceDivision(division))
     \end{itemize}
     \item BikeTheft
         \begin{itemize}
         \item \underline{event\_id} : INT (Foreign Key Referencing CrimeEvent(event\_id))
-        \item colour: VARCHAR(15)
-        \item make : VARCHAR(15)
-        \item model : VARCHAR(15)
-        \item speed : VARCHAR(15)
-        \item bike\_type : VARCHAR(15)
-        \item status : VARCHAR(15)
-        \item cost : VARCHAR(15)
+        \item colour: VARCHAR(50)
+        \item make : VARCHAR(50)
+        \item model : VARCHAR(50)
+        \item speed : VARCHAR(50)
+        \item bike\_type : VARCHAR(50)
+        \item status : VARCHAR(50)
+        \item cost : DECIMAL(8, 2)
     \end{itemize}
     \item RegularCrime
         \begin{itemize}
         \item \underline{crime\_id} : INT
         \item offence : VARCHAR(50)
-        \item MCI : VARCHAR(10)
+        \item MCI : VARCHAR(50)
     \end{itemize}
     \item CrimeEvent
         \begin{itemize}
@@ -111,8 +120,8 @@ Note: Check the standalone image of the ER diagram if this one is too small.
         \item reported\_time\_id : INT (Foreign Key Referencing IncidentTime(time\_id))
         \item crime\_id : INT (Foreign Key Referencing RegularCrime(crime\_id))
         \item hood\_id : INT (Foreign Key Referencing Neighbourhood(hood\_id))
-        \item latitude : FLOAT
-        \item longitude : FLOAT
+        \item latitude : DECIMAL(10,8)
+        \item longitude : DECIMAL(11,8)
         \item premise\_type : VARCHAR(50)
     \end{itemize}
     \item InvolvedPerson
@@ -120,9 +129,9 @@ Note: Check the standalone image of the ER diagram if this one is too small.
         \item \underline{accident\_id} : INT (Foreign Key Referencing TrafficEvent(accident\_id))
         \item \underline{person\_id} : INT
         \item involvement\_type : VARCHAR(50)
-        \item age : ???
+        \item age : INT
         \item injury : VARCHAR(50)
-        \item vehicle\_type : VARCHAR(10)
+        \item vehicle\_type : VARCHAR(50)
         \item action\_taken : VARCHAR(50)
     \end{itemize}
     \item RoadCondition
@@ -130,8 +139,8 @@ Note: Check the standalone image of the ER diagram if this one is too small.
         \item \underline{road\_condition\_id} : INT
         \item classification : VARCHAR(50)
         \item traffic\_control\_type : VARCHAR(50)
-        \item visibility : VARCHAR(10)
-        \item surface\_condition : VARCHAR(10)
+        \item visibility : VARCHAR(50)
+        \item surface\_condition : VARCHAR(50)
     \end{itemize}
     \item TrafficEvent
     \begin{itemize}
@@ -139,8 +148,8 @@ Note: Check the standalone image of the ER diagram if this one is too small.
         \item occurrence\_time\_id : INT (Foreign Key Referencing IncidentTime(time\_id))
         \item road\_condition\_id : INT (Foreign Key Referencing RoadCondition(road\_condition\_id))
         \item hood\_id : INT (Foreign Key Referencing Neighbourhood(hood\_id))
-        \item latitude : FLOAT
-        \item longitude : FLOAT
+        \item latitude : DECIMAL(10,8)
+        \item longitude : DECIMAL(11,8)
     \end{itemize}
 \end{itemize}
 \subsection*{Changes/Improvements Since Milestone 1}
@@ -162,8 +171,10 @@ Note: Check the standalone image of the ER diagram if this one is too small.
     \end{itemize}
     \item Converted BikeThefts table into a Specialization of CrimeEvent table
     \begin{itemize}
-        \item addresses the problem of superfluous joins when trying to access only bike thefts
+        \item addresses the problem of superfluous joins when trying to access bike thefts
         \item fixes issues with insert/delete anomalies
     \end{itemize}
+    \item Added the data types for each attribute to the report
+     \item Changed FLOAT types to DECIMAL for better precision
 \end{itemize}
 \end{document}
