@@ -148,7 +148,6 @@ function App () {
     // chart ()
   }, []);
 
-  console.log (cards);
   return (
     <div className="container">
       <div className="appHeader">

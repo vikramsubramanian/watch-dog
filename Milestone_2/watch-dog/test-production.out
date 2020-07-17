@@ -1,0 +1,162 @@
++----------+-------------+--------------+--------------+---------+---------+--------------------------+----------+-------------+------------+--------------+-------------+------------------+
+| event_id | latitude    | longitude    | premise_type | MCI     | offence | name                     | division | OccuredHour | OccuredDay | OccuredMonth | OccuredYear | OccuredDayOfWeek |
++----------+-------------+--------------+--------------+---------+---------+--------------------------+----------+-------------+------------+--------------+-------------+------------------+
+|        1 | 43.80028150 | -79.19908140 | Commercial   | Assault | Assault | Malvern                  |       42 |           1 |         24 |            3 |        2014 |                2 |
+|        2 | 43.71873470 | -79.45010380 | House        | Assault | Assault | Yorkdale-Glen Park       |       32 |           1 |         24 |            3 |        2014 |                2 |
+|        3 | 43.78162770 | -79.40710450 | House        | Assault | Assault | Willowdale East          |       32 |           3 |         24 |            3 |        2014 |                2 |
+|        4 | 43.77495570 | -79.41209410 | House        | Assault | Assault | Willowdale East          |       32 |          16 |         27 |            9 |        2014 |                7 |
+|        5 | 43.70447540 | -79.50424960 | Outside      | Assault | Assault | Weston                   |       12 |          16 |         27 |            9 |        2014 |                7 |
+|        6 | 43.77009200 | -79.36359410 | Other        | Assault | Assault | Bayview Village          |       33 |          16 |         27 |            9 |        2014 |                7 |
+|        7 | 43.75018690 | -79.60020450 | House        | Assault | Assault | West Humber-Clairville   |       23 |          16 |         27 |            9 |        2014 |                7 |
+|        8 | 43.78277210 | -79.34912110 | Other        | Assault | Assault | Don Valley Village       |       33 |          22 |         26 |            9 |        2014 |                6 |
+|        9 | 43.76210400 | -79.40826420 | Apartment    | Assault | Assault | Willowdale East          |       32 |          22 |         26 |            9 |        2014 |                6 |
+|       10 | 43.68578340 | -79.52464290 | Commercial   | Assault | Assault | Humber Heights-Westmount |       23 |          22 |         26 |            9 |        2014 |                6 |
++----------+-------------+--------------+--------------+---------+---------+--------------------------+----------+-------------+------------+--------------+-------------+------------------+
+10 rows in set (0.11 sec)
+
+
+
++----------+-------------+--------------+--------------+-----------------+-------------------------------+-------------------------------------+----------+-------------+------------+--------------+-------------+------------------+
+| event_id | latitude    | longitude    | premise_type | MCI             | offence                       | name                                | division | OccuredHour | OccuredDay | OccuredMonth | OccuredYear | OccuredDayOfWeek |
++----------+-------------+--------------+--------------+-----------------+-------------------------------+-------------------------------------+----------+-------------+------------+--------------+-------------+------------------+
+|    46033 | 43.69504930 | -79.52654270 | Other        | Assault         | Assault                       | Humber Heights-Westmount            |       23 |          21 |         20 |            3 |        2019 |                4 |
+|    46034 | 43.65626530 | -79.37831880 | Outside      | Assault         | Assault                       | Church-Yonge Corridor               |       51 |          21 |         20 |            3 |        2019 |                4 |
+|    46035 | 43.61750030 | -79.49891660 | Commercial   | Assault         | Assault                       | Mimico (includes Humber Bay Shores) |       22 |          21 |         20 |            3 |        2019 |                4 |
+|    93376 | 43.65524290 | -79.38606260 | Commercial   | Break and Enter | B&E                           | Bay Street Corridor                 |       52 |          21 |         20 |            3 |        2019 |                4 |
+|   121942 | 43.83168410 | -79.23054500 | Outside      | Auto Theft      | Theft Of Motor Vehicle        | Rouge                               |       42 |          21 |         20 |            3 |        2019 |                4 |
+|   180280 | 43.75818630 | -79.23307800 | Commercial   | Robbery         | Robbery With Weapon           | Woburn                              |       43 |          21 |         20 |            3 |        2019 |                4 |
+|   186968 | 43.81093220 | -79.22713470 | Outside      | Assault         | Discharge Firearm With Intent | Malvern                             |       42 |          21 |         20 |            3 |        2019 |                4 |
+|    46041 | 43.69742200 | -79.31009670 | House        | Assault         | Assault                       | Woodbine-Lumsden                    |       54 |          13 |         28 |            2 |        2019 |                5 |
+|    46042 | 43.74124150 | -79.51368710 | Other        | Assault         | Assault                       | Glenfield-Jane Heights              |       31 |          13 |         28 |            2 |        2019 |                5 |
+|    46043 | 43.69513320 | -79.30348210 | Apartment    | Assault         | Assault                       | Taylor-Massey                       |       54 |          13 |         28 |            2 |        2019 |                5 |
++----------+-------------+--------------+--------------+-----------------+-------------------------------+-------------------------------------+----------+-------------+------------+--------------+-------------+------------------+
+10 rows in set (0.12 sec)
+
+
+
++----------+-------------+--------------+--------------+---------+--------------------+------------------------------+----------+-------------+------------+--------------+-------------+------------------+
+| event_id | latitude    | longitude    | premise_type | MCI     | offence            | name                         | division | OccuredHour | OccuredDay | OccuredMonth | OccuredYear | OccuredDayOfWeek |
++----------+-------------+--------------+--------------+---------+--------------------+------------------------------+----------+-------------+------------+--------------+-------------+------------------+
+|   107249 | 43.67021180 | -79.45703130 | Commercial   | Robbery | Robbery - Business | Weston-Pelham Park           |       11 |          16 |         27 |            9 |        2014 |                7 |
+|   107250 | 43.66448970 | -79.45877840 | Commercial   | Robbery | Robbery - Business | Junction Area                |       11 |           2 |          3 |            5 |        2014 |                7 |
+|   107251 | 43.69042210 | -79.47391510 | Commercial   | Robbery | Robbery - Business | Keelesdale-Eglinton West     |       12 |          15 |         26 |            3 |        2014 |                4 |
+|   107252 | 43.79266360 | -79.35473630 | Commercial   | Robbery | Robbery - Business | Hillcrest Village            |       33 |           1 |         17 |            4 |        2014 |                5 |
+|   107253 | 43.66251370 | -79.42327120 | Commercial   | Robbery | Robbery - Business | Palmerston-Little Italy      |       14 |          21 |         15 |            4 |        2014 |                3 |
+|   107254 | 43.66251370 | -79.42327120 | Commercial   | Robbery | Robbery - Business | Palmerston-Little Italy      |       14 |          20 |         30 |            6 |        2014 |                2 |
+|   107255 | 43.64990620 | -79.48187260 | Commercial   | Robbery | Robbery - Business | Runnymede-Bloor West Village |       11 |          14 |         20 |            3 |        2014 |                5 |
+|   107256 | 43.71521000 | -79.49085240 | Commercial   | Robbery | Robbery - Business | Maple Leaf                   |       12 |          21 |         26 |            7 |        2014 |                7 |
+|   107257 | 43.68267440 | -79.49086760 | Commercial   | Robbery | Robbery - Business | Mount Dennis                 |       12 |          19 |         10 |            4 |        2014 |                5 |
+|   107258 | 43.70133210 | -79.29693600 | Commercial   | Robbery | Robbery - Business | Oakridge                     |       54 |          21 |         16 |            3 |        2014 |                1 |
++----------+-------------+--------------+--------------+---------+--------------------+------------------------------+----------+-------------+------------+--------------+-------------+------------------+
+10 rows in set (0.11 sec)
+
+
+
++-----------------+-------+
+| MCI             | total |
++-----------------+-------+
+| Assault         | 17842 |
+| Auto Theft      |  4674 |
+| Break and Enter |  8225 |
+| Robbery         |  2919 |
+| Theft Over      |  1250 |
++-----------------+-------+
+5 rows in set (0.25 sec)
+
+
+
++----------+-------------+--------------+
+| event_id | latitude    | longitude    |
++----------+-------------+--------------+
+|    46033 | 43.69504930 | -79.52654270 |
+|    46034 | 43.65626530 | -79.37831880 |
+|    46035 | 43.61750030 | -79.49891660 |
+|    93376 | 43.65524290 | -79.38606260 |
+|   121942 | 43.83168410 | -79.23054500 |
+|   180280 | 43.75818630 | -79.23307800 |
+|   186968 | 43.81093220 | -79.22713470 |
+|    46041 | 43.69742200 | -79.31009670 |
+|    46042 | 43.74124150 | -79.51368710 |
+|    46043 | 43.69513320 | -79.30348210 |
++----------+-------------+--------------+
+10 rows in set (0.11 sec)
+
+
+
++----------+-------------+--------------+--------------+----------------+--------+------------+-------+-----------+-----------+---------+-----------------------------------+----------+-------------+------------+--------------+-------------+------------------+
+| event_id | latitude    | longitude    | premise_type | make           | colour | model      | speed | bike_type | status    | cost    | name                              | division | OccuredHour | OccuredDay | OccuredMonth | OccuredYear | OccuredDayOfWeek |
++----------+-------------+--------------+--------------+----------------+--------+------------+-------+-----------+-----------+---------+-----------------------------------+----------+-------------+------------+--------------+-------------+------------------+
+|   191100 | 43.73966980 | -79.58059690 | NULL         | SUPERCYCLE     | ONG    | NULL       | 10    | MT        | STOLEN    |    NULL | Mount Olive-Silverstone-Jamestown |       23 |          16 |         10 |            5 |        2014 |                7 |
+|   191101 | 43.72332760 | -79.30229950 | NULL         | IRON HORSE     | BLU    | NULL       | 24    | MT        | STOLEN    |  500.00 | Clairlea-Birchmount               |       41 |          16 |         10 |            5 |        2014 |                7 |
+|   191102 | 43.70351790 | -79.36458590 | NULL         | ROCKY MOUNTAIN | BLK    | TRAILHEAD  | 1     | MT        | RECOVERED |    NULL | Leaside-Bennington                |       53 |          18 |         11 |            5 |        2014 |                1 |
+|   191103 | 43.66296770 | -79.38398740 | NULL         | MONGOOSE       | BLU    | NULL       | 18    | MT        | STOLEN    |  200.00 | Bay Street Corridor               |       52 |          18 |         11 |            5 |        2014 |                1 |
+|   191104 | 43.65811920 | -79.38661190 | NULL         | TR             | BLK    | 7.5 FX     | 21    | RC        | STOLEN    | 1200.00 | Bay Street Corridor               |       52 |          18 |         11 |            5 |        2014 |                1 |
+|   191105 | 43.68681720 | -79.29149630 | NULL         | SCOTT          | WHI    | NULL       | 24    | OT        | STOLEN    | 1600.00 | East End-Danforth                 |       55 |          19 |         11 |            5 |        2014 |                1 |
+|   191106 | 43.68681720 | -79.29149630 | NULL         | RALEIGH        | BLU    | NULL       | 18    | OT        | STOLEN    |  650.00 | East End-Danforth                 |       55 |          19 |         11 |            5 |        2014 |                1 |
+|   191107 | 43.65348430 | -79.46549220 | NULL         | OTHER          | GRY    | NULL       | 0     | MT        | STOLEN    |  300.00 | High Park North                   |       11 |           8 |          9 |            5 |        2014 |                6 |
+|   191108 | 43.78036120 | -79.13313290 | NULL         | GIANT          | BLK    | STP2       | 15    | MT        | STOLEN    |  600.00 | Rouge                             |       42 |           8 |          9 |            5 |        2014 |                6 |
+|   191109 | 43.66664890 | -79.38156130 | NULL         | KHS            | BLK    | URBAN SOUL | 1     | RG        | STOLEN    |  700.00 | Church-Yonge Corridor             |       51 |           2 |         11 |            5 |        2014 |                1 |
++----------+-------------+--------------+--------------+----------------+--------+------------+-------+-----------+-----------+---------+-----------------------------------+----------+-------------+------------+--------------+-------------+------------------+
+10 rows in set (0.11 sec)
+
+
+
++-------------+-------------+--------------+------------------------+----------+----------------+----------------------+---------------+-------------------+-------------+------------+--------------+-------------+------------------+
+| accident_id | latitude    | longitude    | name                   | division | classification | traffic_control_type | visibility    | surface_condition | OccuredHour | OccuredDay | OccuredMonth | OccuredYear | OccuredDayOfWeek |
++-------------+-------------+--------------+------------------------+----------+----------------+----------------------+---------------+-------------------+-------------+------------+--------------+-------------+------------------+
+|           3 | 43.71714500 | -79.58259000 | West Humber-Clairville |       23 | Major Arterial | No Control           | Clear         | Dry               |           5 |         27 |            2 |        2006 |                2 |
+|          48 | 43.66904500 | -79.59139000 | West Humber-Clairville |       23 | Major Arterial | No Control           | Clear         | Dry               |           5 |         28 |            2 |        2007 |                4 |
+|         118 | 43.73524500 | -79.59819000 | West Humber-Clairville |       23 | Major Arterial | No Control           | Clear         | Dry               |           4 |          7 |            8 |        2006 |                2 |
+|         135 | 43.69074500 | -79.58729000 | West Humber-Clairville |       23 | Collector      | No Control           | Clear         | Dry               |           4 |         24 |            8 |        2006 |                5 |
+|         166 | 43.67214500 | -79.59329000 | West Humber-Clairville |       23 | Major Arterial | Traffic Signal       | Clear         | Dry               |           4 |         24 |            5 |        2006 |                4 |
+|         176 | 43.74294500 | -79.60009000 | West Humber-Clairville |       23 | Major Arterial | Traffic Signal       | Clear         | Dry               |           4 |         13 |            6 |        2006 |                3 |
+|         222 | 43.70484500 | -79.56349000 | West Humber-Clairville |       23 | Major Arterial | Traffic Signal       | Clear         | Dry               |           4 |         15 |            4 |        2007 |                1 |
+|         223 | 43.70064500 | -79.60769000 | West Humber-Clairville |       23 | Collector      | No Control           | Freezing Rain | Slush             |           5 |         15 |            1 |        2007 |                2 |
+|         257 | 43.73464500 | -79.60099000 | West Humber-Clairville |       23 | Major Arterial | Traffic Signal       | Clear         | Dry               |           4 |         10 |           10 |        2006 |                3 |
+|         288 | 43.71364500 | -79.55499000 | West Humber-Clairville |       23 | Major Arterial | Traffic Signal       | Clear         | Dry               |           5 |         24 |            1 |        2007 |                4 |
++-------------+-------------+--------------+------------------------+----------+----------------+----------------------+---------------+-------------------+-------------+------------+--------------+-------------+------------------+
+10 rows in set (0.10 sec)
+
+
+
++---------+-----------------------------------+
+| hood_id | name                              |
++---------+-----------------------------------+
+|       1 | West Humber-Clairville            |
+|       2 | Mount Olive-Silverstone-Jamestown |
+|       3 | Thistletown-Beaumond Heights      |
+|       4 | Rexdale-Kipling                   |
+|       5 | Elms-Old Rexdale                  |
+|       6 | Kingsview Village-The Westway     |
+|       7 | Willowridge-Martingrove-Richview  |
+|       8 | Humber Heights-Westmount          |
+|       9 | Edenbridge-Humber Valley          |
+|      10 | Princess-Rosethorn                |
++---------+-----------------------------------+
+10 rows in set (0.10 sec)
+
+
+
++----------+--------------------------+-----------------+
+| crime_id | offence                  | MCI             |
++----------+--------------------------+-----------------+
+|        1 | Assault                  | Assault         |
+|        2 | B&E                      | Break and Enter |
+|        3 | Robbery - Business       | Robbery         |
+|        4 | Assault With Weapon      | Assault         |
+|        5 | Theft Over               | Theft Over      |
+|        6 | Robbery - Mugging        | Robbery         |
+|        7 | Theft Over - Shoplifting | Theft Over      |
+|        8 | B&E W'Intent             | Break and Enter |
+|        9 | Aggravated Assault       | Assault         |
+|       10 | Assault Bodily Harm      | Assault         |
++----------+--------------------------+-----------------+
+10 rows in set (0.10 sec)
+
+
+
+Query OK, 1 row affected (0.16 sec)
+
+
+
+Query OK, 1 row affected (0.19 sec)
