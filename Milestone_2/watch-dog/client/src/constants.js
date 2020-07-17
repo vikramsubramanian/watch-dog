@@ -23,12 +23,8 @@ const crimeIndicatorOptions = [
     value: 'auto theft',
   },
   {
-    label: 'break & enter',
-    value: 'break & enter',
-  },
-  {
-    label: 'homicide',
-    value: 'homicide',
+    label: 'break and enter',
+    value: 'break and enter',
   },
   {
     label: 'robbery',
@@ -66,6 +62,10 @@ dateNumOptions['year'] = [
   {
     value: 2019,
     label: '2019',
+  },
+  {
+    value: 2020,
+    label: '2020',
   },
 ];
 dateNumOptions['month'] = [

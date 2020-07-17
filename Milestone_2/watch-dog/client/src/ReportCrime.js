@@ -1,23 +1,26 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {useState, useEffect, useRef} from 'react';
-import {Button, Header, Icon, Modal, Form} from 'semantic-ui-react';
+import {Button, Header, Icon, Modal, Form as AForm} from 'semantic-ui-react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import {strEqual} from './utility';
+import {strEqual, successToast, errorToast} from './utility';
+import {Form, Input, Dropdown} from 'semantic-ui-react-form-validator';
 
 const premiseTypeOptions = [
   {key: 'h', text: 'House', value: 'House'},
   {key: 'c', text: 'Commercial', value: 'Commercial'},
-  {key: 'o', text: 'Other', value: 'other'},
+  {key: 'ot', text: 'Other', value: 'Other'},
+  {key: 'ou', text: 'Outside', value: 'Outside'},
+  {key: 'a', text: 'Apartment', value: 'Apartment'},
 ];
 
 function ReportCrime () {
+  const currentDate = new Date ();
+  currentDate.setMinutes (0);
   const [modalOpen, setModalOpen] = useState (false);
-  const [occurenceDate, setOccurenceDate] = useState (
-    new Date ().setMinutes (0)
-  );
-  const [reportedDate, setReportedDate] = useState (new Date ().setMinutes (0));
-  const [crimeIndicator, setCrimeIndicator] = useState (null);
+  const [occurenceDate, setOccurenceDate] = useState (currentDate);
+  const [reportedDate, setReportedDate] = useState (currentDate);
+  const [crimeIndicator, setCrimeIndicator] = useState ('');
   const [hood, setHood] = useState (null);
   const [premiseType, setPremiseType] = useState ('');
   const [lat, setLat] = useState ('');
@@ -29,12 +32,49 @@ function ReportCrime () {
   const [offenceOptions, setOffenceOptions] = useState (new Map ());
 
   function addCrime () {
-    console.log (lat);
-    console.log (long);
-    console.log (hood);
-    console.log (offence);
-    console.log (premiseType);
-    console.log (crimeIndicator);
+    console.log ('adding crime');
+
+    var data = {
+      o_date: {
+        hour: occurenceDate.getHours (),
+        day: occurenceDate.getDate (),
+        month: occurenceDate.getMonth () + 1,
+        year: occurenceDate.getFullYear (),
+        day_of_week: occurenceDate.getDay () + 1,
+      },
+      r_date: {
+        hour: reportedDate.getHours (),
+        day: reportedDate.getDate (),
+        month: reportedDate.getMonth () + 1,
+        year: reportedDate.getFullYear (),
+        day_of_week: reportedDate.getDay () + 1,
+      },
+      crime_id: offenceOptions[crimeIndicator].find (opt =>
+        strEqual (opt.value, offence)
+      ).db_key,
+      hood_id: hoodOptions.find (opt => strEqual (opt.value, hood)).key,
+      latitude: parseFloat (lat),
+      longitude: parseFloat (long),
+      premise_type: premiseType,
+    };
+    console.log (data);
+    fetch ('/report-crime', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify (data),
+    })
+      .then (response => response.json ())
+      .then (res => {
+        console.log (res);
+        successToast ('Succesfully added to db');
+        setModalOpen (false);
+      })
+      .catch (err => {
+        console.log (err);
+        errorToast ('Could not add to db');
+      });
   }
 
   useEffect (() => {
@@ -54,6 +94,7 @@ function ReportCrime () {
       })
       .catch (err => {
         console.log (err);
+        errorToast ('Could not fetch neighbourhoods');
       });
 
     var allCrimeTypes = [];
@@ -88,6 +129,7 @@ function ReportCrime () {
       })
       .catch (err => {
         console.log (err);
+        errorToast ('Could not fetch crime indicators');
       });
   }, []);
 
@@ -98,28 +140,38 @@ function ReportCrime () {
         <Modal.Content>
 
           <Modal.Description>
-            <Form>
-              <Form.Group widths="equal">
-                <Form.Select
-                  fluid
+            <Form onSubmit={addCrime}>
+              <AForm.Group widths="equal">
+                <Dropdown
                   label="Major Crime Indicator"
-                  options={crimeOptions}
-                  placeholder="Major Crime Indicator"
-                  onChange={(e, {value}) => setCrimeIndicator (value)}
-                />
-                <Form.Select
+                  placeholder="Select indicator"
                   fluid
+                  search
+                  selection
+                  value={crimeIndicator}
+                  onChange={(e, {value}) => setCrimeIndicator (value)}
+                  validators={['required']}
+                  errorMessages={['You must select one option']}
+                  options={crimeOptions}
+                />
+                <Dropdown
                   label="Offence"
+                  placeholder="Select offence"
+                  fluid
+                  search
+                  selection
+                  value={offence}
+                  onChange={(e, {value}) => setOffence (value)}
+                  validators={['required']}
+                  errorMessages={['You must select one option']}
                   options={
                     offenceOptions &&
                       crimeIndicator &&
                       offenceOptions[crimeIndicator]
                   }
-                  placeholder="Offence"
-                  onChange={(e, {value}) => setOffence (value)}
                 />
-              </Form.Group>
-              <Form.Group inline>
+              </AForm.Group>
+              <AForm.Group inline>
                 <label>Occurence Date and Time</label>
                 <DatePicker
                   selected={occurenceDate}
@@ -128,9 +180,14 @@ function ReportCrime () {
                   timeIntervals={60}
                   timeFormat="HH:mm"
                   dateFormat="MMMM d, yyyy h:mm aa"
+                  maxDate={new Date ()}
+                  showDisabledMonthNavigation
+                  showMonthDropdown
+                  showYearDropdown
+                  dropdownMode="select"
                 />
-              </Form.Group>
-              <Form.Group inline>
+              </AForm.Group>
+              <AForm.Group inline>
                 <label>Reported Date and Time</label>
                 <DatePicker
                   selected={reportedDate}
@@ -139,46 +196,74 @@ function ReportCrime () {
                   timeIntervals={60}
                   timeFormat="HH:mm"
                   dateFormat="MMMM d, yyyy h:mm aa"
+                  maxDate={new Date ()}
+                  showDisabledMonthNavigation
+                  showMonthDropdown
+                  showYearDropdown
+                  dropdownMode="select"
                 />
-              </Form.Group>
-              <Form.Group widths="equal">
-                <Form.Select
-                  fluid
+              </AForm.Group>
+              <AForm.Group widths="equal">
+                <Dropdown
                   label="Neighbourhood"
-                  options={hoodOptions}
-                  placeholder="Neighbourhood"
+                  placeholder="Select neighbourhood"
+                  fluid
+                  search
+                  selection
+                  value={hood}
                   onChange={(e, {value}) => setHood (value)}
+                  validators={['required']}
+                  errorMessages={['You must select one option']}
+                  options={hoodOptions}
                 />
-              </Form.Group>
-              <Form.Group widths="equal">
-                <Form.Input
-                  fluid
+              </AForm.Group>
+              <AForm.Group widths="equal">
+                <Input
+                  type="number"
                   label="Latitude"
-                  placeholder="Latitude"
                   onChange={(e, {value}) => setLat (value)}
+                  value={lat}
+                  validators={['required', 'isFloat']}
+                  errorMessages={[
+                    'this field is required',
+                    'field has to be a float',
+                  ]}
                 />
-                <Form.Input
-                  fluid
+                <Input
+                  type="number"
                   label="Longitude"
-                  placeholder="Longitude"
                   onChange={(e, {value}) => setLong (value)}
+                  value={long}
+                  validators={['required', 'isFloat']}
+                  errorMessages={[
+                    'this field is required',
+                    'field has to be a float',
+                  ]}
                 />
-                <Form.Select
-                  fluid
+                <Dropdown
                   label="Premise Type"
-                  options={premiseTypeOptions}
-                  placeholder="Premise Type"
+                  placeholder="Select type"
+                  fluid
+                  search
+                  selection
+                  value={premiseType}
                   onChange={(e, {value}) => setPremiseType (value)}
+                  validators={['required']}
+                  errorMessages={['You must select one option']}
+                  options={premiseTypeOptions}
                 />
-              </Form.Group>
-
-              <Form.Checkbox label="I agree to the Terms and Conditions" />
+              </AForm.Group>
+              {/*
+              <Form.Checkbox label="I agree to the Terms and Conditions" /> */}
+              <Button primary>
+                Proceed <Icon name="chevron right" />
+              </Button>
             </Form>
           </Modal.Description>
         </Modal.Content>
         <Modal.Actions>
-          <Button primary onClick={addCrime}>
-            Proceed <Icon name="chevron right" />
+          <Button color="red" onClick={() => setModalOpen (false)}>
+            Cancel
           </Button>
         </Modal.Actions>
       </Modal>
