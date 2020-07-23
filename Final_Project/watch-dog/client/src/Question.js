@@ -128,10 +128,6 @@ function Question (props) {
     [props.pdOptions]
   );
 
-  console.log ('Props');
-  console.log (props.pdOptions);
-  console.log (pdNumOptions);
-  console.log (pdNum);
   return (
     <Visibility
       onBottomPassed={() => setStickTopMenu (true)}
@@ -303,7 +299,14 @@ function Question (props) {
             disabled={props.loading}
             size="mini"
             onClick={() =>
-              props.fetchCrimes (crimeIndicator, dateType, dateNum)}
+              props.fetchCrimes (
+                crimeIndicator,
+                dateType,
+                dateNum,
+                locationType,
+                hoodName,
+                pdNum
+              )}
           >
             <Icon name="arrow down" />
             OK

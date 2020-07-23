@@ -116,7 +116,14 @@ function App () {
       });
   }, []);
 
-  function fetchCrimes (crimeIndicator, dateType, dateNum) {
+  function fetchCrimes (
+    crimeIndicator,
+    dateType,
+    dateNum,
+    locationType,
+    hoodName,
+    pdNum
+  ) {
     setDateType (dateType);
     setLoadingData (true);
     var tablePath = '/crime-events/table?';
@@ -127,6 +134,12 @@ function App () {
     if (!strEqual (crimeIndicator, 'all')) {
       plusPart += '&MCI=' + crimeIndicator;
     }
+    if (strEqual (locationType, 'in neighbourhood')) {
+      plusPart += '&hood=' + hoodName;
+    } else if (strEqual (locationType, 'in police division')) {
+      plusPart += '&pd=' + pdNum.substr (3);
+    }
+
     summaryPath += plusPart;
     tablePath += plusPart;
     mapPath += plusPart;
