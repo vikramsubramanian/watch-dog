@@ -81,21 +81,9 @@ function App () {
         });
 
         allCards.push ({
-          src: (
-            <DoughnutChart
-              data={summaryData || []}
-              crimeIndicator={crimeIndicator}
-              title={dateNum.label}
-            />
-          ),
-          group: 1,
-          width: null,
-        });
-
-        allCards.push ({
           src: <MapCard markers={mapData} />,
           group: 1,
-          width: 6,
+          width: null,
         });
 
         allCards.push ({
@@ -119,6 +107,18 @@ function App () {
         allCards.push ({
           src: (
             <BarChart
+              data={summaryData || []}
+              crimeIndicator={crimeIndicator}
+              title={dateNum.label}
+            />
+          ),
+          group: 3,
+          width: null,
+        });
+
+        allCards.push ({
+          src: (
+            <DoughnutChart
               data={summaryData || []}
               crimeIndicator={crimeIndicator}
               title={dateNum.label}
