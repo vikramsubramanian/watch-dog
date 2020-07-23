@@ -17,7 +17,9 @@ function Question (props) {
   const [crimeIndicator, setCrimeIndicator] = useState ('all');
   const [crimeType, setCrimeType] = useState ('crimes');
   const [locationType, setLocationType] = useState ('citywide');
-  const [locationIndicator, setLocationIndicator] = useState ('neighbourhood');
+  const [hoodName, setHoodName] = useState ('');
+  const [pdNum, setPDNum] = useState ('');
+
   const [dateNum, setDateNum] = useState (dateNumOptions['year'][5]);
   const [dateType, setDateType] = useState ('year');
   const [crimeIndicatorOptions, setCrimeIndicatorOptions] = useState ([]);
@@ -27,27 +29,16 @@ function Question (props) {
       label: 'citywide',
     },
     {
-      value: 'in',
+      value: 'in neighbourhood',
+      label: 'in',
+    },
+    {
+      value: 'in police division',
       label: 'in',
     },
   ]);
-  const [locationIndicatorOptions, seLocationIndicatorOptions] = useState ([
-    {
-      value: 'neighbourhood',
-      label: 'neighbourhood',
-    },
-    {
-      value: 'police division',
-      label: 'police division',
-    },
-  ]);
-  const [locationNum, setLocationNum] = useState ('1');
-  const [locationNumOptions, setLocationNumOptions] = useState ([
-    {
-    value: "1",
-    label: "1",
-    },
-  ]);
+  const [hoodNameOptions, setHoodNameOptions] = useState ([]);
+  const [pdNumOptions, setPDNumOptions] = useState ([]);
 
   const [stickTopMenu, setStickTopMenu] = useState (false);
 
@@ -63,12 +54,12 @@ function Question (props) {
     setLocationType (data.text);
   }
 
-  function changeLocationIndicator (event, data) {
-    setLocationIndicator (data.text);
+  function changeHoodName (event, data) {
+    setHoodName (data.text);
   }
 
-  function changeLocationNum (event, data) {
-    setLocationNum (data.text);
+  function changePDNum (event, data) {
+    setPDNum (data.text);
   }
 
   function changeDateNum (event, data) {
@@ -112,15 +103,35 @@ function Question (props) {
           value: opt['value'].toLowerCase (),
         });
       });
-      setLocationNumOptions (hoodOptions);
-      if(hoodOptions.length > 0){
-        setLocationNum(hoodOptions[0].value)
+      setHoodNameOptions (hoodOptions);
+      if (hoodOptions.length > 0) {
+        setHoodName (hoodOptions[0].value);
       }
-      console.log (hoodOptions);
     },
     [props.hoodOptions]
   );
 
+  useEffect (
+    () => {
+      var pdOptions = [];
+      props.pdOptions.forEach (opt => {
+        pdOptions.push ({
+          label: 'PD ' + opt['text'].toString (),
+          value: 'PD ' + opt['value'].toString (),
+        });
+      });
+      setPDNumOptions (pdOptions);
+      if (pdOptions.length > 0) {
+        setPDNum (pdOptions[0].value);
+      }
+    },
+    [props.pdOptions]
+  );
+
+  console.log ('Props');
+  console.log (props.pdOptions);
+  console.log (pdNumOptions);
+  console.log (pdNum);
   return (
     <Visibility
       onBottomPassed={() => setStickTopMenu (true)}
@@ -166,7 +177,10 @@ function Question (props) {
           <Dropdown
             inline
             icon={null}
-            text={locationType}
+            text={
+              locationOptions.find (opt => strEqual (opt.value, locationType))
+                .label
+            }
             className="selectDropdowns"
           >
             <Dropdown.Menu className="selectDropdownItem">
@@ -174,7 +188,7 @@ function Question (props) {
                 return (
                   <Dropdown.Item
                     key={option.value}
-                    text={option.label}
+                    text={option.value}
                     active={strEqual (locationType, option.value)}
                     onClick={changeLocationType}
                   />
@@ -182,49 +196,54 @@ function Question (props) {
               })}
             </Dropdown.Menu>
           </Dropdown>
-          {strEqual (locationType, 'in') &&
-            <>
+          {strEqual (locationType, 'in neighbourhood') &&
             <Dropdown
               inline
               icon={null}
-              text={locationIndicator}
+              text={hoodName}
               className="selectDropdowns"
               style={{marginLeft: '10px'}}
             >
-              <Dropdown.Menu className="selectDropdownItem">
-                {locationIndicatorOptions.map (option => {
+              <Dropdown.Menu
+                className="selectDropdownItem"
+                style={{height: '300px', 'overflow-y': 'scroll'}}
+              >
+                {hoodNameOptions.map (option => {
                   return (
                     <Dropdown.Item
                       key={option.value}
                       text={option.label}
-                      active={strEqual (locationIndicator, option.value)}
-                      onClick={changeLocationIndicator}
+                      active={strEqual (hoodName, option.value)}
+                      onClick={changeHoodName}
                     />
                   );
                 })}
               </Dropdown.Menu>
-            </Dropdown>
+            </Dropdown>}
+          {strEqual (locationType, 'in police division') &&
             <Dropdown
               inline
               icon={null}
-              text={locationNum}
+              text={pdNum}
               className="selectDropdowns"
               style={{marginLeft: '10px'}}
             >
-              <Dropdown.Menu className="selectDropdownItem">
-                {locationNumOptions.map (option => {
+              <Dropdown.Menu
+                className="selectDropdownItem"
+                style={{height: '300px', 'overflow-y': 'scroll'}}
+              >
+                {pdNumOptions.map (option => {
                   return (
                     <Dropdown.Item
                       key={option.value}
                       text={option.label}
-                      active={strEqual (locationNum, option.value)}
-                      onClick={changeLocationNum}
+                      active={strEqual (pdNum, option.value)}
+                      onClick={changePDNum}
                     />
                   );
                 })}
               </Dropdown.Menu>
-            </Dropdown>
-            </>}
+            </Dropdown>}
         </Menu.Item>
         <Menu.Item className="selectText">
           from

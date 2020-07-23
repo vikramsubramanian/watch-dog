@@ -35,6 +35,7 @@ function App () {
   const [loadingData, setLoadingData] = useState (false);
   const [hoodOptions, setHoodOptions] = useState ([]);
   const [crimeOptions, setCrimeOptions] = useState ([]);
+  const [pdOptions, setPDOptions] = useState ([]);
   const [offenceOptions, setOffenceOptions] = useState (new Map ());
 
   useEffect (() => {
@@ -56,6 +57,26 @@ function App () {
       .catch (err => {
         console.log (err);
         errorToast ('Could not fetch neighbourhoods');
+      });
+
+    var policeDivisions = [];
+    fetch ('/police-divisions')
+      .then (response => response.json ())
+      .then (res => {
+        // console.log (res);
+        res.forEach (pd => {
+          policeDivisions.push ({
+            key: pd['division'],
+            text: pd['division'],
+            value: pd['division'],
+          });
+        });
+        setPDOptions (policeDivisions);
+        successToast ('Fetched police divisions!');
+      })
+      .catch (err => {
+        console.log (err);
+        errorToast ('Could not fetch police divisions');
       });
 
     var allCrimeTypes = [];
@@ -224,6 +245,7 @@ function App () {
         loading={loadingData}
         hoodOptions={hoodOptions}
         crimeOptions={crimeOptions}
+        pdOptions={pdOptions}
       />
       <Container style={{marginTop: '3em'}}>
         <Grid columns="equal">
