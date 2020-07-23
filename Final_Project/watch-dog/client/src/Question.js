@@ -16,9 +16,38 @@ import {strEqual} from './utility';
 function Question (props) {
   const [crimeIndicator, setCrimeIndicator] = useState ('all');
   const [crimeType, setCrimeType] = useState ('crimes');
+  const [locationType, setLocationType] = useState ('citywide');
+  const [locationIndicator, setLocationIndicator] = useState ('neighbourhood');
   const [dateNum, setDateNum] = useState (dateNumOptions['year'][5]);
   const [dateType, setDateType] = useState ('year');
   const [crimeIndicatorOptions, setCrimeIndicatorOptions] = useState ([]);
+  const [locationOptions, setLocationOptions] = useState ([
+    {
+      value: 'citywide',
+      label: 'citywide',
+    },
+    {
+      value: 'in',
+      label: 'in',
+    },
+  ]);
+  const [locationIndicatorOptions, seLocationIndicatorOptions] = useState ([
+    {
+      value: 'neighbourhood',
+      label: 'neighbourhood',
+    },
+    {
+      value: 'police division',
+      label: 'police division',
+    },
+  ]);
+  const [locationNum, setLocationNum] = useState ('1');
+  const [locationNumOptions, setLocationNumOptions] = useState ([
+    {
+    value: "1",
+    label: "1",
+    },
+  ]);
 
   const [stickTopMenu, setStickTopMenu] = useState (false);
 
@@ -28,6 +57,18 @@ function Question (props) {
 
   function changeCrimeIndicator (event, data) {
     setCrimeIndicator (data.text);
+  }
+
+  function changeLocationType (event, data) {
+    setLocationType (data.text);
+  }
+
+  function changeLocationIndicator (event, data) {
+    setLocationIndicator (data.text);
+  }
+
+  function changeLocationNum (event, data) {
+    setLocationNum (data.text);
   }
 
   function changeDateNum (event, data) {
@@ -44,8 +85,6 @@ function Question (props) {
 
   useEffect (
     () => {
-      console.log ('Question Options!');
-      console.log (props.crimeOptions);
       var indiOptions = [
         {
           label: 'all',
@@ -62,6 +101,24 @@ function Question (props) {
       console.log (indiOptions);
     },
     [props.crimeOptions]
+  );
+
+  useEffect (
+    () => {
+      var hoodOptions = [];
+      props.hoodOptions.forEach (opt => {
+        hoodOptions.push ({
+          label: opt['text'].toLowerCase (),
+          value: opt['value'].toLowerCase (),
+        });
+      });
+      setLocationNumOptions (hoodOptions);
+      if(hoodOptions.length > 0){
+        setLocationNum(hoodOptions[0].value)
+      }
+      console.log (hoodOptions);
+    },
+    [props.hoodOptions]
   );
 
   return (
@@ -103,7 +160,74 @@ function Question (props) {
           </Dropdown>
         </Menu.Item>
         <Menu.Item className="selectText">
-          crimes that happened in
+          crimes
+        </Menu.Item>
+        <Menu.Item style={{padding: 0}}>
+          <Dropdown
+            inline
+            icon={null}
+            text={locationType}
+            className="selectDropdowns"
+          >
+            <Dropdown.Menu className="selectDropdownItem">
+              {locationOptions.map (option => {
+                return (
+                  <Dropdown.Item
+                    key={option.value}
+                    text={option.label}
+                    active={strEqual (locationType, option.value)}
+                    onClick={changeLocationType}
+                  />
+                );
+              })}
+            </Dropdown.Menu>
+          </Dropdown>
+          {strEqual (locationType, 'in') &&
+            <>
+            <Dropdown
+              inline
+              icon={null}
+              text={locationIndicator}
+              className="selectDropdowns"
+              style={{marginLeft: '10px'}}
+            >
+              <Dropdown.Menu className="selectDropdownItem">
+                {locationIndicatorOptions.map (option => {
+                  return (
+                    <Dropdown.Item
+                      key={option.value}
+                      text={option.label}
+                      active={strEqual (locationIndicator, option.value)}
+                      onClick={changeLocationIndicator}
+                    />
+                  );
+                })}
+              </Dropdown.Menu>
+            </Dropdown>
+            <Dropdown
+              inline
+              icon={null}
+              text={locationNum}
+              className="selectDropdowns"
+              style={{marginLeft: '10px'}}
+            >
+              <Dropdown.Menu className="selectDropdownItem">
+                {locationNumOptions.map (option => {
+                  return (
+                    <Dropdown.Item
+                      key={option.value}
+                      text={option.label}
+                      active={strEqual (locationNum, option.value)}
+                      onClick={changeLocationNum}
+                    />
+                  );
+                })}
+              </Dropdown.Menu>
+            </Dropdown>
+            </>}
+        </Menu.Item>
+        <Menu.Item className="selectText">
+          from
         </Menu.Item>
         <Menu.Item style={{paddingRight: '0.5em', paddingLeft: 0}}>
           <Dropdown
@@ -150,9 +274,6 @@ function Question (props) {
               })}
             </Dropdown.Menu>
           </Dropdown>
-        </Menu.Item>
-        <Menu.Item className="selectText">
-          citywide
         </Menu.Item>
         <Menu.Item className="selectButton">
           <Button
