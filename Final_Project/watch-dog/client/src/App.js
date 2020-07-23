@@ -33,6 +33,67 @@ function App () {
   const [dateType, setDateType] = useState ('year');
   const [cards, setCards] = useState ([]);
   const [loadingData, setLoadingData] = useState (false);
+  const [hoodOptions, setHoodOptions] = useState ([]);
+  const [crimeOptions, setCrimeOptions] = useState ([]);
+  const [offenceOptions, setOffenceOptions] = useState (new Map ());
+
+  useEffect (() => {
+    var allHoods = [];
+    fetch ('/neighbourhoods')
+      .then (response => response.json ())
+      .then (res => {
+        // console.log (res);
+        res.forEach (hood => {
+          allHoods.push ({
+            key: hood['hood_id'],
+            text: hood['name'],
+            value: hood['name'],
+          });
+        });
+        setHoodOptions (allHoods);
+        successToast ('Fetched neighbourhoods!');
+      })
+      .catch (err => {
+        console.log (err);
+        errorToast ('Could not fetch neighbourhoods');
+      });
+
+    var allCrimeTypes = [];
+    var offence = new Map ();
+    fetch ('/regular-crimes')
+      .then (response => response.json ())
+      .then (res => {
+        // console.log (res);
+        res.forEach (crime => {
+          if (!allCrimeTypes.find (ct => strEqual (ct.value, crime['MCI']))) {
+            allCrimeTypes.push ({
+              key: crime['crime_id'],
+              text: crime['MCI'],
+              value: crime['MCI'],
+            });
+          }
+          var offenceOption = {
+            key: crime['offence'],
+            text: crime['offence'],
+            value: crime['offence'],
+            db_key: crime['crime_id'],
+            indicator: crime['MCI'],
+          };
+          if (offence[crime['MCI']]) {
+            offence[crime['MCI']].push (offenceOption);
+          } else {
+            offence[crime['MCI']] = [offenceOption];
+          }
+        });
+        setCrimeOptions (allCrimeTypes);
+        setOffenceOptions (offence);
+        successToast ('Fetched crime types!');
+      })
+      .catch (err => {
+        console.log (err);
+        errorToast ('Could not fetch crime indicators');
+      });
+  }, []);
 
   function fetchCrimes (crimeIndicator, dateType, dateNum) {
     setDateType (dateType);
@@ -158,7 +219,12 @@ function App () {
           </Header.Content>
         </Header>
       </div>
-      <Question fetchCrimes={fetchCrimes} loading={loadingData} />
+      <Question
+        fetchCrimes={fetchCrimes}
+        loading={loadingData}
+        hoodOptions={hoodOptions}
+        crimeOptions={crimeOptions}
+      />
       <Container style={{marginTop: '3em'}}>
         <Grid columns="equal">
           {/* <Grid.Row columns="equal">
@@ -184,7 +250,11 @@ function App () {
             );
           })}
         </Grid>
-        <ReportCrime />
+        <ReportCrime
+          hoodOptions={hoodOptions}
+          crimeOptions={crimeOptions}
+          offenceOptions={offenceOptions}
+        />
       </Container>
       <SemanticToastContainer />
     </div>

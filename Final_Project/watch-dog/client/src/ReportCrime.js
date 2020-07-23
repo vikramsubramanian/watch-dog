@@ -14,7 +14,7 @@ const premiseTypeOptions = [
   {key: 'a', text: 'Apartment', value: 'Apartment'},
 ];
 
-function ReportCrime () {
+function ReportCrime (props) {
   const currentDate = new Date ();
   currentDate.setMinutes (0);
   const [modalOpen, setModalOpen] = useState (false);
@@ -26,10 +26,6 @@ function ReportCrime () {
   const [lat, setLat] = useState ('');
   const [long, setLong] = useState ('');
   const [offence, setOffence] = useState (null);
-
-  const [crimeOptions, setCrimeOptions] = useState ([]);
-  const [hoodOptions, setHoodOptions] = useState ([]);
-  const [offenceOptions, setOffenceOptions] = useState (new Map ());
 
   function addCrime () {
     // console.log ('adding crime');
@@ -49,10 +45,10 @@ function ReportCrime () {
         year: reportedDate.getFullYear (),
         day_of_week: reportedDate.getDay () + 1,
       },
-      crime_id: offenceOptions[crimeIndicator].find (opt =>
+      crime_id: props.offenceOptions[crimeIndicator].find (opt =>
         strEqual (opt.value, offence)
       ).db_key,
-      hood_id: hoodOptions.find (opt => strEqual (opt.value, hood)).key,
+      hood_id: props.hoodOptions.find (opt => strEqual (opt.value, hood)).key,
       latitude: parseFloat (lat),
       longitude: parseFloat (long),
       premise_type: premiseType,
@@ -77,62 +73,6 @@ function ReportCrime () {
       });
   }
 
-  useEffect (() => {
-    var allHoods = [];
-    fetch ('/neighbourhoods')
-      .then (response => response.json ())
-      .then (res => {
-        // console.log (res);
-        res.forEach (hood => {
-          allHoods.push ({
-            key: hood['hood_id'],
-            text: hood['name'],
-            value: hood['name'],
-          });
-        });
-        setHoodOptions (allHoods);
-      })
-      .catch (err => {
-        console.log (err);
-        errorToast ('Could not fetch neighbourhoods');
-      });
-
-    var allCrimeTypes = [];
-    var offence = new Map ();
-    fetch ('/regular-crimes')
-      .then (response => response.json ())
-      .then (res => {
-        // console.log (res);
-        res.forEach (crime => {
-          if (!allCrimeTypes.find (ct => strEqual (ct.value, crime['MCI']))) {
-            allCrimeTypes.push ({
-              key: crime['crime_id'],
-              text: crime['MCI'],
-              value: crime['MCI'],
-            });
-          }
-          var offenceOption = {
-            key: crime['offence'],
-            text: crime['offence'],
-            value: crime['offence'],
-            db_key: crime['crime_id'],
-            indicator: crime['MCI'],
-          };
-          if (offence[crime['MCI']]) {
-            offence[crime['MCI']].push (offenceOption);
-          } else {
-            offence[crime['MCI']] = [offenceOption];
-          }
-        });
-        setCrimeOptions (allCrimeTypes);
-        setOffenceOptions (offence);
-      })
-      .catch (err => {
-        console.log (err);
-        errorToast ('Could not fetch crime indicators');
-      });
-  }, []);
-
   return (
     <div>
       <Modal open={modalOpen} onClose={() => setModalOpen (false)}>
@@ -152,7 +92,7 @@ function ReportCrime () {
                   onChange={(e, {value}) => setCrimeIndicator (value)}
                   validators={['required']}
                   errorMessages={['You must select one option']}
-                  options={crimeOptions}
+                  options={props.crimeOptions}
                 />
                 <Dropdown
                   label="Offence"
@@ -165,9 +105,9 @@ function ReportCrime () {
                   validators={['required']}
                   errorMessages={['You must select one option']}
                   options={
-                    offenceOptions &&
+                    props.offenceOptions &&
                       crimeIndicator &&
-                      offenceOptions[crimeIndicator]
+                      props.offenceOptions[crimeIndicator]
                   }
                 />
               </AForm.Group>
@@ -214,7 +154,7 @@ function ReportCrime () {
                   onChange={(e, {value}) => setHood (value)}
                   validators={['required']}
                   errorMessages={['You must select one option']}
-                  options={hoodOptions}
+                  options={props.hoodOptions}
                 />
               </AForm.Group>
               <AForm.Group widths="equal">

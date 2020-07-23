@@ -10,11 +10,7 @@ import {
   Loader,
 } from 'semantic-ui-react';
 
-import {
-  crimeIndicatorOptions,
-  dateTypeOptions,
-  dateNumOptions,
-} from './constants';
+import {dateTypeOptions, dateNumOptions} from './constants';
 import {strEqual} from './utility';
 
 function Question (props) {
@@ -22,6 +18,7 @@ function Question (props) {
   const [crimeType, setCrimeType] = useState ('crimes');
   const [dateNum, setDateNum] = useState (dateNumOptions['year'][5]);
   const [dateType, setDateType] = useState ('year');
+  const [crimeIndicatorOptions, setCrimeIndicatorOptions] = useState ([]);
 
   const [stickTopMenu, setStickTopMenu] = useState (false);
 
@@ -44,6 +41,28 @@ function Question (props) {
   }
 
   // TODO: Make question resize
+
+  useEffect (
+    () => {
+      console.log ('Question Options!');
+      console.log (props.crimeOptions);
+      var indiOptions = [
+        {
+          label: 'all',
+          value: 'all',
+        },
+      ];
+      props.crimeOptions.forEach (opt => {
+        indiOptions.push ({
+          label: opt['text'].toLowerCase (),
+          value: opt['value'].toLowerCase (),
+        });
+      });
+      setCrimeIndicatorOptions (indiOptions);
+      console.log (indiOptions);
+    },
+    [props.crimeOptions]
+  );
 
   return (
     <Visibility
