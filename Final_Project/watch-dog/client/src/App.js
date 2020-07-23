@@ -92,11 +92,11 @@ function App () {
           width: null,
         });
 
-        // allCards.push ({
-        //   src: <MapCard markers={mapData} />,
-        //   group: 1,
-        //   width: 6,
-        // });
+        allCards.push ({
+          src: <MapCard markers={mapData} />,
+          group: 1,
+          width: 6,
+        });
 
         allCards.push ({
           src: <LineChart crimeData={tableData} dateType={dateType} />,
@@ -161,6 +161,11 @@ function App () {
       <Question fetchCrimes={fetchCrimes} loading={loadingData} />
       <Container style={{marginTop: '3em'}}>
         <Grid columns="equal">
+          {/* <Grid.Row columns="equal">
+            <Grid.Column width={9}>
+              <MapCard />
+            </Grid.Column>
+          </Grid.Row> */}
           {[0, 1, 2, 3, 4].map (gnum => {
             return (
               <Grid.Row columns="equal">
