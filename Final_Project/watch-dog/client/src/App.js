@@ -22,6 +22,7 @@ import TextCard from './components/cards/TextCard';
 import SummaryCard from './components/cards/SummaryCard';
 import MapCard from './components/cards/MapCard';
 import HeatMap from './components/cards/HeatMap';
+import PDCard from './components/cards/PDCard';
 
 // Constants
 import {FINE_PRINT, ABOUT_DESC} from './constants';
@@ -292,10 +293,11 @@ function App () {
       />
       <Container style={{marginTop: '3em'}}>
         <Grid columns="equal">
-          {/* <Grid.Row columns="equal">
+          <Grid.Row columns="equal">
             <Grid.Column width={9}>
+              <PDCard />
             </Grid.Column>
-          </Grid.Row> */}
+          </Grid.Row>
           {[0, 1, 2, 3, 4, 5].map (gnum => {
             return (
               <Grid.Row columns="equal" key={gnum}>

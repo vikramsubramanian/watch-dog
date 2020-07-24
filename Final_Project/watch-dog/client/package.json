@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@mapbox/mapbox-gl-geocoder": "^4.6.0",
+    "@turf/turf": "^5.1.6",
     "ag-grid-community": "^23.2.1",
     "ag-grid-react": "^23.2.1",
     "chart.js": "^2.9.3",
