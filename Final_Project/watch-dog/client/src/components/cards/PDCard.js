@@ -1,5 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {useState, useEffect, useRef} from 'react';
+
+import {Dimmer, Loader} from 'semantic-ui-react';
+
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import mapboxgl from 'mapbox-gl';
 
@@ -102,7 +105,7 @@ function PDCard (props) {
     const initializeMap = ({setMap, mapContainer}) => {
       const map = new mapboxgl.Map ({
         container: mapContainer.current,
-        style: 'mapbox://styles/mapbox/light-v10',
+        style: 'mapbox://styles/mapbox/light-v10?optimize=true',
         center: [lat, lng],
         zoom: zoom,
       });
@@ -281,9 +284,7 @@ function PDCard (props) {
 
       /* Add details to the individual listing. */
       var details = listing.appendChild (document.createElement ('div'));
-      if (prop.total) {
-        details.innerHTML += 'Total Crime: ' + prop.total;
-      }
+      details.innerHTML += 'Total Crime: ' + prop.total;
       if (prop.distance) {
         var roundedDistance = Math.round (prop.distance * 100) / 100;
         details.innerHTML +=
@@ -316,10 +317,14 @@ function PDCard (props) {
 
   return (
     <div className="pdContainer">
+      {loadingMap &&
+        <Dimmer active>
+          <Loader />
+        </Dimmer>}
       <div class="sidebar">
         <div class="heading">
           <h1 className="locationHeader">
-            Police Division Locations {loadingMap ? 'true' : 'false'}
+            Police Division Locations
           </h1>
         </div>
         <div id="listings" class="listings" />

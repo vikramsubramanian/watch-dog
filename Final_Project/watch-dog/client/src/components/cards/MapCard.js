@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {useState, useEffect, useRef} from 'react';
 import mapboxgl from 'mapbox-gl';
+import {Dimmer, Loader} from 'semantic-ui-react';
 
 import './MapCard.css';
 
@@ -12,6 +13,7 @@ function MapCard (props) {
   const [viewport, setViewport] = useState ({});
   const [markers, setMarkers] = useState ([]);
   const mapContainer = useRef (null);
+  const [loadingMap, setLoadingMap] = useState (true);
 
   useEffect (
     () => {
@@ -194,6 +196,7 @@ function MapCard (props) {
           // map.resize ();
 
           setMap (map);
+          setLoadingMap (false);
         });
 
         map.addControl (new mapboxgl.NavigationControl ());
@@ -212,6 +215,10 @@ function MapCard (props) {
 
   return (
     <div style={{height: '300px'}}>
+      {loadingMap &&
+        <Dimmer active>
+          <Loader />
+        </Dimmer>}
       <div
         {...viewport}
         ref={el => (mapContainer.current = el)}
