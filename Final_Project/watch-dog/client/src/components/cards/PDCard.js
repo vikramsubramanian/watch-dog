@@ -12,6 +12,8 @@ import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 
 import './PDCard.css';
 
+import DogMarker from '../../images/dog_marker.png';
+
 function PDCard (props) {
   /* This will let you use the .remove() function later on */
   if (!('remove' in Element.prototype)) {
@@ -71,6 +73,7 @@ function PDCard (props) {
       el.id = 'marker-' + marker.properties.id;
       /* Assign the `marker` class to each marker for styling. */
       el.className = 'marker';
+      el.style.backgroundImage = "url('" + DogMarker + "')";
 
       el.addEventListener ('click', function (e) {
         /* Fly to the point */
