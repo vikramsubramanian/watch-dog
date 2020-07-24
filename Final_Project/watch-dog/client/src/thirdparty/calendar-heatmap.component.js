@@ -38,6 +38,16 @@ class CalendarHeatmap extends React.Component {
     window.addEventListener ('resize', this.calcDimensions);
   }
 
+  componentDidUpdate (prevProps) {
+    console.log ('did updated rads');
+    console.log (prevProps.data == this.props.data);
+    this.parseData ();
+    this.drawChart ();
+  }
+  componentWillUpdate () {
+    console.log ('will updated rads');
+  }
+
   componentWillUnmount () {
     window.removeEventListener ('resize', this.calcDimensions);
   }
@@ -105,8 +115,12 @@ class CalendarHeatmap extends React.Component {
     if (!this.props.data) {
       return;
     }
+    console.log ('parse data rads');
+    console.log (this.props.data);
+
     // Get daily summary if that was not provided
     if (!this.props.data[0].summary) {
+      console.log ('no summary generating');
       this.props.data.map (d => {
         let summary = d.details.reduce ((uniques, project) => {
           if (!uniques[project.name]) {

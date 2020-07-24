@@ -66,10 +66,19 @@ function HeatMap (props) {
             heatValues.push (dateData);
 
             // new date
-            dateCompare = rawDate;
             dateData = null;
-            dateTotal = 0;
-            dateDetails = [];
+
+            // first date
+            dateCompare = rawDate;
+            first = false;
+            dateDetails = [
+              {
+                name: '',
+                date: rawDate + ' ' + hour + ':00:00',
+                value: date.total,
+              },
+            ];
+            dateTotal = date.total;
           }
         });
         // last date

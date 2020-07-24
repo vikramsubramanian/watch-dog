@@ -181,17 +181,19 @@ function App () {
           width: null,
         });
 
-        allCards.push ({
-          src: (
-            <HeatMap
-              data={heatmapData}
-              start={dateNum.value}
-              dateType={dateType}
-            />
-          ),
-          group: 1,
-          width: null,
-        });
+        if (strEqual (dateType, 'year')) {
+          allCards.push ({
+            src: (
+              <HeatMap
+                data={heatmapData}
+                start={dateNum.value}
+                dateType={dateType}
+              />
+            ),
+            group: 1,
+            width: null,
+          });
+        }
 
         allCards.push ({
           src: (
