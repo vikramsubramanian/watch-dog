@@ -37,6 +37,7 @@ function App () {
   const [hoodOptions, setHoodOptions] = useState ([]);
   const [crimeOptions, setCrimeOptions] = useState ([]);
   const [pdOptions, setPDOptions] = useState ([]);
+  const [pdDetails, setPDDetails] = useState ([]);
   const [offenceOptions, setOffenceOptions] = useState (new Map ());
 
   useEffect (() => {
@@ -72,6 +73,8 @@ function App () {
             value: pd['division'],
           });
         });
+
+        // Resolve promises
         setPDOptions (policeDivisions);
         successToast ('Fetched police divisions!');
       })
@@ -130,6 +133,7 @@ function App () {
     var tablePath = '/crime-events/table?';
     var summaryMCIPath = '/crime-events/summary/MCI?';
     var summaryTimePath = '/crime-events/summary/time?';
+    var summaryPDPath = '/crime-events/summary/police-division?';
     var mapPath = '/crime-events/map?';
     var heatmapPath = '/crime-events/heatmap/year?';
 
@@ -148,6 +152,7 @@ function App () {
     mapPath += plusPart;
     summaryTimePath += plusPart;
     heatmapPath += plusPart;
+    summaryPDPath += plusPart;
 
     var timeType = '';
     if (strEqual (dateType, 'year')) {
@@ -163,6 +168,7 @@ function App () {
       fetch (summaryTimePath).then (response => response.json ()),
       fetch (mapPath).then (response => response.json ()),
       fetch (heatmapPath).then (response => response.json ()),
+      fetch (summaryPDPath).then (response => response.json ()),
     ])
       .then (allResponses => {
         // console.log (allResponses);
@@ -171,6 +177,7 @@ function App () {
         const summaryTimeData = allResponses[2];
         const mapData = allResponses[3];
         const heatmapData = allResponses[4];
+        const summaryPDData = allResponses[5];
 
         successToast ();
         var allCards = [];
@@ -260,8 +267,73 @@ function App () {
           width: 3,
         });
 
-        setCards (allCards);
-        setLoadingData (false);
+        // PD Card
+        var locPaths = [];
+        var newPDDetails = [];
+
+        summaryPDData.forEach (pd => {
+          var findPDData = pdDetails.find (storedPD =>
+            strEqual (storedPD.rawAddress, pd['address'])
+          );
+
+          if (!findPDData) {
+            var mapboxPath =
+              'https://api.mapbox.com/geocoding/v5/mapbox.places/' +
+              pd['address'] +
+              ', Ontario, Canada.json' +
+              '?access_token=' +
+              process.env.REACT_APP_MAPBOX_KEY;
+            locPaths.push (
+              fetch (mapboxPath).then (response => response.json ())
+            );
+          } else {
+            newPDDetails.push ({
+              name: findPDData.name,
+              coords: findPDData.coords,
+              rawAddress: findPDData.rawAddress,
+              total: pd.total,
+            });
+          }
+        });
+
+        Promise.all (locPaths)
+          .then (allResponses => {
+            allResponses.forEach ((locData, ind) => {
+              if (locData.features.length) {
+                var findPDData = summaryPDData.find (storedPD =>
+                  locData.query
+                    .join (' ')
+                    .startsWith (storedPD.address.toLowerCase ())
+                );
+
+                if (findPDData) {
+                  newPDDetails.push ({
+                    name: 'Division ' + findPDData.division,
+                    coords: locData.features[0].center,
+                    rawAddress: findPDData.address,
+                    total: findPDData.total,
+                  });
+                }
+              }
+            });
+
+            allCards.push ({
+              src: <PDCard data={newPDDetails} />,
+              group: 6,
+              width: null,
+            });
+
+            setCards (allCards);
+            setLoadingData (false);
+            setPDDetails (newPDDetails);
+          })
+          .catch (err => {
+            console.log (err);
+            errorToast ();
+            setLoadingData (false);
+          });
+
+        // setCards (allCards);
       })
       .catch (err => {
         console.log (err);
@@ -293,12 +365,12 @@ function App () {
       />
       <Container style={{marginTop: '3em'}}>
         <Grid columns="equal">
-          <Grid.Row columns="equal">
+          {/* <Grid.Row columns="equal">
             <Grid.Column width={9}>
-              <PDCard />
+              <PDCard data={pdDetails} />
             </Grid.Column>
-          </Grid.Row>
-          {[0, 1, 2, 3, 4, 5].map (gnum => {
+          </Grid.Row> */}
+          {[0, 1, 2, 3, 4, 5, 6].map (gnum => {
             return (
               <Grid.Row columns="equal" key={gnum}>
                 {cards

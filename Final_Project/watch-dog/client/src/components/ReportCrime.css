@@ -3,6 +3,7 @@
   bottom: 20px;
   right: 25px;
   animation: 1.5s ease-in-out 0s infinite normal none running back-to-docs;
+  z-index: 9999;
 }
 
 @keyframes back-to-docs {
