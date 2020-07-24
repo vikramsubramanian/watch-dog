@@ -127,7 +127,9 @@ function App () {
     setDateType (dateType);
     setLoadingData (true);
     var tablePath = '/crime-events/table?';
-    var summaryPath = '/crime-events/summary?';
+    var summaryMCIPath = '/crime-events/summary/MCI?';
+    var summaryTimePath = '/crime-events/summary/time?';
+    var mapPath = '/crime-events/map?';
     var mapPath = '/crime-events/map?';
 
     var plusPart = '&dateType=' + dateType + '&dateNum=' + dateNum.value;
@@ -140,20 +142,31 @@ function App () {
       plusPart += '&pd=' + pdNum.substr (3);
     }
 
-    summaryPath += plusPart;
+    summaryMCIPath += plusPart;
     tablePath += plusPart;
     mapPath += plusPart;
+    summaryTimePath += plusPart;
+
+    var timeType = '';
+    if (strEqual (dateType, 'year')) {
+      timeType = 'month';
+    } else if (strEqual (dateType, 'month')) {
+      timeType = 'day';
+    }
+    summaryTimePath += '&timeType=' + timeType;
 
     Promise.all ([
       fetch (tablePath).then (response => response.json ()),
-      fetch (summaryPath).then (response => response.json ()),
+      fetch (summaryMCIPath).then (response => response.json ()),
+      fetch (summaryTimePath).then (response => response.json ()),
       fetch (mapPath).then (response => response.json ()),
     ])
       .then (allResponses => {
         // console.log (allResponses);
         const tableData = allResponses[0];
-        const summaryData = allResponses[1];
-        const mapData = allResponses[2];
+        const summaryMCIData = allResponses[1];
+        const summaryTimeData = allResponses[2];
+        const mapData = allResponses[3];
 
         successToast ();
         var allCards = [];
@@ -167,7 +180,7 @@ function App () {
         allCards.push ({
           src: (
             <SummaryCard
-              data={summaryData || []}
+              data={summaryMCIData || []}
               crimeIndicator={crimeIndicator}
             />
           ),
@@ -182,7 +195,7 @@ function App () {
         });
 
         allCards.push ({
-          src: <LineChart crimeData={tableData} dateType={dateType} />,
+          src: <LineChart data={summaryTimeData} dateType={dateType} />,
           group: 2,
           width: null,
         });
@@ -202,7 +215,7 @@ function App () {
         allCards.push ({
           src: (
             <BarChart
-              data={summaryData || []}
+              data={summaryMCIData || []}
               crimeIndicator={crimeIndicator}
               title={dateNum.label}
             />
@@ -214,7 +227,7 @@ function App () {
         allCards.push ({
           src: (
             <DoughnutChart
-              data={summaryData || []}
+              data={summaryMCIData || []}
               crimeIndicator={crimeIndicator}
               title={dateNum.label}
             />

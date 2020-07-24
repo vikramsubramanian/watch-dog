@@ -12,20 +12,15 @@ function LineChart (props) {
     var labels = [];
     var data = [];
     if (strEqual (props.dateType, 'year')) {
-      for (var i = 1; i <= 12; i++) {
-        var monthCount = props.crimeData.filter (
-          crime => crime.OccuredMonth == i
-        ).length;
-        labels.push (dateNumOptions['month'][i - 1].label);
-        data.push (monthCount);
-      }
+      props.data.forEach (month => {
+        labels.push (dateNumOptions['month'][month.month - 1].label);
+        data.push (month.total);
+      });
     } else if (strEqual (props.dateType, 'month')) {
-      for (var i = 1; i <= 31; i++) {
-        var dayCount = props.crimeData.filter (crime => crime.OccuredDay == i)
-          .length;
-        labels.push (i);
-        data.push (dayCount);
-      }
+      props.data.forEach (day => {
+        labels.push (day.day);
+        data.push (day.total);
+      });
     }
     setChartData ({
       labels: labels,
@@ -44,7 +39,7 @@ function LineChart (props) {
     () => {
       createLineChart ();
     },
-    [props.crimeData]
+    [props.data]
   );
 
   return (

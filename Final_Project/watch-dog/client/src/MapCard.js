@@ -5,9 +5,9 @@ import mapboxgl from 'mapbox-gl';
 import './MapCard.css';
 
 function MapCard (props) {
-  const [lng, setLng] = useState (43.651070);
-  const [lat, setLat] = useState (-79.387015);
-  const [zoom, setZoom] = useState (10);
+  const [lng, setLng] = useState (43.691070);
+  const [lat, setLat] = useState (-79.347015);
+  const [zoom, setZoom] = useState (9);
   const [map, setMap] = useState (null);
   const [viewport, setViewport] = useState ({});
   const [markers, setMarkers] = useState ([]);
@@ -185,9 +185,9 @@ function MapCard (props) {
       const initializeMap = ({setMap, mapContainer}) => {
         const map = new mapboxgl.Map ({
           container: mapContainer.current,
-          style: 'mapbox://styles/mapbox/dark-v10', // stylesheet location
+          style: 'mapbox://styles/mapbox/dark-v10?optimize=true', // stylesheet location
           center: [lat, lng],
-          zoom: 11,
+          zoom: zoom,
         });
 
         map.on ('load', () => {
