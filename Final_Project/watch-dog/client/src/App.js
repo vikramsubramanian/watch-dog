@@ -298,12 +298,12 @@ function App () {
           </Grid.Row> */}
           {[0, 1, 2, 3, 4, 5].map (gnum => {
             return (
-              <Grid.Row columns="equal">
+              <Grid.Row columns="equal" key={gnum}>
                 {cards
                   .filter (card => card.group === gnum)
                   .map ((card, ind) => {
                     return (
-                      <Grid.Column width={card.width}>
+                      <Grid.Column width={card.width} key={ind}>
                         <Segment className="cardSegment">
                           {card.src}
                         </Segment>

@@ -152,7 +152,7 @@ function Question (props) {
           >
             <Dropdown.Menu
               className="selectDropdownItem"
-              style={{height: '300px', 'overflow-y': 'scroll'}}
+              style={{height: '300px', overflowY: 'scroll'}}
             >
               {crimeIndicatorOptions.map (option => {
                 return (
@@ -203,7 +203,7 @@ function Question (props) {
             >
               <Dropdown.Menu
                 className="selectDropdownItem"
-                style={{height: '300px', 'overflow-y': 'scroll'}}
+                style={{height: '300px', overflowY: 'scroll'}}
               >
                 {hoodNameOptions.map (option => {
                   return (
@@ -227,7 +227,7 @@ function Question (props) {
             >
               <Dropdown.Menu
                 className="selectDropdownItem"
-                style={{height: '300px', 'overflow-y': 'scroll'}}
+                style={{height: '300px', overflowY: 'scroll'}}
               >
                 {pdNumOptions.map (option => {
                   return (
@@ -254,7 +254,7 @@ function Question (props) {
           >
             <Dropdown.Menu
               className="selectDropdownItem"
-              style={{height: '300px', 'overflow-y': 'scroll'}}
+              style={{height: '300px', overflowY: 'scroll'}}
             >
               {dateNumOptions[dateType].map (option => {
                 return (
