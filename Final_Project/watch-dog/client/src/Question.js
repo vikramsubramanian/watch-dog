@@ -298,6 +298,7 @@ function Question (props) {
             loading={props.loading}
             disabled={props.loading}
             size="mini"
+            style={{marginLeft: '10px'}}
             onClick={() =>
               props.fetchCrimes (
                 crimeIndicator,

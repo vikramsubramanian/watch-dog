@@ -25,6 +25,7 @@ import TextCard from './TextCard';
 import SummaryCard from './SummaryCard';
 
 import MapCard from './MapCard';
+import HeatMap from './HeatMap';
 import ReportCrime from './ReportCrime';
 
 import {FINE_PRINT, ABOUT_DESC} from './constants';
@@ -130,7 +131,7 @@ function App () {
     var summaryMCIPath = '/crime-events/summary/MCI?';
     var summaryTimePath = '/crime-events/summary/time?';
     var mapPath = '/crime-events/map?';
-    var mapPath = '/crime-events/map?';
+    var heatmapPath = '/crime-events/heatmap/year?';
 
     var plusPart = '&dateType=' + dateType + '&dateNum=' + dateNum.value;
     if (!strEqual (crimeIndicator, 'all')) {
@@ -146,6 +147,7 @@ function App () {
     tablePath += plusPart;
     mapPath += plusPart;
     summaryTimePath += plusPart;
+    heatmapPath += plusPart;
 
     var timeType = '';
     if (strEqual (dateType, 'year')) {
@@ -160,6 +162,7 @@ function App () {
       fetch (summaryMCIPath).then (response => response.json ()),
       fetch (summaryTimePath).then (response => response.json ()),
       fetch (mapPath).then (response => response.json ()),
+      fetch (heatmapPath).then (response => response.json ()),
     ])
       .then (allResponses => {
         // console.log (allResponses);
@@ -167,6 +170,7 @@ function App () {
         const summaryMCIData = allResponses[1];
         const summaryTimeData = allResponses[2];
         const mapData = allResponses[3];
+        const heatmapData = allResponses[4];
 
         successToast ();
         var allCards = [];
@@ -242,6 +246,18 @@ function App () {
           width: 3,
         });
 
+        allCards.push ({
+          src: (
+            <HeatMap
+              data={heatmapData}
+              start={dateNum.value}
+              dateType={dateType}
+            />
+          ),
+          group: 4,
+          width: null,
+        });
+
         setCards (allCards);
         setLoadingData (false);
       })
@@ -277,7 +293,15 @@ function App () {
         <Grid columns="equal">
           {/* <Grid.Row columns="equal">
             <Grid.Column width={9}>
-              <MapCard />
+              <CalendarHeatmap
+                startDate={new Date ('2016-01-01')}
+                endDate={new Date ('2016-04-01')}
+                values={[
+                  {date: '2016-01-01', count: 12},
+                  {date: '2016-01-22', count: 122},
+                  {date: '2016-01-30', count: 38},
+                ]}
+              />
             </Grid.Column>
           </Grid.Row> */}
           {[0, 1, 2, 3, 4].map (gnum => {
