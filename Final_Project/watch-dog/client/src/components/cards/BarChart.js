@@ -1,14 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {useState, useEffect} from 'react';
-import {Doughnut} from 'react-chartjs-2';
+import {HorizontalBar} from 'react-chartjs-2';
 
-import {crimeIndicatorOptions} from './constants';
-import {strEqual} from './utility';
+import {crimeIndicatorOptions} from '../../constants';
+import {strEqual} from '../../utility';
 
-function DoughnutChart (props) {
+function BarChart (props) {
   const [chartData, setChartData] = useState ({});
 
-  const createDoughnutChart = () => {
+  const createBarChart = () => {
     var allData = [];
     var labels = [];
     crimeIndicatorOptions
@@ -36,23 +36,13 @@ function DoughnutChart (props) {
       labels: labels,
       datasets: [
         {
+          label: props.title,
+          backgroundColor: 'rgba(255,99,132,0.2)',
+          borderColor: 'rgba(255,99,132,1)',
+          borderWidth: 1,
+          hoverBackgroundColor: 'rgba(255,99,132,0.4)',
+          hoverBorderColor: 'rgba(255,99,132,1)',
           data: allData,
-          backgroundColor: [
-            '#FF6384',
-            '#36A2EB',
-            '#FFCE56',
-            '#4BC0C0',
-            '#EC932F',
-            '#71B37C',
-          ],
-          hoverBackgroundColor: [
-            '#FF6384',
-            '#36A2EB',
-            '#FFCE56',
-            '#4BC0C0',
-            '#EC932F',
-            '#71B37C',
-          ],
         },
       ],
     });
@@ -60,12 +50,12 @@ function DoughnutChart (props) {
 
   useEffect (
     () => {
-      createDoughnutChart ();
+      createBarChart ();
     },
     [props.data]
   );
 
-  return <Doughnut data={chartData} />;
+  return <HorizontalBar data={chartData} />;
 }
 
-export default DoughnutChart;
+export default BarChart;

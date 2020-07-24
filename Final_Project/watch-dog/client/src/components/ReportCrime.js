@@ -1,18 +1,16 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {useState, useEffect, useRef} from 'react';
 import {Button, Header, Icon, Modal, Form as AForm} from 'semantic-ui-react';
+
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import {strEqual, successToast, errorToast} from './utility';
+
+import {strEqual, successToast, errorToast} from '../utility';
 import {Form, Input, Dropdown} from 'semantic-ui-react-form-validator';
 
-const premiseTypeOptions = [
-  {key: 'h', text: 'House', value: 'House'},
-  {key: 'c', text: 'Commercial', value: 'Commercial'},
-  {key: 'ot', text: 'Other', value: 'Other'},
-  {key: 'ou', text: 'Outside', value: 'Outside'},
-  {key: 'a', text: 'Apartment', value: 'Apartment'},
-];
+import './ReportCrime.css';
+
+import {premiseTypeOptions} from '../constants';
 
 function ReportCrime (props) {
   const currentDate = new Date ();
@@ -53,7 +51,7 @@ function ReportCrime (props) {
       longitude: parseFloat (long),
       premise_type: premiseType,
     };
-    console.log (data);
+
     fetch ('/report-crime', {
       method: 'POST',
       headers: {

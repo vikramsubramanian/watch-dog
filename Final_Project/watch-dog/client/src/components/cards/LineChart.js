@@ -2,8 +2,8 @@
 import React, {useState, useEffect} from 'react';
 import {Line} from 'react-chartjs-2';
 
-import {dateNumOptions} from './constants';
-import {strEqual} from './utility';
+import {dateNumOptions} from '../../constants';
+import {strEqual} from '../../utility';
 
 function LineChart (props) {
   const [chartData, setChartData] = useState ({});

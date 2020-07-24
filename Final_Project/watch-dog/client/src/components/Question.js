@@ -10,8 +10,10 @@ import {
   Loader,
 } from 'semantic-ui-react';
 
-import {dateTypeOptions, dateNumOptions} from './constants';
-import {strEqual} from './utility';
+import {dateTypeOptions, dateNumOptions} from '../constants';
+import {strEqual} from '../utility';
+
+import './Question.css';
 
 function Question (props) {
   const [crimeIndicator, setCrimeIndicator] = useState ('all');
@@ -89,7 +91,6 @@ function Question (props) {
         });
       });
       setCrimeIndicatorOptions (indiOptions);
-      console.log (indiOptions);
     },
     [props.crimeOptions]
   );

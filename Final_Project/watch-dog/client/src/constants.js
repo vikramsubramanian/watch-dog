@@ -131,6 +131,14 @@ Due to both stacked incidents (those located at the same address) and incidents 
 
 const ABOUT_DESC = `WatchDog is a crime data application created by Dhvani, Vikram, Lukman, Abudllah, and Chandana for the CS 348 course at UWaterloo. Version 1.0.2`;
 
+const premiseTypeOptions = [
+  {key: 'h', text: 'House', value: 'House'},
+  {key: 'c', text: 'Commercial', value: 'Commercial'},
+  {key: 'ot', text: 'Other', value: 'Other'},
+  {key: 'ou', text: 'Outside', value: 'Outside'},
+  {key: 'a', text: 'Apartment', value: 'Apartment'},
+];
+
 export {
   crimeTypeOptions,
   crimeIndicatorOptions,
@@ -138,4 +146,5 @@ export {
   dateNumOptions,
   FINE_PRINT,
   ABOUT_DESC,
+  premiseTypeOptions,
 };

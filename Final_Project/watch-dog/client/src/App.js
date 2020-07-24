@@ -1,34 +1,33 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {useState, useEffect, useRef} from 'react';
-import {
-  Header,
-  Container,
-  Button,
-  Segment,
-  Grid,
-  Transition,
-} from 'semantic-ui-react';
+import {Header, Container, Segment, Grid} from 'semantic-ui-react';
+
 import {SemanticToastContainer, toast} from 'react-semantic-toasts';
 import 'react-semantic-toasts/styles/react-semantic-alert.css';
 
-import './App.css';
-
 import {strEqual, successToast, errorToast} from './utility';
 
-import DogIcon from './dog_icon.svg';
-import Question from './Question';
-import TableCard from './TableCard';
-import LineChart from './LineChart';
-import BarChart from './BarChart';
-import DoughnutChart from './DoughnutChart';
-import TextCard from './TextCard';
-import SummaryCard from './SummaryCard';
+import DogIcon from './images/dog_icon.svg';
 
-import MapCard from './MapCard';
-import HeatMap from './HeatMap';
-import ReportCrime from './ReportCrime';
+// Components
+import Question from './components/Question';
+import ReportCrime from './components/ReportCrime';
 
+// Cards
+import TableCard from './components/cards/TableCard';
+import LineChart from './components/cards/LineChart';
+import BarChart from './components/cards/BarChart';
+import DoughnutChart from './components/cards/DoughnutChart';
+import TextCard from './components/cards/TextCard';
+import SummaryCard from './components/cards/SummaryCard';
+import MapCard from './components/cards/MapCard';
+import HeatMap from './components/cards/HeatMap';
+
+// Constants
 import {FINE_PRINT, ABOUT_DESC} from './constants';
+
+// Custom css
+import './App.css';
 
 function App () {
   const [dateType, setDateType] = useState ('year');
@@ -295,15 +294,6 @@ function App () {
         <Grid columns="equal">
           {/* <Grid.Row columns="equal">
             <Grid.Column width={9}>
-              <CalendarHeatmap
-                startDate={new Date ('2016-01-01')}
-                endDate={new Date ('2016-04-01')}
-                values={[
-                  {date: '2016-01-01', count: 12},
-                  {date: '2016-01-22', count: 122},
-                  {date: '2016-01-30', count: 38},
-                ]}
-              />
             </Grid.Column>
           </Grid.Row> */}
           {[0, 1, 2, 3, 4, 5].map (gnum => {

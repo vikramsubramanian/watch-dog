@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {useState, useEffect} from 'react';
-import CalendarHeatmap from './thirdparty/calendar-heatmap.component';
+import CalendarHeatmap from '../../thirdparty/calendar-heatmap.component';
 
-import {strEqual} from './utility';
+import {strEqual} from '../../utility';
 
 var data = [
   {
@@ -25,7 +25,6 @@ function HeatMap (props) {
 
   useEffect (
     () => {
-      console.log (props);
       if (strEqual (props.dateType, 'year')) {
         setStartDate (props.start + '-01-01');
         setEndDate (props.start + '-12-31');
@@ -97,8 +96,6 @@ function HeatMap (props) {
     props.start
   );
 
-  console.log ('Heat data:');
-  console.log (heatData);
   return (
     <div>
       {heatData != null &&

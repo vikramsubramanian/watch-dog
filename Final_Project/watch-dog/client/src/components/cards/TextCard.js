@@ -1,6 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {useState, useEffect} from 'react';
 
+import './TextCard.css';
+
 function TextCard (props) {
   return (
     <div className="textCard" style={{height: props.height}}>

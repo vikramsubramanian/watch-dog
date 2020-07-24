@@ -2,8 +2,8 @@
 import React, {useState, useEffect} from 'react';
 import {Table} from 'semantic-ui-react';
 
-import {crimeIndicatorOptions} from './constants';
-import {strEqual} from './utility';
+import {crimeIndicatorOptions} from '../../constants';
+import {strEqual} from '../../utility';
 
 function SummaryCard (props) {
   const [totalCrimes, setTotalCrimes] = useState (0);
