@@ -183,24 +183,36 @@ function App () {
 
         allCards.push ({
           src: (
-            <SummaryCard
-              data={summaryMCIData || []}
-              crimeIndicator={crimeIndicator}
+            <HeatMap
+              data={heatmapData}
+              start={dateNum.value}
+              dateType={dateType}
             />
           ),
-          group: 1,
-          width: 6,
-        });
-
-        allCards.push ({
-          src: <MapCard markers={mapData} />,
           group: 1,
           width: null,
         });
 
         allCards.push ({
-          src: <LineChart data={summaryTimeData} dateType={dateType} />,
+          src: (
+            <SummaryCard
+              data={summaryMCIData || []}
+              crimeIndicator={crimeIndicator}
+            />
+          ),
           group: 2,
+          width: 6,
+        });
+
+        allCards.push ({
+          src: <MapCard markers={mapData} />,
+          group: 2,
+          width: null,
+        });
+
+        allCards.push ({
+          src: <LineChart data={summaryTimeData} dateType={dateType} />,
+          group: 3,
           width: null,
         });
 
@@ -212,7 +224,7 @@ function App () {
               body={FINE_PRINT}
             />
           ),
-          group: 2,
+          group: 3,
           width: 4,
         });
 
@@ -224,7 +236,7 @@ function App () {
               title={dateNum.label}
             />
           ),
-          group: 3,
+          group: 5,
           width: null,
         });
 
@@ -236,26 +248,14 @@ function App () {
               title={dateNum.label}
             />
           ),
-          group: 3,
+          group: 5,
           width: null,
         });
 
         allCards.push ({
           src: <TextCard header="About" body={ABOUT_DESC} />,
-          group: 3,
+          group: 5,
           width: 3,
-        });
-
-        allCards.push ({
-          src: (
-            <HeatMap
-              data={heatmapData}
-              start={dateNum.value}
-              dateType={dateType}
-            />
-          ),
-          group: 4,
-          width: null,
         });
 
         setCards (allCards);
@@ -304,7 +304,7 @@ function App () {
               />
             </Grid.Column>
           </Grid.Row> */}
-          {[0, 1, 2, 3, 4].map (gnum => {
+          {[0, 1, 2, 3, 4, 5].map (gnum => {
             return (
               <Grid.Row columns="equal">
                 {cards

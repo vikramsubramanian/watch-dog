@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {useState, useEffect} from 'react';
-import CalendarHeatmap from 'reactjs-calendar-heatmap';
+import CalendarHeatmap from './thirdparty/calendar-heatmap.component';
 
 import {strEqual} from './utility';
 
@@ -80,7 +80,6 @@ function HeatMap (props) {
         };
         heatValues.push (dateData);
 
-        console.log (heatValues);
         setHeatData (heatValues);
       }
     },
@@ -89,6 +88,8 @@ function HeatMap (props) {
     props.start
   );
 
+  console.log ('Heat data:');
+  console.log (heatData);
   return (
     <div>
       {heatData != null &&
