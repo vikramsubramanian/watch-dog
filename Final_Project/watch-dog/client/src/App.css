@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.appHeader {
+  font-size: 16px;
+  padding-top: 10px;
+  border-bottom: 5px solid #c9c9c9;
+  border-top: 11px solid #2b4888;
+}
+
+.cardSegment {
+  overflow-x: scroll;
+}
