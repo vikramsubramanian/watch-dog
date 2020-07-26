@@ -13,7 +13,7 @@ import {strEqual} from '../utility';
 
 import './Question.css';
 
-const friendOptions = [
+const questionOptions = [
   {
     key: 'Jenny Hess',
     text: 'Jenny Hess',
@@ -75,6 +75,11 @@ function Question (props) {
   const [pdNumOptions, setPDNumOptions] = useState ([]);
 
   const [stickTopMenu, setStickTopMenu] = useState (false);
+  const [selectedQuestion, setSelectedQuestion] = useState (null);
+
+  function changeQuestion (e, {value}) {
+    setSelectedQuestion (value);
+  }
 
   function changeCrimeType (event, data) {
     setCrimeType (data.text);
@@ -362,12 +367,14 @@ function Question (props) {
       menuItems.push (
         <Menu.Item style={{width: '80%'}}>
           <Dropdown
-            placeholder="Select Friend"
+            placeholder="Select a question"
             fluid
             selection
-            options={friendOptions}
+            options={questionOptions}
             inline
             className="queryDropdown"
+            onChange={changeQuestion}
+            value={selectedQuestion}
           />
         </Menu.Item>
       );
@@ -391,6 +398,8 @@ function Question (props) {
     return menuItems;
   }
 
+  console.log ('Selected');
+  console.log (selectedQuestion);
   return (
     <Visibility
       onBottomPassed={() => setStickTopMenu (true)}

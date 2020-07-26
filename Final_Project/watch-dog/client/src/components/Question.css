@@ -39,4 +39,9 @@
 
 .queryDropdown {
   font-size: 20px;
+  color: rgba(0, 0, 0, 0.87) !important;
+}
+
+.queryDropdown .dropdown.icon {
+  margin: -0.78571429em !important;
 }
