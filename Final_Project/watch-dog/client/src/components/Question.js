@@ -1,13 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import {
-  Container,
   Menu,
   Dropdown,
   Button,
   Icon,
   Visibility,
-  Dimmer,
-  Loader,
+  Checkbox,
 } from 'semantic-ui-react';
 
 import {dateTypeOptions, dateNumOptions} from '../constants';
@@ -15,7 +13,41 @@ import {strEqual} from '../utility';
 
 import './Question.css';
 
+const friendOptions = [
+  {
+    key: 'Jenny Hess',
+    text: 'Jenny Hess',
+    value: 'Jenny Hess',
+  },
+  {
+    key: 'Elliot Fu',
+    text: 'Elliot Fu',
+    value: 'Elliot Fu',
+  },
+  {
+    key: 'Stevie Feliciano',
+    text: 'Stevie Feliciano',
+    value: 'Stevie Feliciano',
+  },
+  {
+    key: 'Christian',
+    text: 'Christian',
+    value: 'Christian',
+  },
+  {
+    key: 'Matt',
+    text: 'Matt',
+    value: 'Matt',
+  },
+  {
+    key: 'Justen Kitsune',
+    text: 'Justen Kitsune',
+    value: 'Justen Kitsune',
+  },
+];
+
 function Question (props) {
+  const [defaultQuestion, setDefaultQuestion] = useState (true);
   const [crimeIndicator, setCrimeIndicator] = useState ('all');
   const [crimeType, setCrimeType] = useState ('crimes');
   const [locationType, setLocationType] = useState ('citywide');
@@ -129,20 +161,19 @@ function Question (props) {
     [props.pdOptions]
   );
 
-  return (
-    <Visibility
-      onBottomPassed={() => setStickTopMenu (true)}
-      onBottomVisible={() => setStickTopMenu (false)}
-      once={false}
-    >
-      <Menu
-        fixed={stickTopMenu ? 'top' : undefined}
-        text
-        className="selectHeader"
-      >
-        <Menu.Item className="selectText" style={{marginLeft: '15px'}}>
+  function toggleQuestion () {
+    setDefaultQuestion (!defaultQuestion);
+  }
+
+  function renderQuestion () {
+    var menuItems = [];
+    if (defaultQuestion) {
+      menuItems.push (
+        <Menu.Item className="selectText">
           I want to explore
         </Menu.Item>
+      );
+      menuItems.push (
         <Menu.Item style={{padding: 0}}>
           <Dropdown
             inline
@@ -167,9 +198,13 @@ function Question (props) {
             </Dropdown.Menu>
           </Dropdown>
         </Menu.Item>
+      );
+      menuItems.push (
         <Menu.Item className="selectText">
           crimes
         </Menu.Item>
+      );
+      menuItems.push (
         <Menu.Item style={{padding: 0}}>
           <Dropdown
             inline
@@ -242,9 +277,13 @@ function Question (props) {
               </Dropdown.Menu>
             </Dropdown>}
         </Menu.Item>
+      );
+      menuItems.push (
         <Menu.Item className="selectText">
           from
         </Menu.Item>
+      );
+      menuItems.push (
         <Menu.Item style={{paddingRight: '0.5em', paddingLeft: 0}}>
           <Dropdown
             inline
@@ -270,6 +309,8 @@ function Question (props) {
             </Dropdown.Menu>
           </Dropdown>
         </Menu.Item>
+      );
+      menuItems.push (
         <Menu.Item style={{padding: 0}}>
           <Dropdown
             inline
@@ -291,6 +332,8 @@ function Question (props) {
             </Dropdown.Menu>
           </Dropdown>
         </Menu.Item>
+      );
+      menuItems.push (
         <Menu.Item className="selectButton">
           <Button
             icon
@@ -314,6 +357,61 @@ function Question (props) {
             OK
           </Button>
         </Menu.Item>
+      );
+    } else {
+      menuItems.push (
+        <Menu.Item style={{width: '80%'}}>
+          <Dropdown
+            placeholder="Select Friend"
+            fluid
+            selection
+            options={friendOptions}
+            inline
+            className="queryDropdown"
+          />
+        </Menu.Item>
+      );
+      menuItems.push (
+        <Menu.Item className="selectButton">
+          <Button
+            icon
+            labelPosition="right"
+            primary
+            loading={props.loading}
+            disabled={props.loading}
+            size="mini"
+            onClick={() => console.log ('yo')}
+          >
+            <Icon name="arrow down" />
+            OK
+          </Button>
+        </Menu.Item>
+      );
+    }
+    return menuItems;
+  }
+
+  return (
+    <Visibility
+      onBottomPassed={() => setStickTopMenu (true)}
+      onBottomVisible={() => setStickTopMenu (false)}
+      once={false}
+    >
+      <Menu
+        fixed={stickTopMenu ? 'top' : undefined}
+        text
+        className="selectHeader"
+      >
+        <Menu.Item className="questionItem">
+          <Checkbox
+            className="questionToggle"
+            toggle
+            onClick={toggleQuestion}
+          />
+        </Menu.Item>
+        {renderQuestion ().map (item => {
+          return item;
+        })}
       </Menu>
     </Visibility>
   );
