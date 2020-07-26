@@ -23,6 +23,7 @@ import SummaryCard from './components/cards/SummaryCard';
 import MapCard from './components/cards/MapCard';
 import HeatMap from './components/cards/HeatMap';
 import PDCard from './components/cards/PDCard';
+import WelcomeCard from './components/cards/WelcomeCard';
 
 // Constants
 import {FINE_PRINT, ABOUT_DESC} from './constants';
@@ -30,7 +31,10 @@ import {FINE_PRINT, ABOUT_DESC} from './constants';
 // Custom css
 import './App.css';
 
+const NUM_CARD_ROWS = 7;
+
 function App () {
+  const [showWelcome, setShowWelcome] = useState (true);
   const [dateType, setDateType] = useState ('year');
   const [cards, setCards] = useState ([]);
   const [loadingData, setLoadingData] = useState (false);
@@ -119,6 +123,11 @@ function App () {
         errorToast ('Could not fetch crime indicators');
       });
   }, []);
+
+  function closeWelcome () {
+    localStorage.setItem ('welcomeMsg', 'false');
+    setShowWelcome (false);
+  }
 
   function fetchCrimes (
     crimeIndicator,
@@ -343,7 +352,10 @@ function App () {
   }
 
   useEffect (() => {
-    // chart ()
+    var welcomeMsg = localStorage.getItem ('welcomeMsg');
+    if (strEqual (welcomeMsg, 'false')) {
+      setShowWelcome (false);
+    }
   }, []);
 
   return (
@@ -365,12 +377,15 @@ function App () {
       />
       <Container style={{marginTop: '3em'}}>
         <Grid columns="equal">
-          {/* <Grid.Row columns="equal">
-            <Grid.Column width={9}>
-              <PDCard data={pdDetails} />
-            </Grid.Column>
-          </Grid.Row> */}
-          {[0, 1, 2, 3, 4, 5, 6].map (gnum => {
+          {showWelcome &&
+            <Grid.Row columns="equal">
+              <Grid.Column width={null}>
+                <Segment className="cardSegment">
+                  <WelcomeCard closeWelcome={closeWelcome} />
+                </Segment>
+              </Grid.Column>
+            </Grid.Row>}
+          {[...Array (NUM_CARD_ROWS).keys ()].map (gnum => {
             return (
               <Grid.Row columns="equal" key={gnum}>
                 {cards
