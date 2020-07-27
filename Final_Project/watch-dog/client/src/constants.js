@@ -145,6 +145,11 @@ const questionOptions = [
     text: 'What are the 3 most commonly stolen bike types?',
     value: '0',
   },
+  {
+    key: '1',
+    text: 'How many stolen bikes were recovered?',
+    value: '1',
+  },
 ];
 
 const bikeTypes = new Map ();

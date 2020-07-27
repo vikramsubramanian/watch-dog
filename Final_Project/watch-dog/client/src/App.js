@@ -33,6 +33,7 @@ import HeatMap from './components/cards/HeatMap';
 import PDCard from './components/cards/PDCard';
 import WelcomeCard from './components/cards/WelcomeCard';
 import PolarChart from './components/cards/PolarChart';
+import StatisticCard from './components/cards/StatisticCard';
 
 // Constants
 import {FINE_PRINT, ABOUT_DESC, bikeTypes} from './constants';
@@ -170,25 +171,36 @@ function App () {
             group: 0,
             width: null,
           });
-
+        } else if (questionNum == 1) {
           allCards.push ({
             src: (
-              <TextCard
-                header="The fine print:"
-                height={'300px'}
-                body={FINE_PRINT}
+              <StatisticCard
+                data={res[0].total}
+                label="stolen bikes recovered"
               />
             ),
-            group: 1,
-            width: null,
-          });
-
-          allCards.push ({
-            src: <TextCard header="About" body={ABOUT_DESC} />,
-            group: 1,
+            group: 0,
             width: null,
           });
         }
+
+        allCards.push ({
+          src: (
+            <TextCard
+              header="The fine print:"
+              height={'300px'}
+              body={FINE_PRINT}
+            />
+          ),
+          group: 1,
+          width: null,
+        });
+
+        allCards.push ({
+          src: <TextCard header="About" body={ABOUT_DESC} />,
+          group: 1,
+          width: null,
+        });
 
         setLoadingData (false);
         successToast ();
