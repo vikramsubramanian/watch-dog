@@ -139,6 +139,30 @@ const premiseTypeOptions = [
   {key: 'a', text: 'Apartment', value: 'Apartment'},
 ];
 
+const questionOptions = [
+  {
+    key: '0',
+    text: 'What are the 3 most commonly stolen bike types?',
+    value: '0',
+  },
+];
+
+const bikeTypes = new Map ();
+bikeTypes.set ('BM', 'BMX');
+bikeTypes.set ('EL', 'ELECTRIC');
+bikeTypes.set ('FO', 'FOLDING');
+bikeTypes.set ('MT', 'MOUNTAIN');
+bikeTypes.set ('OT', 'OTHER');
+bikeTypes.set ('RC', 'RACER');
+bikeTypes.set ('RE', 'RECUMBANT');
+bikeTypes.set ('RG', 'REGULAR');
+bikeTypes.set ('SC', 'SCOOTER');
+bikeTypes.set ('TA', 'TANDEM');
+bikeTypes.set ('TO', 'TOURING');
+bikeTypes.set ('TR', 'TRICYCLE');
+bikeTypes.set ('UN', 'UNICYCLE');
+bikeTypes.set ('UNKNOWN', 'TYPE UNKNOWN');
+
 export {
   crimeTypeOptions,
   crimeIndicatorOptions,
@@ -147,4 +171,6 @@ export {
   FINE_PRINT,
   ABOUT_DESC,
   premiseTypeOptions,
+  questionOptions,
+  bikeTypes,
 };
