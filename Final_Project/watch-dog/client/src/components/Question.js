@@ -8,43 +8,10 @@ import {
   Checkbox,
 } from 'semantic-ui-react';
 
-import {dateTypeOptions, dateNumOptions} from '../constants';
+import {dateTypeOptions, dateNumOptions, questionOptions} from '../constants';
 import {strEqual} from '../utility';
 
 import './Question.css';
-
-const questionOptions = [
-  {
-    key: 'Jenny Hess',
-    text: 'Jenny Hess',
-    value: 'Jenny Hess',
-  },
-  {
-    key: 'Elliot Fu',
-    text: 'Elliot Fu',
-    value: 'Elliot Fu',
-  },
-  {
-    key: 'Stevie Feliciano',
-    text: 'Stevie Feliciano',
-    value: 'Stevie Feliciano',
-  },
-  {
-    key: 'Christian',
-    text: 'Christian',
-    value: 'Christian',
-  },
-  {
-    key: 'Matt',
-    text: 'Matt',
-    value: 'Matt',
-  },
-  {
-    key: 'Justen Kitsune',
-    text: 'Justen Kitsune',
-    value: 'Justen Kitsune',
-  },
-];
 
 function Question (props) {
   const [defaultQuestion, setDefaultQuestion] = useState (true);
@@ -385,9 +352,9 @@ function Question (props) {
             labelPosition="right"
             primary
             loading={props.loading}
-            disabled={props.loading}
+            disabled={props.loading || selectedQuestion == null}
             size="mini"
-            onClick={() => console.log ('yo')}
+            onClick={() => props.fetchQuestion (selectedQuestion)}
           >
             <Icon name="arrow down" />
             OK
@@ -398,8 +365,6 @@ function Question (props) {
     return menuItems;
   }
 
-  console.log ('Selected');
-  console.log (selectedQuestion);
   return (
     <Visibility
       onBottomPassed={() => setStickTopMenu (true)}

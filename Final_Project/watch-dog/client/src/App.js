@@ -1,6 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {useState, useEffect, useRef} from 'react';
-import {Header, Container, Segment, Grid} from 'semantic-ui-react';
+import {
+  Header,
+  Container,
+  Segment,
+  Grid,
+  Label,
+  Icon,
+  Popup,
+} from 'semantic-ui-react';
 
 import {SemanticToastContainer, toast} from 'react-semantic-toasts';
 import 'react-semantic-toasts/styles/react-semantic-alert.css';
@@ -24,9 +32,10 @@ import MapCard from './components/cards/MapCard';
 import HeatMap from './components/cards/HeatMap';
 import PDCard from './components/cards/PDCard';
 import WelcomeCard from './components/cards/WelcomeCard';
+import PolarChart from './components/cards/PolarChart';
 
 // Constants
-import {FINE_PRINT, ABOUT_DESC} from './constants';
+import {FINE_PRINT, ABOUT_DESC, bikeTypes} from './constants';
 
 // Custom css
 import './App.css';
@@ -127,6 +136,69 @@ function App () {
   function closeWelcome () {
     localStorage.setItem ('welcomeMsg', 'false');
     setShowWelcome (false);
+  }
+
+  function showHelp () {
+    localStorage.setItem ('welcomeMsg', 'true');
+    setShowWelcome (true);
+  }
+
+  function fetchQuestion (questionNum) {
+    console.log ('Fetching question');
+    var questionPath = '/question/';
+    questionPath += questionNum;
+    setLoadingData (true);
+    fetch (questionPath)
+      .then (response => response.json ())
+      .then (res => {
+        console.log (res);
+        var allCards = [];
+
+        if (questionNum == 0) {
+          res.forEach (data => {
+            data['bike_type'] = bikeTypes.get (data['bike_type']);
+          });
+          allCards.push ({
+            src: (
+              <PolarChart
+                data={res}
+                title="Stolen Bike Types"
+                labelKey="bike_type"
+                dataKey="theft_count"
+              />
+            ),
+            group: 0,
+            width: null,
+          });
+
+          allCards.push ({
+            src: (
+              <TextCard
+                header="The fine print:"
+                height={'300px'}
+                body={FINE_PRINT}
+              />
+            ),
+            group: 1,
+            width: null,
+          });
+
+          allCards.push ({
+            src: <TextCard header="About" body={ABOUT_DESC} />,
+            group: 1,
+            width: null,
+          });
+        }
+
+        setLoadingData (false);
+        successToast ();
+        setCards (allCards);
+      })
+      .catch (err => {
+        console.log (err);
+        setLoadingData (false);
+        errorToast ();
+      });
   }
 
   function fetchCrimes (
@@ -365,11 +437,22 @@ function App () {
           <img src={DogIcon} alt="WachDog Icon" />
           <Header.Content>
             WatchDog - Crime Data Application
+            {!showWelcome &&
+              <Popup
+                content="Show help"
+                inverted
+                trigger={
+                  <Label as="a" onClick={showHelp}>
+                    <Icon name="question" style={{marginRight: 0}} />
+                  </Label>
+                }
+              />}
           </Header.Content>
         </Header>
       </div>
       <Question
         fetchCrimes={fetchCrimes}
+        fetchQuestion={fetchQuestion}
         loading={loadingData}
         hoodOptions={hoodOptions}
         crimeOptions={crimeOptions}
