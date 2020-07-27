@@ -22,6 +22,12 @@ function WelcomeCard (props) {
         But you can click any of the underlined phrases in it to change it.
         Click OK and your new search will update the cards below,
         displaying charts and graphs that summarize the search results.
+        You can also report a crime with the button in the bottom right.
+      </p>
+      <p className="detail">
+        <strong>Not sure what you're looking for?</strong>
+        {' '}
+        Use the toggle switch to use a predefined question and explore the data that way!
       </p>
       <Button
         basic
