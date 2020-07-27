@@ -425,7 +425,7 @@ function App () {
 
   useEffect (() => {
     var welcomeMsg = localStorage.getItem ('welcomeMsg');
-    if (strEqual (welcomeMsg, 'false')) {
+    if (welcomeMsg && strEqual (welcomeMsg, 'false')) {
       setShowWelcome (false);
     }
   }, []);
