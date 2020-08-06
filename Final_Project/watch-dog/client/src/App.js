@@ -214,6 +214,7 @@ function App () {
   }
 
   function fetchCrimes (
+    crimeType,
     crimeIndicator,
     dateType,
     dateNum,
@@ -223,15 +224,31 @@ function App () {
   ) {
     setDateType (dateType);
     setLoadingData (true);
-    var tablePath = '/crime-events/table?';
-    var summaryMCIPath = '/crime-events/summary/MCI?';
-    var summaryTimePath = '/crime-events/summary/time?';
-    var summaryPDPath = '/crime-events/summary/police-division?';
-    var mapPath = '/crime-events/map?';
-    var heatmapPath = '/crime-events/heatmap/year?';
+
+    var tablePath;
+    var summaryMCIPath;
+    var summaryTimePath;
+    var summaryPDPath;
+    var mapPath;
+    var heatmapPath;
+    if (strEqual (crimeType, 'crimes')) {
+      tablePath = '/crime-events/table?';
+      summaryMCIPath = '/crime-events/summary/MCI?';
+      summaryTimePath = '/crime-events/summary/time?';
+      summaryPDPath = '/crime-events/summary/police-division?';
+      mapPath = '/crime-events/map?';
+      heatmapPath = '/crime-events/heatmap/year?';
+    } else if (strEqual (crimeType, 'bike thefts')) {
+      tablePath = '/crime-events/bike-thefts/table?';
+      summaryMCIPath = '/crime-events/bike-thefts/summary/type?';
+      summaryTimePath = '/crime-events/bike-thefts/summary/time?';
+      summaryPDPath = '/crime-events/bike-thefts/summary/police-division?';
+      mapPath = '/crime-events/bike-thefts/map?';
+      heatmapPath = '/crime-events/bike-thefts/heatmap/year?';
+    }
 
     var plusPart = '&dateType=' + dateType + '&dateNum=' + dateNum.value;
-    if (!strEqual (crimeIndicator, 'all')) {
+    if (strEqual (crimeType, 'crimes') && !strEqual (crimeIndicator, 'all')) {
       plusPart += '&MCI=' + crimeIndicator;
     }
     if (strEqual (locationType, 'in neighbourhood')) {
@@ -296,12 +313,7 @@ function App () {
         }
 
         allCards.push ({
-          src: (
-            <SummaryCard
-              data={summaryMCIData || []}
-              crimeIndicator={crimeIndicator}
-            />
-          ),
+          src: <SummaryCard data={summaryMCIData || []} />,
           group: 2,
           width: 6,
         });
@@ -331,24 +343,14 @@ function App () {
         });
 
         allCards.push ({
-          src: (
-            <BarChart
-              data={summaryMCIData || []}
-              crimeIndicator={crimeIndicator}
-              title={dateNum.label}
-            />
-          ),
+          src: <BarChart data={summaryMCIData || []} title={dateNum.label} />,
           group: 5,
           width: null,
         });
 
         allCards.push ({
           src: (
-            <DoughnutChart
-              data={summaryMCIData || []}
-              crimeIndicator={crimeIndicator}
-              title={dateNum.label}
-            />
+            <DoughnutChart data={summaryMCIData || []} title={dateNum.label} />
           ),
           group: 5,
           width: null,

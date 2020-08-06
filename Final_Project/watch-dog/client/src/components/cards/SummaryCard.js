@@ -2,9 +2,12 @@
 import React, {useState, useEffect} from 'react';
 import {Table} from 'semantic-ui-react';
 
-import {crimeIndicatorOptions} from '../../constants';
 import {strEqual} from '../../utility';
 
+const overflowStyle = {
+  height: '300px',
+  overflow: 'scroll',
+};
 function SummaryCard (props) {
   const [totalCrimes, setTotalCrimes] = useState (0);
 
@@ -20,38 +23,31 @@ function SummaryCard (props) {
   );
 
   return (
-    <div className="summaryCard">
-      <h1>Totals</h1>
+    <div
+      className="summaryCard"
+      style={props.data.length > 10 ? overflowStyle : null}
+    >
+      <h1>Summary</h1>
       <Table>
         <Table.Header>
           <Table.Row>
-            <Table.HeaderCell>Total Crime</Table.HeaderCell>
+            <Table.HeaderCell>Total</Table.HeaderCell>
             <Table.HeaderCell>{totalCrimes}</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
 
         <Table.Body>
-          {crimeIndicatorOptions
-            .filter (opt => {
-              if (strEqual (props.crimeIndicator, 'all')) {
-                return !strEqual (opt.value, 'all');
-              } else {
-                return strEqual (opt.value, props.crimeIndicator);
-              }
-            })
-            .map ((opt, ind) => {
-              const MCI = props.data.find (eve =>
-                strEqual (eve.MCI.toLowerCase (), opt.label)
-              );
-              return (
-                <Table.Row>
-                  <Table.Cell key={ind}>{opt.label}</Table.Cell>
-                  <Table.Cell>
-                    {MCI ? MCI['total'] : 0}
-                  </Table.Cell>
-                </Table.Row>
-              );
-            })}
+          {props.data.map (cat => {
+            // console.log (cat);
+            return (
+              <Table.Row>
+                <Table.Cell key={cat.label}>{cat.label}</Table.Cell>
+                <Table.Cell>
+                  {cat.total}
+                </Table.Cell>
+              </Table.Row>
+            );
+          })}
         </Table.Body>
       </Table>
     </div>

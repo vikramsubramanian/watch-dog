@@ -8,7 +8,12 @@ import {
   Checkbox,
 } from 'semantic-ui-react';
 
-import {dateTypeOptions, dateNumOptions, questionOptions} from '../constants';
+import {
+  dateTypeOptions,
+  dateNumOptions,
+  questionOptions,
+  crimeIndicatorOptions,
+} from '../constants';
 import {strEqual} from '../utility';
 
 import './Question.css';
@@ -23,7 +28,17 @@ function Question (props) {
 
   const [dateNum, setDateNum] = useState (dateNumOptions['year'][5]);
   const [dateType, setDateType] = useState ('year');
-  const [crimeIndicatorOptions, setCrimeIndicatorOptions] = useState ([]);
+  const [crimeTypeOptions, setCrimeTypeOptions] = useState ([
+    {
+      value: 'crimes',
+      label: 'crimes',
+    },
+    {
+      value: 'bike thefts',
+      label: 'bike thefts',
+    },
+  ]);
+  // const [crimeIndicatorOptions, setCrimeIndicatorOptions] = useState ([]);
   const [locationOptions, setLocationOptions] = useState ([
     {
       value: 'citywide',
@@ -80,24 +95,24 @@ function Question (props) {
 
   // TODO: Make question resize
 
-  useEffect (
-    () => {
-      var indiOptions = [
-        {
-          label: 'all',
-          value: 'all',
-        },
-      ];
-      props.crimeOptions.forEach (opt => {
-        indiOptions.push ({
-          label: opt['text'].toLowerCase (),
-          value: opt['value'].toLowerCase (),
-        });
-      });
-      setCrimeIndicatorOptions (indiOptions);
-    },
-    [props.crimeOptions]
-  );
+  // useEffect (
+  //   () => {
+  //     var indiOptions = [
+  //       {
+  //         label: 'all',
+  //         value: 'all',
+  //       },
+  //     ];
+  //     props.crimeOptions.forEach (opt => {
+  //       indiOptions.push ({
+  //         label: opt['text'].toLowerCase (),
+  //         value: opt['value'].toLowerCase (),
+  //       });
+  //     });
+  //     setCrimeIndicatorOptions (indiOptions);
+  //   },
+  //   [props.crimeOptions]
+  // );
 
   useEffect (
     () => {
@@ -145,35 +160,63 @@ function Question (props) {
           I want to explore
         </Menu.Item>
       );
+      var crimeTypeStyles = {
+        paddingRight: '0.5em',
+        paddingTop: '0',
+        paddingBottom: '0',
+        paddingLeft: '0',
+      };
+      if (strEqual (crimeType, 'crimes')) {
+        crimeTypeStyles['paddingLeft'] = '0.5em';
+
+        menuItems.push (
+          <Menu.Item style={{padding: 0}}>
+            <Dropdown
+              inline
+              icon={null}
+              text={crimeIndicator}
+              className="selectDropdowns"
+            >
+              <Dropdown.Menu
+                className="selectDropdownItem"
+                style={{height: '300px', overflowY: 'scroll'}}
+              >
+                {crimeIndicatorOptions.map (option => {
+                  return (
+                    <Dropdown.Item
+                      key={option.value}
+                      text={option.label}
+                      active={strEqual (crimeIndicator, option.value)}
+                      onClick={changeCrimeIndicator}
+                    />
+                  );
+                })}
+              </Dropdown.Menu>
+            </Dropdown>
+          </Menu.Item>
+        );
+      }
       menuItems.push (
-        <Menu.Item style={{padding: 0}}>
+        <Menu.Item style={crimeTypeStyles}>
           <Dropdown
             inline
             icon={null}
-            text={crimeIndicator}
+            text={crimeType}
             className="selectDropdowns"
           >
-            <Dropdown.Menu
-              className="selectDropdownItem"
-              style={{height: '300px', overflowY: 'scroll'}}
-            >
-              {crimeIndicatorOptions.map (option => {
+            <Dropdown.Menu className="selectDropdownItem">
+              {crimeTypeOptions.map (option => {
                 return (
                   <Dropdown.Item
                     key={option.value}
                     text={option.label}
-                    active={strEqual (crimeIndicator, option.value)}
-                    onClick={changeCrimeIndicator}
+                    active={strEqual (crimeType, option.value)}
+                    onClick={changeCrimeType}
                   />
                 );
               })}
             </Dropdown.Menu>
           </Dropdown>
-        </Menu.Item>
-      );
-      menuItems.push (
-        <Menu.Item className="selectText">
-          crimes
         </Menu.Item>
       );
       menuItems.push (
@@ -317,6 +360,7 @@ function Question (props) {
             style={{marginLeft: '10px'}}
             onClick={() =>
               props.fetchCrimes (
+                crimeType,
                 crimeIndicator,
                 dateType,
                 dateNum,
