@@ -63,7 +63,12 @@ function DoughnutChart (props) {
     [props.data]
   );
 
-  return <Doughnut data={chartData} />;
+  return (
+    <div>
+      {props.title && <h2 style={{marginTop: 0}}>{props.title}</h2>}
+      <Doughnut data={chartData} />
+    </div>
+  );
 }
 
 export default DoughnutChart;

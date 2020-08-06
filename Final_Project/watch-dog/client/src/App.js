@@ -33,6 +33,7 @@ import HeatMap from './components/cards/HeatMap';
 import PDCard from './components/cards/PDCard';
 import WelcomeCard from './components/cards/WelcomeCard';
 import PolarChart from './components/cards/PolarChart';
+import PieChart from './components/cards/PieChart';
 import StatisticCard from './components/cards/StatisticCard';
 
 // Constants
@@ -231,6 +232,8 @@ function App () {
     var summaryPDPath;
     var mapPath;
     var heatmapPath;
+    var summaryStatusPath;
+
     if (strEqual (crimeType, 'crimes')) {
       tablePath = '/crime-events/table?';
       summaryMCIPath = '/crime-events/summary/MCI?';
@@ -245,6 +248,7 @@ function App () {
       summaryPDPath = '/crime-events/bike-thefts/summary/police-division?';
       mapPath = '/crime-events/bike-thefts/map?';
       heatmapPath = '/crime-events/bike-thefts/heatmap/year?';
+      summaryStatusPath = '/crime-events/bike-thefts/summary/status?';
     }
 
     var plusPart = '&dateType=' + dateType + '&dateNum=' + dateNum.value;
@@ -263,6 +267,7 @@ function App () {
     summaryTimePath += plusPart;
     heatmapPath += plusPart;
     summaryPDPath += plusPart;
+    summaryStatusPath += plusPart;
 
     var timeType = '';
     if (strEqual (dateType, 'year')) {
@@ -272,14 +277,22 @@ function App () {
     }
     summaryTimePath += '&timeType=' + timeType;
 
-    Promise.all ([
+    var fetches = [
       fetch (tablePath).then (response => response.json ()),
       fetch (summaryMCIPath).then (response => response.json ()),
       fetch (summaryTimePath).then (response => response.json ()),
       fetch (mapPath).then (response => response.json ()),
       fetch (heatmapPath).then (response => response.json ()),
       fetch (summaryPDPath).then (response => response.json ()),
-    ])
+    ];
+
+    if (strEqual (crimeType, 'bike thefts')) {
+      fetches.push (
+        fetch (summaryStatusPath).then (response => response.json ())
+      );
+    }
+
+    Promise.all (fetches)
       .then (allResponses => {
         // console.log (allResponses);
         const tableData = allResponses[0];
@@ -288,6 +301,10 @@ function App () {
         const mapData = allResponses[3];
         const heatmapData = allResponses[4];
         const summaryPDData = allResponses[5];
+        var summaryStatusData = null;
+        if (strEqual (crimeType, 'bike thefts')) {
+          summaryStatusData = allResponses[6];
+        }
 
         successToast ();
         var allCards = [];
@@ -356,12 +373,7 @@ function App () {
 
         if (strEqual (crimeType, 'crimes')) {
           allCards.push ({
-            src: (
-              <DoughnutChart
-                data={summaryMCIData || []}
-                title={dateNum.label}
-              />
-            ),
+            src: <DoughnutChart data={summaryMCIData || []} />,
             group: 5,
             width: null,
           });
@@ -377,14 +389,24 @@ function App () {
         if (strEqual (crimeType, 'bike thefts')) {
           allCards.push ({
             src: (
-              <DoughnutChart
-                data={summaryMCIData || []}
-                title={dateNum.label}
+              <DoughnutChart title="Bike Types" data={summaryMCIData || []} />
+            ),
+            group: 6,
+            width: null,
+          });
+          allCards.push ({
+            src: (
+              <PieChart
+                data={summaryStatusData}
+                title="Bike Status"
+                labelKey="label"
+                dataKey="total"
               />
             ),
             group: 6,
             width: null,
           });
+
           NUM_CARD_ROWS += 1;
           pdGroup = 7;
         }
