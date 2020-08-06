@@ -154,19 +154,19 @@ const questionOptions = [
 
 const bikeTypes = new Map ();
 bikeTypes.set ('BM', 'BMX');
-bikeTypes.set ('EL', 'ELECTRIC');
-bikeTypes.set ('FO', 'FOLDING');
-bikeTypes.set ('MT', 'MOUNTAIN');
-bikeTypes.set ('OT', 'OTHER');
-bikeTypes.set ('RC', 'RACER');
-bikeTypes.set ('RE', 'RECUMBANT');
-bikeTypes.set ('RG', 'REGULAR');
-bikeTypes.set ('SC', 'SCOOTER');
-bikeTypes.set ('TA', 'TANDEM');
-bikeTypes.set ('TO', 'TOURING');
-bikeTypes.set ('TR', 'TRICYCLE');
-bikeTypes.set ('UN', 'UNICYCLE');
-bikeTypes.set ('UNKNOWN', 'TYPE UNKNOWN');
+bikeTypes.set ('EL', 'Electric');
+bikeTypes.set ('FO', 'Folding');
+bikeTypes.set ('MT', 'Mountain');
+bikeTypes.set ('OT', 'Other');
+bikeTypes.set ('RC', 'Racer');
+bikeTypes.set ('RE', 'Recumbant');
+bikeTypes.set ('RG', 'Regular');
+bikeTypes.set ('SC', 'Scooter');
+bikeTypes.set ('TA', 'Tandem');
+bikeTypes.set ('TO', 'Touring');
+bikeTypes.set ('TR', 'Tricycle');
+bikeTypes.set ('UN', 'Unicycle');
+bikeTypes.set ('UNKNOWN', 'Unknown');
 
 export {
   crimeTypeOptions,

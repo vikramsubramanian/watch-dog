@@ -41,7 +41,7 @@ import {FINE_PRINT, ABOUT_DESC, bikeTypes} from './constants';
 // Custom css
 import './App.css';
 
-const NUM_CARD_ROWS = 7;
+var NUM_CARD_ROWS = 7;
 
 function App () {
   const [showWelcome, setShowWelcome] = useState (true);
@@ -312,6 +312,12 @@ function App () {
           });
         }
 
+        if (strEqual (crimeType, 'bike thefts')) {
+          summaryMCIData.forEach (data => {
+            data['label'] = bikeTypes.get (data['label']);
+          });
+        }
+
         allCards.push ({
           src: <SummaryCard data={summaryMCIData || []} />,
           group: 2,
@@ -348,19 +354,40 @@ function App () {
           width: null,
         });
 
-        allCards.push ({
-          src: (
-            <DoughnutChart data={summaryMCIData || []} title={dateNum.label} />
-          ),
-          group: 5,
-          width: null,
-        });
+        if (strEqual (crimeType, 'crimes')) {
+          allCards.push ({
+            src: (
+              <DoughnutChart
+                data={summaryMCIData || []}
+                title={dateNum.label}
+              />
+            ),
+            group: 5,
+            width: null,
+          });
+        }
 
         allCards.push ({
           src: <TextCard header="About" body={ABOUT_DESC} />,
           group: 5,
           width: 3,
         });
+
+        var pdGroup = 6;
+        if (strEqual (crimeType, 'bike thefts')) {
+          allCards.push ({
+            src: (
+              <DoughnutChart
+                data={summaryMCIData || []}
+                title={dateNum.label}
+              />
+            ),
+            group: 6,
+            width: null,
+          });
+          NUM_CARD_ROWS += 1;
+          pdGroup = 7;
+        }
 
         // PD Card
         var locPaths = [];
@@ -414,7 +441,7 @@ function App () {
 
             allCards.push ({
               src: <PDCard data={newPDDetails} />,
-              group: 6,
+              group: pdGroup,
               width: null,
             });
 
