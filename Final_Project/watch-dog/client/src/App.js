@@ -51,6 +51,7 @@ function App () {
   const [showWelcome, setShowWelcome] = useState (true);
   const [batmanMode, setBatmanMode] = useState (false);
   const [batmanData, setBatmanData] = useState (null);
+  const [defaultQuestion, setDefaultQuestion] = useState (true);
 
   const [cards, setCards] = useState ([]);
   const [loadingData, setLoadingData] = useState (false);
@@ -59,6 +60,13 @@ function App () {
   const [pdOptions, setPDOptions] = useState ([]);
   const [pdDetails, setPDDetails] = useState ([]);
   const [offenceOptions, setOffenceOptions] = useState (new Map ());
+
+  function defaultQuestionChanged (defaultQuestion) {
+    if (batmanMode && !defaultQuestion) {
+      setBatmanMode (false);
+    }
+    setDefaultQuestion (defaultQuestion);
+  }
 
   useEffect (() => {
     var allHoods = [];
@@ -615,6 +623,7 @@ function App () {
               onClick={() => setBatmanMode (!batmanMode)}
               style={{position: 'absolute', right: '20px'}}
               color="black"
+              disabled={!defaultQuestion}
             >
               <Button.Content visible>
                 Batman Mode {batmanMode ? 'On' : 'Off'}
@@ -634,6 +643,7 @@ function App () {
         hoodOptions={hoodOptions}
         crimeOptions={crimeOptions}
         pdOptions={pdOptions}
+        defaultQuestionChanged={defaultQuestionChanged}
       />
       <Container style={{marginTop: '3em'}}>
         <Grid columns="equal">

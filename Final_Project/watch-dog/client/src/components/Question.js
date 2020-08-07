@@ -128,6 +128,7 @@ function Question (props) {
 
   function toggleQuestion () {
     setDefaultQuestion (!defaultQuestion);
+    props.defaultQuestionChanged (!defaultQuestion);
   }
 
   function renderQuestion () {

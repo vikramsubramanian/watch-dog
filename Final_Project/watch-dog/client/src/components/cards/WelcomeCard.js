@@ -29,6 +29,13 @@ function WelcomeCard (props) {
         {' '}
         Use the toggle switch to use a predefined question and explore the data that way!
       </p>
+      <p className="detail">
+        <strong>Additional Feature: </strong>
+        {' '}
+        Turn on Batman mode (button at top right) to see how well you know your city!
+        Once in Batman mode, you will have a chance to guess the total number of crimes
+        and the crimes per month/day for your query!
+      </p>
       <Button
         basic
         color="teal"
