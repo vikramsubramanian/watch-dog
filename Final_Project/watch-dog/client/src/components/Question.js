@@ -134,7 +134,7 @@ function Question (props) {
     var menuItems = [];
     if (defaultQuestion) {
       menuItems.push (
-        <Menu.Item className="selectText">
+        <Menu.Item key={'m1'} className="selectText">
           I want to explore
         </Menu.Item>
       );
@@ -148,7 +148,7 @@ function Question (props) {
         crimeTypeStyles['paddingLeft'] = '0.5em';
 
         menuItems.push (
-          <Menu.Item style={{padding: 0}}>
+          <Menu.Item key={'m2'} style={{padding: 0}}>
             <Dropdown
               inline
               icon={null}
@@ -175,7 +175,7 @@ function Question (props) {
         );
       }
       menuItems.push (
-        <Menu.Item style={crimeTypeStyles}>
+        <Menu.Item key={'m3'} style={crimeTypeStyles}>
           <Dropdown
             inline
             icon={null}
@@ -198,7 +198,7 @@ function Question (props) {
         </Menu.Item>
       );
       menuItems.push (
-        <Menu.Item style={{padding: 0}}>
+        <Menu.Item key={'m4'} style={{padding: 0}}>
           <Dropdown
             inline
             icon={null}
@@ -272,12 +272,12 @@ function Question (props) {
         </Menu.Item>
       );
       menuItems.push (
-        <Menu.Item className="selectText">
+        <Menu.Item key={'m5'} className="selectText">
           from
         </Menu.Item>
       );
       menuItems.push (
-        <Menu.Item style={{paddingRight: '0.5em', paddingLeft: 0}}>
+        <Menu.Item key={'m6'} style={{paddingRight: '0.5em', paddingLeft: 0}}>
           <Dropdown
             inline
             icon={null}
@@ -304,7 +304,7 @@ function Question (props) {
         </Menu.Item>
       );
       menuItems.push (
-        <Menu.Item style={{padding: 0}}>
+        <Menu.Item key={'m7'} style={{padding: 0}}>
           <Dropdown
             inline
             icon={null}
@@ -327,7 +327,7 @@ function Question (props) {
         </Menu.Item>
       );
       menuItems.push (
-        <Menu.Item className="selectButton">
+        <Menu.Item key={'m8'} className="selectButton">
           <Button
             icon
             labelPosition="right"
@@ -354,7 +354,7 @@ function Question (props) {
       );
     } else {
       menuItems.push (
-        <Menu.Item style={{width: '80%'}}>
+        <Menu.Item key={'m9'} style={{width: '80%'}}>
           <Dropdown
             placeholder="Select a question"
             fluid
@@ -368,7 +368,7 @@ function Question (props) {
         </Menu.Item>
       );
       menuItems.push (
-        <Menu.Item className="selectButton">
+        <Menu.Item key={'m10'} className="selectButton">
           <Button
             icon
             labelPosition="right"

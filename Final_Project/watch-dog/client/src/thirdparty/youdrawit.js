@@ -1220,6 +1220,7 @@
     var state = myState();
 
     var drawGraphs = function drawGraphs() {
+      console.log("drawing graphs");
       d3.selectAll(".you-draw-it").each(function (d, i) {
         var sel = d3.select(this);
         var question = questions[i];
@@ -1259,7 +1260,8 @@
       });
     };
 
-    document.addEventListener("DOMContentLoaded", drawGraphs);
+    // document.addEventListener("DOMContentLoaded", drawGraphs);
+    drawGraphs();
 
     window.addEventListener("resize", debounce(function () {
       drawGraphs();

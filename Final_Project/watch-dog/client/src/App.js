@@ -50,9 +50,7 @@ var NUM_CARD_ROWS = 7;
 function App () {
   const [showWelcome, setShowWelcome] = useState (true);
   const [batmanMode, setBatmanMode] = useState (false);
-  const [dateType, setDateType] = useState ('year');
-  const [totalNum, setTotalNum] = useState (-1);
-  const [timeData, setTimeData] = useState ([]);
+  const [batmanData, setBatmanData] = useState (null);
 
   const [cards, setCards] = useState ([]);
   const [loadingData, setLoadingData] = useState (false);
@@ -230,7 +228,7 @@ function App () {
     hoodName,
     pdNum
   ) {
-    setDateType (dateType);
+    // setDateType (dateType);
     setLoadingData (true);
 
     var tablePath;
@@ -319,8 +317,11 @@ function App () {
         const heatmapData = allResponses[4];
         const summaryPDData = allResponses[5];
 
-        setTotalNum (tableData.length);
-        setTimeData (summaryTimeData);
+        var newBatmanData = {};
+        newBatmanData['total'] = tableData.length;
+        newBatmanData['dateType'] = dateType;
+        newBatmanData['timeData'] = summaryTimeData;
+        setBatmanData (newBatmanData);
 
         var summaryStatusData = null;
         if (strEqual (crimeType, 'bike thefts')) {
@@ -610,7 +611,7 @@ function App () {
                 }
               />}
             <Button
-              animated
+              // animated
               onClick={() => setBatmanMode (!batmanMode)}
               style={{position: 'absolute', right: '20px'}}
               color="black"
@@ -618,9 +619,9 @@ function App () {
               <Button.Content visible>
                 Batman Mode {batmanMode ? 'On' : 'Off'}
               </Button.Content>
-              <Button.Content hidden>
+              {/* <Button.Content hidden>
                 <Icon name="arrow right" />
-              </Button.Content>
+              </Button.Content> */}
             </Button>
 
           </Header.Content>
@@ -644,15 +645,13 @@ function App () {
                 </Segment>
               </Grid.Column>
             </Grid.Row>}
-          {totalNum >= 0 &&
+          {/* {totalNum >= 0 &&
+            batmanMode && */}
+          {batmanData != null &&
             batmanMode &&
             <Grid.Row columns="equal">
               <Grid.Column width={null}>
-                <Batman
-                  total={totalNum}
-                  timeData={timeData}
-                  timeType={dateType}
-                />
+                <Batman batmanData={batmanData} />
               </Grid.Column>
             </Grid.Row>}
           {!batmanMode &&
