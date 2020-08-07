@@ -8,6 +8,7 @@ import {
   Label,
   Icon,
   Popup,
+  Button,
 } from 'semantic-ui-react';
 
 import {SemanticToastContainer, toast} from 'react-semantic-toasts';
@@ -48,7 +49,11 @@ var NUM_CARD_ROWS = 7;
 
 function App () {
   const [showWelcome, setShowWelcome] = useState (true);
+  const [batmanMode, setBatmanMode] = useState (false);
   const [dateType, setDateType] = useState ('year');
+  const [totalNum, setTotalNum] = useState (-1);
+  const [timeData, setTimeData] = useState ([]);
+
   const [cards, setCards] = useState ([]);
   const [loadingData, setLoadingData] = useState (false);
   const [hoodOptions, setHoodOptions] = useState ([]);
@@ -313,6 +318,9 @@ function App () {
         const mapData = allResponses[3];
         const heatmapData = allResponses[4];
         const summaryPDData = allResponses[5];
+
+        setTotalNum (tableData.length);
+        setTimeData (summaryTimeData);
 
         var summaryStatusData = null;
         if (strEqual (crimeType, 'bike thefts')) {
@@ -601,6 +609,20 @@ function App () {
                   </Label>
                 }
               />}
+            <Button
+              animated
+              onClick={() => setBatmanMode (!batmanMode)}
+              style={{position: 'absolute', right: '20px'}}
+              color="black"
+            >
+              <Button.Content visible>
+                Batman Mode {batmanMode ? 'On' : 'Off'}
+              </Button.Content>
+              <Button.Content hidden>
+                <Icon name="arrow right" />
+              </Button.Content>
+            </Button>
+
           </Header.Content>
         </Header>
       </div>
@@ -622,28 +644,35 @@ function App () {
                 </Segment>
               </Grid.Column>
             </Grid.Row>}
-          <Grid.Row columns="equal">
-            <Grid.Column width={null}>
-              <Batman />
-            </Grid.Column>
-          </Grid.Row>
-          {[...Array (NUM_CARD_ROWS).keys ()].map (gnum => {
-            return (
-              <Grid.Row columns="equal" key={gnum}>
-                {cards
-                  .filter (card => card.group === gnum)
-                  .map ((card, ind) => {
-                    return (
-                      <Grid.Column width={card.width} key={ind}>
-                        <Segment className="cardSegment">
-                          {card.src}
-                        </Segment>
-                      </Grid.Column>
-                    );
-                  })}
-              </Grid.Row>
-            );
-          })}
+          {totalNum >= 0 &&
+            batmanMode &&
+            <Grid.Row columns="equal">
+              <Grid.Column width={null}>
+                <Batman
+                  total={totalNum}
+                  timeData={timeData}
+                  timeType={dateType}
+                />
+              </Grid.Column>
+            </Grid.Row>}
+          {!batmanMode &&
+            [...Array (NUM_CARD_ROWS).keys ()].map (gnum => {
+              return (
+                <Grid.Row columns="equal" key={gnum}>
+                  {cards
+                    .filter (card => card.group === gnum)
+                    .map ((card, ind) => {
+                      return (
+                        <Grid.Column width={card.width} key={ind}>
+                          <Segment className="cardSegment">
+                            {card.src}
+                          </Segment>
+                        </Grid.Column>
+                      );
+                    })}
+                </Grid.Row>
+              );
+            })}
         </Grid>
         <ReportCrime
           hoodOptions={hoodOptions}

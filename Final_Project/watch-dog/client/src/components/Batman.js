@@ -5,6 +5,9 @@ import * as youdrawit from '../thirdparty/youdrawit.js';
 
 import './Batman.css';
 
+import {strEqual} from '../utility';
+import {dateNumOptions} from '../constants';
+
 var globals = {
   default: 'en',
 };
@@ -12,48 +15,58 @@ var globals = {
 function Batman (props) {
   const [questions, setQuestions] = useState ([]);
 
-  useEffect (() => {
-    var newQuestions = [...questions];
+  useEffect (
+    () => {
+      // console.log (props.timeData);
+      var newQuestions = [];
+      if (props.timeData.length > 0) {
+        var totalQuestion = {
+          heading: 'What is the total number of crimes?',
+          subHeading: '',
+          data: props.total,
+          resultHtml: 'The data tell the truth.',
+          //   unit: '',
+          // precision: 0,
+          // lastPointShownAt: ,
+          // yAxisMin: ,
+          // yAxisMax: ,
+        };
+        newQuestions.push (totalQuestion);
 
-    var totalQuestion = {
-      heading: 'What is the total number of crimes?',
-      subHeading: '',
-      data: 34049,
-      resultHtml: 'The data tell the truth.',
-      //   unit: '',
-      // precision: 0,
-      // lastPointShownAt: ,
-      // yAxisMin: ,
-      // yAxisMax: ,
-    };
-    newQuestions.push (totalQuestion);
+        var data = [];
+        var last = '';
+        if (strEqual (props.timeType, 'year')) {
+          last = 'Jan';
+          props.timeData.forEach (td => {
+            var d = {};
+            d[dateNumOptions['month'][td.month - 1].label] = td['total'];
+            console.log (d);
+            data.push (d);
+          });
+        }
 
-    var timeQuestion = {
-      heading: 'How many crimes occured in each month?',
-      subHeading: '',
-      data: [
-        {'1998': 32000},
-        {'2002': 22000},
-        {'2006': 18000},
-        {'2010': 18500},
-        {'2014': 25000},
-        {'2018': 22400},
-      ],
-      resultHtml: "Wasn't that <b>too</b> easy? How could you not know this?",
-      // unit: "Pts",
-      precision: 0,
-      lastPointShownAt: '2002',
-      // yAxisMin: ,
-      yAxisMax: 50000,
-    };
-    newQuestions.push (timeQuestion);
+        var timeQuestion = {
+          heading: 'How many crimes occured in each month?',
+          subHeading: '',
+          data: data,
+          resultHtml: "Wasn't that <b>too</b> easy? How could you not know this?",
+          // unit: "Pts",
+          precision: 0,
+          lastPointShownAt: last,
+          // yAxisMin: ,
+          // yAxisMax: 50000,
+        };
+        newQuestions.push (timeQuestion);
 
-    setQuestions (newQuestions);
-  }, []);
+        setQuestions (newQuestions);
+      }
+    },
+    [props.total, props.timeData, props.timeType]
+  );
 
   useEffect (
     () => {
-      console.log (questions);
+      // console.log (questions);
       if (questions.length > 0) {
         var myChart = youdrawit
           .chart ()
