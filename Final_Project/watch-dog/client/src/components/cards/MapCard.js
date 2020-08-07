@@ -169,7 +169,7 @@ function MapCard (props) {
 
       new mapboxgl.Popup ()
         .setLngLat (coordinates)
-        .setHTML ('<p>Neighbourhood: ' + name + '</p><p>MCI: ' + MCI + '</p>')
+        .setHTML ('<p>Neighbourhood: ' + name + '</p>')
         .addTo (map);
     });
 

@@ -1,14 +1,3 @@
-const crimeTypeOptions = [
-  {
-    label: 'crimes',
-    value: 'crimes',
-  },
-  {
-    label: 'traffic incidents',
-    value: 'traffic incidents',
-  },
-];
-
 const crimeIndicatorOptions = [
   {
     label: 'all',
@@ -168,6 +157,36 @@ bikeTypes.set ('TR', 'Tricycle');
 bikeTypes.set ('UN', 'Unicycle');
 bikeTypes.set ('UNKNOWN', 'Unknown');
 
+const locationOptions = [
+  {
+    value: 'citywide',
+    label: 'citywide',
+  },
+  {
+    value: 'in neighbourhood',
+    label: 'in',
+  },
+  {
+    value: 'in police division',
+    label: 'in',
+  },
+];
+
+const crimeTypeOptions = [
+  {
+    value: 'crimes',
+    label: 'crimes',
+  },
+  {
+    value: 'bike thefts',
+    label: 'bike thefts',
+  },
+  {
+    value: 'traffic incidents',
+    label: 'traffic incidents',
+  },
+];
+
 export {
   crimeTypeOptions,
   crimeIndicatorOptions,
@@ -178,4 +197,5 @@ export {
   premiseTypeOptions,
   questionOptions,
   bikeTypes,
+  locationOptions,
 };

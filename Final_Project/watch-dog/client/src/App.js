@@ -25,6 +25,7 @@ import ReportCrime from './components/ReportCrime';
 import TableCard from './components/cards/TableCard';
 import LineChart from './components/cards/LineChart';
 import BarChart from './components/cards/BarChart';
+import VerticalBarChart from './components/cards/VerticalBarChart';
 import DoughnutChart from './components/cards/DoughnutChart';
 import TextCard from './components/cards/TextCard';
 import SummaryCard from './components/cards/SummaryCard';
@@ -232,7 +233,7 @@ function App () {
     var summaryPDPath;
     var mapPath;
     var heatmapPath;
-    var summaryStatusPath;
+    var extraPaths = [];
 
     if (strEqual (crimeType, 'crimes')) {
       tablePath = '/crime-events/table?';
@@ -248,7 +249,17 @@ function App () {
       summaryPDPath = '/crime-events/bike-thefts/summary/police-division?';
       mapPath = '/crime-events/bike-thefts/map?';
       heatmapPath = '/crime-events/bike-thefts/heatmap/year?';
-      summaryStatusPath = '/crime-events/bike-thefts/summary/status?';
+      extraPaths.push ('/crime-events/bike-thefts/summary/status?');
+    } else if (strEqual (crimeType, 'traffic incidents')) {
+      tablePath = '/traffic-events/table?';
+      summaryMCIPath = '/traffic-events/summary/type?';
+      summaryTimePath = '/traffic-events/summary/time?';
+      summaryPDPath = '/traffic-events/summary/police-division?';
+      mapPath = '/traffic-events/map?';
+      heatmapPath = '/traffic-events/heatmap/year?';
+      extraPaths.push ('/traffic-events/summary/road/classification');
+      extraPaths.push ('/traffic-events/summary/road/visibility');
+      extraPaths.push ('/traffic-events/summary/road/surface_condition');
     }
 
     var plusPart = '&dateType=' + dateType + '&dateNum=' + dateNum.value;
@@ -267,7 +278,9 @@ function App () {
     summaryTimePath += plusPart;
     heatmapPath += plusPart;
     summaryPDPath += plusPart;
-    summaryStatusPath += plusPart;
+    extraPaths.forEach ((xPath, ind, theArray) => {
+      theArray[ind] = xPath + plusPart;
+    });
 
     var timeType = '';
     if (strEqual (dateType, 'year')) {
@@ -286,11 +299,9 @@ function App () {
       fetch (summaryPDPath).then (response => response.json ()),
     ];
 
-    if (strEqual (crimeType, 'bike thefts')) {
-      fetches.push (
-        fetch (summaryStatusPath).then (response => response.json ())
-      );
-    }
+    extraPaths.forEach (xPath => {
+      fetches.push (fetch (xPath).then (response => response.json ()));
+    });
 
     Promise.all (fetches)
       .then (allResponses => {
@@ -301,9 +312,19 @@ function App () {
         const mapData = allResponses[3];
         const heatmapData = allResponses[4];
         const summaryPDData = allResponses[5];
+
         var summaryStatusData = null;
         if (strEqual (crimeType, 'bike thefts')) {
           summaryStatusData = allResponses[6];
+        }
+
+        var summaryClassData = null;
+        var summaryVisData = null;
+        var summarySurfaceData = null;
+        if (strEqual (crimeType, 'traffic incidents')) {
+          summaryClassData = allResponses[6];
+          summaryVisData = allResponses[7];
+          summarySurfaceData = allResponses[8];
         }
 
         successToast ();
@@ -332,6 +353,28 @@ function App () {
         if (strEqual (crimeType, 'bike thefts')) {
           summaryMCIData.forEach (data => {
             data['label'] = bikeTypes.get (data['label']);
+          });
+        }
+        if (strEqual (crimeType, 'traffic incidents')) {
+          summaryMCIData.forEach (data => {
+            if (data['label'] == null) {
+              data['label'] = 'Unknown';
+            }
+          });
+          summaryClassData.forEach (data => {
+            if (data['label'] == null) {
+              data['label'] = 'Unknown';
+            }
+          });
+          summaryVisData.forEach (data => {
+            if (data['label'] == null) {
+              data['label'] = 'Unknown';
+            }
+          });
+          summarySurfaceData.forEach (data => {
+            if (data['label'] == null) {
+              data['label'] = 'Unknown';
+            }
           });
         }
 
@@ -378,12 +421,16 @@ function App () {
             width: null,
           });
         }
-
-        allCards.push ({
-          src: <TextCard header="About" body={ABOUT_DESC} />,
-          group: 5,
-          width: 3,
-        });
+        if (
+          strEqual (crimeType, 'crimes') ||
+          strEqual (crimeType, 'bike thefts')
+        ) {
+          allCards.push ({
+            src: <TextCard header="About" body={ABOUT_DESC} />,
+            group: 5,
+            width: 3,
+          });
+        }
 
         var pdGroup = 6;
         if (strEqual (crimeType, 'bike thefts')) {
@@ -405,6 +452,49 @@ function App () {
             ),
             group: 6,
             width: null,
+          });
+
+          NUM_CARD_ROWS += 1;
+          pdGroup = 7;
+        }
+
+        if (strEqual (crimeType, 'traffic incidents')) {
+          allCards.push ({
+            src: (
+              <DoughnutChart
+                title="Road Classification"
+                data={summaryClassData || []}
+              />
+            ),
+            group: 5,
+            width: null,
+          });
+          allCards.push ({
+            src: (
+              <PieChart
+                data={summaryVisData}
+                title="Road Visibility"
+                labelKey="label"
+                dataKey="total"
+              />
+            ),
+            group: 6,
+            width: null,
+          });
+          allCards.push ({
+            src: (
+              <DoughnutChart
+                title="Road Surface Condition"
+                data={summarySurfaceData || []}
+              />
+            ),
+            group: 6,
+            width: null,
+          });
+          allCards.push ({
+            src: <TextCard header="About" body={ABOUT_DESC} />,
+            group: 6,
+            width: 3,
           });
 
           NUM_CARD_ROWS += 1;

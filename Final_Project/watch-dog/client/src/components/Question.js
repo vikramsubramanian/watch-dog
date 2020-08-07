@@ -12,7 +12,9 @@ import {
   dateTypeOptions,
   dateNumOptions,
   questionOptions,
+  locationOptions,
   crimeIndicatorOptions,
+  crimeTypeOptions,
 } from '../constants';
 import {strEqual} from '../utility';
 
@@ -28,31 +30,7 @@ function Question (props) {
 
   const [dateNum, setDateNum] = useState (dateNumOptions['year'][5]);
   const [dateType, setDateType] = useState ('year');
-  const [crimeTypeOptions, setCrimeTypeOptions] = useState ([
-    {
-      value: 'crimes',
-      label: 'crimes',
-    },
-    {
-      value: 'bike thefts',
-      label: 'bike thefts',
-    },
-  ]);
-  // const [crimeIndicatorOptions, setCrimeIndicatorOptions] = useState ([]);
-  const [locationOptions, setLocationOptions] = useState ([
-    {
-      value: 'citywide',
-      label: 'citywide',
-    },
-    {
-      value: 'in neighbourhood',
-      label: 'in',
-    },
-    {
-      value: 'in police division',
-      label: 'in',
-    },
-  ]);
+
   const [hoodNameOptions, setHoodNameOptions] = useState ([]);
   const [pdNumOptions, setPDNumOptions] = useState ([]);
 
