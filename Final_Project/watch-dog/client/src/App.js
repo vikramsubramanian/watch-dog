@@ -257,9 +257,9 @@ function App () {
       summaryPDPath = '/traffic-events/summary/police-division?';
       mapPath = '/traffic-events/map?';
       heatmapPath = '/traffic-events/heatmap/year?';
-      extraPaths.push ('/traffic-events/summary/road/classification');
-      extraPaths.push ('/traffic-events/summary/road/visibility');
-      extraPaths.push ('/traffic-events/summary/road/surface_condition');
+      extraPaths.push ('/traffic-events/summary/road/classification?');
+      extraPaths.push ('/traffic-events/summary/road/visibility?');
+      extraPaths.push ('/traffic-events/summary/road/surface_condition?');
     }
 
     var plusPart = '&dateType=' + dateType + '&dateNum=' + dateNum.value;
