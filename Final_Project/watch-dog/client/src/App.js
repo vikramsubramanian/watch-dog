@@ -20,6 +20,7 @@ import DogIcon from './images/dog_icon.svg';
 // Components
 import Question from './components/Question';
 import ReportCrime from './components/ReportCrime';
+import Batman from './components/Batman';
 
 // Cards
 import TableCard from './components/cards/TableCard';
@@ -621,6 +622,11 @@ function App () {
                 </Segment>
               </Grid.Column>
             </Grid.Row>}
+          <Grid.Row columns="equal">
+            <Grid.Column width={null}>
+              <Batman />
+            </Grid.Column>
+          </Grid.Row>
           {[...Array (NUM_CARD_ROWS).keys ()].map (gnum => {
             return (
               <Grid.Row columns="equal" key={gnum}>
