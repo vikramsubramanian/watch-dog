@@ -40,12 +40,12 @@ import PieChart from './components/cards/PieChart';
 import StatisticCard from './components/cards/StatisticCard';
 
 // Constants
-import {FINE_PRINT, ABOUT_DESC, bikeTypes} from './constants';
+import {FINE_PRINT, ABOUT_DESC, bikeTypes, dateNumOptions} from './constants';
 
 // Custom css
 import './App.css';
 
-var NUM_CARD_ROWS = 7;
+var NUM_CARD_ROWS = 8;
 
 function App () {
   const [showWelcome, setShowWelcome] = useState (true);
@@ -62,9 +62,6 @@ function App () {
   const [offenceOptions, setOffenceOptions] = useState (new Map ());
 
   function defaultQuestionChanged (defaultQuestion) {
-    if (batmanMode && !defaultQuestion) {
-      setBatmanMode (false);
-    }
     setDefaultQuestion (defaultQuestion);
   }
 
@@ -196,6 +193,91 @@ function App () {
             group: 0,
             width: null,
           });
+        } else if (questionNum == 2) {
+          res.forEach (data => {
+            var label = dateNumOptions['hour'].find (
+              hour => hour.value == data['hour']
+            );
+            data['hour'] = label['label'];
+          });
+
+          allCards.push ({
+            src: (
+              <VerticalBarChart
+                data={res}
+                title="Crimes Per Hour"
+                labelKey="hour"
+                dataKey="total"
+                chartLabel="crimes"
+              />
+            ),
+            group: 0,
+            width: null,
+          });
+        } else if (questionNum == 3) {
+          res.forEach (data => {
+            var label = dateNumOptions['week'].find (
+              hour => hour.value == data['day_of_week']
+            );
+            data['day_of_week'] = label['label'];
+          });
+
+          allCards.push ({
+            src: (
+              <VerticalBarChart
+                data={res}
+                title="Crimes Per Day of the Week"
+                labelKey="day_of_week"
+                dataKey="total"
+                chartLabel="crimes"
+              />
+            ),
+            group: 0,
+            width: null,
+          });
+        }
+        else if (questionNum == 4) {
+          res.forEach (data => {
+            var label = dateNumOptions['hour'].find (
+              hour => hour.value == data['hour']
+            );
+            data['hour'] = label['label'];
+          });
+
+          allCards.push ({
+            src: (
+              <VerticalBarChart
+                data={res}
+                title="Robberies Per Hour"
+                labelKey="hour"
+                dataKey="total"
+                chartLabel="crimes"
+              />
+            ),
+            group: 0,
+            width: null,
+          });
+        } else if (questionNum == 5) {
+          res.forEach (data => {
+            var label = dateNumOptions['week'].find (
+              hour => hour.value == data['day_of_week']
+            );
+            data['day_of_week'] = label['label'];
+          });
+
+          allCards.push ({
+            src: (
+              <VerticalBarChart
+                data={res}
+                title="Robberies Per Day of the Week"
+                labelKey="day_of_week"
+                dataKey="total"
+                chartLabel="crimes"
+              />
+            ),
+            group: 0,
+            width: null,
+          });
         }
 
         allCards.push ({
@@ -219,6 +301,7 @@ function App () {
         setLoadingData (false);
         successToast ();
         setCards (allCards);
+        setBatmanMode (false);
       })
       .catch (err => {
         console.log (err);
@@ -254,6 +337,7 @@ function App () {
       summaryPDPath = '/crime-events/summary/police-division?';
       mapPath = '/crime-events/map?';
       heatmapPath = '/crime-events/heatmap/year?';
+      extraPaths.push ('/crime-events/summary/premise?');
     } else if (strEqual (crimeType, 'bike thefts')) {
       tablePath = '/crime-events/bike-thefts/table?';
       summaryMCIPath = '/crime-events/bike-thefts/summary/type?';
@@ -330,6 +414,11 @@ function App () {
         newBatmanData['dateType'] = dateType;
         newBatmanData['timeData'] = summaryTimeData;
         setBatmanData (newBatmanData);
+
+        var summaryPremiseData = null;
+        if (strEqual (crimeType, 'crimes')) {
+          summaryPremiseData = allResponses[6];
+        }
 
         var summaryStatusData = null;
         if (strEqual (crimeType, 'bike thefts')) {
@@ -435,10 +524,23 @@ function App () {
         if (strEqual (crimeType, 'crimes')) {
           allCards.push ({
             src: <DoughnutChart data={summaryMCIData || []} />,
-            group: 5,
+            group: 6,
+            width: null,
+          });
+
+          allCards.push ({
+            src: (
+              <PieChart
+                data={summaryPremiseData || []}
+                labelKey="label"
+                dataKey="total"
+              />
+            ),
+            group: 6,
             width: null,
           });
         }
+
         if (
           strEqual (crimeType, 'crimes') ||
           strEqual (crimeType, 'bike thefts')
@@ -450,7 +552,6 @@ function App () {
           });
         }
 
-        var pdGroup = 6;
         if (strEqual (crimeType, 'bike thefts')) {
           allCards.push ({
             src: (
@@ -471,9 +572,6 @@ function App () {
             group: 6,
             width: null,
           });
-
-          NUM_CARD_ROWS += 1;
-          pdGroup = 7;
         }
 
         if (strEqual (crimeType, 'traffic incidents')) {
@@ -514,9 +612,6 @@ function App () {
             group: 6,
             width: 3,
           });
-
-          NUM_CARD_ROWS += 1;
-          pdGroup = 7;
         }
 
         // PD Card
@@ -571,7 +666,7 @@ function App () {
 
             allCards.push ({
               src: <PDCard data={newPDDetails} />,
-              group: pdGroup,
+              group: 7,
               width: null,
             });
 

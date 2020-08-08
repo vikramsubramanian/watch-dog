@@ -17,6 +17,11 @@ function PieChart (props) {
         {
           data: dataPoints,
           backgroundColor: [
+            '#3d405b',
+            '#f2cc8f',
+            '#e07a5f',
+            '#ef476f',
+            '#283618',
             '#FF6384',
             '#36A2EB',
             '#FFCE56',
@@ -25,13 +30,13 @@ function PieChart (props) {
             '#71B37C',
             '#e63946',
             '#1d3557',
-            '#3d405b',
-            '#f2cc8f',
-            '#e07a5f',
-            '#ef476f',
-            '#283618',
           ],
           hoverBackgroundColor: [
+            '#3d405b',
+            '#f2cc8f',
+            '#e07a5f',
+            '#ef476f',
+            '#283618',
             '#FF6384',
             '#36A2EB',
             '#FFCE56',
@@ -40,11 +45,6 @@ function PieChart (props) {
             '#71B37C',
             '#e63946',
             '#1d3557',
-            '#3d405b',
-            '#f2cc8f',
-            '#e07a5f',
-            '#ef476f',
-            '#283618',
           ],
           label: props.title, // for legend
         },
@@ -55,7 +55,7 @@ function PieChart (props) {
 
   return (
     <div>
-      <h2 style={{marginTop: 0}}>{props.title}</h2>
+      {props.title && <h2 style={{marginTop: 0}}>{props.title}</h2>}
       <Pie data={data} />
     </div>
   );

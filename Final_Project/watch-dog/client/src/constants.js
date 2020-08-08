@@ -107,8 +107,134 @@ dateNumOptions['month'] = [
     label: 'Dec',
   },
 ];
-// dateNumOptions['week'] = [1, 2, 3, 4, 5, 6];
-// dateNumOptions['day'] = [1, 2, 7, 30, 60, 180, 365];
+dateNumOptions['week'] = [
+  {
+    value: 1,
+    label: 'Sunday',
+  },
+  {
+    value: 2,
+    label: 'Monday',
+  },
+  {
+    value: 3,
+    label: 'Tuesday',
+  },
+  {
+    value: 4,
+    label: 'Wednesday',
+  },
+  {
+    value: 5,
+    label: 'Thursday',
+  },
+  {
+    value: 6,
+    label: 'Friday',
+  },
+  {
+    value: 7,
+    label: 'Saturday',
+  },
+];
+dateNumOptions['hour'] = [
+  {
+    value: 0,
+    label: '12:00am',
+  },
+  {
+    value: 1,
+    label: '01:00am',
+  },
+  {
+    value: 2,
+    label: '02:00am',
+  },
+  {
+    value: 3,
+    label: '03:00am',
+  },
+  {
+    value: 4,
+    label: '04:00am',
+  },
+  {
+    value: 5,
+    label: '05:00am',
+  },
+  {
+    value: 6,
+    label: '06:00am',
+  },
+  {
+    value: 7,
+    label: '07:00am',
+  },
+  {
+    value: 8,
+    label: '08:00am',
+  },
+  {
+    value: 9,
+    label: '09:00am',
+  },
+  {
+    value: 10,
+    label: '10:00am',
+  },
+  {
+    value: 11,
+    label: '11:00am',
+  },
+  {
+    value: 12,
+    label: '12:00pm',
+  },
+  {
+    value: 13,
+    label: '01:00pm',
+  },
+  {
+    value: 14,
+    label: '02:00pm',
+  },
+  {
+    value: 15,
+    label: '03:00pm',
+  },
+  {
+    value: 16,
+    label: '04:00pm',
+  },
+  {
+    value: 17,
+    label: '05:00pm',
+  },
+  {
+    value: 18,
+    label: '06:00pm',
+  },
+  {
+    value: 19,
+    label: '07:00pm',
+  },
+  {
+    value: 20,
+    label: '08:00pm',
+  },
+  {
+    value: 21,
+    label: '09:00pm',
+  },
+  {
+    value: 22,
+    label: '10:00pm',
+  },
+  {
+    value: 23,
+    label: '11:00pm',
+  },
+];
 
 const FINE_PRINT = `The statistics, graphs and maps are based upon preliminary information that was supplied to the Toronto Police Service by the reporting parties and may not have been verified. The preliminary crime classifications may be changed at a later date based upon additional investigation and there is always the possibility of mechanical or human error.
 
@@ -138,6 +264,26 @@ const questionOptions = [
     key: '1',
     text: 'How many stolen bikes were recovered?',
     value: '1',
+  },
+  {
+    key: '2',
+    text: 'At what hour do most crimes occur?',
+    value: '2',
+  },
+  {
+    key: '3',
+    text: 'On what day of the week do most crimes occur?',
+    value: '3',
+  },
+  {
+    key: '4',
+    text: 'At what hour do most robberies occur?',
+    value: '4',
+  },
+  {
+    key: '5',
+    text: 'On what day of the week do most robberies occur?',
+    value: '5',
   },
 ];
 

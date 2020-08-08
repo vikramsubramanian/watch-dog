@@ -8,19 +8,36 @@ function PieChart (props) {
   useEffect (() => {
     var dataPoints = [];
     var labels = [];
-    props.data.forEach (d => {
+    var colours = [];
+    var hoverColours = [];
+    var borderColors = [];
+    var maxValue = -1;
+    var maxInd = -1;
+    props.data.forEach ((d, ind) => {
       labels.push (d[props.labelKey]);
+      if (d[props.dataKey] > maxValue) {
+        maxValue = d[props.dataKey];
+        maxInd = ind;
+      }
       dataPoints.push (d[props.dataKey]);
+      colours.push ('rgba(255,99,132,0.2)');
+      hoverColours.push ('rgba(255,99,132,0.4)');
+      borderColors.push ('rgba(255,99,132,1)');
     });
+    console.log (maxInd);
+    colours[maxInd] = 'rgba(75, 192, 192, 0.2)';
+    hoverColours[maxInd] = 'rgba(75, 192, 192, 0.4)';
+    borderColors[maxInd] = 'rgba(75, 192, 192, 1)';
+
     setData ({
       datasets: [
         {
-          label: 'My First dataset',
-          backgroundColor: 'rgba(255,99,132,0.2)',
-          borderColor: 'rgba(255,99,132,1)',
+          label: props.chartLabel,
+          backgroundColor: colours,
+          borderColor: borderColors,
           borderWidth: 1,
-          hoverBackgroundColor: 'rgba(255,99,132,0.4)',
-          hoverBorderColor: 'rgba(255,99,132,1)',
+          hoverBackgroundColor: hoverColours,
+          hoverBorderColor: borderColors,
           data: dataPoints,
         },
       ],
@@ -30,7 +47,7 @@ function PieChart (props) {
 
   return (
     <div>
-      <h2 style={{marginTop: 0}}>{props.title}</h2>
+      {props.title && <h2 style={{marginTop: 0}}>{props.title}</h2>}
       <Bar data={data} />
     </div>
   );
