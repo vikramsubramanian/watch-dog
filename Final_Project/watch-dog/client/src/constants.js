@@ -320,6 +320,46 @@ const questionOptions = [
     text: 'What is the most common driver action taken in traffic accidents?',
     value: '12',
   },
+  {
+    key: '13',
+    text: 'Is there a correlation between neighbourhood employment and crime?',
+    value: '13',
+  },
+  {
+    key: '14',
+    text: 'Is there a correlation between neighbourhood education and crime?',
+    value: '14',
+  },
+  {
+    key: '15',
+    text: 'Is there a correlation between bike speed and bike thefts?',
+    value: '15',
+  },
+  {
+    key: '16',
+    text: 'Is there a correlation between bike cost and bike thefts?',
+    value: '16',
+  },
+  {
+    key: '17',
+    text: 'Which road surface conditions have the most accidents?',
+    value: '17',
+  },
+  {
+    key: '18',
+    text: 'Which road visibility conditions have the most accidents?',
+    value: '18',
+  },
+  {
+    key: '19',
+    text: 'Which road types have the most accidents?',
+    value: '19',
+  },
+  {
+    key: '20',
+    text: 'Which road traffic control types have the most accidents?',
+    value: '20',
+  },
 ];
 
 const bikeTypes = new Map ();

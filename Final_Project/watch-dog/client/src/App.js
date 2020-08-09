@@ -38,6 +38,7 @@ import PDCard from './components/cards/PDCard';
 import WelcomeCard from './components/cards/WelcomeCard';
 import PolarChart from './components/cards/PolarChart';
 import PieChart from './components/cards/PieChart';
+import ScatterChart from './components/cards/ScatterChart';
 import StatisticCard from './components/cards/StatisticCard';
 
 // Constants
@@ -172,6 +173,7 @@ function App () {
       .then (res => {
         console.log (res);
         var allCards = [];
+        var lastCardsGroup = 1;
 
         if (questionNum == 0) {
           res.forEach (data => {
@@ -303,7 +305,7 @@ function App () {
         } else if (questionNum == 7) {
           res.forEach (data => {
             if (data['label'] == null) {
-              data['label'] = 'unknown';
+              data['label'] = 'Unknown';
             }
           });
           allCards.push ({
@@ -348,7 +350,7 @@ function App () {
         } else if (questionNum == 10) {
           res.forEach (data => {
             if (data['label'] == null) {
-              data['label'] = 'unknown';
+              data['label'] = 'Unknown';
             }
           });
           allCards.push ({
@@ -361,7 +363,7 @@ function App () {
         } else if (questionNum == 11) {
           res.forEach (data => {
             if (data['label'] == null) {
-              data['label'] = 'unknown';
+              data['label'] = 'Unknown';
             }
           });
           allCards.push ({
@@ -374,12 +376,181 @@ function App () {
         } else if (questionNum == 12) {
           res.forEach (data => {
             if (data['label'].length == 1) {
-              data['label'] = 'unknown';
+              data['label'] = 'Unknown';
             }
           });
           allCards.push ({
             src: (
               <BarChart data={res} title="Traffic Accidents by Action Taken" />
+            ),
+            group: 0,
+            width: null,
+          });
+        } else if (questionNum == 13) {
+          allCards.push ({
+            src: (
+              <ScatterChart
+                data={res}
+                title="Crimes Per Neighbourhood Employment Rate"
+                labelKey="hood_id"
+                xKey="employment_rate"
+                yKey="total"
+                yLabel="Number of Crimes"
+                xLabel="Employment Rate"
+              />
+            ),
+            group: 0,
+            width: null,
+          });
+        } else if (questionNum == 14) {
+          allCards.push ({
+            src: (
+              <ScatterChart
+                data={res[0]}
+                title="Crimes Per Neighbourhood High School Education Rate"
+                labelKey="hood_id"
+                xKey="high_school"
+                yKey="total"
+                yLabel="Number of Crimes"
+                xLabel="High School Rate"
+              />
+            ),
+            group: 0,
+            width: null,
+          });
+
+          allCards.push ({
+            src: (
+              <ScatterChart
+                data={res[1]}
+                title="Crimes Per Neighbourhood University Education Rate"
+                labelKey="hood_id"
+                xKey="university"
+                yKey="total"
+                yLabel="Number of Crimes"
+                xLabel="University Rate"
+              />
+            ),
+            group: 1,
+            width: null,
+          });
+
+          allCards.push ({
+            src: (
+              <ScatterChart
+                data={res[2]}
+                title="Crimes Per Neighbourhood Technical Degree Rate"
+                labelKey="hood_id"
+                xKey="technical_degree"
+                yKey="total"
+                yLabel="Number of Crimes"
+                xLabel="Technical Degree Rate"
+              />
+            ),
+            group: 2,
+            width: null,
+          });
+          lastCardsGroup = 3;
+        } else if (questionNum == 15) {
+          allCards.push ({
+            src: (
+              <ScatterChart
+                data={res}
+                title="Bike Thefts Per Bike Speed"
+                labelKey="hood_id"
+                xKey="speed"
+                yKey="total"
+                yLabel="Number of Bike Thefts"
+                xLabel="Bike Speed"
+              />
+            ),
+            group: 0,
+            width: null,
+          });
+        } else if (questionNum == 16) {
+          allCards.push ({
+            src: (
+              <ScatterChart
+                data={res}
+                title="Bike Thefts Per Bike Cost"
+                labelKey="hood_id"
+                xKey="cost"
+                yKey="total"
+                yLabel="Number of Bike Thefts"
+                xLabel="Bike Cost"
+              />
+            ),
+            group: 0,
+            width: null,
+          });
+        } else if (questionNum == 17) {
+          res.forEach (data => {
+            if (data['label'] == null) {
+              data['label'] = 'Unknown';
+            }
+          });
+          allCards.push ({
+            src: (
+              <PieChart
+                title="Traffic Accidents Per Road Surface Conditions"
+                data={res}
+                labelKey="label"
+                dataKey="total"
+              />
+            ),
+            group: 0,
+            width: null,
+          });
+        } else if (questionNum == 18) {
+          res.forEach (data => {
+            if (data['label'] == null) {
+              data['label'] = 'Unknown';
+            }
+          });
+          allCards.push ({
+            src: (
+              <PieChart
+                title="Traffic Accidents Per Road Visibility Conditions"
+                data={res}
+                labelKey="label"
+                dataKey="total"
+              />
+            ),
+            group: 0,
+            width: null,
+          });
+        } else if (questionNum == 19) {
+          res.forEach (data => {
+            if (data['label'] == null) {
+              data['label'] = 'Unknown';
+            }
+          });
+          allCards.push ({
+            src: (
+              <PieChart
+                title="Traffic Accidents Per Road Type"
+                data={res}
+                labelKey="label"
+                dataKey="total"
+              />
+            ),
+            group: 0,
+            width: null,
+          });
+        } else if (questionNum == 20) {
+          res.forEach (data => {
+            if (data['label'] == null) {
+              data['label'] = 'Unknown';
+            }
+          });
+          allCards.push ({
+            src: (
+              <PieChart
+                title="Traffic Accidents Per Road Traffic Control Type"
+                data={res}
+                labelKey="label"
+                dataKey="total"
+              />
             ),
             group: 0,
             width: null,
@@ -394,13 +565,13 @@ function App () {
               body={FINE_PRINT}
             />
           ),
-          group: 1,
+          group: lastCardsGroup,
           width: null,
         });
 
         allCards.push ({
           src: <TextCard header="About" body={ABOUT_DESC} />,
-          group: 1,
+          group: lastCardsGroup,
           width: null,
         });
 
