@@ -285,6 +285,21 @@ const questionOptions = [
     text: 'On what day of the week do most robberies occur?',
     value: '5',
   },
+  {
+    key: '6',
+    text: 'Which neighbourhood has the most number of accidents?',
+    value: '6',
+  },
+  {
+    key: '7',
+    text: 'What are the number of accidents by age?',
+    value: '7',
+  },
+  {
+    key: '8',
+    text: 'What is the average cost of bikes stolen?',
+    value: '8',
+  },
 ];
 
 const bikeTypes = new Map ();

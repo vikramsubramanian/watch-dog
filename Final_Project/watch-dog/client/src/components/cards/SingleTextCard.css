@@ -1,0 +1,14 @@
+.singleTextWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.singleMainText {
+  margin: 0;
+  align-items: center;
+}
+
+.singleSubText {
+  margin: 0 10px;
+  align-items: center;
+}

@@ -5,7 +5,7 @@ import {Statistic} from 'semantic-ui-react';
 
 function StatisticCard (props) {
   return (
-    <Statistic horizontal>
+    <Statistic horizontal text>
       <Statistic.Value>{props.data}</Statistic.Value>
       <Statistic.Label>{props.label}</Statistic.Label>
     </Statistic>

@@ -30,6 +30,7 @@ import BarChart from './components/cards/BarChart';
 import VerticalBarChart from './components/cards/VerticalBarChart';
 import DoughnutChart from './components/cards/DoughnutChart';
 import TextCard from './components/cards/TextCard';
+import SingleTextCard from './components/cards/SingleTextCard';
 import SummaryCard from './components/cards/SummaryCard';
 import MapCard from './components/cards/MapCard';
 import HeatMap from './components/cards/HeatMap';
@@ -235,8 +236,7 @@ function App () {
             group: 0,
             width: null,
           });
-        }
-        else if (questionNum == 4) {
+        } else if (questionNum == 4) {
           res.forEach (data => {
             var label = dateNumOptions['hour'].find (
               hour => hour.value == data['hour']
@@ -273,6 +273,47 @@ function App () {
                 labelKey="day_of_week"
                 dataKey="total"
                 chartLabel="crimes"
+              />
+            ),
+            group: 0,
+            width: null,
+          });
+        } else if (questionNum == 6) {
+          var text = res[0].name + ' (' + res[0].hood_id + ')';
+          allCards.push ({
+            src: (
+              <SingleTextCard
+                mainText={text}
+                subText={
+                  ' has the most with a total of ' + res[0].total + ' accidents'
+                }
+              />
+            ),
+            group: 0,
+            width: null,
+          });
+        } else if (questionNum == 7) {
+          res.forEach (data => {
+            if (data['label'] == null) {
+              data['label'] = 'unknown';
+            }
+          });
+          allCards.push ({
+            src: (
+              <BarChart
+                data={res}
+                title="Accidents by Age of Involved Person"
+              />
+            ),
+            group: 0,
+            width: null,
+          });
+        } else if (questionNum == 8) {
+          allCards.push ({
+            src: (
+              <StatisticCard
+                data={'$' + res[0].avgCost.toFixed (2)}
+                label=" dollars"
               />
             ),
             group: 0,
