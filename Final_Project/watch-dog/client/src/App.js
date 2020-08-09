@@ -41,7 +41,13 @@ import PieChart from './components/cards/PieChart';
 import StatisticCard from './components/cards/StatisticCard';
 
 // Constants
-import {FINE_PRINT, ABOUT_DESC, bikeTypes, dateNumOptions} from './constants';
+import {
+  FINE_PRINT,
+  ABOUT_DESC,
+  bikeTypes,
+  dateNumOptions,
+  bikeColours,
+} from './constants';
 
 // Custom css
 import './App.css';
@@ -285,7 +291,9 @@ function App () {
               <SingleTextCard
                 mainText={text}
                 subText={
-                  ' has the most with a total of ' + res[0].total + ' accidents'
+                  ' has the most with a total of ' +
+                    res[0].total +
+                    ' traffic accidents'
                 }
               />
             ),
@@ -302,7 +310,7 @@ function App () {
             src: (
               <BarChart
                 data={res}
-                title="Accidents by Age of Involved Person"
+                title="Traffic Accidents by Age of Involved Person"
               />
             ),
             group: 0,
@@ -315,6 +323,63 @@ function App () {
                 data={'$' + res[0].avgCost.toFixed (2)}
                 label=" dollars"
               />
+            ),
+            group: 0,
+            width: null,
+          });
+        } else if (questionNum == 9) {
+          res.forEach (data => {
+            data['colour'] = bikeColours.get (data['colour']);
+          });
+          console.log (res);
+          allCards.push ({
+            src: (
+              <PolarChart
+                data={res}
+                title="Stolen Bike Colours"
+                labelKey="colour"
+                dataKey="total"
+                customColors={['#011627', '#00b4d8', '#d9d9d9']}
+              />
+            ),
+            group: 0,
+            width: null,
+          });
+        } else if (questionNum == 10) {
+          res.forEach (data => {
+            if (data['label'] == null) {
+              data['label'] = 'unknown';
+            }
+          });
+          allCards.push ({
+            src: (
+              <DoughnutChart title="Traffic Accidents Per Injury" data={res} />
+            ),
+            group: 0,
+            width: null,
+          });
+        } else if (questionNum == 11) {
+          res.forEach (data => {
+            if (data['label'] == null) {
+              data['label'] = 'unknown';
+            }
+          });
+          allCards.push ({
+            src: (
+              <BarChart data={res} title="Traffic Accidents by Vehicle Type" />
+            ),
+            group: 0,
+            width: null,
+          });
+        } else if (questionNum == 12) {
+          res.forEach (data => {
+            if (data['label'].length == 1) {
+              data['label'] = 'unknown';
+            }
+          });
+          allCards.push ({
+            src: (
+              <BarChart data={res} title="Traffic Accidents by Action Taken" />
             ),
             group: 0,
             width: null,

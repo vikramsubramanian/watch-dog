@@ -287,18 +287,38 @@ const questionOptions = [
   },
   {
     key: '6',
-    text: 'Which neighbourhood has the most number of accidents?',
+    text: 'Which neighbourhood has the most number of traffic accidents?',
     value: '6',
   },
   {
     key: '7',
-    text: 'What are the number of accidents by age?',
+    text: 'What are the number of traffic accidents by age?',
     value: '7',
   },
   {
     key: '8',
     text: 'What is the average cost of bikes stolen?',
     value: '8',
+  },
+  {
+    key: '9',
+    text: 'What are the top three colours of bikes stolen?',
+    value: '9',
+  },
+  {
+    key: '10',
+    text: 'What is the most common injury in traffic accidents?',
+    value: '10',
+  },
+  {
+    key: '11',
+    text: 'What is the most common vehicle type in traffic accidents?',
+    value: '11',
+  },
+  {
+    key: '12',
+    text: 'What is the most common driver action taken in traffic accidents?',
+    value: '12',
   },
 ];
 
@@ -317,6 +337,11 @@ bikeTypes.set ('TO', 'Touring');
 bikeTypes.set ('TR', 'Tricycle');
 bikeTypes.set ('UN', 'Unicycle');
 bikeTypes.set ('UNKNOWN', 'Unknown');
+
+const bikeColours = new Map ();
+bikeColours.set ('BLK', 'Black');
+bikeColours.set ('BLU', 'Blue');
+bikeColours.set ('GRY', 'Gray');
 
 const locationOptions = [
   {
@@ -359,4 +384,5 @@ export {
   questionOptions,
   bikeTypes,
   locationOptions,
+  bikeColours,
 };

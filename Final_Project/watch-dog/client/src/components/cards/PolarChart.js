@@ -12,17 +12,15 @@ function PolarChart (props) {
       labels.push (d[props.labelKey]);
       dataPoints.push (d[props.dataKey]);
     });
+    var colors = ['#FF6384', '#4BC0C0', '#FFCE56', '#E7E9ED', '#36A2EB'];
+    if (props.customColors) {
+      colors = props.customColors;
+    }
     setData ({
       datasets: [
         {
           data: dataPoints,
-          backgroundColor: [
-            '#FF6384',
-            '#4BC0C0',
-            '#FFCE56',
-            '#E7E9ED',
-            '#36A2EB',
-          ],
+          backgroundColor: colors,
           label: props.title, // for legend
         },
       ],
