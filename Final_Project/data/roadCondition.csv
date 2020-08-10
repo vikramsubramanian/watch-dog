@@ -1,0 +1,190 @@
+road_condition_id,classification,traffic_control_type,visibility,surface_condition
+1,Minor Arterial,No Control,Snow,Wet
+2,Major Arterial,No Control,Clear,Loose Snow
+3,Major Arterial,No Control,Clear,Dry
+4,Minor Arterial,Pedestrian Crossover,Clear,Dry
+5,Major Arterial,Traffic Signal,Clear,Wet
+6,Major Arterial,Traffic Signal,Clear,Dry
+7,Major Arterial,Pedestrian Crossover,Clear,Dry
+8,Collector,Stop Sign,Clear,Dry
+9,Minor Arterial,Stop Sign,Clear,Dry
+10,Minor Arterial,No Control,Rain,Wet
+11,Major Arterial,No Control,Rain,Wet
+12,Major Arterial,Stop Sign,Clear,Dry
+13,Major Arterial,Traffic Signal,Rain,Wet
+14,Minor Arterial,No Control,Clear,Dry
+15,Major Arterial,No Control,Clear,Wet
+16,Minor Arterial,Traffic Signal,Clear,Dry
+17,Minor Arterial,No Control,Snow,Packed Snow
+18,Major Arterial,Traffic Signal,Snow,Loose Snow
+19,Major Arterial,No Control,Clear,Other
+20,Collector,No Control,Clear,Dry
+21,,No Control,Clear,Dry
+22,Minor Arterial,Traffic Signal,Snow,Loose Snow
+23,Major Arterial,No Control,Snow,Packed Snow
+24,Major Arterial,Traffic Controller,Clear,Dry
+25,Major Arterial,No Control,Snow,Loose Snow
+26,Minor Arterial,No Control,Clear,Ice
+27,Major Arterial,Traffic Signal,Clear,Loose Snow
+28,Major Arterial,Yield Sign,Clear,Dry
+29,Major Arterial,Stop Sign,Rain,Wet
+30,Minor Arterial,Stop Sign,Clear,Other
+31,Local,No Control,Clear,Dry
+32,Collector,No Control,Clear,Wet
+33,Minor Arterial,Traffic Signal,Rain,Wet
+34,Local,Stop Sign,Clear,Dry
+35,,No Control,Rain,Wet
+36,Minor Arterial,Stop Sign,Clear,Wet
+37,Collector,No Control,Rain,Wet
+38,Major Arterial,No Control,Snow,Wet
+39,Major Arterial,Pedestrian Crossover,Strong wind,Ice
+40,Minor Arterial,Traffic Signal,Other,Dry
+41,Minor Arterial,No Control,Clear,Wet
+42,Minor Arterial,Stop Sign,Rain,Wet
+43,Major Arterial,Pedestrian Crossover,Clear,Wet
+44,Major Arterial,Traffic Signal,Drifting Snow,Wet
+45,Major Arterial,Traffic Signal,Snow,Wet
+46,Major Arterial,No Control,Rain,Slush
+47,Collector,No Control,Freezing Rain,Slush
+48,Collector,Stop Sign,Clear,Wet
+49,Collector,Pedestrian Crossover,Clear,Dry
+50,Major Arterial,No Control,Snow,Slush
+51,Minor Arterial,Pedestrian Crossover,Rain,Wet
+52,Minor Arterial,Traffic Signal,Snow,Wet
+53,Minor Arterial,Stop Sign,Clear,Slush
+54,Minor Arterial,No Control,Snow,Loose Snow
+55,Major Arterial,Stop Sign,Clear,Packed Snow
+56,Local,Stop Sign,Rain,Wet
+57,Major Arterial,School Guard,Clear,Dry
+58,Local,No Control,Rain,Wet
+59,,No Control,Clear,Wet
+60,Minor Arterial,Traffic Signal,Clear,Wet
+61,Local,Stop Sign,Clear,Wet
+62,Collector,Traffic Signal,Clear,Dry
+63,Minor Arterial,Pedestrian Crossover,Clear,Wet
+64,Collector,Pedestrian Crossover,Rain,Wet
+65,Major Arterial,Traffic Controller,Clear,Other
+66,Local,Stop Sign,Snow,Ice
+67,Collector,Traffic Signal,Rain,Wet
+68,Major Arterial,Stop Sign,Clear,Wet
+69,Major Arterial,Police Control,Clear,Dry
+70,Local,No Control,Clear,Wet
+71,Major Arterial,Traffic Signal,Other,Dry
+72,Major Arterial,No Control,Freezing Rain,Slush
+73,Local,No Control,Clear,Ice
+74,Collector,Pedestrian Crossover,Clear,Wet
+75,Major Arterial,Traffic Signal,Snow,Slush
+76,Minor Arterial,Pedestrian Crossover,Clear,Other
+77,Local,Yield Sign,Clear,Dry
+78,Major Arterial,No Control,"Fog, Mist, Smoke, Dust",Dry
+79,Other,No Control,Clear,Dry
+80,Major Arterial,No Control,Freezing Rain,Ice
+81,Collector,Traffic Signal,Clear,Wet
+82,,No Control,Snow,Loose Snow
+83,Major Arterial,Traffic Signal,Clear,Other
+84,Collector,Stop Sign,Other,Wet
+85,Major Arterial,Traffic Controller,Clear,Wet
+86,Major Arterial,Traffic Signal,Clear,Slush
+87,Major Arterial,Yield Sign,Rain,Wet
+88,Major Arterial,Traffic Signal,Freezing Rain,Wet
+89,Major Arterial,,Other,Other
+90,Major Arterial,No Control,Snow,Ice
+91,Major Arterial,No Control,Drifting Snow,Ice
+92,Collector,No Control,Snow,Wet
+93,Minor Arterial,Pedestrian Crossover,Other,Other
+94,Major Arterial,Streetcar (Stop for),Clear,Dry
+95,Minor Arterial,Traffic Signal,Clear,Loose Snow
+96,Collector,No Control,Snow,Slush
+97,Collector,Pedestrian Crossover,Snow,Wet
+98,Collector,Stop Sign,Rain,Wet
+99,Other,No Control,Snow,Loose Snow
+100,Major Arterial,Traffic Signal,"Fog, Mist, Smoke, Dust",Dry
+101,Major Arterial,Traffic Signal,Snow,Packed Snow
+102,Minor Arterial,No Control,Snow,Slush
+103,Minor Arterial,Traffic Signal,Clear,Other
+104,Major Arterial,No Control,"Fog, Mist, Smoke, Dust",Wet
+105,Major Arterial,Stop Sign,Snow,Loose Snow
+106,Major Arterial,Traffic Signal,Other,Other
+107,Major Arterial,Traffic Signal,"Fog, Mist, Smoke, Dust",Wet
+108,Collector,Stop Sign,Freezing Rain,Wet
+109,Local,Traffic Signal,Clear,Dry
+110,Major Arterial,Traffic Signal,Rain,Dry
+111,Minor Arterial,Stop Sign,Other,Other
+112,Major Arterial,Pedestrian Crossover,Snow,Wet
+113,Major Arterial,Traffic Signal,Snow,Ice
+114,Major Arterial,Stop Sign,Snow,Slush
+115,Major Arterial,No Control,Clear,Slush
+116,Major Arterial,No Control,Clear,Ice
+117,Local,Stop Sign,Other,Other
+118,Pending,No Control,Clear,Dry
+119,Major Arterial,Traffic Signal,Freezing Rain,Slush
+120,Collector,Stop Sign,Drifting Snow,Wet
+121,Major Arterial,Traffic Signal,Rain,Packed Snow
+122,Major Arterial,Streetcar (Stop for),Rain,Wet
+123,Minor Arterial,Traffic Controller,Rain,Wet
+124,Major Arterial,Traffic Signal,Rain,Slush
+125,Major Arterial,No Control,Other,Other
+126,Major Arterial,No Control,Clear,Loose Sand or Gravel
+127,Major Arterial,Pedestrian Crossover,Rain,Wet
+128,Major Arterial,Traffic Signal,,
+129,Laneway,No Control,Clear,Dry
+130,Major Arterial,Traffic Controller,Rain,Wet
+131,Expressway,No Control,Clear,Dry
+132,Major Arterial,No Control,,
+133,Minor Arterial,No Control,,
+134,Expressway,Traffic Signal,Clear,Dry
+135,Minor Arterial,Traffic Signal,Other,Other
+136,Other,No Control,Clear,Wet
+137,Major Arterial,No Control,Drifting Snow,Wet
+138,Expressway,No Control,Clear,Wet
+139,Major Arterial,Stop Sign,Other,
+140,Major Arterial,PXO - No Ped,Clear,Dry
+141,Minor Arterial,No Control,Rain,Ice
+142,Major Arterial Ramp,No Control,Clear,Dry
+143,Collector,No Control,"Fog, Mist, Smoke, Dust",Wet
+144,Local,No Control,Snow,Wet
+145,,Yield Sign,Clear,Dry
+146,Major Arterial,No Control,Other,Wet
+147,Collector,No Control,Clear,Slush
+148,Minor Arterial,No Control,Snow,Ice
+149,,,Other,Other
+150,Collector,No Control,"Fog, Mist, Smoke, Dust",Dry
+151,Minor Arterial,No Control,Clear,Other
+152,Major Arterial,Stop Sign,Strong wind,Wet
+153,Major Arterial,Stop Sign,Snow,Packed Snow
+154,Collector,Traffic Gate,Clear,Dry
+155,Minor Arterial,No Control,Snow,Other
+156,Major Arterial,Stop Sign,Clear,Slush
+157,Major Arterial,Traffic Signal,Freezing Rain,Ice
+158,Local,Traffic Gate,Clear,Dry
+159,Pending,No Control,Snow,Packed Snow
+160,Minor Arterial,No Control,Other,Wet
+161,Major Arterial,No Control,Snow,Dry
+162,Collector,No Control,Snow,Other
+163,Collector,No Control,Snow,Packed Snow
+164,,No Control,Clear,Other
+165,Minor Arterial,,Other,Other
+166,Expressway,Traffic Signal,Rain,Wet
+167,Major Arterial,No Control,Other,Dry
+168,Collector,No Control,Clear,Loose Sand or Gravel
+169,Minor Arterial,Traffic Controller,Clear,Dry
+170,Minor Arterial,No Control,Clear,Loose Sand or Gravel
+171,Local,No Control,Snow,Packed Snow
+172,Major Arterial,Traffic Signal,Strong wind,Slush
+173,Major Arterial,No Control,Freezing Rain,Wet
+174,Local,No Control,Clear,Loose Snow
+175,Major Arterial,Yield Sign,Clear,Wet
+176,Minor Arterial,Pedestrian Crossover,Snow,Loose Snow
+177,Minor Arterial,No Control,Clear,
+178,Collector,No Control,Other,Other
+179,Local,No Control,Snow,Loose Snow
+180,Local,No Control,Clear,Other
+181,Collector,No Control,Freezing Rain,Wet
+182,Minor Arterial,No Control,Freezing Rain,Ice
+183,Other,No Control,Rain,Wet
+184,Minor Arterial,No Control,Drifting Snow,Loose Snow
+185,Major Arterial,No Control,Rain,Dry
+186,Collector,Stop Sign,Snow,Slush
+187,Minor Arterial,No Control,Other,Other
+188,Major Arterial,No Control,Drifting Snow,Dry
+189,Major Arterial,No Control,,Other
