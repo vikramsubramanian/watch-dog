@@ -611,32 +611,30 @@ function App () {
     if (strEqual (crimeType, 'crimes')) {
       mainPaths.push ('/crime-events/table?');
       mainPaths.push ('/crime-events/summary/MCI?');
-      mainPaths.push ('/crime-events/summary/time?' + '&timeType=' + timeType);
-      mainPaths.push ('/crime-events/summary/police-division?');
+      mainPaths.push ('/crime-events/summary/time?' + 'timeType=' + timeType);
       mainPaths.push ('/crime-events/map?');
       mainPaths.push ('/crime-events/heatmap/year?');
+      mainPaths.push ('/crime-events/summary/police-division?');
 
       extraPaths.push ('/crime-events/summary/premise?');
     } else if (strEqual (crimeType, 'bike thefts')) {
       mainPaths.push ('/crime-events/bike-thefts/table?');
       mainPaths.push ('/crime-events/bike-thefts/summary/type?');
       mainPaths.push (
-        '/crime-events/bike-thefts/summary/time?' + '&timeType=' + timeType
+        '/crime-events/bike-thefts/summary/time?' + 'timeType=' + timeType
       );
-      mainPaths.push ('/crime-events/bike-thefts/summary/police-division?');
       mainPaths.push ('/crime-events/bike-thefts/map?');
       mainPaths.push ('/crime-events/bike-thefts/heatmap/year?');
+      mainPaths.push ('/crime-events/bike-thefts/summary/police-division?');
 
       extraPaths.push ('/crime-events/bike-thefts/summary/status?');
     } else if (strEqual (crimeType, 'traffic incidents')) {
       mainPaths.push ('/traffic-events/table?');
       mainPaths.push ('/traffic-events/summary/type?');
-      mainPaths.push (
-        '/traffic-events/summary/time?' + '&timeType=' + timeType
-      );
-      mainPaths.push ('/traffic-events/summary/police-division?');
+      mainPaths.push ('/traffic-events/summary/time?' + 'timeType=' + timeType);
       mainPaths.push ('/traffic-events/map?');
       mainPaths.push ('/traffic-events/heatmap/year?');
+      mainPaths.push ('/traffic-events/summary/police-division?');
 
       extraPaths.push ('/traffic-events/summary/road/classification?');
       extraPaths.push ('/traffic-events/summary/road/visibility?');
@@ -670,6 +668,8 @@ function App () {
     extraPaths.forEach (xPath => {
       fetches.push (fetch (xPath).then (response => response.json ()));
     });
+
+    console.log (mainPaths);
 
     Promise.all (fetches)
       .then (allResponses => {
@@ -892,7 +892,7 @@ function App () {
         // PD Card
         var locPaths = [];
         var newPDDetails = [];
-
+        console.log (summaryPDData);
         summaryPDData.forEach (pd => {
           var findPDData = pdDetails.find (storedPD =>
             strEqual (storedPD.rawAddress, pd['address'])
