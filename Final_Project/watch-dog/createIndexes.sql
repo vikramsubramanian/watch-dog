@@ -5,3 +5,5 @@ CREATE INDEX BikeType ON BikeTheft(bike_type);
 CREATE INDEX YearMonth ON IncidentTime(year, month);
 
 CREATE INDEX InvolvedPersonAge ON InvolvedPerson(age);
+
+CREATE INDEX InvolvedPersonType ON InvolvedPerson(involvement_type);
