@@ -19,33 +19,65 @@ The `api/` folder contains the source code for interacting with the database. Th
 
 The platform of our choice was Azure. Therefore, we used Azure SQL to host a MySQL database.
 
-## Features Available So Far
+## Features Available
 
-- Filter crime and show results on a table
-  - Front end: `client/src/TableCard.js`
+- Filter crime/bike thefts/traffic accidents and show results on a table
+  - Front end: `client/src/components/cards/TableCard.js`
   - Back end: `api/app.js`
-- Display crime data in a bar chart
-  - Front end: `client/src/BarChart.js`
+- Display crime/bike thefts/traffic accidents data in a bar chart
+  - Front end:
+    - `client/src/components/cards/BarChart.js`
+    - `client/src/components/cards/VerticalBarChart.js`
   - Back end: `api/app.js`
-- Display crime data in a line chart
-  - Front end: `client/src/LineChart.js`
+- Display crime/bike thefts/traffic accidents data in a line chart
+  - Front end: `client/src/components/cards/LineChart.js`
   - Back end: `api/app.js`
-- Display crime data in a pie chart
-  - Front end: `client/src/DoughnutChart.js`
+- Display crime/bike thefts/traffic accidents data in a pie chart
+  - Front end: `client/src/components/cards/PieChart.js`
   - Back end: `api/app.js`
-- Display crime data in a summary card
-  - Front end: `client/src/SummaryCard.js`
+- Display crime/bike thefts/traffic accidents data in a summary card
+  - Front end: `client/src/components/cards/SummaryCard.js`
   - Back end: `api/app.js`
+- Display crime/bike thefts/traffic accidents data in a doughnut chart
+  - Front end: `client/src/components/cards/DoughnutChart.js`
+  - Back end: `api/app.js`
+- Display crime/bike thefts/traffic accidents data on a heat map
+  - Front end: `client/src/components/cards/HeatMap.js`
+  - Back end: `api/app.js`
+- Display crime/bike thefts/traffic accidents data on a map (clustered)
+  - Front end: `client/src/components/cards/MapCard.js`
+  - Back end: `api/app.js`
+- Predefined complex queries in the form of question and answer
+  - User can select a question from a dropdown of questions (currently 21 questions)
+    - Front end:
+      - `client/src/components/cards/Question.js`
+      - `client/src/components/cards/PolarChart.js`
+      - `client/src/components/cards/ScatterChart.js`
+      - `client/src/components/cards/SingleTextCard.js`
+      - `client/src/components/cards/StatisticCard.js`
+    - Back end: `api/app.js`
+- Provide users with information on the closest police division based on the address they provide us with
+  - User can view a map and enter an address to get the closest police division
+    - Front end: `client/src/components/cards/PDCard.js`
+    - Back end: `api/app.js`
 - Report a Crime Feature
   - User can report a crime using the bottom right report crime button
-    - Front end: `client/src/ReportCrime.js`
+    - Front end: `client/src/components/ReportCrime.js`
+    - Back end: `api/app.js`
+- "How well do you know your city" feature - aka Batman mode
+  - User can guess the total number of crimes and crimes per month/day
+    - Front end: `client/src/components/Batman.js`
     - Back end: `api/app.js`
 
-Note: we have implemented the Map, but we had to switch from Google Maps to Mapbox due to API pricing and limit issues. Then, rendering is much different and is causing performance issues with over 10,000 points. Thus, it is currently disabled (as it needs a speed up). However, the code can be found under
-
-- Display crime data in a map card
-  - Front end: `client/src/MapCard.js`
-  - Back end: `api/app.js`
+* Show users basic information
+  - Front end:
+    - `client/src/components/cards/TextCard.js`
+    - `client/src/components/cards/WelcomeCard.js`
+* Main page routing and setup
+  - Front end:
+    - `client/src/App.js`
+    - `client/src/index.js`
+    - `client/src/constants.js`
 
 ## Creating and loading the sample database:
 
@@ -74,6 +106,6 @@ Note: we have implemented the Map, but we had to switch from Google Maps to Mapb
 
 ## Other notes:
 
-- During tests on the production dataset, we have so far come up with 2 indexes that have sped up our queries. The timing mechanism that was used was the time returned by SQL.
+- During tests on the production dataset, we have so far come up with 5 indexes that have sped up our queries. The timing mechanism that was used was the time returned by SQL.
   - To create the indexes, run the commands from createIndexes.sql
 - Make sure to update the .env file with your database parameters and add the Mapbox API key!

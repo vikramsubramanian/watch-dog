@@ -596,7 +596,6 @@ function App () {
     hoodName,
     pdNum
   ) {
-    // setDateType (dateType);
     setLoadingData (true);
 
     var tablePath;
@@ -605,6 +604,7 @@ function App () {
     var summaryPDPath;
     var mapPath;
     var heatmapPath;
+    // var Paths = [];
     var extraPaths = [];
 
     if (strEqual (crimeType, 'crimes')) {
