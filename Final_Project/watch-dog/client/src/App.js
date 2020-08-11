@@ -598,38 +598,46 @@ function App () {
   ) {
     setLoadingData (true);
 
-    var tablePath;
-    var summaryMCIPath;
-    var summaryTimePath;
-    var summaryPDPath;
-    var mapPath;
-    var heatmapPath;
-    // var Paths = [];
+    var mainPaths = [];
     var extraPaths = [];
 
+    var timeType = '';
+    if (strEqual (dateType, 'year')) {
+      timeType = 'month';
+    } else if (strEqual (dateType, 'month')) {
+      timeType = 'day';
+    }
+
     if (strEqual (crimeType, 'crimes')) {
-      tablePath = '/crime-events/table?';
-      summaryMCIPath = '/crime-events/summary/MCI?';
-      summaryTimePath = '/crime-events/summary/time?';
-      summaryPDPath = '/crime-events/summary/police-division?';
-      mapPath = '/crime-events/map?';
-      heatmapPath = '/crime-events/heatmap/year?';
+      mainPaths.push ('/crime-events/table?');
+      mainPaths.push ('/crime-events/summary/MCI?');
+      mainPaths.push ('/crime-events/summary/time?' + '&timeType=' + timeType);
+      mainPaths.push ('/crime-events/summary/police-division?');
+      mainPaths.push ('/crime-events/map?');
+      mainPaths.push ('/crime-events/heatmap/year?');
+
       extraPaths.push ('/crime-events/summary/premise?');
     } else if (strEqual (crimeType, 'bike thefts')) {
-      tablePath = '/crime-events/bike-thefts/table?';
-      summaryMCIPath = '/crime-events/bike-thefts/summary/type?';
-      summaryTimePath = '/crime-events/bike-thefts/summary/time?';
-      summaryPDPath = '/crime-events/bike-thefts/summary/police-division?';
-      mapPath = '/crime-events/bike-thefts/map?';
-      heatmapPath = '/crime-events/bike-thefts/heatmap/year?';
+      mainPaths.push ('/crime-events/bike-thefts/table?');
+      mainPaths.push ('/crime-events/bike-thefts/summary/type?');
+      mainPaths.push (
+        '/crime-events/bike-thefts/summary/time?' + '&timeType=' + timeType
+      );
+      mainPaths.push ('/crime-events/bike-thefts/summary/police-division?');
+      mainPaths.push ('/crime-events/bike-thefts/map?');
+      mainPaths.push ('/crime-events/bike-thefts/heatmap/year?');
+
       extraPaths.push ('/crime-events/bike-thefts/summary/status?');
     } else if (strEqual (crimeType, 'traffic incidents')) {
-      tablePath = '/traffic-events/table?';
-      summaryMCIPath = '/traffic-events/summary/type?';
-      summaryTimePath = '/traffic-events/summary/time?';
-      summaryPDPath = '/traffic-events/summary/police-division?';
-      mapPath = '/traffic-events/map?';
-      heatmapPath = '/traffic-events/heatmap/year?';
+      mainPaths.push ('/traffic-events/table?');
+      mainPaths.push ('/traffic-events/summary/type?');
+      mainPaths.push (
+        '/traffic-events/summary/time?' + '&timeType=' + timeType
+      );
+      mainPaths.push ('/traffic-events/summary/police-division?');
+      mainPaths.push ('/traffic-events/map?');
+      mainPaths.push ('/traffic-events/heatmap/year?');
+
       extraPaths.push ('/traffic-events/summary/road/classification?');
       extraPaths.push ('/traffic-events/summary/road/visibility?');
       extraPaths.push ('/traffic-events/summary/road/surface_condition?');
@@ -645,32 +653,19 @@ function App () {
       plusPart += '&pd=' + pdNum.substr (3);
     }
 
-    summaryMCIPath += plusPart;
-    tablePath += plusPart;
-    mapPath += plusPart;
-    summaryTimePath += plusPart;
-    heatmapPath += plusPart;
-    summaryPDPath += plusPart;
+    mainPaths.forEach ((mPath, ind, theArray) => {
+      theArray[ind] = mPath + plusPart;
+    });
+
     extraPaths.forEach ((xPath, ind, theArray) => {
       theArray[ind] = xPath + plusPart;
     });
 
-    var timeType = '';
-    if (strEqual (dateType, 'year')) {
-      timeType = 'month';
-    } else if (strEqual (dateType, 'month')) {
-      timeType = 'day';
-    }
-    summaryTimePath += '&timeType=' + timeType;
+    var fetches = [];
 
-    var fetches = [
-      fetch (tablePath).then (response => response.json ()),
-      fetch (summaryMCIPath).then (response => response.json ()),
-      fetch (summaryTimePath).then (response => response.json ()),
-      fetch (mapPath).then (response => response.json ()),
-      fetch (heatmapPath).then (response => response.json ()),
-      fetch (summaryPDPath).then (response => response.json ()),
-    ];
+    mainPaths.forEach (mPath => {
+      fetches.push (fetch (mPath).then (response => response.json ()));
+    });
 
     extraPaths.forEach (xPath => {
       fetches.push (fetch (xPath).then (response => response.json ()));
@@ -679,8 +674,9 @@ function App () {
     Promise.all (fetches)
       .then (allResponses => {
         // console.log (allResponses);
+
         const tableData = allResponses[0];
-        const summaryMCIData = allResponses[1];
+        const mainSummaryData = allResponses[1];
         const summaryTimeData = allResponses[2];
         const mapData = allResponses[3];
         const heatmapData = allResponses[4];
@@ -712,6 +708,7 @@ function App () {
         }
 
         successToast ();
+
         var allCards = [];
 
         allCards.push ({
@@ -735,12 +732,13 @@ function App () {
         }
 
         if (strEqual (crimeType, 'bike thefts')) {
-          summaryMCIData.forEach (data => {
+          mainSummaryData.forEach (data => {
             data['label'] = bikeTypes.get (data['label']);
           });
         }
+
         if (strEqual (crimeType, 'traffic incidents')) {
-          summaryMCIData.forEach (data => {
+          mainSummaryData.forEach (data => {
             if (data['label'] == null) {
               data['label'] = 'Unknown';
             }
@@ -763,7 +761,7 @@ function App () {
         }
 
         allCards.push ({
-          src: <SummaryCard data={summaryMCIData || []} />,
+          src: <SummaryCard data={mainSummaryData || []} />,
           group: 2,
           width: 6,
         });
@@ -793,14 +791,14 @@ function App () {
         });
 
         allCards.push ({
-          src: <BarChart data={summaryMCIData || []} title={dateNum.label} />,
+          src: <BarChart data={mainSummaryData || []} title={dateNum.label} />,
           group: 5,
           width: null,
         });
 
         if (strEqual (crimeType, 'crimes')) {
           allCards.push ({
-            src: <DoughnutChart data={summaryMCIData || []} />,
+            src: <DoughnutChart data={mainSummaryData || []} />,
             group: 6,
             width: null,
           });
@@ -832,7 +830,7 @@ function App () {
         if (strEqual (crimeType, 'bike thefts')) {
           allCards.push ({
             src: (
-              <DoughnutChart title="Bike Types" data={summaryMCIData || []} />
+              <DoughnutChart title="Bike Types" data={mainSummaryData || []} />
             ),
             group: 6,
             width: null,
