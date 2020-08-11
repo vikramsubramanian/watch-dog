@@ -6,6 +6,11 @@ Live: https://watch-dog.azurewebsites.net/
 
 - **Frontend**:
   - React
+    - Notalable NPM packages used include:
+      - Semantic UI React library for UI components
+      - Mapbox API for the maps
+      - ChartJS and D3.js for the data presentation
+      - ag-grid for the table
 - **Backend**:
   - Node.js + Express.js
 - **Database**:
