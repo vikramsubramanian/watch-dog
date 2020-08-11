@@ -333,7 +333,7 @@ function App () {
           res.forEach (data => {
             data['colour'] = bikeColours.get (data['colour']);
           });
-          console.log (res);
+
           allCards.push ({
             src: (
               <PolarChart
@@ -669,8 +669,6 @@ function App () {
       fetches.push (fetch (xPath).then (response => response.json ()));
     });
 
-    console.log (mainPaths);
-
     Promise.all (fetches)
       .then (allResponses => {
         // console.log (allResponses);
@@ -892,7 +890,7 @@ function App () {
         // PD Card
         var locPaths = [];
         var newPDDetails = [];
-        console.log (summaryPDData);
+
         summaryPDData.forEach (pd => {
           var findPDData = pdDetails.find (storedPD =>
             strEqual (storedPD.rawAddress, pd['address'])
