@@ -2,8 +2,6 @@
 import React, {useState, useEffect} from 'react';
 import {HorizontalBar} from 'react-chartjs-2';
 
-import {strEqual} from '../../utility';
-
 function BarChart (props) {
   const [chartData, setChartData] = useState ({});
 
@@ -14,7 +12,6 @@ function BarChart (props) {
       allData.push (cat.total);
       labels.push (cat.label);
     });
-    // console.log (props.data);
 
     setChartData ({
       labels: labels,

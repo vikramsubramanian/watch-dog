@@ -73,25 +73,6 @@ function Question (props) {
 
   // TODO: Make question resize
 
-  // useEffect (
-  //   () => {
-  //     var indiOptions = [
-  //       {
-  //         label: 'all',
-  //         value: 'all',
-  //       },
-  //     ];
-  //     props.crimeOptions.forEach (opt => {
-  //       indiOptions.push ({
-  //         label: opt['text'].toLowerCase (),
-  //         value: opt['value'].toLowerCase (),
-  //       });
-  //     });
-  //     setCrimeIndicatorOptions (indiOptions);
-  //   },
-  //   [props.crimeOptions]
-  // );
-
   useEffect (
     () => {
       var hoodOptions = [];

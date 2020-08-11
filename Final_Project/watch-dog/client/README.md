@@ -1,6 +1,6 @@
 # WatchDog Front End
 
-WatchDog is a crime data application.
+WatchDog is an interactive, crime data web application.
 
 ## Available Scripts
 

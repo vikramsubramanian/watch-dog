@@ -26,6 +26,7 @@ const crimeIndicatorOptions = [
 ];
 
 const dateTypeOptions = ['year', 'month'];
+
 const dateNumOptions = new Map ();
 dateNumOptions['year'] = [
   {
@@ -236,15 +237,56 @@ dateNumOptions['hour'] = [
   },
 ];
 
-const FINE_PRINT = `The statistics, graphs and maps are based upon preliminary information that was supplied to the Toronto Police Service by the reporting parties and may not have been verified. The preliminary crime classifications may be changed at a later date based upon additional investigation and there is always the possibility of mechanical or human error.
+const bikeTypes = new Map ();
+bikeTypes.set ('BM', 'BMX');
+bikeTypes.set ('EL', 'Electric');
+bikeTypes.set ('FO', 'Folding');
+bikeTypes.set ('MT', 'Mountain');
+bikeTypes.set ('OT', 'Other');
+bikeTypes.set ('RC', 'Racer');
+bikeTypes.set ('RE', 'Recumbant');
+bikeTypes.set ('RG', 'Regular');
+bikeTypes.set ('SC', 'Scooter');
+bikeTypes.set ('TA', 'Tandem');
+bikeTypes.set ('TO', 'Touring');
+bikeTypes.set ('TR', 'Tricycle');
+bikeTypes.set ('UN', 'Unicycle');
+bikeTypes.set ('UNKNOWN', 'Unknown');
 
-The Toronto Police Service makes no warranty, representation or guarantee as to the content, sequence, accuracy, timeliness or completeness of any of the data provided herein. The user of the following pages should not rely on the data provided herein for comparison purposes over time, or for any reason. The Toronto Police Service explicitly disclaims any representations and warranties, including, without limitation, the implied warranties of merchantability and fitness for a particular purpose.
+const bikeColours = new Map ();
+bikeColours.set ('BLK', 'Black');
+bikeColours.set ('BLU', 'Blue');
+bikeColours.set ('GRY', 'Gray');
 
-The Toronto Police Service shall assume no liability for any errors, omissions, or inaccuracies in the information provided, regardless of how caused. The Toronto Police Service will not be responsible for the use of, or the results obtained from the use of this information. The Toronto Police Service shall assume no liability for any decisions made or actions taken or not taken by the user of the website in reliance upon any information or data furnished hereunder.
+const locationOptions = [
+  {
+    value: 'citywide',
+    label: 'citywide',
+  },
+  {
+    value: 'in neighbourhood',
+    label: 'in',
+  },
+  {
+    value: 'in police division',
+    label: 'in',
+  },
+];
 
-Due to both stacked incidents (those located at the same address) and incidents which may not have been geocoded, the number of incidents identified in tables and reports may not be fully reflected in the map. All data visualizations on maps should be considered approximate and attempts to derive specific addresses are strictly prohibited.`;
-
-const ABOUT_DESC = `WatchDog is a crime data application created by Dhvani, Vikram, Lukman, Abudllah, and Chandana for the CS 348 course at UWaterloo. Version 1.0.3`;
+const crimeTypeOptions = [
+  {
+    value: 'crimes',
+    label: 'crimes',
+  },
+  {
+    value: 'bike thefts',
+    label: 'bike thefts',
+  },
+  {
+    value: 'traffic incidents',
+    label: 'traffic incidents',
+  },
+];
 
 const premiseTypeOptions = [
   {key: 'h', text: 'House', value: 'House'},
@@ -362,56 +404,15 @@ const questionOptions = [
   },
 ];
 
-const bikeTypes = new Map ();
-bikeTypes.set ('BM', 'BMX');
-bikeTypes.set ('EL', 'Electric');
-bikeTypes.set ('FO', 'Folding');
-bikeTypes.set ('MT', 'Mountain');
-bikeTypes.set ('OT', 'Other');
-bikeTypes.set ('RC', 'Racer');
-bikeTypes.set ('RE', 'Recumbant');
-bikeTypes.set ('RG', 'Regular');
-bikeTypes.set ('SC', 'Scooter');
-bikeTypes.set ('TA', 'Tandem');
-bikeTypes.set ('TO', 'Touring');
-bikeTypes.set ('TR', 'Tricycle');
-bikeTypes.set ('UN', 'Unicycle');
-bikeTypes.set ('UNKNOWN', 'Unknown');
+const FINE_PRINT = `The statistics, graphs and maps are based upon preliminary information that was supplied to the Toronto Police Service by the reporting parties and may not have been verified. The preliminary crime classifications may be changed at a later date based upon additional investigation and there is always the possibility of mechanical or human error.
 
-const bikeColours = new Map ();
-bikeColours.set ('BLK', 'Black');
-bikeColours.set ('BLU', 'Blue');
-bikeColours.set ('GRY', 'Gray');
+The Toronto Police Service makes no warranty, representation or guarantee as to the content, sequence, accuracy, timeliness or completeness of any of the data provided herein. The user of the following pages should not rely on the data provided herein for comparison purposes over time, or for any reason. The Toronto Police Service explicitly disclaims any representations and warranties, including, without limitation, the implied warranties of merchantability and fitness for a particular purpose.
 
-const locationOptions = [
-  {
-    value: 'citywide',
-    label: 'citywide',
-  },
-  {
-    value: 'in neighbourhood',
-    label: 'in',
-  },
-  {
-    value: 'in police division',
-    label: 'in',
-  },
-];
+The Toronto Police Service shall assume no liability for any errors, omissions, or inaccuracies in the information provided, regardless of how caused. The Toronto Police Service will not be responsible for the use of, or the results obtained from the use of this information. The Toronto Police Service shall assume no liability for any decisions made or actions taken or not taken by the user of the website in reliance upon any information or data furnished hereunder.
 
-const crimeTypeOptions = [
-  {
-    value: 'crimes',
-    label: 'crimes',
-  },
-  {
-    value: 'bike thefts',
-    label: 'bike thefts',
-  },
-  {
-    value: 'traffic incidents',
-    label: 'traffic incidents',
-  },
-];
+Due to both stacked incidents (those located at the same address) and incidents which may not have been geocoded, the number of incidents identified in tables and reports may not be fully reflected in the map. All data visualizations on maps should be considered approximate and attempts to derive specific addresses are strictly prohibited.`;
+
+const ABOUT_DESC = `WatchDog is a crime data application created by Dhvani, Vikram, Lukman, Abudllah, and Chandana for the CS 348 course at UWaterloo. Version 1.0.4`;
 
 export {
   crimeTypeOptions,

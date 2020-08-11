@@ -8,6 +8,7 @@ const overflowStyle = {
   height: '300px',
   overflow: 'scroll',
 };
+
 function SummaryCard (props) {
   const [totalCrimes, setTotalCrimes] = useState (0);
 

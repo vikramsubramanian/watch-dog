@@ -191,8 +191,6 @@ function ReportCrime (props) {
                   options={premiseTypeOptions}
                 />
               </AForm.Group>
-              {/*
-              <Form.Checkbox label="I agree to the Terms and Conditions" /> */}
               <Button primary>
                 Proceed <Icon name="chevron right" />
               </Button>

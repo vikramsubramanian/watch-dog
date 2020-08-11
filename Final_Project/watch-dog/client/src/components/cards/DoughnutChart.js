@@ -2,8 +2,6 @@
 import React, {useState, useEffect} from 'react';
 import {Doughnut} from 'react-chartjs-2';
 
-import {strEqual} from '../../utility';
-
 function DoughnutChart (props) {
   const [chartData, setChartData] = useState ({});
 
@@ -14,7 +12,6 @@ function DoughnutChart (props) {
       allData.push (cat.total);
       labels.push (cat.label);
     });
-    // console.log (props.data);
 
     setChartData ({
       labels: labels,

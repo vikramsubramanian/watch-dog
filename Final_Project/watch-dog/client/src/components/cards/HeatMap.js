@@ -4,20 +4,6 @@ import CalendarHeatmap from '../../thirdparty/calendar-heatmap.component';
 
 import {strEqual} from '../../utility';
 
-var data = [
-  {
-    date: '2019-01-01',
-    total: 17164,
-    details: [
-      {
-        name: 'Project 1',
-        date: '2019-01-01',
-        value: 9192,
-      },
-    ],
-  },
-];
-
 function HeatMap (props) {
   const [startDate, setStartDate] = useState ('');
   const [endDate, setEndDate] = useState ('');

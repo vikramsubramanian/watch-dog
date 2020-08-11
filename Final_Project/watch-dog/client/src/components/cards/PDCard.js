@@ -29,15 +29,11 @@ function PDCard (props) {
   const [zoom, setZoom] = useState (9);
   const [map, setMap] = useState (null);
   const [loadingMap, setLoadingMap] = useState (true);
-  const [viewport, setViewport] = useState ({});
+
   const mapContainer = useRef (null);
   const [pdData, setPDData] = useState (null);
 
   useEffect (() => {
-    console.log ('Props updated');
-
-    console.log (props.data);
-
     var details = [];
     props.data.forEach ((loc, id) => {
       details.push ({
@@ -103,7 +99,6 @@ function PDCard (props) {
   }
 
   function setup () {
-    console.log ('setting up');
     mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_KEY;
     const initializeMap = ({setMap, mapContainer}) => {
       const map = new mapboxgl.Map ({

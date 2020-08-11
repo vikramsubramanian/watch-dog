@@ -39,7 +39,7 @@ function Batman (props) {
       data: total,
       resultHtml: 'The data tell the truth.',
       //   unit: '',
-      // precision: 0,
+      precision: 0,
       // lastPointShownAt: ,
       // yAxisMin: ,
       // yAxisMax: ,
@@ -55,7 +55,6 @@ function Batman (props) {
       timeData.forEach (td => {
         var d = {};
         d[dateNumOptions['month'][td.month - 1].label] = td['total'];
-        // console.log (d);
         data.push (d);
       });
     } else if (strEqual (dateType, 'month')) {
@@ -64,7 +63,6 @@ function Batman (props) {
       timeData.forEach (td => {
         var d = {};
         d[td.day] = td['total'];
-        // console.log (d);
         data.push (d);
       });
     }
@@ -73,7 +71,7 @@ function Batman (props) {
       heading: heading,
       subHeading: '',
       data: data,
-      resultHtml: "Wasn't that <b>too</b> easy? How could you not know this?",
+      resultHtml: "Wasn't that <b>too</b> easy? Are you not Batman?",
       // unit: "Pts",
       precision: 0,
       lastPointShownAt: last,
@@ -90,7 +88,6 @@ function Batman (props) {
 
   useEffect (
     () => {
-      // console.log ('props updated');
       var batmanData = props.batmanData;
       if (batmanData) {
         setupQuestions (
@@ -105,8 +102,6 @@ function Batman (props) {
 
   useEffect (
     () => {
-      // console.log ('Questions updated');
-      // console.log (questions);
       if (questions.length > 0) {
         renderChart ();
       }
@@ -115,35 +110,26 @@ function Batman (props) {
   );
 
   function renderChart () {
-    // console.log ('rendering chart');
-    // console.log (questions);
-    // var oldChart = d3.select ('.chart');
     if (chartElement != undefined) {
-      // console.log ('removing');
       chartElement.selectAll ('*').remove ();
       chartElement.remove ();
     }
 
     if (questions.length > 0) {
-      // console.log ('Calling you drawit');
       var copyQuestions = JSON.parse (JSON.stringify (questions));
       var myChart = youdrawit
         .chart ()
         .globals (globals)
         .questions (copyQuestions);
-      // console.log (myChart);
       var chartEl = d3
         .select ('#batman')
         .append ('div')
         .attr ('class', 'chart')
         .call (myChart);
-      // console.log ('made chart');
-      // console.log (chartEl);
       setChartElement (chartEl);
     }
   }
 
-  // console.log ('rendering batman');
   return (
     <div id="batman" ref={el => setContainer (el)}>
       <h2>Batman Mode</h2>

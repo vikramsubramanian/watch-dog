@@ -171,7 +171,7 @@ function App () {
     fetch (questionPath)
       .then (response => response.json ())
       .then (res => {
-        console.log (res);
+        // console.log (res);
         var allCards = [];
         var lastCardsGroup = 1;
 
@@ -1000,9 +1000,6 @@ function App () {
               <Button.Content visible>
                 Batman Mode {batmanMode ? 'On' : 'Off'}
               </Button.Content>
-              {/* <Button.Content hidden>
-                <Icon name="arrow right" />
-              </Button.Content> */}
             </Button>
 
           </Header.Content>
@@ -1027,8 +1024,6 @@ function App () {
                 </Segment>
               </Grid.Column>
             </Grid.Row>}
-          {/* {totalNum >= 0 &&
-            batmanMode && */}
           {batmanData != null &&
             batmanMode &&
             <Grid.Row columns="equal">
