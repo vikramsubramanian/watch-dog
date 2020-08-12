@@ -12,7 +12,7 @@ const crimeIndicatorOptions = [
     value: 'auto theft',
   },
   {
-    label: 'break and enter',
+    label: 'B&E',
     value: 'break and enter',
   },
   {

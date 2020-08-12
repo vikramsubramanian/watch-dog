@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {
   Menu,
   Dropdown,
@@ -20,6 +20,14 @@ import {strEqual} from '../utility';
 
 import './Question.css';
 
+function usePrevious (value) {
+  const ref = useRef ();
+  useEffect (() => {
+    ref.current = value;
+  });
+  return ref.current;
+}
+
 function Question (props) {
   const [defaultQuestion, setDefaultQuestion] = useState (true);
   const [crimeIndicator, setCrimeIndicator] = useState ('all');
@@ -36,6 +44,15 @@ function Question (props) {
 
   const [stickTopMenu, setStickTopMenu] = useState (false);
   const [selectedQuestion, setSelectedQuestion] = useState (null);
+
+  const [neighCutOff, setNeighCutOff] = useState (-1);
+  const prevHoodName = usePrevious (hoodName);
+  const prevCrimeType = usePrevious (crimeType);
+  const prevCrimeIndicator = usePrevious (crimeIndicator);
+  const prevDateType = usePrevious (dateType);
+  const prevDateNum = usePrevious (dateNum);
+
+  const mounted = useRef ();
 
   function changeQuestion (e, {value}) {
     setSelectedQuestion (value);
@@ -89,6 +106,38 @@ function Question (props) {
     },
     [props.hoodOptions]
   );
+  function fixHoodWidth (menuChanged) {
+    var okButton = document.getElementsByClassName ('selectButton');
+    if (okButton && okButton.length > 0) {
+      okButton = okButton[0].getBoundingClientRect ();
+      var okButtonRightMost = okButton.x + okButton.width;
+      var maxWidth = window.innerWidth;
+      var outBounds = okButtonRightMost > maxWidth - 10;
+      if (neighCutOff === -1 && outBounds) {
+        // Need to adjust neighbourhood text
+        // console.log ('Cut off 14');
+        setNeighCutOff (14);
+      } else if (menuChanged && neighCutOff !== -1 && !outBounds) {
+        // console.log ('No cut off');
+        setNeighCutOff (-1);
+      }
+    }
+  }
+
+  useEffect (() => {
+    if (!mounted.current) {
+      // do componentDidMount logic
+      mounted.current = true;
+    } else {
+      // do componentDidUpdate logic
+      var menuChanged =
+        !strEqual (hoodName, prevHoodName) ||
+        !strEqual (prevCrimeType, crimeType) ||
+        !strEqual (prevCrimeIndicator, crimeIndicator) ||
+        !strEqual (prevDateType, dateType);
+      fixHoodWidth (menuChanged);
+    }
+  });
 
   useEffect (
     () => {
@@ -114,6 +163,7 @@ function Question (props) {
 
   function renderQuestion () {
     var menuItems = [];
+
     if (defaultQuestion) {
       menuItems.push (
         <Menu.Item key={'m1'} className="selectText">
@@ -134,7 +184,11 @@ function Question (props) {
             <Dropdown
               inline
               icon={null}
-              text={crimeIndicator}
+              text={
+                crimeIndicatorOptions.find (opt =>
+                  strEqual (opt.value, crimeIndicator)
+                ).label
+              }
               className="selectDropdowns"
             >
               <Dropdown.Menu
@@ -145,7 +199,7 @@ function Question (props) {
                   return (
                     <Dropdown.Item
                       key={option.value}
-                      text={option.label}
+                      text={option.value}
                       active={strEqual (crimeIndicator, option.value)}
                       onClick={changeCrimeIndicator}
                     />
@@ -207,7 +261,11 @@ function Question (props) {
             <Dropdown
               inline
               icon={null}
-              text={hoodName}
+              text={
+                neighCutOff > -1
+                  ? hoodName.substr (0, neighCutOff) + '..'
+                  : hoodName
+              }
               className="selectDropdowns"
               style={{marginLeft: '10px'}}
             >
@@ -219,7 +277,7 @@ function Question (props) {
                   return (
                     <Dropdown.Item
                       key={option.value}
-                      text={option.label}
+                      text={option.value}
                       active={strEqual (hoodName, option.value)}
                       onClick={changeHoodName}
                     />
