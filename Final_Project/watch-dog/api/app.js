@@ -419,9 +419,21 @@ app
     let timeType = req.query.timeType;
 
     var query =
-      `SELECT OccuredTime.` +
+      `SELECT f.` +
       timeType +
-      `, COUNT(CrimeEvent.event_id) as total
+      `, COUNT(g.time_id) as total
+    FROM
+    (SELECT IncidentTime.time_id, IncidentTime.` +
+      timeType +
+      `
+    FROM IncidentTime WHERE IncidentTime.` +
+      dateType +
+      `=` +
+      dateNum +
+      `) as f LEFT JOIN
+    (SELECT OccuredTime.time_id, OccuredTime.` +
+      timeType +
+      `
     FROM CrimeEvent
     JOIN BikeTheft ON CrimeEvent.event_id = BikeTheft.event_id
     JOIN Neighbourhood ON CrimeEvent.hood_id = Neighbourhood.hood_id
@@ -454,7 +466,8 @@ app
       }
     }
 
-    query += ' GROUP BY OccuredTime.' + timeType;
+    query += ')  as g on f.time_id=g.time_id GROUP BY f.' + timeType;
+    console.log (query);
 
     connection.query (query, function (error, results, fields) {
       if (error) throw error;
@@ -813,12 +826,24 @@ app.route ('/traffic-events/summary/time').get (function (req, res, next) {
   let timeType = req.query.timeType;
 
   var query =
-    `SELECT OccuredTime.` +
+    `SELECT f.` +
     timeType +
-    `, COUNT(TrafficEvent.accident_id) as total
-    FROM TrafficEvent
-    JOIN Neighbourhood ON TrafficEvent.hood_id = Neighbourhood.hood_id
-    JOIN IncidentTime as OccuredTime ON TrafficEvent.occurrence_time_id = OccuredTime.time_id`;
+    `, COUNT(g.time_id) as total
+  FROM
+  (SELECT IncidentTime.time_id, IncidentTime.` +
+    timeType +
+    `
+  FROM IncidentTime WHERE IncidentTime.` +
+    dateType +
+    `=` +
+    dateNum +
+    `) as f LEFT JOIN
+    (SELECT OccuredTime.time_id, OccuredTime.` +
+    timeType +
+    `
+  FROM TrafficEvent
+  JOIN Neighbourhood ON TrafficEvent.hood_id = Neighbourhood.hood_id
+  JOIN IncidentTime as OccuredTime ON TrafficEvent.occurrence_time_id = OccuredTime.time_id`;
 
   // console.log (req.query);
   var firstWhere = true;
@@ -847,7 +872,7 @@ app.route ('/traffic-events/summary/time').get (function (req, res, next) {
     }
   }
 
-  query += ' GROUP BY OccuredTime.' + timeType;
+  query += ')  as g on f.time_id=g.time_id GROUP BY f.' + timeType;
 
   connection.query (query, function (error, results, fields) {
     if (error) throw error;
@@ -1186,13 +1211,25 @@ app.route ('/crime-events/summary/time').get (function (req, res, next) {
   let timeType = req.query.timeType;
 
   var query =
-    `SELECT OccuredTime.` +
+    `SELECT f.` +
     timeType +
-    `, COUNT(CrimeEvent.event_id) as total
-  FROM CrimeEvent
-  JOIN RegularCrime ON CrimeEvent.crime_id = RegularCrime.crime_id
-  JOIN Neighbourhood ON CrimeEvent.hood_id = Neighbourhood.hood_id
-  JOIN IncidentTime as OccuredTime ON CrimeEvent.occurrence_time_id = OccuredTime.time_id`;
+    `, COUNT(g.time_id) as total
+    FROM
+    (SELECT IncidentTime.time_id, IncidentTime.` +
+    timeType +
+    `
+    FROM IncidentTime WHERE IncidentTime.` +
+    dateType +
+    `=` +
+    dateNum +
+    `) as f LEFT JOIN
+      (SELECT OccuredTime.time_id, OccuredTime.` +
+    timeType +
+    `
+    FROM CrimeEvent
+    JOIN RegularCrime ON CrimeEvent.crime_id = RegularCrime.crime_id
+    JOIN Neighbourhood ON CrimeEvent.hood_id = Neighbourhood.hood_id
+    JOIN IncidentTime as OccuredTime ON CrimeEvent.occurrence_time_id = OccuredTime.time_id`;
 
   // console.log (req.query);
   var firstWhere = true;
@@ -1228,7 +1265,9 @@ app.route ('/crime-events/summary/time').get (function (req, res, next) {
     }
   }
 
-  query += ' GROUP BY OccuredTime.' + timeType;
+  query += ')  as g on f.time_id=g.time_id GROUP BY f.' + timeType;
+
+  console.log (query);
 
   connection.query (query, function (error, results, fields) {
     if (error) throw error;
