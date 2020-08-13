@@ -5,7 +5,7 @@
 \usepackage{graphicx}
 \usepackage{xcolor}
 \graphicspath{ {./} }
-\title{CS348 Project Milestone 2}
+\title{CS348 Project - Final Report}
 \author{Abdullah Bin Assad\and Chandana Sathish \and Lukman Mohamed \and Vikram Subramanian \and Dhvani Patel \\}
 \begin{document}
 \maketitle
@@ -16,9 +16,9 @@
 \end{center}
 \section*{Application description}
 \subsection*{Application User}
-We are creating an interactive web app for people interested in exploring crime data in the Greater Toronto Area. People who wish to assess how safe a neighbourhood is before investing in a new property or novice drivers trying to avoid accident-prone roads or just people curious about crime rates around them can greatly benefit from our application.
+We have created an interactive web app for people interested in exploring crime data in the Greater Toronto Area. People who wish to assess how safe a neighbourhood is before investing in a new property or novice drivers trying to avoid accident-prone roads or just people curious about crime rates around them can greatly benefit from our application.
 \subsection*{Interaction with the app}
-A user would simply search for a query (as seen on the demo application) using the drop-down on certain words in the question to tailor the search to their needs. For example, “I want to explore bicycle theft crimes in 2019 (year) citywide on a bar chart” can be one of the many queries a user selects. Alternatively, a user can also pick from a list of predefined queries (not in the demo yet) if they are unsure about where to start. Once the user clicks “OK”, the page updates to display the requested query and allows them to change the representation/visualization of the data as well as further refine their search with more options. We also plan on adding additional features as follows.
+A user would simply search for a query (as seen on the demo application) using the drop-down on certain words in the question to tailor the search to their needs. For example, “I want to explore bicycle theft crimes in 2019 (year) citywide on a bar chart” can be one of the many queries a user selects. Alternatively, a user can also pick from a list of predefined queries if they are unsure about where to start. Once the user clicks “OK”, the page updates to display the requested query and allows them to change the representation/visualization of the data as well as further refine their search with more options. We also plan on adding additional features as follows.
 \subsection*{Key features}
 \begin{enumerate}
 \item Filter crime/traffic events (starter question with drop-down for filtering different columns as seen in demo) and show results on a table
@@ -37,9 +37,9 @@ A user would simply search for a query (as seen on the demo application) using t
 \end{itemize}
 \item Create predefined complex queries in the form of question and answer
 \begin{itemize}
-    \item Example - Where should I park by bike in this neighbourhood, where should I drive as a new driver, is there a correlation between education/demographic and crime?
+    \item Example - At what hour do most crimes occur, which neighbourhood has the most number of traffic accidents, is there a correlation between education/demographic and crime, etc.
 \end{itemize}
-\item Provide users with information on closest police division or which neighborhood they are situated in based on the address they provide us with
+\item Provide users with information on which police division they are situated closest to based on the address they provide us with
 \item Report a crime
 \item Interactive “How well do you know your city” feature
 \begin{itemize}
@@ -60,7 +60,11 @@ We get a few additional columns of the census from the Toronto City Open Data:
 \color{black}
 The tables themselves are a little difficult to work with. Therefore, we create a data parser (in code.zip) to convert it to .csv files that fulfill our requirements. Sample data and production data are part of the code.zip as csv files (ex. Neighbourhood.csv, CrimeEvent.csv).
 \subsection*{System support}
-Our interface will consist of an interactive web-app. We will be using Azure to host our database and run a MySQL instance. This setup is ideal and efficient for building a web app such as ours. Azure and MySQL are modern, scalable, efficient and flexible. We will be using Node.js with an Express.js server as our back-end to interact with the database. For the front-end, we will be using the React library. For the UI components we will be using the Semantic UI React component library. Additionally, for maps we will be using the Mapbox API. \color{black}Thus, our web application code mostly consists of JavaScript. Members of our group have experience with Node.js and React which gives us an excellent basis for our project. 
+
+\hspace{\parindent}Our interface consists of an interactive web-app. Both the web application and the SQL database are hosted on Microsoft Azure. Azure AppServices and MySQL are modern, scalable, efficient and flexible. This setup is ideal and efficient for building a web app such as ours; plus Azure is cheaper than the alternatives. 
+
+The back end is made up Node.js + Express.js from which API end points are exposed. This is what directly talks with the database. The front end is a React application.  \color{blue}The notalable NPM packages used include: the Semantic UI React library for UI components, the Mapbox API for the maps you see in the application, ChartJS and D3.js for the data presentation, and ag-grid for the table.\color{black} Thus, our web application code mostly consists of JavaScript. Members of our group have experience with Node.js and React which gave us an excellent basis for our project.
+
 
 \section*{Design database schema}
 \subsection*{List of assumptions}
@@ -82,85 +86,85 @@ Note: Check the standalone image of the ER diagram if this one is too small.
 \begin{itemize}
     \item IncidentTime
     \begin{itemize}
-        \item \underline{time\_id} : \color{blue} INT \color{black}
-        \item hour : \color{blue} INT \color{black}
-        \item day : \color{blue} INT \color{black}
-        \item month : \color{blue} INT \color{black}
-        \item year : \color{blue} INT \color{black}
-        \item day\_of\_week : \color{blue} INT \color{black}
+        \item \underline{time\_id} : INT 
+        \item hour : INT
+        \item day : INT 
+        \item month : INT
+        \item year : INT
+        \item day\_of\_week : INT
     \end{itemize}
     \item PoliceDivision
         \begin{itemize}
-        \item \underline{division} : \color{blue} INT \color{black}
-        \item address : \color{blue} VARCHAR(50) \color{black}
-        \item area : \color{blue} DECIMAL(12, 9) \color{black}
-        \item shapeLeng : \color{blue} DECIMAL(12, 6)  \color{black}
-        \item shapeArea : \color{blue} DECIMAL(11, 3) \color{black}
+        \item \underline{division} : INT
+        \item address : VARCHAR(50)
+        \item area : DECIMAL(12, 9)
+        \item shapeLeng : DECIMAL(12, 6)
+        \item shapeArea : DECIMAL(11, 3) 
     \end{itemize}
     \item Neighbourhood
         \begin{itemize}
-        \item \underline{hood\_id} : \color{blue} INT \color{black}
-        \item name : \color{blue} VARCHAR(50) \color{black}
-        \item employment\_rate : \color{blue} DECIMAL(4, 2) \color{black}
-        \item high\_school : \color{blue} DECIMAL(4, 2) \color{black}
-        \item university : \color{blue} DECIMAL(4, 2)  \color{black}
-        \item technical\_degree : \color{blue} DECIMAL(4, 2) \color{black}
-        \item division : \color{blue} INT \color{black} (Foreign Key Referencing  PoliceDivision(division))
+        \item \underline{hood\_id} : INT
+        \item name : VARCHAR(50) 
+        \item employment\_rate : DECIMAL(4, 2) 
+        \item high\_school : DECIMAL(4, 2) 
+        \item university : DECIMAL(4, 2)
+        \item technical\_degree : DECIMAL(4, 2)
+        \item division : INT (Foreign Key Referencing  PoliceDivision(division))
     \end{itemize}
     \item BikeTheft
         \begin{itemize}
-        \item \underline{event\_id} :  \color{blue} INT \color{black} (Foreign Key Referencing CrimeEvent(event\_id))
-        \item colour: \color{blue} VARCHAR(50) \color{black}
-        \item make : \color{blue} VARCHAR(50) \color{black}
-        \item model : \color{blue}  VARCHAR(50) \color{black}
-        \item speed : \color{blue} VARCHAR(50) \color{black}
-        \item bike\_type : \color{blue} VARCHAR(50) \color{black}
-        \item status : \color{blue} VARCHAR(50) \color{black}
-        \item cost : \color{blue} DECIMAL(8, 2) \color{black}
+        \item \underline{event\_id} : INT (Foreign Key Referencing CrimeEvent(event\_id))
+        \item colour : VARCHAR(50)
+        \item make : VARCHAR(50)
+        \item model : VARCHAR(50)
+        \item speed : VARCHAR(50)
+        \item bike\_type : VARCHAR(50)
+        \item status : VARCHAR(50)
+        \item cost : DECIMAL(8, 2)
     \end{itemize}
     \item RegularCrime
         \begin{itemize}
-        \item \underline{crime\_id} : \color{blue} INT \color{black}
-        \item offence : \color{blue} VARCHAR(50) \color{black}
-        \item MCI : \color{blue} VARCHAR(50) \color{black}
+        \item \underline{crime\_id} : INT
+        \item offence : VARCHAR(50)
+        \item MCI : VARCHAR(50)
     \end{itemize}
     \item CrimeEvent
         \begin{itemize}
-        \item \underline{event\_id} :  \color{blue} INT \color{black}
-        \item occurrence\_time\_id :  \color{blue} INT \color{black} (Foreign Key Referencing IncidentTime(time\_id))
-        \item reported\_time\_id : \color{blue} INT \color{black} (Foreign Key Referencing IncidentTime(time\_id))
-        \item crime\_id : \color{blue} INT \color{black} (Foreign Key Referencing RegularCrime(crime\_id))
-        \item hood\_id : \color{blue} INT \color{black} (Foreign Key Referencing Neighbourhood(hood\_id))
-        \item latitude : \color{blue} DECIMAL(10,8) \color{black}
-        \item longitude : \color{blue} DECIMAL(11,8) \color{black}
-        \item premise\_type : \color{blue} VARCHAR(50) \color{black}
+        \item \underline{event\_id} : INT
+        \item occurrence\_time\_id : INT (Foreign Key Referencing IncidentTime(time\_id))
+        \item reported\_time\_id : INT (Foreign Key Referencing IncidentTime(time\_id))
+        \item crime\_id : INT (Foreign Key Referencing RegularCrime(crime\_id))
+        \item hood\_id : INT (Foreign Key Referencing Neighbourhood(hood\_id))
+        \item latitude : DECIMAL(10,8)
+        \item longitude : DECIMAL(11,8)
+        \item premise\_type : VARCHAR(50)
     \end{itemize}
     \item InvolvedPerson
     \begin{itemize}
-        \item \underline{accident\_id} : \color{blue} INT \color{black} (Foreign Key Referencing TrafficEvent(accident\_id))
-        \item \underline{person\_id} :  \color{blue} INT \color{black}
-        \item involvement\_type :  \color{blue} VARCHAR(50) \color{black}
-        \item age : \color{blue} INT \color{black}
-        \item injury : \color{blue} VARCHAR(50) \color{black}
-        \item vehicle\_type :  \color{blue} VARCHAR(50) \color{black}
-        \item action\_taken : \color{blue} VARCHAR(50) \color{black}
+        \item \underline{accident\_id} : INT (Foreign Key Referencing TrafficEvent(accident\_id))
+        \item \underline{person\_id} : INT
+        \item involvement\_type : VARCHAR(50)
+        \item age : INT
+        \item injury : VARCHAR(50)
+        \item vehicle\_type : VARCHAR(50)
+        \item action\_taken : VARCHAR(50)
     \end{itemize}
     \item RoadCondition
     \begin{itemize}
-        \item \underline{road\_condition\_id} : \color{blue} INT \color{black}
-        \item classification : \color{blue} VARCHAR(50) \color{black}
-        \item traffic\_control\_type : \color{blue} VARCHAR(50) \color{black}
-        \item visibility : \color{blue} VARCHAR(50) \color{black}
-        \item surface\_condition : \color{blue} VARCHAR(50) \color{black}
+        \item \underline{road\_condition\_id} : INT
+        \item classification : VARCHAR(50)
+        \item traffic\_control\_type : VARCHAR(50)
+        \item visibility : VARCHAR(50)
+        \item surface\_condition : VARCHAR(50)
     \end{itemize}
     \item TrafficEvent
     \begin{itemize}
-        \item \underline{accident\_id} : \color{blue} INT \color{black}
-        \item occurrence\_time\_id : \color{blue} INT \color{black} (Foreign Key Referencing IncidentTime(time\_id))
-        \item road\_condition\_id : \color{blue} INT \color{black} (Foreign Key Referencing RoadCondition(road\_condition\_id))
-        \item hood\_id : \color{blue} INT \color{black} (Foreign Key Referencing Neighbourhood(hood\_id))
-        \item latitude : \color{blue} DECIMAL(10,8) \color{black}
-        \item longitude :  \color{blue} DECIMAL(11,8) \color{black}
+        \item \underline{accident\_id} : INT
+        \item occurrence\_time\_id : INT (Foreign Key Referencing IncidentTime(time\_id))
+        \item road\_condition\_id : INT (Foreign Key Referencing RoadCondition(road\_condition\_id))
+        \item hood\_id : INT (Foreign Key Referencing Neighbourhood(hood\_id))
+        \item latitude : DECIMAL(10,8)
+        \item longitude : DECIMAL(11,8)
     \end{itemize}
 \end{itemize}
 \color{blue}
@@ -244,5 +248,17 @@ Note: Check the standalone image of the ER diagram if this one is too small.
         \item Select the toggle to the left of the Starter Sentence to switch to Predefined Queries.
         \item Currently we have 21 queries, but more can be added quite easily.
     \end{itemize}
+\end{itemize}
+\color{blue}
+\subsection*{Changes/Improvements Since Milestone 2}
+\color{black}
+\begin{itemize}
+	\item Created additional indices to speed up queries for the predefined questions feature (2.4 seconds to 0.6 seconds!):
+	\begin{itemize}
+		\item CREATE INDEX MCI ON RegularCrime(MCI);
+		\item CREATE INDEX BikeType ON BikeTheft(bike\_type);
+		\item CREATE INDEX InvolvedPersonType ON InvolvedPerson(involvement\_type);
+	\end{itemize}
+	\item Implemented all remaining features and polished application
 \end{itemize}
 \end{document}
