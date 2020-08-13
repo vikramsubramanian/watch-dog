@@ -1,0 +1,38 @@
+Group 1:
+Member List (5 members):
+
+Member 1: Abdullah Bin Asad
+- cleaned up additional data NULL values
+- wrote the SQL queries for the predefined questions feature
+- created indices for certain fields to speed up certain queries
+
+Member 2: Chandana Sathish
+- wrote up the script for the video
+- worked on the application
+  - fixed Mapbox API
+  - implemented HeatMap
+  - implemented PD map
+  - implemented bike thefts and traffic accidents (back end + front end)
+
+Member 3: Lukman Mohamed
+- wrote up the report and the application summary
+- helped write the script for the video
+- wrote the SQL queries for the predefined questions feature
+
+Member 4: Vikram Subramanian
+- helped write the script for the video
+- wrote the SQL queries for the predefined questions feature
+- cleaned up a few queries that were missing values
+- Ran tests to ensure data integrity
+
+Member 5: Dhvani Patel
+- put together the video and recorded the screens
+- worked on the application
+  - batman mode
+  - added the chart components for the predefined questions
+  - added a welcome card
+  - added to report a crime
+  - fixed header as you scroll
+- worked on backend app.js and added the new paths
+- deployed the app and made sure it was working
+- prepared code.zip
