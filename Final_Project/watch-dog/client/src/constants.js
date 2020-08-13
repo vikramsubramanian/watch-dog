@@ -412,7 +412,7 @@ The Toronto Police Service shall assume no liability for any errors, omissions, 
 
 Due to both stacked incidents (those located at the same address) and incidents which may not have been geocoded, the number of incidents identified in tables and reports may not be fully reflected in the map. All data visualizations on maps should be considered approximate and attempts to derive specific addresses are strictly prohibited.`;
 
-const ABOUT_DESC = `WatchDog is a crime data application created by Dhvani, Vikram, Lukman, Abdullah, and Chandana for the CS 348 course at UWaterloo. Version 1.0.4`;
+const ABOUT_DESC = `WatchDog is a crime data application created by Dhvani, Vikram, Lukman, Abdullah, and Chandana for the CS 348 course at UWaterloo. Version 1.0.5`;
 
 export {
   crimeTypeOptions,
