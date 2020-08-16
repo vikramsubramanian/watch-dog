@@ -30,9 +30,21 @@ We get a few additional columns of the census from the Toronto City Open Data:
 
 The raw data comes in the form of large CSV files that are difficult to work with. Therefore, we have created our own scripts to restructure the data into a useful format for both storage and presentation.
 
+### Some Database Statistics
+- 9 Tables (43.4 MB)
+  - IncidentTime (`54 250 rows`)
+  - PoliceDivision (`17 rows`)
+  - Neighbourhood (`140 rows`)
+  - RegularCrime (`49 rows`)
+  - CrimeEvent (`212 683 rows`)
+  - BikeTheft (`21 584 rows`)
+  - RoadCondition (`189 rows`)
+  - TrafficEvent (`5 623 rows`)  
+  - InvolvedPerson (`15 418 rows`)  
+
 ## Platform and Tech Stack
 
-Both the web application and the SQL database are hosted on Microsoft Azure. Azure AppServices and MySQL are modern, scalable, efficient and flexible. This setup is ideal and efficient for building a web app such as ours; plus Azure was cheaper than the alternatives.
+Both the web application and the SQL database (MySQL 5.7) are hosted on Microsoft Azure. Azure AppServices and MySQL are modern, scalable, efficient and flexible. This setup is ideal and efficient for building a web app such as ours; plus Azure was cheaper than the alternatives.
 
 The back end is made up Node.js + Express.js from which API end points are exposed. This is what directly talks with the database. The front end is a React application. The notalable NPM packages used include: the Semantic UI React library for UI components, the Mapbox API for the maps you see in the application, ChartJS and D3.js for the data presentation, and ag-grid for the table. Thus, our web application code mostly consists of JavaScript.
 
