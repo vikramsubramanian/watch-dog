@@ -34,7 +34,7 @@ The back end is made up Node.js + Express.js from which API end points are expos
 ## Using the Application
 
 #### Welcome Card
-![welcome card](welcome_card.png)
+![welcome card](screenshots/welcome_card.png)
 
 #### Starter Question
 ![starter question](screenshots/starter_question.gif)
