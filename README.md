@@ -64,7 +64,7 @@ The back end is made up Node.js + Express.js from which API end points are expos
 
 #### Summary Card
 <p float="left">
-    <img src="screenshots/summary_card_crimes.png" width="270">
+    <img alt="summary card crimes" src="screenshots/summary_card_crimes.png" width="270">
     <img alt="summary card bike thefts"  src="screenshots/summary_card_bike_thefts.gif" width="270">
     <img alt="summary card traffic accidents"  src="screenshots/summary_card_traffic_accidents.gif" width="270">
 </p>
@@ -102,10 +102,10 @@ The back end is made up Node.js + Express.js from which API end points are expos
    * Traffic Accidents: shows the number of traffic accidents per road visibility
 
 ### Police Division Map
+![police division card](screenshots/police_division_card.gif)
    * Located below everything mentioned above.
    * Shows the amount of crimes per police division and where the police divisions are located.
    * Provide an address and the application will output the closest police division.
-
 
 
 ## API
