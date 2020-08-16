@@ -33,61 +33,74 @@ The back end is made up Node.js + Express.js from which API end points are expos
 
 ## Using the Application
 
-#### Welcome Card
+### Welcome Card
 ![welcome card](screenshots/welcome_card.png)
 
-#### Starter Question
+### Starter Question
 ![starter question](screenshots/starter_question.gif)
 
-– Located at very top of the application.
-– It filters the information in the cards below by crime type (regular crimes, bike thefts and traffic accidents).
-– For crimes we have filters for the major crime indicator (MCI), date (year or month) and location (citywide, neighbourhood and police division).
-– By default, it is set to show all crimes citywide (Toronto) that happened in 2019.
-– Click OK and the new search will update the cards below.
+* Located at very top of the application.
+* It filters the information in the cards below by crime type (regular crimes, bike thefts and traffic accidents).
+* For crimes we have filters for the major crime indicator (MCI), date (year or month) and location (citywide, neighbourhood and police division).
+* By default, it is set to show all crimes citywide (Toronto) that happened in 2019.
+* Click OK and the new search will update the cards below.
 
-#### Data Cards
-– All queries have similar cards with different data.
+### Data Cards
+*  All queries have similar cards with different data.
 
-– Table Card
+#### Table Card
 ![table card](screenshots/table_card.gif)
-    - Located right below the Starter Question.
-    - Contains the raw data from the query.
-    - Paginated and filterable.
 
-– Heat Map Card
+   * Located right below the Starter Question.
+   * Contains the raw data from the query.
+   * Paginated and filterable.
+
+#### Heat Map Card
 ![heatmap card](screenshots/heatmap_card.gif)
-    - Located right below the Table Card.
-    - Shows the amount of crimes per time period.
-    - Interact to refine the time range.
-– Summary Card
+
+   * Located right below the Table Card.
+   * Shows the amount of crimes per time period.
+   * Interact to refine the time range.
+
+#### Summary Card
 ![summary card crimes](screenshots/summary_card_crimes.png)
-    - Crimes: shows the number of crimes per major crime indicator.
+
+   * Crimes: shows the number of crimes per major crime indicator.
+   
 ![summary card bike thefts](screenshots/summary_card_bike_thefts.gif)
-    - Bike Thefts: shows the number of bike thefts per bike type
+
+   * Bike Thefts: shows the number of bike thefts per bike type
+   
 ![summary card traffic accidents](screenshots/summary_card_traffic_accidents.gif)
-    - Traffic Accidents: shows the number of traffic accidents per type of the person involved person
-– Cluster Map Card
+
+   * Traffic Accidents: shows the number of traffic accidents per type of the person involved person
+   
+#### Cluster Map Card
 ![cluster map card](screenshots/cluster_map_card.gif)
-    - Shows each individual event location.
-    - We can zoom in on the cluster to break it up and see individual locations.
-– Line Chart Card
+
+   * Shows each individual event location.
+   * We can zoom in on the cluster to break it up and see individual locations.
+   
+#### Line Chart Card
 ![line card](screenshots/line_card.png)
-    - Shows the number of event per month if our date type is set to year, or day if our date type is set to month.
-– Horizontal Bar Chart
-    - Same data as summary
-- Doughnut Chart
-    - Same data as summary
-    - Traffic Accidents:
-        - shows the number of traffic accidents per road classification
-        - shows the number of traffic accidents per road visibility
-        - shows the number of traffic accidents per road surface condition
-- Pie Chart
-    - Crimes: shows the number of crimes per premise type
-    - Bike Thefts: shows the number of bike thefts per bike status
-- Police Division Map
-    – Located below everything mentioned above.
-    – Shows the amount of crimes per police division and where the police divisions are located.
-    – Provide an address and the application will output the closest police division.
+
+   * Shows the number of event per month if our date type is set to year, or day if our date type is set to month.
+
+#### Horizontal Bar Chart
+   * Same data as summary
+#### Doughnut Chart
+   * Same data as summary
+   * Traffic Accidents:
+        * shows the number of traffic accidents per road classification
+        * shows the number of traffic accidents per road visibility
+        * shows the number of traffic accidents per road surface condition
+#### Pie Chart
+   * Crimes: shows the number of crimes per premise type
+   * Bike Thefts: shows the number of bike thefts per bike status
+### Police Division Map
+   * Located below everything mentioned above.
+   * Shows the amount of crimes per police division and where the police divisions are located.
+   * Provide an address and the application will output the closest police division.
 
 
 
