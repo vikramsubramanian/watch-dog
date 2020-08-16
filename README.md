@@ -1,5 +1,13 @@
 # WatchDog
 
+## Table of Contents
+- [Overview](#overview)
+- [Data](#data)
+- [E/R Diagram](#er-diagram)
+- [Using the Application](#using-the-application)
+- [API](#api)
+- [Team](#team)
+
 ## Overview
 
 [![overview](overview.gif)](https://www.youtube.com/watch?v=VbmVv0VzuPU)
@@ -34,7 +42,7 @@ The back end is made up Node.js + Express.js from which API end points are expos
 ## Using the Application
 
 ### Welcome Card
-![welcome card](screenshots/welcome_card.png)
+<img alt="welcome card" src="screenshots/welcome_card.png" width="70%">
 
 ### Starter Question
 ![starter question](screenshots/starter_question.gif)
@@ -112,7 +120,7 @@ The back end is made up Node.js + Express.js from which API end points are expos
    * Located at the bottom right of the application.
    * Fill this out to report a crime and update the database.
 
-## Batman Mode
+### Batman Mode
 <p float="left">
     <img alt="batman mode year" src="screenshots/batman_mode_year.gif" width="410">
     <img alt="batman mode month"  src="screenshots/batman_mode_month.gif" width="410">
@@ -124,7 +132,8 @@ The back end is made up Node.js + Express.js from which API end points are expos
    * Then at the end, users can see their score for guessing both the data.
    * This is a fun way for users to explore the data and challenge their friends.
 
-## Predefined Queries
+### Predefined Queries
+![predefined queries](screenshots/predefined_queries.gif)
 
    * Located at the same spot as the Starter Question.
    * An alternative to the Starter Question if the user is not sure what they are looking for.
