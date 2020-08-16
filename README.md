@@ -113,8 +113,10 @@ The back end is made up Node.js + Express.js from which API end points are expos
    * Fill this out to report a crime and update the database.
 
 ## Batman Mode
-![batman_mode_year](screenshots/batman_mode_year.gif)
-![batman_mode_year](screenshots/batman_mode_month.gif)
+<p float="left">
+    <img alt="batman mode year" src="screenshots/batman_mode_year.gif" width="410">
+    <img alt="batman mode month"  src="screenshots/batman_mode_month.gif" width="410">
+</p>
    * The button to activate it is located at the top right of the application.
    * A game that tests how well the user know the city of Toronto and its crime.
    * Once activated, the user has to guess the total number of crimes that occurred and the crimes per month/day for the selected query.
