@@ -117,12 +117,45 @@ The back end is made up Node.js + Express.js from which API end points are expos
     <img alt="batman mode year" src="screenshots/batman_mode_year.gif" width="410">
     <img alt="batman mode month"  src="screenshots/batman_mode_month.gif" width="410">
 </p>
+
    * The button to activate it is located at the top right of the application.
    * A game that tests how well the user know the city of Toronto and its crime.
    * Once activated, the user has to guess the total number of crimes that occurred and the crimes per month/day for the selected query.
    * Then at the end, users can see their score for guessing both the data.
    * This is a fun way for users to explore the data and challenge their friends.
 
+## Predefined Queries
+
+   * Located at the same spot as the Starter Question.
+   * An alternative to the Starter Question if the user is not sure what they are looking for.
+   * Select the toggle to the left of the Starter Sentence to switch to Predefined Queries.
+   * Currently we have 21 queries, but more can be added quite easily.
+
+### Some Sample Queries
+
+#### What are the 3 most commonly stolen bike types?
+<img src="screenshots/pre_1.png">
+
+#### At what hour do most crimes occur?
+<img src="screenshots/pre_2.png">
+
+#### Which neighbourhood has the most number of traffic accidents?
+<img src="screenshots/pre_3.png">
+
+#### What is the average cost of bikes stolen?
+<img src="screenshots/pre_4.png">
+
+#### Is there a correlation between neighbourhood employment and crime?
+<img src="screenshots/pre_5.png">
+
+#### Is there a correlation between neighbourhood education and crime?
+<img src="screenshots/pre_6.png">
+
+#### What is the most common driver action taken in traffic accidents?
+<img src="screenshots/pre_7.png">
+
+#### Which road traffic control types have the most accidents?
+<img src="screenshots/pre_8.png">
 
 ## API
 
