@@ -64,9 +64,9 @@ The back end is made up Node.js + Express.js from which API end points are expos
 
 #### Summary Card
 <p float="left">
-    <img src="screenshots/summary_card_crimes.png" width="300">
-    <img alt="summary card bike thefts"  src="screenshots/summary_card_bike_thefts.gif" width="300">
-    <img alt="summary card traffic accidents"  src="screenshots/summary_card_traffic_accidents.gif" width="300">
+    <img src="screenshots/summary_card_crimes.png" width="270">
+    <img alt="summary card bike thefts"  src="screenshots/summary_card_bike_thefts.gif" width="270">
+    <img alt="summary card traffic accidents"  src="screenshots/summary_card_traffic_accidents.gif" width="270">
 </p>
 
    * Crimes: shows the number of crimes per major crime indicator.
