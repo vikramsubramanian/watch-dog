@@ -66,37 +66,43 @@ The back end is made up Node.js + Express.js from which API end points are expos
 <img src="screenshots/summary_card_crimes.png" height="500">
 
    * Crimes: shows the number of crimes per major crime indicator.
-   
+
 ![summary card bike thefts](screenshots/summary_card_bike_thefts.gif)
 
    * Bike Thefts: shows the number of bike thefts per bike type
-   
+
 ![summary card traffic accidents](screenshots/summary_card_traffic_accidents.gif)
 
    * Traffic Accidents: shows the number of traffic accidents per type of the person involved person
-   
+
 #### Cluster Map Card
 ![cluster map card](screenshots/cluster_map_card.gif)
 
    * Shows each individual event location.
    * We can zoom in on the cluster to break it up and see individual locations.
-   
+
 #### Line Chart Card
 ![line card](screenshots/line_card.png)
 
    * Shows the number of event per month if our date type is set to year, or day if our date type is set to month.
 
 #### Horizontal Bar Chart
+![horizontal bar card](screenshots/horizontal_bar_card.png)
    * Same data as summary
+
 #### Doughnut Chart
+![doughnut card](screenshots/doughnut_card.png)
    * Same data as summary
    * Traffic Accidents:
         * shows the number of traffic accidents per road classification
-        * shows the number of traffic accidents per road visibility
         * shows the number of traffic accidents per road surface condition
+
 #### Pie Chart
+![pie card](screenshots/pie_card.png)
    * Crimes: shows the number of crimes per premise type
    * Bike Thefts: shows the number of bike thefts per bike status
+   * Traffic Accidents: shows the number of traffic accidents per road visibility
+
 ### Police Division Map
    * Located below everything mentioned above.
    * Shows the amount of crimes per police division and where the police divisions are located.
