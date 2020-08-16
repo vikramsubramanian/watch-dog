@@ -6,6 +6,12 @@
 
 WatchDog is an interactive web app for people interested in exploring crime in the city of Toronto. The webapp is helpful to a wide variety of users such as new homeowners trying to assess how safe a neighbourhood is before buying, novice drivers trying to avoid accident-prone roads or just anyone curious about crime rates in their neighbourhood.
 
+#### Application
+- https://watch-dog.azurewebsites.net/
+
+#### Demo Video:
+- https://www.youtube.com/watch?v=VbmVv0VzuPU
+
 ## Data
 
 The tables we get from the Toronto Police Open Data:
