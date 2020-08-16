@@ -134,28 +134,28 @@ The back end is made up Node.js + Express.js from which API end points are expos
 ### Some Sample Queries
 
 #### What are the 3 most commonly stolen bike types?
-<img src="screenshots/pre_1.png">
+<img src="screenshots/pre_1.png" width="70%">
 
 #### At what hour do most crimes occur?
-<img src="screenshots/pre_2.png">
+<img src="screenshots/pre_2.png" width="70%">
 
 #### Which neighbourhood has the most number of traffic accidents?
-<img src="screenshots/pre_3.png">
+<img src="screenshots/pre_3.png" width="70%">
 
 #### What is the average cost of bikes stolen?
-<img src="screenshots/pre_4.png">
+<img src="screenshots/pre_4.png" width="70%">
 
 #### Is there a correlation between neighbourhood employment and crime?
-<img src="screenshots/pre_5.png">
+<img src="screenshots/pre_5.png" width="70%">
 
 #### Is there a correlation between neighbourhood education and crime?
-<img src="screenshots/pre_6.png">
+<img src="screenshots/pre_6.png" width="70%">
 
 #### What is the most common driver action taken in traffic accidents?
-<img src="screenshots/pre_7.png">
+<img src="screenshots/pre_7.png" width="70%">
 
 #### Which road traffic control types have the most accidents?
-<img src="screenshots/pre_8.png">
+<img src="screenshots/pre_8.png" width="70%">
 
 ## API
 
