@@ -63,7 +63,7 @@ The back end is made up Node.js + Express.js from which API end points are expos
    * Interact to refine the time range.
 
 #### Summary Card
-![summary card crimes](screenshots/summary_card_crimes.png)
+<img src="screenshots/summary_card_crimes.png" height="500">
 
    * Crimes: shows the number of crimes per major crime indicator.
    
