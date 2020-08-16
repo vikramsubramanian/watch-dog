@@ -10,6 +10,7 @@ WatchDog is an interactive web app for people interested in exploring crime in t
 
 The tables we get from the Toronto Police Open Data:
 - https://data.torontopolice.on.ca/pages/open-data
+
 We get a few additional columns of the census from the Toronto City Open Data:
 - https://open.toronto.ca/dataset/neighbourhood-profiles/
 
@@ -22,7 +23,7 @@ Both the web application and the SQL database are hosted on Microsoft Azure. Azu
 The back end is made up Node.js + Express.js from which API end points are exposed. This is what directly talks with the database. The front end is a React application. The notalable NPM packages used include: the Semantic UI React library for UI components, the Mapbox API for the maps you see in the application, ChartJS and D3.js for the data presentation, and ag-grid for the table. Thus, our web application code mostly consists of JavaScript.
 
 ## E/R diagram
-![E/R diagram][ER_Diagram.png]
+![E/R diagram](ER_Diagram.png)
 
 ## API
 
