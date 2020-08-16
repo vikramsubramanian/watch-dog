@@ -63,16 +63,14 @@ The back end is made up Node.js + Express.js from which API end points are expos
    * Interact to refine the time range.
 
 #### Summary Card
-<img src="screenshots/summary_card_crimes.png" height="500">
+<p float="left">
+    <img src="screenshots/summary_card_crimes.png" width="300">
+    <img alt="summary card bike thefts"  src="screenshots/summary_card_bike_thefts.gif" width="300">
+    <img alt="summary card traffic accidents"  src="screenshots/summary_card_traffic_accidents.gif" width="300">
+</p>
 
    * Crimes: shows the number of crimes per major crime indicator.
-
-![summary card bike thefts](screenshots/summary_card_bike_thefts.gif)
-
    * Bike Thefts: shows the number of bike thefts per bike type
-
-![summary card traffic accidents](screenshots/summary_card_traffic_accidents.gif)
-
    * Traffic Accidents: shows the number of traffic accidents per type of the person involved person
 
 #### Cluster Map Card
