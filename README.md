@@ -247,4 +247,4 @@ Can also filter all of these by MCI
 
 
 # Team
-WatchDog was created by Dhvani, Vikram, Lukman, Abdullah, and Chandana for the CS 348 course at UWaterloo.
+WatchDog was created by [Dhvani](https://github.com/Dhvani35729), [Vikram](https://github.com/vikramsubramanian), [Lukman]()https://github.com/LukmanMohamed, [Abdullah](https://github.com/Abdullah2Cool), and [Chandana](https://github.com/chandana-sathish) for the CS 348 course at UWaterloo.
