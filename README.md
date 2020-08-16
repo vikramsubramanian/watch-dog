@@ -107,6 +107,11 @@ The back end is made up Node.js + Express.js from which API end points are expos
    * Shows the amount of crimes per police division and where the police divisions are located.
    * Provide an address and the application will output the closest police division.
 
+### Report Crime
+![report crime form](screenshots/report_crime.gif)
+   * Located at the bottom right of the application.
+   * Fill this out to report a crime and update the database.
+
 
 ## API
 
